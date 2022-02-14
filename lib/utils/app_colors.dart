@@ -26,3 +26,16 @@ import 'package:flutter/material.dart';
 
 
    bool isChecked = false;
+
+
+
+   ///////Hamid///////
+   ///
+   
+
+   //// my color added ///
+const Color buttonColor = Color(0xffFBC799);
+const Color progressColor = Color(0xff84AFA8);
+const Color progressType = Color(0xff60656D);
+const Color backButtonColor = Color(0xffF4F4F5);
+

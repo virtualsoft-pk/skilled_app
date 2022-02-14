@@ -18,5 +18,31 @@ class AppConst{
 
 
 
+/////// Hamid ////////////
+///
+
+
+
+///// ===============MY text included ========//////
+  static const QUIZ_RESULT_PAGE_1_TEXT = "Quiz Results";
+  static const QUIZ_RESULT_PAGE_QUESTION = "What career suits me?";
+  static const QUIZ_RESULT_PAGE_2_TEXT =
+      "Watch the video below\nto find out more ";
+  static const QUIZ_RESULT_PAGE_2_QUESTION_1 =
+      "What are your main personality traits?";
+  static const QUIZ_RESULT_PAGE_2_QUESTION_2 = "What are your core values?";
+  static const QUIZ_RESULT_PAGE_3_TEXT =
+      "Select All The Careers\nYou Are Interested In ";
+  static const QUIZ_RESULT_PAGE_4_TEXT = "Answer List";
+
+  static const QUIZ_RESULT_PAGE_4_QUESTION_1 =
+      "How would your friends describe you?";
+
+  static const QUIZ_RESULT_PAGE_4_QUESTION_2 = "What is your super power?";
+
+  static const QUIZ_RESULT_PAGE_4_QUESTION_3 =
+      "What steps do you take to remain calm under pressure?";
+
+
   
 }

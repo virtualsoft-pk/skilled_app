@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Timer(Duration(seconds: 5), (){
-      Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginView()));
+      Navigator.push(context, MaterialPageRoute(builder: (c)=> OnboardingScreen()));
     });
   }
 

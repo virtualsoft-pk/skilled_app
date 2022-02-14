@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/model/about_model.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/quiz3.dart';
+import 'package:skilled_app/views/quiz/quiz_result.dart';
 
 import '../../widgets/hashir.dart';
 
@@ -83,13 +84,11 @@ class _Quiz_04State extends State<Quiz_04> {
               height: screenheight * 0.6,
 
               child: ListView.builder(
-               //   physics: NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   itemCount: about.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        // Get.to(() => Chat());
                       },
                       child: Container(
                         margin: EdgeInsets.only(top: 10),
@@ -100,7 +99,6 @@ class _Quiz_04State extends State<Quiz_04> {
                           color: greycolor
                         ),
                         child: Row(
-                         //  mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(left: 15),
@@ -132,7 +130,7 @@ class _Quiz_04State extends State<Quiz_04> {
                 height: screenheight*0.09,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
                 child: elevatedButton(text: "SEE RESULTS",onpress: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>Quiz_04()));})
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>QuizResultPage()));})
             )
           ]),
         )));

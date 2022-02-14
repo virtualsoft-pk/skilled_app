@@ -104,7 +104,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               final state = ref.watch(onBoardStateProvider);
               return customButton(state.isLastPage ? 'Get started' : 'Next',
                   onPress: () {
-                // state.isLastPage ? Get.to(() => SignIn()) : null;
+                state.isLastPage ? Get.to(() => LoginView()) : null;
                 _onNextTap(state);
               });
             },
