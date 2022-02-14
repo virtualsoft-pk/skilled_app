@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/auth/forgot_password.dart';
+import 'package:skilled_app/views/auth/quiz_demo.dart';
 import 'package:skilled_app/views/auth/sign_up.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/evolvated_button.dart';
@@ -38,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
                   color: greyColor,
                 ),
                 child: Image.asset(
-                  'assets/Vector.png',
+                  'assets/images/Vector.png',
                 ),
               ),
              const Text(
@@ -141,7 +142,9 @@ class _LoginViewState extends State<LoginView> {
                 ],
               ),
             const  Spacer(),
-              ElevattedButtonView(text: 'LOG IN', funct: () {}),
+              ElevattedButtonView(text: 'LOG IN', funct: () {
+                Get.to(()=> QuizStartView());
+              }),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

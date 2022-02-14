@@ -10,3 +10,19 @@ import 'package:flutter/material.dart';
  const Color indicatorColor = Color(0xffE8E9EA);
 
  const Color greyColor = Color(0xffF4F4F5);
+
+
+
+ ///// HASHIR COLORS ////
+ ///
+ ///
+ ///
+
+
+
+   const Color checkColor = Color(0xff1B252F);
+   const Color greycolor = Color(0xffF4F4F5);
+   const Color containercolor = Color(0xffAED2CC);
+
+
+   bool isChecked = false;

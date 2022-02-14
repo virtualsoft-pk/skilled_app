@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
+
+import '../../widgets/evolvated_button.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({Key? key}) : super(key: key);
@@ -66,7 +67,7 @@ class SignUpView extends StatelessWidget {
                 customTextField(
                   text: "Name"
                 ),
-                SizedBox(
+              const  SizedBox(
                   height: 16,
                 ),
                 Row(
@@ -109,8 +110,8 @@ class SignUpView extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(right: 4),
-                      padding: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(right: 4),
+                      padding: const EdgeInsets.only(bottom: 10),
                       child: Text(
                         '.',
                         style: TextStyle(
@@ -197,7 +198,7 @@ class SignUpView extends StatelessWidget {
                       ),
                       suffixIcon: Container(
                         child: Image.asset(
-                          'assets/calendar.png',
+                          'assets/images/calendar.png',
                           cacheHeight: 20,
                           cacheWidth: 20,
                         ),
@@ -208,14 +209,14 @@ class SignUpView extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                // ElevattedButtonView(
-                //   text: 'SIGN UP',
-                //   funct: () {
-                //     Get.to(() => QuizStartView());
-                //   },
-                // ),
+                ElevattedButtonView(
+                  text: 'SIGN UP',
+                  funct: () {
+                    // Get.to(() => QuizStartView());
+                  },
+                ),
 
-                customButton("SIGN UP")
+               
               ],
             ),
           ),

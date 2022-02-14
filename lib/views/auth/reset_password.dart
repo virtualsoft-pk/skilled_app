@@ -13,7 +13,7 @@ class ResetPassword extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.only(top: 20, left: 15, right: 15),
+          padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
           width: double.infinity,
           color: backgroundColor,
           child: Column(
@@ -32,14 +32,14 @@ class ResetPassword extends StatelessWidget {
                     color: greyColor,
                   ),
                   child: Image.asset(
-                    'assets/Vector.png',
+                    'assets/images/Vector.png',
                   ),
                 ),
               ),
               const SizedBox(
                 height: 32,
               ),
-              Text(
+             const Text(
                 'Reset password',
                 style: TextStyle(
                   fontSize: 32,

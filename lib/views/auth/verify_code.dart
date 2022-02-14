@@ -47,7 +47,7 @@ class _VerifyCodeState extends State<VerifyCode> {
                     color: greyColor,
                   ),
                   child: Image.asset(
-                    'assets/Vector.png',
+                    'assets/images/Vector.png',
                   ),
                 ),
               ),
