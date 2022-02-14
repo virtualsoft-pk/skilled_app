@@ -5,7 +5,9 @@ import 'package:flutter_onboard/src/models/onboard_state_model.dart';
 import 'package:flutter_onboard/src/models/page_indicator_style_model.dart';
 import 'package:flutter_onboard/src/providers/providers.dart';
 import 'package:flutter_onboard/src/widgets/page_indicator.dart';
+import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:skilled_app/views/auth/sign_in.dart';
 
 class OnBoard extends HookConsumerWidget {
   /// Data for OnBoard [List<OnBoardModel>]
@@ -180,7 +182,9 @@ class _OnBoard extends HookConsumerWidget {
             alignment: Alignment.centerRight,
             child: skipButton ??
                 TextButton(
-                  onPressed: () => _onSkipPressed(onSkip),
+                  onPressed: () {
+                    _onSkipPressed(onSkip);
+                  },
                   child: const Text(
                     "Skip",
                     style: TextStyle(color: Colors.blueAccent),
@@ -199,39 +203,66 @@ class _OnBoard extends HookConsumerWidget {
                     return SizedBox(
                       child: Column(
                         children: <Widget>[
-                          SizedBox(
+                          Container(
                             height: MediaQuery.of(context).size.height * 0.35,
                             // width: 150,
-                            child: Image.asset(
-                              onBoardData[index].imgUrl,
-                              width: imageWidth,
-                              height: imageHeight,
-                              fit: BoxFit.contain,
+                            child: Stack(
+                              children: [
+                                InkWell(
+                                    onTap: () {
+                                      Get.to(() => SignIn());
+                                    },
+                                    child: Align(
+                                      alignment: Alignment.topRight,
+                                      child: Container(
+                                        margin: EdgeInsets.only(right: 20),
+                                        child: const Text(
+                                          'Skip',
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                    )),
+                                Container(
+                                  width: double.infinity,
+                                  child: Image.asset(
+                                    onBoardData[index].imgUrl,
+                                    width: imageWidth,
+                                    height: imageHeight,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                left: 12, right: 12, top: MediaQuery.of(context).size.height * 0.045,),
+                              left: 20,
+                              right: 20,
+                              top: MediaQuery.of(context).size.height * 0.045,
+                            ),
                             child: Text(
                               onBoardData[index].title,
                               textAlign: TextAlign.center,
                               style: titleStyles ??
                                   const TextStyle(
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.bold,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.w500,
                                   ),
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 12 , vertical: 18),
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 18),
                             child: Text(
                               onBoardData[index].description,
                               textAlign: TextAlign.center,
                               style: descriptionStyles ??
                                   const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black54,
-                                  ),
+                                      fontSize: 16,
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.w500),
                             ),
                           ),
                         ],
@@ -269,17 +300,6 @@ class _OnBoard extends HookConsumerWidget {
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                     ),
-            ),
-          ),
-
-
-
-          Container(
-            child: Row(
-              children: [
-                Text("Already have an account ?"),
-                Text("Login"),
-              ],
             ),
           ),
         ],

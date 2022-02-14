@@ -67,32 +67,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     children: [
 
 
-       SizedBox(height: 30),
-      InkWell(
-        onTap: () {
-          // Get.to(() => SignIn());
-        },
-        child: Text(
-          'SKIP',style: TextStyle(fontSize: 16),)
-         
-        ),
+      //  SizedBox(height: 30),
+      
       Container(
         width: double.infinity,
         height: Get.height * 0.87,
         child: o.OnBoard(
           onBoardData: onBoardData,
           pageController: _pageController,
-          titleStyles: TextStyle(
+          titleStyles: const TextStyle(
             color: textColor,
             fontSize: 28.0,
             fontWeight: FontWeight.w600,
           ),
-          skipButton: Text(""),
-          descriptionStyles: TextStyle(
+          skipButton: const Text(""),
+          descriptionStyles: const
+           TextStyle(
             color: textColor,
             fontSize: 17.0,
           ),
-          pageIndicatorStyle: PageIndicatorStyle(
+          pageIndicatorStyle:const PageIndicatorStyle(
             activeColor: blueColor,
             width: 70,
             inactiveColor: indicatorColor,
@@ -102,9 +96,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           nextButton: OnBoardConsumer(
             builder: (context, ref, child) {
               final state = ref.watch(onBoardStateProvider);
-              return customButton(state.isLastPage ? 'Get started' : 'Next',
+              return customButton(state.isLastPage ? 'GET STARTED' : 'NEXT',
                   onPress: () {
-                state.isLastPage ? Get.to(() => LoginView()) : null;
+                state.isLastPage ? Get.to(() => SignIn()) : null;
                 _onNextTap(state);
               });
             },
@@ -113,6 +107,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
      
       
+
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Already have an account ? " , style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w400),),
+                InkWell(
+                  onTap: (){
+                    Get.to(()=> SignIn());
+                  },
+                  child: Text("Log in",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w700 , color: blueColor),)),
+              ],
+            ),
+          ),
+
+          Spacer(),
+
+          Container(
+            margin: const EdgeInsets.only(bottom: 12),
+            child: Text("Continue as a guest",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w500),),
+          ),
     ],
       ),
     );

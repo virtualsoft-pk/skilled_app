@@ -12,7 +12,7 @@ Widget customButton(
   return Container(
     width: Get.width,
     height: 50,
-    margin: EdgeInsets.symmetric(horizontal: Get.width * 0.08),
+    margin: EdgeInsets.symmetric(horizontal: Get.width * 0.02),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(12.0),
       color: textColor,
@@ -30,7 +30,7 @@ Widget customButton(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12)
       ),
-      child: Text(text),
+      child: Text(text , style:const TextStyle(fontSize: 16 , fontWeight: FontWeight.w700 , letterSpacing: 2.0),),
       onPressed: onPress,
       color: primaryColor,
     ),

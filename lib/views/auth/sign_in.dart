@@ -7,14 +7,14 @@ import 'package:skilled_app/views/auth/sign_up.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/evolvated_button.dart';
 
-class LoginView extends StatefulWidget {
-  LoginView({Key? key}) : super(key: key);
+class SignIn extends StatefulWidget {
+  SignIn({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignInState extends State<SignIn> {
   bool value = false;
 
   @override
