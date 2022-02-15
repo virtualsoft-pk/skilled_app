@@ -21,11 +21,12 @@ Widget customButton(
         //   blurRadius: 1.0,
         //   spreadRadius: 3,
         //   color: AppColors.black,
-        //   offset: Offset(1.0, 1.0),
+        //   offset: Offset(1.0, 1.0),update
+
         // ),
       ],
     ),
-    padding: EdgeInsets.symmetric(horizontal: 10.0),
+    padding: const EdgeInsets.symmetric(horizontal: 10.0),
     child: FlatButton(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12)
