@@ -8,8 +8,11 @@ import 'package:flutter/material.dart';
  const Color blueColor = Color(0xff4890E0);
  const Color textColor = Color(0xff1C232E);
  const Color indicatorColor = Color(0xffE8E9EA);
-
+ const Color lightgreyColor = Color(0xff494F58);
  const Color greyColor = Color(0xffF4F4F5);
+ const Color deepOrangeColor = Color(0xffE94235);
+
+ 
 
 
 
