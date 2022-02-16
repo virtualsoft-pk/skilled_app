@@ -9,16 +9,17 @@ class ElevattedButtonView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 24),
-      height: 62,
+      height: 52,
       width: double.infinity,
       child: ElevatedButton(
+        
         style: ElevatedButton.styleFrom(
           primary: primaryColor,
         ),
         onPressed: () {
           funct!();
         },
-        child:  Text(
+        child:Text(
           text!,
           style: TextStyle(
             letterSpacing: 2,

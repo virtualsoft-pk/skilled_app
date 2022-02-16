@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 
@@ -28,7 +27,7 @@ Widget customTextField({String? text , Icon? icon}){
             12,
           ),
           borderSide:const BorderSide(
-            color: Color(0xffE94235),
+            color: deepOrangeColor,
           ),
         ),
         hintText: text,

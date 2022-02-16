@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 
+import '../../widgets/custom_widgets.dart';
 import '../../widgets/evolvated_button.dart';
 
 class SignUpView extends StatelessWidget {
@@ -20,24 +21,7 @@ class SignUpView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.only(bottom: 30),
-                    padding: const EdgeInsets.all(12),
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: greyColor,
-                    ),
-                    child: Image.asset(
-                      'assets/images/Vector.png',
-                    ),
-                  ),
-                ),
+               customBackButton(),
               const  Text(
                   'Create a new account to join with us',
                   style: TextStyle(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../feeds/bottom_navigation/bottom_navigation.dart';
 class Jobs extends StatefulWidget {
   @override
   _JobsState createState() => _JobsState();
@@ -120,14 +122,20 @@ class _JobsState extends State<Jobs> {
             SizedBox(
               height: Get.height*0.03,
             ),
-            Container(
-              width: Get.width*0.9,
-              height: Get.height*0.09,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Color(0xffFBC799)
+            InkWell(
+              onTap: (){
+
+                Get.to(()=> BottomNavigation());
+              },
+              child: Container(
+                width: Get.width*0.9,
+                height: Get.height*0.09,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Color(0xffFBC799)
+                ),
+                child: Center(child: Text("ADD TO CARRER LIST",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)),
               ),
-              child: Center(child: Text("ADD TO CARRER LIST",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)),
             ),
             SizedBox(height: Get.height*0.01),
             Row(

@@ -46,16 +46,16 @@ class _SignInState extends State<SignIn> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
-                color: Color(0xff494F58),
+                color: lightgreyColor,
               ),
             ),
-            const SizedBox(
-              height: 40,
+             SizedBox(
+              height: Get.height * 0.04,
             ),
             Row(
               children: const [
                 Text(
-                  'Email',
+                  'Email',style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),
                 Text(
                   '*',
