@@ -26,7 +26,10 @@ import 'package:flutter/material.dart';
    const Color checkColor = Color(0xff1B252F);
    const Color greycolor = Color(0xffF4F4F5);
    const Color containercolor = Color(0xffAED2CC);
-
+  
+   const Color arrow = Color(0xff8D9196);
+   const Color dividercolor = Color(0xffC4C4C8);
+   const Color backcolor = Color(0xffFDE3CC);
 
    bool isChecked = false;
 
@@ -41,6 +44,7 @@ const Color buttonColor = Color(0xffFBC799);
 const Color progressColor = Color(0xff84AFA8);
 const Color progressType = Color(0xff60656D);
 const Color backButtonColor = Color(0xffF4F4F5);
+const Color toggleColor = Color(0xffE4F0EE);
 
 
 

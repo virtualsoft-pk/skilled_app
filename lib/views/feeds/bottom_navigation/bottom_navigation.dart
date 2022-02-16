@@ -3,6 +3,9 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
 
+import '../../eventCalander/tabbardata.dart';
+import '../../forum/quiz_05.dart';
+import '../../settings/settingPage.dart';
 import 'video_practice.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -17,9 +20,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   List _screens = [
     FeedPage(),
     Search(),
-    Container(),
-    Container(),
-    Container(),
+    Quiz_05(),
+    TabbarData(),
+    SettingScreen(),
   ];
 
   void _updateIndex(int value) {
