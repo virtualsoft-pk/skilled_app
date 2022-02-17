@@ -285,7 +285,6 @@ class _CareerListScreenState extends State<CareerListScreen> {
                         },
                         child: Container(
                           height: Get.height * 0.07,
-                          // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(width: 0.3)),
@@ -303,7 +302,6 @@ class _CareerListScreenState extends State<CareerListScreen> {
                     Expanded(
                       child: Container(
                         height: Get.height * 0.07,
-                        // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                         decoration: BoxDecoration(
                           color: buttonColor,
                           borderRadius: BorderRadius.circular(20),
@@ -330,14 +328,14 @@ class _CareerListScreenState extends State<CareerListScreen> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       height: Get.height * 0.09,
       decoration: BoxDecoration(
-          color: checkColor,
+          color: Color(0xffAED2CC),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(width: 0.7)),
       child: Row(
         children: [
           Text(
             name,
-            style: TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w600),
           ),
           Spacer(),
           changeView

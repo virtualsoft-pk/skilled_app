@@ -39,7 +39,7 @@ class _ChangePasswordState extends State<ChangePassword> {
         ),
         title: Text(
           "Change Password",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black ,)
         ),
         actions: [
           Padding(
@@ -63,7 +63,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
             Text(
               "Current password",
-              style: TextStyle(fontSize: 12),
+              style: TextStyle( fontSize: 12 , fontWeight: FontWeight.w500),
             ),
             SizedBox(
               height: Get.height * 0.02,

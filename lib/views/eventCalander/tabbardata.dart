@@ -10,15 +10,15 @@ class TabbarData extends StatefulWidget {
 class _TabbarDataState extends State<TabbarData> {
   List<Model> data = [
     Model(
-        imagepath: "Assets/Ellipse 582.png",
+        imagepath: "assets/Ellipse 582.png",
         description: "Skill Share just published our list of the\n top 10 new UI/UX design course.",
         time: "1h ago"),
     Model(
-        imagepath: "Assets/Ellipse 582 (1).png",
+        imagepath: "assets/Ellipse 582 (1).png",
         description: "Miah Anders jmention you in a comment\n in yor forum thread:",
         time: "5h ago"),
     Model(
-        imagepath: "Assets/Ellipse 582 (2).png",
+        imagepath: "assets/Ellipse 582 (2).png",
         description: "Skill Share just published our list of the\n top 10 new UI/UX design course.",
         time: "1h ago"),
   ];
