@@ -2,19 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:skilled_app/views/quiz/quiz4.dart';
+import 'package:skilled_app/views/quiz/how_to_know.dart';
 
 import '../../model/about_model.dart';
 import '../../widgets/hashir.dart';
 
 bool iscolored = false;
 
-class Quiz03 extends StatefulWidget {
+class SelectInterest extends StatefulWidget {
   @override
-  _Quiz03State createState() => _Quiz03State();
+  _SelectInterestState createState() => _SelectInterestState();
 }
 
-class _Quiz03State extends State<Quiz03> {
+class _SelectInterestState extends State<SelectInterest> {
   List<Choice> choice = [
     Choice(name: 'Programming', operator: '+'),
     Choice(name: 'C++', operator: '-'),
@@ -238,7 +238,7 @@ class _Quiz03State extends State<Quiz03> {
                     height: screenheight*0.09,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
                     child: elevatedButton(text: "NEXT",onpress: (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>Quiz_04()));})
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>HowToKnow()));})
                 )
               ],
             ),

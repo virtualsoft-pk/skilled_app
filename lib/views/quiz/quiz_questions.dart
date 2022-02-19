@@ -1,11 +1,8 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/views/quiz/quiz3.dart';
-import 'package:skilled_app/views/quiz/quiz_start.dart';
+import 'package:skilled_app/views/quiz/select_interest.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:skilled_app/widgets/hashir.dart';
 
@@ -20,8 +17,7 @@ class Quiz01 extends StatefulWidget {
 }
 
 class _Quiz01State extends State<Quiz01> {
-  // static String  color = Colors.green as String;
-  //  static String color1 = Colors.white as String;
+
   bool value = false;
   @override
   Widget build(BuildContext context) {
@@ -231,7 +227,7 @@ class _Quiz01State extends State<Quiz01> {
                     height: screenheight*0.09,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
                     child: CustomButton(text: "NEXT",funct: (){
-                      Get.to(Quiz03());
+                      Get.to(SelectInterest());
                     })
                 )
 

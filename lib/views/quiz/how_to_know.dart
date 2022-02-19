@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/model/about_model.dart';
 import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/views/quiz/quiz3.dart';
 import 'package:skilled_app/views/quiz/quiz_result.dart';
 
+import '../../widgets/custom_widgets.dart';
 import '../../widgets/hashir.dart';
 
-class Quiz_04 extends StatefulWidget {
+class HowToKnow extends StatefulWidget {
   @override
-  _Quiz_04State createState() => _Quiz_04State();
+  _HowToKnowState createState() => _HowToKnowState();
 }
 
-class _Quiz_04State extends State<Quiz_04> {
+class _HowToKnowState extends State<HowToKnow> {
   List<About> about = [
     About(
       image: 'assets/icons/search.png',
@@ -36,39 +36,31 @@ class _Quiz_04State extends State<Quiz_04> {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(children: [
             SizedBox(height: screenheight * 0.02),
-            Row(
-              children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                        context, MaterialPageRoute(builder: (ctx) => Quiz03()));
-                  },
-                  child: CircleAvatar(
-                    radius: 22.0,
-                    backgroundColor: Colors.grey[200],
-                    child: const Padding(
-                      padding:  EdgeInsets.only(left: 6),
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        size: 15,
-                        color: Colors.black,
+          Container(
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      customBackButton(),
+                      SizedBox(
+                        width: screenwidth*0.3,
                       ),
-                    ),
+                     Container(
+                       height: 40,
+                       child: Center(
+                         child: Text( "Quiz",style:  GoogleFonts.manrope(
+                           fontSize: 18,
+                           fontWeight: FontWeight.bold,
+                         )
+                         ),
+                       ),
+                     )
+                    ],
                   ),
                 ),
-                SizedBox(
-                  width: screenwidth * 0.3,
-                ),
-                myText(
-                    text: "Quiz",
-                    style: GoogleFonts.manrope(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ))
-              ],
-            ),
             SizedBox(
-              height: screenheight * 0.03,
+              height: screenheight * 0.02,
             ),
             myText(
                 text: "How Did You Hear About Us?",
