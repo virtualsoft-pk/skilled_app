@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
-import 'package:skilled_app/widgets/evolvated_button.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({Key? key}) : super(key: key);
@@ -19,25 +20,9 @@ class ResetPassword extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(
-                onTap: () {
-                  Get.back();
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: greyColor,
-                  ),
-                  child: Image.asset(
-                    'assets/images/Vector.png',
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 32,
+              customBackButton(),
+               SizedBox(
+                height: MediaQuery.of(context).size.height * 0.025,
               ),
              const Text(
                 'Reset password',
@@ -85,9 +70,10 @@ class ResetPassword extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
+              
               Row(
                 children: [
-                  Text(
+                 Text(
                     'Confirme New Password',
                     style: TextStyle(
                       color: textColor,
@@ -110,7 +96,7 @@ class ResetPassword extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              ElevattedButtonView(text: 'RESET PASSWORD', funct: () {}),
+              CustomButton(text: 'RESET PASSWORD', funct: () {}),
             ],
           ),
         ),

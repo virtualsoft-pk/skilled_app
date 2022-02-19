@@ -66,7 +66,7 @@ class _QuizResultPage4State extends State<QuizResultPage4> {
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
-                customButton("Email me answer",onPress: (){
+                CustomButton(text:"Email me answer",funct: (){
                   Get.to(()=> Career());
                 }),
               ],

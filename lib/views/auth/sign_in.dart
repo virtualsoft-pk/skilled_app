@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/auth/forgot_password.dart';
-import 'package:skilled_app/views/auth/quiz_demo.dart';
+import 'package:skilled_app/views/quiz/quiz_demo.dart';
 import 'package:skilled_app/views/auth/sign_up.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
-import 'package:skilled_app/widgets/evolvated_button.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 
 class SignIn extends StatefulWidget {
   SignIn({Key? key}) : super(key: key);
@@ -130,8 +130,8 @@ class _SignInState extends State<SignIn> {
               ],
             ),
           const  Spacer(),
-            ElevattedButtonView(text: 'LOG IN', funct: () {
-              Get.to(()=> QuizStartView());
+            CustomButton(text: 'LOG IN', funct: () {
+              Get.to(()=> QuizStartDemo());
             }),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

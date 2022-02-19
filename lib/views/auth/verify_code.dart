@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/auth/reset_password.dart';
-import 'package:skilled_app/widgets/evolvated_button.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 
 class VerifyCode extends StatefulWidget {
   const VerifyCode({Key? key}) : super(key: key);
@@ -34,25 +35,10 @@ class _VerifyCodeState extends State<VerifyCode> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(
-                onTap: () {
-                  Get.back();
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: greyColor,
-                  ),
-                  child: Image.asset(
-                    'assets/images/Vector.png',
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 32,
+              customBackButton(),
+              
+               SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
               ),
              const Text(
                 'Verification code',
@@ -111,7 +97,7 @@ class _VerifyCodeState extends State<VerifyCode> {
               const SizedBox(
                 height: 32,
               ),
-              ElevattedButtonView(
+              CustomButton(
                 funct: () {
                   Get.to(() => ResetPassword());
                 },

@@ -96,8 +96,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           nextButton: OnBoardConsumer(
             builder: (context, ref, child) {
               final state = ref.watch(onBoardStateProvider);
-              return customButton(state.isLastPage ? 'GET STARTED' : 'NEXT',
-                  onPress: () {
+              return CustomButton(text:state.isLastPage ? 'GET STARTED' : 'NEXT',
+                  funct: () {
                 state.isLastPage ? Get.to(() => SignIn()) : null;
                 _onNextTap(state);
               });

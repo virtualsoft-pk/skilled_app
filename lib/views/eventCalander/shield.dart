@@ -12,7 +12,7 @@ class _ShieldState extends State<Shield> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(
+        SizedBox(
             height: Get.height * 0.08,
           ),
           ListTile(
@@ -28,7 +28,7 @@ class _ShieldState extends State<Shield> {
                 onTap: (){
                   modalBottomSheetMenu();
                 },
-                child: Text("Event details",
+                child: const Text("Event details",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               ),
             ),

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,7 +33,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
               Get.back();
             },
             child: Container(
-              padding: EdgeInsets.all(15),
+              padding:const EdgeInsets.all(15),
               decoration:
                   BoxDecoration(shape: BoxShape.circle, color: backButtonColor),
               child: Center(
@@ -47,7 +46,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
             ),
           ),
         ),
-        title: Text(
+        title:const Text(
           "Career List",
           style: TextStyle(color: Colors.black),
         ),
@@ -140,7 +139,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                             topRight: Radius.circular(30.0),
                           )));
                     },
-                    child: customButton("Save and countious"))
+                    child: CustomButton(text:"Save and countious"))
                 : Align(
                     alignment: Alignment.topRight,
                     child: Container(

@@ -4,7 +4,7 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 
 import '../../widgets/custom_widgets.dart';
-import '../../widgets/evolvated_button.dart';
+import '../../widgets/custom_button.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({Key? key}) : super(key: key);
@@ -193,7 +193,7 @@ class SignUpView extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                ElevattedButtonView(
+                CustomButton(
                   text: 'SIGN UP',
                   funct: () {
                     // Get.to(() => QuizStartView());

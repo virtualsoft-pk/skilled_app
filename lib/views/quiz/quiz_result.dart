@@ -219,7 +219,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                     onTap: () {
                       Get.to(QuizResultPage2());
                     },
-                    child: customButton("GET STARTED")),
+                    child: CustomButton(text:"GET STARTED")),
                 SizedBox(
                   height: Get.height * 0.05,
                 ),

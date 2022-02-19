@@ -11,6 +11,9 @@ import 'package:flutter/material.dart';
  const Color lightgreyColor = Color(0xff494F58);
  const Color greyColor = Color(0xffF4F4F5);
  const Color deepOrangeColor = Color(0xffE94235);
+ const Color quizBorderColor = Color(0xffD2D3D5);
+ const Color lightGreenColor = Color(0xffAED2CC);
+
 
  
 
