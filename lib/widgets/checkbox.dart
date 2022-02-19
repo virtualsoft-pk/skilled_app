@@ -18,20 +18,19 @@ class _ChecksBoxState extends State<ChecksBox> {
   Widget build(BuildContext context) {
     return
       Checkbox(
-        side: BorderSide(color: checkColor),
+        side: BorderSide(color: quizBorderColor ),
         value: value,
         onChanged: (val) {
           setState(() {
             value = !value;
           });
         },
-        activeColor: Colors.black,
+        activeColor: Colors.white,
+        checkColor: Colors.black,
 
 
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4),side: BorderSide(color: checkColor, )),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4),side: BorderSide(color: Colors.black, )),
 
-
-        //fillColor: null,
 
       );
 

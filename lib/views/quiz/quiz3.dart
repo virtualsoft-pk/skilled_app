@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:skilled_app/views/quiz/quiz2.dart';
 import 'package:skilled_app/views/quiz/quiz4.dart';
 
 import '../../model/about_model.dart';
@@ -44,8 +43,7 @@ class _Quiz03State extends State<Quiz03> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (ctx) => Quiz02()));
+                      
                       },
                       child: CircleAvatar(
                         radius: 22.0,
