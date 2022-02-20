@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
  const Color deepOrangeColor = Color(0xffE94235);
  const Color quizBorderColor = Color(0xffD2D3D5);
  const Color lightGreenColor = Color(0xffAED2CC);
+ const Color progressColor = Color(0xff84AFA8);
 
 
  
@@ -44,7 +45,6 @@ import 'package:flutter/material.dart';
 
    //// my color added ///
 const Color buttonColor = Color(0xffFBC799);
-const Color progressColor = Color(0xff84AFA8);
 const Color progressType = Color(0xff60656D);
 const Color backButtonColor = Color(0xffF4F4F5);
 const Color toggleColor = Color(0xffE4F0EE);

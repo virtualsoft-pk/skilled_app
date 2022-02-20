@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/quiz_Result_Page_4.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_const.dart';
@@ -103,7 +104,7 @@ class _QuizResultPage3State extends State<QuizResultPage3> {
                         onTap: () {
                           Get.to(QuizResultPage4());
                         },
-                        child: customButton("Save & continue to Feed")),
+                        child: CustomButton(text:"Save & continue to Feed")),
                     SizedBox(
                       height: Get.height * 0.02,
                     ),

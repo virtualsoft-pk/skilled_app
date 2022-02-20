@@ -5,6 +5,7 @@ import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:skilled_app/views/quiz/how_to_know.dart';
 
 import '../../model/about_model.dart';
+import '../../widgets/custom_button.dart';
 import '../../widgets/hashir.dart';
 
 bool iscolored = false;
@@ -105,130 +106,6 @@ class _SelectInterestState extends State<SelectInterest> {
                     });
                   },
                 ),
-
-                // MultiSelectBottomSheetField<Choice>(
-                //   initialChildSize: 0.4,
-                //   listType: MultiSelectListType.CHIP,
-                //   searchable: true,
-                //   buttonText: Text("Favorite Animals"),
-                //   title: Text("Animals"),
-                //   items: choice.map((e) => MultiSelectItem(e, e.name)).toList(),
-                //   onConfirm: (values) {
-                //     choice = values;
-                //   },
-                //   chipDisplay: MultiSelectChipDisplay(
-                //     onTap: (value) {
-                //       setState(() {
-                //         // _selectedAnimals2.remove(value);
-                //       });
-                //     },
-                //   ),
-                // ),
-                // choice == null || choice.isEmpty
-                //     ? Container(
-                //     padding: EdgeInsets.all(10),
-                //     alignment: Alignment.centerLeft,
-                //     child: Text(
-                //       "None selected",
-                //       style: TextStyle(color: Colors.black54),
-                //     ))
-                //      Container(),
-                // MultiSelectChipField(
-                //   items: choice.map((e) => MultiSelectItem(e.operator, e.name)).toList(),
-                //
-                //   // initialValue: ,
-                //   title: Text("Animals"),
-                //   headerColor: Colors.blue.withOpacity(0.5),
-                //   decoration: BoxDecoration(
-                //     border: Border.all(color: Colors.blue, width: 1.8),
-                //   ),
-                //   selectedChipColor: Colors.blue.withOpacity(0.5),
-                //   selectedTextStyle: TextStyle(color: Colors.blue[800]),
-                //   onTap: ( values) {
-                //     //_selectedAnimals4 = values;
-                //   },
-                // ),
-                // MultiSelectDialogField
-                //
-                //   (
-                //   items: choice.map((e) => MultiSelectItem(e, e.name)).toList(),
-                //     listType: MultiSelectListType.CHIP,
-                //   //title: Text("Animals"),
-                //   selectedColor: Colors.blue,
-                //   decoration: BoxDecoration(
-                //     color: Colors.blue.withOpacity(0.1),
-                //     borderRadius: BorderRadius.all(Radius.circular(40)),
-                //     border: Border.all(
-                //       color: Colors.blue,
-                //       width: 2,
-                //     ),
-                //   ),
-                //
-                //   onConfirm: (results) {
-                //     //_selectedAnimals = results;
-                //   },
-                // ),
-                // MultiSelectChipField<Choice>(
-                //     items:choice.map((e) => MultiSelectItem(e, e.name)).toList(),
-                //
-                // key: _multiSelected,
-                // validator: (values) {...}
-                // itemBuilder: (item, state) {
-                //       // return your custom widget here
-                //       return InkWell(
-                //       onTap: () {
-                // _selectedAnimals.contains(item.value)
-                // ? _selectedAnimals.remove(item.value)
-                //     : _selectedAnimals.add(item.value);
-                // state.didChange(_selectedAnimals);
-                // _multiSelectKey.currentState.validate();
-                // },
-                //   child: Text(item.value.name),
-                //);
-                //},
-                // ),
-                // Container(
-                //   height:  400,
-                //   width: 600,
-                //   child: MultiSelectDialogField<Choice>(
-                //     items: choice.map((e) => MultiSelectItem(e, e.name)).toList(),
-                //     listType: MultiSelectListType.CHIP,
-                //     onConfirm: (values) {
-                //       choice = values;
-                //     },
-                //   ),
-                // ),
-                // MultiSelectDialogField(
-                //   items: _item,
-                //   title: Text("Animals"),
-                //   selectedColor: Colors.blue,
-                //   decoration: BoxDecoration(
-                //     color: Colors.blue.withOpacity(0.1),
-                //     borderRadius: BorderRadius.all(Radius.circular(40)),
-                //     border: Border.all(
-                //       color: Colors.blue,
-                //       width: 2,
-                //     ),
-                //   ),
-                //   buttonIcon: Icon(
-                //     Icons.pets,
-                //     color: Colors.blue,
-                //   ),
-                //   buttonText: Text(
-                //     "Favorite Animals",
-                //     style: TextStyle(
-                //       color: Colors.blue[800],
-                //       fontSize: 16,
-                //     ),
-                //   ),
-                //   onConfirm: (results) {
-                //     //_selectedAnimals = results;
-                //   },
-                // ),
-                //
-                //
-                //
-
                 SizedBox(
                   height: screenheight * 0.28,
                 ),
@@ -237,7 +114,7 @@ class _SelectInterestState extends State<SelectInterest> {
                     width: screenwidth*3,
                     height: screenheight*0.09,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                    child: elevatedButton(text: "NEXT",onpress: (){
+                    child: CustomButton(text: "NEXT",funct: (){
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>HowToKnow()));})
                 )
               ],

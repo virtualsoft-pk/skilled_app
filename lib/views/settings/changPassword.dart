@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/settings/busnissScreen.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../utils/app_colors.dart';
 import '../../widgets/customWidgets.dart';
@@ -100,7 +101,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 onTap: () {
                   Get.to(BusinessScreen());
                 },
-                child: customButton("Update")),
+                child: CustomButton(text:"Update")),
             SizedBox(
               height: Get.height * 0.04,
             ),

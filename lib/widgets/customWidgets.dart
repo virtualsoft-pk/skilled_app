@@ -4,20 +4,20 @@ import 'package:get/get.dart';
 import '../utils/app_colors.dart';
 
 
-Widget customButton(String name) {
-  return Container(
-    height: Get.height * 0.07,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15),
-      color: buttonColor,
-    ),
-    child: Center(
-        child: Text(
-      name.toUpperCase(),
-      style: TextStyle(fontWeight: FontWeight.w600),
-    )),
-  );
-}
+// Widget customButton(String name) {
+//   return Container(
+//     height: Get.height * 0.07,
+//     decoration: BoxDecoration(
+//       borderRadius: BorderRadius.circular(15),
+//       color: buttonColor,
+//     ),
+//     child: Center(
+//         child: Text(
+//       name.toUpperCase(),
+//       style: TextStyle(fontWeight: FontWeight.w600),
+//     )),
+//   );
+// }
 
 Row customAppBar(String title) {
   return Row(

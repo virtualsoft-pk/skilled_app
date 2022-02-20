@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/settings/changPassword.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../utils/app_colors.dart';
 import '../../widgets/customWidgets.dart';
@@ -126,7 +127,7 @@ class _EditedProfileState extends State<EditedProfile> {
                       onTap: () {
                         Get.to(ChangePassword());
                       },
-                      child: customButton("Save changes")),
+                      child: CustomButton(text:"Save changes")),
                 ],
               ),
             )

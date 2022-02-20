@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:rounded_linear_progress/rounded_linear_progress.dart';
 import 'package:skilled_app/views/quiz/quiz_Result_Page2.dart';
 
 import '../../utils/app_colors.dart';
@@ -20,9 +22,10 @@ class _QuizResultPageState extends State<QuizResultPage> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: Text(
-          AppConst.QUIZ_RESULT_PAGE_1_TEXT,
+          "Quiz Result",
           style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
+              fontSize: 18, fontWeight: FontWeight.w700, color: textColor),
+              
         ),
         centerTitle: true,
       ),
@@ -41,23 +44,23 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         Text(
                           "You are an \nInventor",
                           style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                              fontSize: 30, fontWeight: FontWeight.w700),
                         ),
                         SizedBox(
                           height: Get.height * 0.02,
                         ),
                         Container(
                           padding:
-                              EdgeInsets.symmetric(horizontal: 9, vertical: 10),
+                              EdgeInsets.symmetric(horizontal: 9, vertical: 8),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                                width: 1, color: Colors.grey.withOpacity(0.5)),
+                                width: 1, color: Colors.grey.withOpacity(0.2)),
                           ),
                           child: Text(
                             "Find out more",
                             style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 14,
                                 color: blueColor,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -65,7 +68,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                       ],
                     ),
                     Container(
-                      height: Get.height * 0.24,
+                      height: Get.height * 0.23,
                       width: Get.width * 0.5,
                       child: Image.asset(
                         "assets/images/image1.png",
@@ -76,10 +79,10 @@ class _QuizResultPageState extends State<QuizResultPage> {
                 ),
                 Text(
                   "Your Results",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 ),
                 SizedBox(
-                  height: Get.height * 0.03,
+                  height: Get.height * 0.02,
                 ),
                 buildProgress("Building", 56, progressColor,
                     Colors.grey.withOpacity(0.04), 0.5),
@@ -256,11 +259,18 @@ class _QuizResultPageState extends State<QuizResultPage> {
               ),
               Expanded(
                 child: Container(
-                  child: LinearProgressIndicator(
-                    color: progressColor,
-                    backgroundColor: background,
-                    value: value,
-                  ),
+                  child: LinearPercentIndicator(
+                    // width: 100.0,
+                    lineHeight: 7.0,
+                    percent: value,
+                    progressColor: progressColor,
+                    barRadius: Radius.circular(20.0),
+                    backgroundColor: greyColor,
+                    addAutomaticKeepAlive: true,
+                    animationDuration: 1000,
+                    animation: true,
+
+                  )
                 ),
               ),
             ],

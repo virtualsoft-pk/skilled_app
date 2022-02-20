@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/quiz_Result_page3.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../utils/app_const.dart';
 import '../../widgets/hamid.dart';
@@ -109,7 +110,7 @@ class _QuizResultPage2State extends State<QuizResultPage2> {
                         onTap: () {
                           Get.to(QuizResultPage3());
                         },
-                        child: customButton("Go to career list")),
+                        child: CustomButton(text:"Go to career list")),
                   ],
                 )),
           ],

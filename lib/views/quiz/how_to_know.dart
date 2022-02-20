@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/model/about_model.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/quiz_result.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../widgets/custom_widgets.dart';
 import '../../widgets/hashir.dart';
@@ -34,46 +35,25 @@ class _HowToKnowState extends State<HowToKnow> {
         body: SafeArea(
             child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(children: [
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
             SizedBox(height: screenheight * 0.02),
-          Container(
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      customBackButton(),
-                      SizedBox(
-                        width: screenwidth*0.3,
-                      ),
-                     Container(
-                       height: 40,
-                       child: Center(
-                         child: Text( "Quiz",style:  GoogleFonts.manrope(
-                           fontSize: 18,
-                           fontWeight: FontWeight.bold,
-                         )
-                         ),
-                       ),
-                     )
-                    ],
-                  ),
-                ),
+          customBackButton(),
+              
             SizedBox(
-              height: screenheight * 0.02,
+              height: screenheight * 0.0,
             ),
-            myText(
-                text: "How Did You Hear About Us?",
+            Text(
+                "How Did You Hear About Us?",
                 style: GoogleFonts.manrope(
                   fontSize: 30,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                 )),
-            SizedBox(
-              height: screenheight * 0.001,
-            ),
+           
             Container(
-              width: screenwidth * 0.9,
-              height: screenheight * 0.6,
+              width: screenwidth * 0.92,
+              height: screenheight * 0.65,
 
               child: ListView.builder(
                   scrollDirection: Axis.vertical,
@@ -85,7 +65,7 @@ class _HowToKnowState extends State<HowToKnow> {
                       child: Container(
                         margin: EdgeInsets.only(top: 10),
                         width: screenwidth * 0.01,
-                        height: screenheight * 0.093,
+                        height: 62,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: greycolor
@@ -96,8 +76,8 @@ class _HowToKnowState extends State<HowToKnow> {
                               padding: const EdgeInsets.only(left: 15),
                               child: Image(
                                 image: AssetImage('${about[index].image}'),
-                                width: screenwidth * 0.12,
-                                height: screenheight * 0.14,
+                                width: 40,
+                                height: 40,
                               ),
                             ),
                             SizedBox(
@@ -115,13 +95,12 @@ class _HowToKnowState extends State<HowToKnow> {
                   }),
             ),
             SizedBox(
-              height: screenheight*0.03,
+              height: screenheight*0.02,
             ),
             Container(
-                width: screenwidth*3,
-                height: screenheight*0.09,
+               
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                child: elevatedButton(text: "SEE RESULTS",onpress: (){
+                child: CustomButton(text: "SEE RESULTS",funct: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>QuizResultPage()));})
             )
           ]),
