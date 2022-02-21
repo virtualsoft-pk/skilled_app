@@ -28,3 +28,41 @@ Widget customBackButton(){
               ),
   );
 }
+
+Widget customAppBar(String title) {
+  return Container(
+    margin: EdgeInsets.only(top: 20),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: customBackButton(),
+        ),
+        SizedBox(width: Get.width * 0.08),
+        Text(
+          title,
+          style: const TextStyle(
+              fontSize: 18, fontWeight: FontWeight.w600, color: greyDarkColor),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    ),
+  );
+}
+
+Container resizableButton(
+    {required double HPadding,
+    required double VPadding,
+    required double border,
+    required String name}) {
+  return Container(
+    decoration: BoxDecoration(
+      color: Color(0xffFBC799),
+      borderRadius: BorderRadius.circular(border),
+    ),
+    padding: EdgeInsets.symmetric(horizontal: HPadding, vertical: VPadding),
+    child: Text(name),
+  );
+}
+

@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/settings/changPassword.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
-
 import '../../utils/app_colors.dart';
-import '../../widgets/customWidgets.dart';
+import '../../widgets/custom_text_field.dart';
 
 class EditedProfile extends StatefulWidget {
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../utils/app_colors.dart';
-import '../../widgets/customWidgets.dart';
+import '../../widgets/custom_text_field.dart';
+import '../../widgets/custom_widgets.dart';
 
 class HelpAndSupportScreen extends StatefulWidget {
   @override

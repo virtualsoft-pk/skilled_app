@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/settings/chooseMedia.dart';
 import 'package:skilled_app/views/settings/help_And_Support.dart';
-
-import '../../widgets/customWidgets.dart';
+import '../../widgets/custom_widgets.dart';
 
 
 class SettingScreen extends StatefulWidget {

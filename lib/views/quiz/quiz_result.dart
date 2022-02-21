@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:rounded_linear_progress/rounded_linear_progress.dart';
-import 'package:skilled_app/views/quiz/quiz_Result_Page2.dart';
+import 'package:skilled_app/views/quiz/quiz_watch_video.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_const.dart';
@@ -21,18 +21,17 @@ class _QuizResultPageState extends State<QuizResultPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text(
+        title: const Text(
           "Quiz Result",
           style: TextStyle(
               fontSize: 18, fontWeight: FontWeight.w700, color: textColor),
-              
         ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -41,7 +40,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           "You are an \nInventor",
                           style: TextStyle(
                               fontSize: 30, fontWeight: FontWeight.w700),
@@ -50,14 +49,14 @@ class _QuizResultPageState extends State<QuizResultPage> {
                           height: Get.height * 0.02,
                         ),
                         Container(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 9, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 9, vertical: 8),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
                                 width: 1, color: Colors.grey.withOpacity(0.2)),
                           ),
-                          child: Text(
+                          child: const Text(
                             "Find out more",
                             style: TextStyle(
                                 fontSize: 14,
@@ -77,7 +76,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                     ),
                   ],
                 ),
-                Text(
+                const Text(
                   "Your Results",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 ),
@@ -120,35 +119,38 @@ class _QuizResultPageState extends State<QuizResultPage> {
                     width: Get.width * 0.4,
                     height: Get.height * 0.043,
                     decoration: BoxDecoration(
-                        border: Border.all(width: 0.3, color: Colors.grey),
+                        border: Border.all(
+                            width: 1, color: Colors.grey.withOpacity(0.2)),
                         borderRadius: BorderRadius.circular(18)),
-                    child: Center(
+                    child: const Center(
                         child: Text(
                       "View your Answer",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff333943),
+                          fontSize: 14),
                     )),
                   ),
                 ),
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
-                Text(
+                const Text(
                   AppConst.QUIZ_RESULT_PAGE_QUESTION,
                   style: TextStyle(
-                      color: Colors.black,
+                      color: grey800,
                       fontSize: 24,
                       fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
-                  height: Get.height * 0.01,
+                  height: Get.height * 0.009,
                 ),
-                Text(
+                const Text(
                   "Based on your test results, we recommend the following careers.",
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                  ),
+                      color: grey700,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400),
                 ),
                 SizedBox(
                   height: Get.height * 0.03,
@@ -158,48 +160,36 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   "Category : Physics and Space",
                   85,
                 ),
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
                 Divider(
                   thickness: 0.5,
-                  color: Colors.grey,
+                  color: Colors.grey.withOpacity(0.2),
                 ),
                 buildTile(
                   "Environmental Scientist",
                   "Category : Science and Environment",
                   85,
                 ),
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
                 Divider(
-                  thickness: 0.5,
-                  color: Colors.grey,
+                  thickness: 0.8,
+                  color: Colors.grey.withOpacity(0.2),
                 ),
                 buildTile(
                   "UI/UX Designer",
                   "Category : Design and Computer Science",
                   85,
                 ),
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
                 Divider(
-                  thickness: 0.5,
-                  color: Colors.grey,
+                  thickness: 0.8,
+                  color: Colors.grey.withOpacity(0.2),
                 ),
                 buildTile(
                   "Software Engineer",
                   "Category : Tech and Computer Science",
                   85,
                 ),
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
                 Divider(
-                  thickness: 0.5,
-                  color: Colors.grey,
+                  thickness: 0.8,
+                  color: Colors.grey.withOpacity(0.2),
                 ),
                 SizedBox(
                   height: Get.height * 0.02,
@@ -210,19 +200,28 @@ class _QuizResultPageState extends State<QuizResultPage> {
                     width: Get.width * 0.4,
                     height: Get.height * 0.04,
                     decoration: BoxDecoration(
-                        border: Border.all(width: 0.1),
+                        border: Border.all(
+                            width: 1, color: Colors.grey.withOpacity(0.2)),
                         borderRadius: BorderRadius.circular(15)),
-                    child: Center(child: Text("View all")),
+                    child: const Center(
+                        child: Text(
+                      "View all",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: grey900),
+                    )),
                   ),
                 ),
                 SizedBox(
                   height: Get.height * 0.02,
                 ),
-                InkWell(
-                    onTap: () {
-                      Get.to(QuizResultPage2());
-                    },
-                    child: CustomButton(text:"GET STARTED")),
+                CustomButton(
+                  text: "GET STARTED",
+                  funct: () {
+                    Get.to(QuizWatchVideo());
+                  },
+                ),
                 SizedBox(
                   height: Get.height * 0.05,
                 ),
@@ -237,13 +236,13 @@ class _QuizResultPageState extends State<QuizResultPage> {
   Container buildProgress(String type, int progressPer, Color progressColor,
       Color background, double value) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 27),
+      padding: const EdgeInsets.symmetric(horizontal: 27),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             type,
-            style: TextStyle(color: progressType, fontSize: 12),
+            style: const TextStyle(color: progressType, fontSize: 12),
           ),
           SizedBox(
             height: Get.height * 0.01,
@@ -252,26 +251,25 @@ class _QuizResultPageState extends State<QuizResultPage> {
             children: [
               Text(
                 '$progressPer%',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Expanded(
                 child: Container(
-                  child: LinearPercentIndicator(
-                    // width: 100.0,
-                    lineHeight: 7.0,
-                    percent: value,
-                    progressColor: progressColor,
-                    barRadius: Radius.circular(20.0),
-                    backgroundColor: greyColor,
-                    addAutomaticKeepAlive: true,
-                    animationDuration: 1000,
-                    animation: true,
-
-                  )
-                ),
+                    child: LinearPercentIndicator(
+                  // width: 100.0,
+                  lineHeight: 7.0,
+                  percent: value,
+                  progressColor: progressColor,
+                  barRadius: const Radius.circular(20.0),
+                  backgroundColor: greyColor,
+                  addAutomaticKeepAlive: true,
+                  animationDuration: 1000,
+                  animation: true,
+                )),
               ),
             ],
           ),
@@ -282,6 +280,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
 
   Container buildTile(String profession, String category, int per) {
     return Container(
+      margin: EdgeInsets.only(bottom: Get.height * 0.02),
       child: Row(
         children: [
           Column(
@@ -289,21 +288,17 @@ class _QuizResultPageState extends State<QuizResultPage> {
             children: [
               Text(
                 profession,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    color: grey900, fontSize: 16, fontWeight: FontWeight.w700),
               ),
               Text(
                 category,
-                style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    color: grey600, fontSize: 12, fontWeight: FontWeight.w500),
               ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -311,15 +306,15 @@ class _QuizResultPageState extends State<QuizResultPage> {
                 children: [
                   Text(
                     "$per%",
-                    style: TextStyle(
-                        color: Colors.black,
+                    style: const TextStyle(
+                        color: grey900,
                         fontSize: 16,
                         fontWeight: FontWeight.w700),
                   ),
                   SizedBox(
                     width: Get.width * 0.01,
                   ),
-                  Text(
+                  const Text(
                     "match",
                     style: TextStyle(
                       color: Colors.grey,
@@ -328,18 +323,13 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   ),
                 ],
               ),
-              Text(
+              const Text(
                 "Find out more",
                 style: TextStyle(
                     fontSize: 16,
                     color: blueColor,
                     fontWeight: FontWeight.w600),
               ),
-              // Container(
-              //   color: backgroundColor,
-              //   padding: EdgeInsets.symmetric(vertical: 20),
-              //   child: Text("Get Started"),
-              // )
             ],
           ),
         ],

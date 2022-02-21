@@ -14,6 +14,14 @@ import 'package:flutter/material.dart';
  const Color quizBorderColor = Color(0xffD2D3D5);
  const Color lightGreenColor = Color(0xffAED2CC);
  const Color progressColor = Color(0xff84AFA8);
+ const Color greyDarkColor = Color(0xff1C232E);
+
+//
+ const Color grey900 = Color(0xff333943);
+ const Color grey800 = Color(0xff333943);
+ const Color grey700 = Color(0xff494F58);
+ const Color grey600 = Color(0xff60656D);
+
 
 
  
