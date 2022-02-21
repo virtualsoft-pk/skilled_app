@@ -31,12 +31,12 @@ Widget customBackButton(){
 
 Widget customAppBar(String title) {
   return Container(
-    margin: EdgeInsets.only(top: 20),
+    margin: EdgeInsets.only(top: 10),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 0),
           child: customBackButton(),
         ),
         SizedBox(width: Get.width * 0.08),

@@ -1,33 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:multi_select_flutter/chip_field/multi_select_chip_field.dart';
+import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
+import 'package:multi_select_flutter/util/multi_select_item.dart';
+import 'package:multi_select_flutter/util/multi_select_list_type.dart';
 import 'package:skilled_app/views/quiz/how_to_know.dart';
+import 'package:skilled_app/views/quiz/select_interest.dart';
 
-import '../../model/about_model.dart';
+import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
-import '../../widgets/hashir.dart';
+
 
 bool iscolored = false;
 
-class SelectInterest extends StatefulWidget {
+class Quiz03 extends StatefulWidget {
   @override
-  _SelectInterestState createState() => _SelectInterestState();
+  _Quiz03State createState() => _Quiz03State();
 }
 
-class _SelectInterestState extends State<SelectInterest> {
-  List<Choice> choice = [
-    Choice(name: 'Programming', operator: '+'),
-    Choice(name: 'C++', operator: '-'),
-    Choice(name: 'Creative writing', operator: '-'),
-    Choice(name: 'Dance', operator: '-'),
-    Choice(name: 'Product Design', operator: '-'),
-    Choice(name: 'Grapic design', operator: '+'),
-    Choice(name: 'C', operator: '+'),
-    Choice(name: 'Design', operator: '+'),
-    Choice(name: 'Language', operator: '+'),
+class _Quiz03State extends State<Quiz03> {
+  List multiChipList = [
+    'Creative Writing',
+    'Video editing ',
+    'Graphic Design',
+    'Programming',
+    'Videogame Design',
+    'Dance',
+    'Astronomy',
+    'Product Design',
   ];
 
+  List multiChipEmptyList = [];
   @override
   Widget build(BuildContext context) {
     var screenheight = MediaQuery.of(context).size.height;
@@ -44,7 +50,8 @@ class _SelectInterestState extends State<SelectInterest> {
                   children: [
                     InkWell(
                       onTap: () {
-                      
+                        // Navigator.pushReplacement(context,
+                        //     MaterialPageRoute(builder: (ctx) => Quiz02()));
                       },
                       child: CircleAvatar(
                         radius: 22.0,
@@ -62,8 +69,8 @@ class _SelectInterestState extends State<SelectInterest> {
                     SizedBox(
                       width: screenwidth * 0.3,
                     ),
-                    myText(
-                        text: "Quiz",
+                  Text(
+                         "Quiz",
                         style: GoogleFonts.manrope(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -73,49 +80,67 @@ class _SelectInterestState extends State<SelectInterest> {
                 SizedBox(
                   height: screenheight * 0.03,
                 ),
-                myText(
-                    text:
-                        "Select any of these that you are interested in learning",
+               Text("Select any of these that you are interested in learning",
                     style: GoogleFonts.manrope(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                     )),
-                SizedBox(
+               const SizedBox(
                   height: 20,
                 ),
 
-                MultiSelectChipDisplay(
+                Wrap(
+                  runSpacing: 10,
+                  spacing: 10,
+                  children: multiChipList.map(
+                        (e) {
+                      return multiChipEmptyList
+                          .contains(e)
+                          ? InkWell(
+                        onTap: (() {
+                          multiChipEmptyList
+                              .remove(e);
+                          setState(() {});
+                       Icon(Icons.clear);
+                        }),
+                        child: Chip(
+                          backgroundColor: containercolor,
+                          side: BorderSide(
+                              color: Colors.black),
+                          labelPadding:
+                          EdgeInsets.all(7),
+                          label: Text(e),
+                        ),
+                      )
+                          : InkWell(
+                        onTap: () {
+                          multiChipEmptyList.add(e);
+                          setState(() {});
+                        },
+                        child: Chip(
+                          labelPadding:
+                          EdgeInsets.all(8),
+                          label: Text(e),
+                          // Icon(Icons.clear,size: 14,color: Colors.blue,),
+            useDeleteButtonTooltip: true,deleteIcon: Icon(Icons.clear,size: 14,),
+                        deleteIconColor: Colors.green,
 
-                  colorator: (String v) {
-// return Colors.green;
-                  },
-
-                  //chipColor: Colors.red,
-                  items: choice
-                      .map((e) => MultiSelectItem(
-                            e.operator,
-                            e.name,
-
-                          ))
-                      .toList(),
-
-                  onTap: (value) {
-
-                    setState(() {
-
-                    });
-                  },
+                        ),
+                      );
+                    },
+                  ).toList(),
                 ),
                 SizedBox(
-                  height: screenheight * 0.28,
+                  height: screenheight * 0.22,
                 ),
 
-                Container(
+               Container(
                     width: screenwidth*3,
                     height: screenheight*0.09,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
                     child: CustomButton(text: "NEXT",funct: (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>HowToKnow()));})
+                      Get.to(HowToKnow());
+                    })
                 )
               ],
             ),

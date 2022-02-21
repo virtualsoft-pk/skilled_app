@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/views/quiz/quiz_Result_Page_4.dart';
+import 'package:skilled_app/views/quiz/answer_list.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_const.dart';
+import '../../widgets/checkbox.dart';
 import '../../widgets/custom_widgets.dart';
 
 class AllCareers extends StatefulWidget {
@@ -24,7 +24,6 @@ class _AllCareersState extends State<AllCareers> {
               children: [
                 customAppBar(AppConst.QUIZ_RESULT_PAGE_3_TEXT),
                 Container(
-                  
                   child: Column(
                     children: [
                       Container(
@@ -34,14 +33,14 @@ class _AllCareersState extends State<AllCareers> {
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
                           children: [
-                          const Icon(Icons.search),
+                            const Icon(Icons.search),
                             SizedBox(
                               width: Get.width * 0.02,
                             ),
                             Container(
                               height: Get.height * 0.07,
                               width: Get.width * 0.5,
-                              child: TextField(
+                              child: const TextField(
                                 decoration: InputDecoration(
                                   hintText: "Search",
                                   border: InputBorder.none,
@@ -52,60 +51,63 @@ class _AllCareersState extends State<AllCareers> {
                         ),
                       ),
                       SizedBox(
-                        height: Get.height * 0.03,
+                        height: Get.height * 0.01,
                       ),
                       Row(
                         children: [
                           Text("Recommended Careers",
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 18)),
+                              style: TextStyle(
+                                  color: grey800,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18)),
                           Spacer(),
                           RichText(
                               text: TextSpan(children: [
                             TextSpan(
                                 text: "4/",
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 24)),
+                                style: TextStyle(
+                                    color: Colors.grey, fontSize: 24)),
                             TextSpan(
                                 text: "5",
-                                style:
-                                    TextStyle(color: Colors.black, fontSize: 24))
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 24))
                           ]))
                         ],
                       ),
                       SizedBox(
-                        height: Get.height * 0.03,
+                        height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile(
                           "Astrophysicist", "Category : Physics and Space"),
                       SizedBox(
-                        height: Get.height * 0.03,
+                        height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile("Enviromental Scientist",
                           "Category : Science and Environment"),
                       SizedBox(
-                        height: Get.height * 0.03,
+                        height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile("UI/UX Designer",
                           "Category : Design and Computer Science"),
                       SizedBox(
-                        height: Get.height * 0.03,
+                        height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile("Software Engineer",
                           "Category : Tech and Computer Science"),
                       SizedBox(
-                        height: Get.height * 0.03,
+                        height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile(
                           "Doctor", "Category : Medical and Biology"),
                       SizedBox(
-                        height: Get.height * 0.03,
+                        height: Get.height * 0.02,
                       ),
-                      InkWell(
-                          onTap: () {
-                            Get.to(QuizResultPage4());
-                          },
-                          child: CustomButton(text:"Save & continue to Feed")),
+                      CustomButton(
+                        text: "SAVE & CONTINUE TO FEED",
+                        funct: () {
+                          Get.to(AnswerList());
+                        },
+                      ),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
@@ -123,8 +125,8 @@ class _AllCareersState extends State<AllCareers> {
   Widget RecommendedCareerTile(String career, String type) {
     return Container(
       decoration: BoxDecoration(
-          border: Border.all(width: 0.1),
-          borderRadius: BorderRadius.circular(20)),
+          border: Border.all(width: 1, color: borderColor),
+          borderRadius: BorderRadius.circular(12)),
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Row(
         children: [
@@ -134,23 +136,33 @@ class _AllCareersState extends State<AllCareers> {
               Text(
                 career,
                 style: TextStyle(
-                  fontSize: 18,
-                ),
+                    fontSize: 18, fontWeight: FontWeight.w600, color: grey900),
               ),
               SizedBox(
-                height: Get.height * 0.02,
+                height: Get.height * 0.01,
               ),
               Text(
                 type,
                 style: TextStyle(
-                  fontSize: 12,
-                  color: progressColor,
-                ),
+                    fontSize: 12, color: grey600, fontWeight: FontWeight.w500),
               )
             ],
           ),
           Spacer(),
-          CheckWidget(),
+          Checkbox(
+            side: BorderSide(color: quizBorderColor),
+            value: true,
+            onChanged: (val) {
+              setState(() {});
+            },
+            activeColor: lightGreenColor,
+            checkColor: Colors.black,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4),
+                side: BorderSide(
+                  color: Colors.black,
+                )),
+          ),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skilled_app/views/quiz/quiz_questions.dart';
+import 'package:skilled_app/views/quiz/quiz_questions.dart';
 import '../../widgets/custom_button.dart';
 
 class QuizStart extends StatefulWidget {
@@ -54,7 +55,7 @@ class _QuizStartState extends State<QuizStart> {
                     text: "START QUIZ",
                     funct: () {
                       Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (ctx) => Quiz01()));
+                          MaterialPageRoute(builder: (ctx) => QuizQuestions()));
                     }))
           ],
         ),

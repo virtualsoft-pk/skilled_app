@@ -15,6 +15,8 @@ import 'package:flutter/material.dart';
  const Color lightGreenColor = Color(0xffAED2CC);
  const Color progressColor = Color(0xff84AFA8);
  const Color greyDarkColor = Color(0xff1C232E);
+ const Color borderColor = Color(0xffD2D3D5);
+ 
 
 //
  const Color grey900 = Color(0xff333943);
