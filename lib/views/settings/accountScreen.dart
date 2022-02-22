@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/views/settings/accountDetail.dart';
 
 import '../../utils/app_colors.dart';
+import 'accountDetails.dart';
 
-class AccountScreen extends StatefulWidget {
+class Account extends StatefulWidget {
   @override
-  _AccountScreenState createState() => _AccountScreenState();
+  _AccountState createState() => _AccountState();
 }
 
-class _AccountScreenState extends State<AccountScreen> {
+class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,13 +41,6 @@ class _AccountScreenState extends State<AccountScreen> {
           "Account",
           style: TextStyle(color: Colors.black),
         ),
-        actions: [
-          Icon(Icons.edit),
-          Text(
-            "Edit",
-            style: TextStyle(color: Colors.black),
-          )
-        ],
         centerTitle: true,
       ),
       body: Container(
@@ -58,16 +51,18 @@ class _AccountScreenState extends State<AccountScreen> {
                 onTap: () {
                   Get.to(AccountDetail());
                 },
-                child: buildListTile(Icons.person_outline, "Account", "")),
+                child: buildListTile(
+                    "assets/images/user.png", "Account Details", "")),
             SizedBox(
               height: Get.height * 0.02,
             ),
-            buildListTile(Icons.lock_outline, "Change Password",
+            buildListTile("assets/images/Lock.png", "Change Password",
                 "It’s good idea to use strong password"),
             SizedBox(
               height: Get.height * 0.02,
             ),
-            buildListTile(Icons.notifications_none, "Notification", ""),
+            buildListTile(
+                "assets/images/notification.png", "Notifications", ""),
           ],
         ),
       ),
@@ -75,19 +70,24 @@ class _AccountScreenState extends State<AccountScreen> {
   }
 }
 
-Widget buildListTile(IconData icon, String text, String disc) => ListTile(
+Widget buildListTile(String icon, String text, String disc) => ListTile(
       leading: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
           //shape: BoxShape.circle,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(15),
           color: Color(0xffF4F4F5),
         ),
-        child: Icon(icon),
+        child: Image.asset(
+          icon,
+          fit: BoxFit.cover,
+          height: Get.height * 0.14,
+          width: Get.width * 0.063,
+        ),
       ),
       title: Text(
         text,
-        style: TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
       ),
       subtitle: Text(
         disc,
@@ -95,6 +95,6 @@ Widget buildListTile(IconData icon, String text, String disc) => ListTile(
       ),
       trailing: Icon(
         Icons.arrow_forward_ios,
-        size: 16,
+        size: 15,
       ),
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/views/settings/busnissScreen.dart';
-import 'package:skilled_app/widgets/custom_button.dart';
-import '../../utils/app_colors.dart';
-import '../../widgets/custom_text_field.dart';
+import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/widgets/custom_text_field.dart';
+
+import '../../widgets/custom_button.dart';
 
 class ChangePassword extends StatefulWidget {
   @override
@@ -39,17 +39,8 @@ class _ChangePasswordState extends State<ChangePassword> {
         ),
         title: Text(
           "Change Password",
-          style: TextStyle(color: Colors.black ,)
+          style: TextStyle(color: Colors.black),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20, top: 20),
-            child: Text(
-              "Cancel",
-              style: TextStyle(color: Colors.black, fontSize: 18),
-            ),
-          )
-        ],
         centerTitle: true,
       ),
       body: Container(
@@ -63,7 +54,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
             Text(
               "Current password",
-              style: TextStyle( fontSize: 12 , fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
             SizedBox(
               height: Get.height * 0.02,
@@ -76,38 +67,38 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
             Text(
               "New Password",
-              style: TextStyle(fontSize: 12),
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
             SizedBox(
               height: Get.height * 0.02,
             ),
-            customTextField(text: "New Password"),
+            customTextField(text: "New password"),
             SizedBox(
               height: Get.height * 0.03,
             ),
             Text(
-              "Conform New Password",
-              style: TextStyle(fontSize: 12),
+              "Confirm New Password",
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
             SizedBox(
               height: Get.height * 0.01,
             ),
-            customTextField(text: "Conform New Password"),
+            customTextField(text: "Confirm new password"),
             SizedBox(
               height: Get.height * 0.04,
             ),
             InkWell(
                 onTap: () {
-                  Get.to(BusinessScreen());
+                  // Get.to(SocialMedia());
                 },
-                child: CustomButton(text:"Update")),
+                child: CustomButton(text: "Update")),
             SizedBox(
               height: Get.height * 0.04,
             ),
             Align(
               alignment: Alignment.center,
               child: Text(
-                "Forgive Password?",
+                "Forgot Password?",
                 style: TextStyle(color: Colors.blue),
               ),
             ),

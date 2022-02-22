@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:textfield_tags/textfield_tags.dart';
 
 import '../../utils/app_colors.dart';
@@ -23,137 +23,158 @@ class _CareerListScreenState extends State<CareerListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child: Container(
-              padding:const EdgeInsets.all(15),
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: backButtonColor),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 15,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          leading: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: () {
+                Get.back();
+              },
+              child: Container(
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: backButtonColor),
+                child: Center(
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.black,
+                    size: 15,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        title:const Text(
-          "Career List",
-          style: TextStyle(color: Colors.black),
-        ),
-        actions: [
-          InkWell(
-            onTap: () {
-              setState(() {
-                changeView = !changeView;
-              });
-            },
-            child: Icon(
-              Icons.edit,
-              color: Colors.black,
-            ),
+          title: Text(
+            "Career List",
+            style: TextStyle(color: Colors.black),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20, top: 20),
-            child: Text(
-              "Edit",
-              style: TextStyle(color: Colors.black),
-            ),
-          )
-        ],
-        centerTitle: true,
-      ),
-      body: Container(
-        width: Get.width,
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: Get.height * 0.03,
-            ),
-            Text(
-              "Your Career list",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            Text(
-              "From the careers here, we create you a\npersonalised feed of content.",
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(
-              height: Get.height * 0.03,
-            ),
-            careerListTile("Doctor"),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            careerListTile("Film maker"),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            careerListTile("UX Designer"),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            careerListTile("Musician"),
-            SizedBox(
-              height: Get.height * 0.09,
-            ),
-            changeView
-                ? Container()
-                : ListTile(
-                    title: Text("Retake The Quiz"),
-                    subtitle:
-                        Text("Your careers list will be reset after this"),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 17,
-                    ),
-                  ),
-            SizedBox(
-              height: changeView ? Get.height * 0.13 : Get.height * 0.04,
-            ),
-            changeView
-                ? InkWell(
-                    onTap: () {
-                      // _settingModalBottomSheet(context);
-                      Get.bottomSheet(buttomSheet(),
-                          elevation: 20.0,
-                          enableDrag: false,
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
-                          )));
-                    },
-                    child: CustomButton(text:"Save and countious"))
-                : Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      height: Get.height * 0.07,
-                      // width: Get.width * 0.04,
-                      child: Center(child: Icon(Icons.add)),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: buttonColor),
-                    ),
-                  )
+          actions: [
+            InkWell(
+                onTap: () {
+                  setState(() {
+                    changeView = !changeView;
+                  });
+                },
+                child: Image.asset(
+                  "assets/images/edit.png",
+                  height: Get.height * 0.02,
+                  width: Get.width * 0.05,
+                )),
+            Padding(
+              padding: const EdgeInsets.only(right: 20, top: 20),
+              child: Text(
+                "Edit",
+                style: TextStyle(color: Colors.black),
+              ),
+            )
           ],
+          centerTitle: true,
         ),
-      ),
-    );
+        body: Container(
+          width: Get.width,
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              Text(
+                "Your Career list",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: Get.height * 0.01,
+              ),
+              Text(
+                "From the careers here, we create you a\npersonalised feed of content.",
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              careerListTile("Doctor"),
+              SizedBox(
+                height: Get.height * 0.01,
+              ),
+              careerListTile("Film maker"),
+              SizedBox(
+                height: Get.height * 0.01,
+              ),
+              careerListTile("UX Designer"),
+              SizedBox(
+                height: Get.height * 0.01,
+              ),
+              careerListTile("Musician"),
+              SizedBox(
+                height: Get.height * 0.09,
+              ),
+              changeView
+                  ? Container()
+                  : ListTile(
+                      shape: RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.grey, width: 0.4),
+                          borderRadius: BorderRadius.circular(8)),
+                      title: Text(
+                        "Retake The Quiz",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w600),
+                      ),
+                      subtitle: Text(
+                        "Your careers list will be reset after this",
+                        style: TextStyle(
+                            color: notificationTextColor, fontSize: 12),
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 17,
+                      ),
+                    ),
+              SizedBox(
+                height: changeView ? Get.height * 0.13 : Get.height * 0.04,
+              ),
+              changeView
+                  ? InkWell(
+                      onTap: () {
+                        // _settingModalBottomSheet(context);
+                        Get.bottomSheet(buttomSheet(),
+                            elevation: 20.0,
+                            enableDrag: false,
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30.0),
+                              topRight: Radius.circular(30.0),
+                            )));
+                      },
+                      child: CustomButton(text:"SAVE AND CONTINUE"))
+                  : Container(),
+              // : Align(
+              //     alignment: Alignment.topRight,
+              //     child: Container(
+              //       height: Get.height * 0.07,
+              //       // width: Get.width * 0.04,
+              //       child: Center(child: Icon(Icons.add)),
+              //       decoration: BoxDecoration(
+              //           shape: BoxShape.circle, color: buttonColor),
+              //     ),
+              //   )
+            ],
+          ),
+        ),
+        floatingActionButton: changeView
+            ? Container()
+            : FloatingActionButton(
+                elevation: 5,
+                backgroundColor: buttonColor,
+                onPressed: () {},
+                child: Icon(
+                  Icons.add,
+                  color: Colors.black,
+                ),
+              ));
   }
 
   Container buttomSheet() {
@@ -170,15 +191,21 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   children: [
                     Text(
                       "Add Topics",
-                      style: TextStyle(fontSize: 16),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     Spacer(),
                     Container(
+                      padding: EdgeInsets.all(5),
                       height: Get.height * 0.06,
                       decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.5),
+                          color: Colors.grey.withOpacity(0.3),
                           shape: BoxShape.circle),
-                      child: Center(child: Icon(Icons.add)),
+                      child: Center(
+                          child: Icon(
+                        Icons.close,
+                        size: 20,
+                      )),
                     ),
                   ],
                 ),
@@ -191,25 +218,29 @@ class _CareerListScreenState extends State<CareerListScreen> {
                 ),
                 Text(
                   "Title",
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
                 Container(
                     child: TextFieldTags(
-                        textSeparators: <String>[
-                      //text tag seperators
-                      //Default = " ", ","
-                    ],
+
+                        //     textSeparators: <String>[
+                        //   //text tag seperators
+                        //   //Default = " ", ","
+                        // ],
                         // tags: <String>[
                         //   // List of tags
                         //   // Provide a list of initial tags to initialize it
                         // ],
                         textFieldStyler: TextFieldStyler(
                           //These are properties you can tweek for customization
+                          textFieldBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16)),
                           hintText: "Topics name",
-                          hintStyle: TextStyle(fontSize: 17),
+                          hintStyle: TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.w500),
 
                           // bool textFieldFilled = false,
                           // Icon icon,
@@ -228,7 +259,8 @@ class _CareerListScreenState extends State<CareerListScreen> {
                         ),
                         tagsStyler: TagsStyler(
                           //These are properties you can tweek for customization
-                          tagTextStyle: TextStyle(fontSize: 12),
+                          tagTextStyle: TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.w500),
                           tagCancelIcon: Icon(
                             Icons.close,
                             color: Colors.black,
@@ -236,7 +268,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                           tagDecoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(15)),
-                          // showHashtag = false,
+                          //showHashtag = false,
                           //  EdgeInsets tagPadding = const EdgeInsets.all(4.0),
                           tagPadding: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
@@ -259,7 +291,10 @@ class _CareerListScreenState extends State<CareerListScreen> {
                         //scrollableTagsMargin: EdgeInsets.only(left: 9),
                         //scrollableTagsPadding: EdgeInsets.only(left: 9),
                         )),
-                Text("Suggestions from the top list:"),
+                Text(
+                  "Suggestions from the top list:",
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                ),
               ],
             ),
 
@@ -284,13 +319,16 @@ class _CareerListScreenState extends State<CareerListScreen> {
                         },
                         child: Container(
                           height: Get.height * 0.07,
+                          // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              border: Border.all(width: 0.3)),
+                              border:
+                                  Border.all(width: 0.3, color: Colors.grey)),
                           child: Center(
                               child: Text(
                             "Cancel",
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w500),
                           )),
                         ),
                       ),
@@ -301,6 +339,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                     Expanded(
                       child: Container(
                         height: Get.height * 0.07,
+                        // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                         decoration: BoxDecoration(
                           color: buttonColor,
                           borderRadius: BorderRadius.circular(20),
@@ -327,19 +366,25 @@ class _CareerListScreenState extends State<CareerListScreen> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       height: Get.height * 0.09,
       decoration: BoxDecoration(
-          color: Color(0xffAED2CC),
+          color: checkColor,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(width: 0.7)),
       child: Row(
         children: [
           Text(
             name,
-            style: TextStyle(fontSize: 18 , fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
           ),
           Spacer(),
           changeView
-              ? Icon(Icons.delete)
-              : Image.asset("assets/images/question.png"),
+              ? Image.asset(
+                  "assets/images/delete.png",
+                  height: Get.height * 0.034,
+                )
+              : Image.asset(
+                  "assets/images/question.png",
+                  height: Get.height * 0.034,
+                ),
         ],
       ),
     );
@@ -375,6 +420,8 @@ class _CareerListScreenState extends State<CareerListScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Chip(
+        side: BorderSide(color: Colors.grey, width: 1),
+        backgroundColor: Colors.white,
         labelPadding: EdgeInsets.all(2.0),
         label: Text(
           label,

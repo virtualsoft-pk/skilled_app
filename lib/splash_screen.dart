@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:skilled_app/views/auth/sign_in.dart';
-import 'package:skilled_app/views/onboarding.dart/onboarding.dart';
+import 'package:skilled_app/views/onboarding/onboarding.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({ Key? key }) : super(key: key);

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/views/settings/accountScreen.dart';
-
-import '../../utils/app_colors.dart';
+import 'package:skilled_app/utils/app_colors.dart';
 
 class ChooseSocialMedia extends StatefulWidget {
   @override
@@ -67,7 +65,7 @@ class _ChooseSocialMediaState extends State<ChooseSocialMedia> {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.to(AccountScreen());
+                    //Get.to(AccountScreen());
                   },
                   child: buildChooseMediaTile(
                     "assets/images/tiktok.png",

@@ -58,6 +58,9 @@ const Color buttonColor = Color(0xffFBC799);
 const Color progressType = Color(0xff60656D);
 const Color backButtonColor = Color(0xffF4F4F5);
 const Color toggleColor = Color(0xffE4F0EE);
+const Color tileTextColor = Color(0xff777B82);
+const Color inActiveTogolColor = Color(0xffA4A7AB);
+const Color notificationTextColor = Color(0xff8D9196);
 
 
 

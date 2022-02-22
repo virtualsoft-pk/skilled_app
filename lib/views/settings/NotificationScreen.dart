@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/views/settings/careerListScreen.dart';
 
 import '../../utils/app_colors.dart';
-import 'careerListScreen.dart';
-
 
 class NotificationScreen extends StatefulWidget {
   @override
@@ -95,7 +94,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       ),
       subtitle: Text(
         subTitle,
-        style: TextStyle(fontSize: 14),
+        style: TextStyle(fontSize: 14, color: notificationTextColor),
       ),
       trailing: Container(
         height: Get.height * 0.03,
@@ -107,6 +106,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           padding: 4.0,
           toggleSize: 15.0,
           borderRadius: 14.0,
+          inactiveToggleColor: inActiveTogolColor,
           activeColor: toggleColor,
           inactiveColor: toggleColor.withOpacity(0.5),
           toggleColor: progressColor,

@@ -6,7 +6,7 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/utils/app_const.dart';
 import 'package:skilled_app/views/auth/sign_in.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
-import 'package:skilled_app/views/onboarding.dart/onboarding_widget.dart' as o;
+import 'package:skilled_app/views/onboarding/onboarding_widget.dart' as o;
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -96,11 +96,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           nextButton: OnBoardConsumer(
             builder: (context, ref, child) {
               final state = ref.watch(onBoardStateProvider);
-              return CustomButton(text:state.isLastPage ? 'GET STARTED' : 'NEXT',
-                  funct: () {
-                state.isLastPage ? Get.to(() => SignIn()) : null;
-                _onNextTap(state);
-              });
+              return Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: CustomButton(text:state.isLastPage ? 'GET STARTED' : 'NEXT',
+                    funct: () {
+                  state.isLastPage ? Get.to(() => SignIn()) : null;
+                  _onNextTap(state);
+                }),
+              );
             },
           ),
         ),
