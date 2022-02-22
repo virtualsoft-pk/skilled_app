@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/views/settings/privacy.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
@@ -178,14 +180,21 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
                               SizedBox(
                                 height: Get.height * 0.03,
                               ),
-                              Align(
-                                alignment: Alignment.topCenter,
-                                child: resizableButton(
-                                    HPadding: Get.width * 0.33,
-                                    VPadding: 20,
-                                    border: 14,
-                                    name: "Send"),
+
+                              CustomButton(
+                                text: "SEND",
+                                funct: (){
+                                  Get.to(()=>Privacy());
+                                },
                               ),
+                              // Align(
+                              //   alignment: Alignment.topCenter,
+                              //   child: resizableButton(
+                              //       HPadding: Get.width * 0.33,
+                              //       VPadding: 20,
+                              //       border: 14,
+                              //       name: "Send"),
+                              // ),
                               SizedBox(
                                 height: Get.height * 0.01,
                               ),

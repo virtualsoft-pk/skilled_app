@@ -23,6 +23,7 @@ import 'package:flutter/material.dart';
  const Color grey800 = Color(0xff333943);
  const Color grey700 = Color(0xff494F58);
  const Color grey600 = Color(0xff60656D);
+ const Color grey500 = Color(0xff777B82);
 
 
 
@@ -80,3 +81,11 @@ const Color chipBackColor = Color(0xffAED2CC);
 const Color shareColor = Color(0xffEAEAEA);
 
 
+
+
+
+ const Color purple = Color(0xff3C577E);
+   const Color buttoncolor = Color(0xffFBC799);
+   const Color tilecolor = Color(0xffF4F4F5);
+   const Color floatingcolor = Color(0xffFBC799);
+   const Color compltedcolor = Color(0xffE4F0EE);

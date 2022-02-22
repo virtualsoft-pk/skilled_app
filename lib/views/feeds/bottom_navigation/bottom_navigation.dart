@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/views/eventCalander/in_person.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
 
@@ -21,7 +22,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     FeedPage(),
     Search(),
     Quiz_05(),
-    TabbarData(),
+    In_Person(),
     SettingScreen(),
   ];
 

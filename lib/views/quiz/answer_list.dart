@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/views/quiz/career.dart';
 import 'package:skilled_app/views/quiz/career_details.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
