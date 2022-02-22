@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:skilled_app/views/settings/aboutUs.dart';
 import 'package:skilled_app/views/settings/tabbardata.dart';
 
-import '../eventCalander/aboutUs.dart';
-
 class Notifications extends StatefulWidget {
   @override
   _NotificationsState createState() => _NotificationsState();

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/views/eventCalander/privacy.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../widgets/custom_widgets.dart';

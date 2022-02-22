@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../utils/app_colors.dart';
-import '../views/eventCalander/privacy.dart';
+import '../views/eventCalander/events_screen.dart';
 import '../views/settings/privacy.dart';
 
 
@@ -96,7 +96,7 @@ modalBottomSheetMenu(BuildContext context){
               SizedBox(height: Get.height*0.04),
               InkWell(
                 onTap: (){
-                  Get.to(Privacy());
+                  Get.to(events_screen());
                 },
                 child: Container(
                   width: Get.width*0.9,

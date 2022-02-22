@@ -66,9 +66,11 @@ class _events_screenState extends State<events_screen> {
                     // todayColor:  Appcolors.purple,
                     selectedColor: purple,
                     //eventDoneColor: Colors.purple,
+
                     eventColor: purple,
                     hideTodayIcon: true,
                     bottomBarColor: purple,
+                    // isExpandable: true,
 
                     startOnMonday: true,
                     weekDays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
@@ -77,7 +79,7 @@ class _events_screenState extends State<events_screen> {
                    // locale: 'de_DE',
                     // todayButtonText: 'Heute',
                     isExpanded: true,
-                    expandableDateFormat: 'EEEE, dd. MMMM yyyy',
+                    // expandableDateFormat: 'EEEE, dd. MMMM yyyy',
                     dayOfWeekStyle: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.w800, fontSize: 11),
                   ),

@@ -27,7 +27,7 @@ class   _completed_events_screenState extends State<completed_events_screen> {
             ),
             child: ListTile(
               leading: CircleAvatar(
-                child: Image(image: AssetImage('assets/img.png'),fit: BoxFit.cover,),
+                child: Image(image: AssetImage('assets/images/img.png'),fit: BoxFit.cover,),
               ),
               title: Padding(
                 padding: const EdgeInsets.only(top: 10),
@@ -88,7 +88,7 @@ class   _completed_events_screenState extends State<completed_events_screen> {
             ),
             child: ListTile(
               leading: CircleAvatar(
-                child: Image(image: AssetImage('assets/img_1.png'),fit: BoxFit.cover,),
+                child: Image(image: AssetImage('assets/images/img_1.png'),fit: BoxFit.cover,),
               ),
               title: Padding(
                 padding: const EdgeInsets.only(top: 10),
@@ -148,7 +148,7 @@ class   _completed_events_screenState extends State<completed_events_screen> {
             ),
             child: ListTile(
               leading: CircleAvatar(
-                child: Image(image: AssetImage('assets/img_2.png'),fit: BoxFit.cover,),
+                child: Image(image: AssetImage('assets/images/img_2.png'),fit: BoxFit.cover,),
               ),
               title: Padding(
                 padding: const EdgeInsets.only(top: 10),
