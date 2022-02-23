@@ -7,12 +7,12 @@ import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../widgets/custom_widgets.dart';
 
-class In_Person extends StatefulWidget {
+class InPerson extends StatefulWidget {
   @override
-  _In_PersonState createState() => _In_PersonState();
+  _InPersonState createState() => _InPersonState();
 }
 
-class _In_PersonState extends State<In_Person> {
+class _InPersonState extends State<InPerson> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +53,7 @@ class _In_PersonState extends State<In_Person> {
                     )),
               ),
               SizedBox(
-                height: Get.height * 0.03,
+                height: Get.height * 0.02,
               ),
               Container(
                   width: double.infinity,
@@ -90,10 +90,10 @@ class _In_PersonState extends State<In_Person> {
                   // ),
                   Container(
                     height: 12,
-                    width: 12,
-                    child: Image.asset("assets/carbon_user-multiple.png", fit: BoxFit.cover,)),
+                    width: 14,
+                    child: Image.asset("assets/icons/persons_outline.png", fit: BoxFit.cover,)),
                   SizedBox(width: Get.width * 0.01),
-                  Text(
+                 const Text(
                     "230 going ",
                     style: TextStyle(color: grey500, fontSize: 12 , fontWeight: FontWeight.w500),
                   ),
@@ -106,11 +106,16 @@ class _In_PersonState extends State<In_Person> {
                         borderRadius: BorderRadius.circular(12)),
                   ),
                   SizedBox(width: Get.width * 0.02),
-                  Image.asset("assets/Vector.png"),
+                  Container(
+                    height : 20,
+                    width: 20,
+                    child: Image.asset("assets/icons/camera.png")),
+
+                  
                   SizedBox(width: Get.width * 0.01),
                   Text(
                     "Online event",
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
+                    style: TextStyle(color: grey500, fontSize: 12 , fontWeight: FontWeight.w500),
                   ),
                   SizedBox(width: Get.width * 0.025),
                   Container(

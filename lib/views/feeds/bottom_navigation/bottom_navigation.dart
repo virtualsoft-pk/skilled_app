@@ -20,7 +20,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     FeedPage(),
     Search(),
     Quiz_05(),
-    In_Person(),
+    InPerson(),
     SettingScreen(),
   ];
 
