@@ -65,10 +65,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       backgroundColor: backgroundColor,
       body: Column(
     children: [
-
-
-      //  SizedBox(height: 30),
-      
       Container(
         width: double.infinity,
         height: Get.height * 0.87,
@@ -129,7 +125,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
           Container(
             margin: const EdgeInsets.only(bottom: 12),
-            child: Text("Continue as a guest",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w500),),
+            child: Text("Continue as a guest",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w600 , color: grey900),),
           ),
     ],
       ),

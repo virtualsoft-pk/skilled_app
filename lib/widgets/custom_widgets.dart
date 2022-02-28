@@ -13,7 +13,7 @@ Widget customBackButton(){
       Get.back();
     },
     child: Container(
-                margin: const EdgeInsets.only(bottom: 30),
+                margin: const EdgeInsets.only(bottom: 20),
                 padding: const EdgeInsets.all(12),
                 width: 40,
                 height: 40,
@@ -24,7 +24,7 @@ Widget customBackButton(){
                 child: Container(
                   margin: const EdgeInsets.all(2.5),
                   child: Image.asset(
-                    'assets/images/Vector.png',
+                    'assets/back.png',
                   ),
                 ),
               ),

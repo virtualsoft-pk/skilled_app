@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/quiz_questions.dart';
 import 'package:skilled_app/views/quiz/quiz_questions.dart';
 import '../../widgets/custom_button.dart';
@@ -46,17 +47,10 @@ class _QuizStartState extends State<QuizStart> {
             SizedBox(
               height: screenheight * 0.15,
             ),
-            Container(
-                width: screenwidth * 3,
-                height: screenheight * 0.09,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                child: CustomButton(
-                    text: "START QUIZ",
-                    funct: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (ctx) => QuizQuestions()));
-                    }))
+
+            CustomButton(text: "START QUIZ", funct: (){
+              Get.to(()=> QuizQuestions());
+            },)
           ],
         ),
       ),

@@ -1,14 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:multi_select_flutter/chip_field/multi_select_chip_field.dart';
-import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
-import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:multi_select_flutter/util/multi_select_item.dart';
-import 'package:multi_select_flutter/util/multi_select_list_type.dart';
 import 'package:skilled_app/views/quiz/how_to_know.dart';
-import 'package:skilled_app/views/quiz/select_interest.dart';
+
 
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
@@ -16,12 +10,12 @@ import '../../widgets/custom_button.dart';
 
 bool iscolored = false;
 
-class Quiz03 extends StatefulWidget {
+class SelectInterest extends StatefulWidget {
   @override
-  _Quiz03State createState() => _Quiz03State();
+  _SelectInterestState createState() => _SelectInterestState();
 }
 
-class _Quiz03State extends State<Quiz03> {
+class _SelectInterestState extends State<SelectInterest> {
   List multiChipList = [
     'Creative Writing',
     'Video editing ',
@@ -45,7 +39,7 @@ class _Quiz03State extends State<Quiz03> {
             margin: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                SizedBox(height: screenheight * 0.02),
+                SizedBox(height: screenheight * 0.01),
                 Row(
                   children: [
                     InkWell(
@@ -78,11 +72,11 @@ class _Quiz03State extends State<Quiz03> {
                   ],
                 ),
                 SizedBox(
-                  height: screenheight * 0.03,
+                  height: screenheight * 0.02,
                 ),
                Text("Select any of these that you are interested in learning",
                     style: GoogleFonts.manrope(
-                      fontSize: 30,
+                      fontSize: 28,
                       fontWeight: FontWeight.bold,
                     )),
                const SizedBox(
@@ -104,6 +98,7 @@ class _Quiz03State extends State<Quiz03> {
                        Icon(Icons.clear);
                         }),
                         child: Chip(
+                        
                           backgroundColor: containercolor,
                           side: BorderSide(
                               color: Colors.black),
@@ -134,14 +129,18 @@ class _Quiz03State extends State<Quiz03> {
                   height: screenheight * 0.22,
                 ),
 
-               Container(
-                    width: screenwidth*3,
-                    height: screenheight*0.09,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                    child: CustomButton(text: "NEXT",funct: (){
-                      Get.to(HowToKnow());
-                    })
-                )
+              //  Container(
+              //       width: screenwidth*3,
+              //       height: screenheight*0.09,
+              //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+              //       child: CustomButton(text: "NEXT",funct: (){
+              //         Get.to(HowToKnow());
+              //       })
+              //   )
+
+              CustomButton(text: "NEXT", funct: (){
+                Get.to(()=> HowToKnow());
+              },),
               ],
             ),
           ),

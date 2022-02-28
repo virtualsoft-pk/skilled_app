@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 
-bool obsecureTxt = true;
 
 
-Widget customTextField({String? text , Icon? icon}){
+Widget customTextField({String? text , Icon? icon , bool? obsecure}){
   return TextFormField(
-      obscureText: obsecureTxt,
+      obscureText: obsecure ?? false,
       decoration: InputDecoration(
         filled: true,
         fillColor: greyColor,

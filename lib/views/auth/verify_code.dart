@@ -29,7 +29,7 @@ class _VerifyCodeState extends State<VerifyCode> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
+          padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
           width: double.infinity,
           color: backgroundColor,
           child: Column(
@@ -38,7 +38,7 @@ class _VerifyCodeState extends State<VerifyCode> {
               customBackButton(),
               
                SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
+                height: MediaQuery.of(context).size.height * 0.02,
               ),
              const Text(
                 'Verification code',

@@ -43,7 +43,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         const Text(
                           "You are an \nInventor",
                           style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.w700),
+                              fontSize: 28, fontWeight: FontWeight.w700),
                         ),
                         SizedBox(
                           height: Get.height * 0.02,
@@ -66,12 +66,14 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         )
                       ],
                     ),
-                    Container(
-                      height: Get.height * 0.23,
-                      width: Get.width * 0.5,
-                      child: Image.asset(
-                        "assets/images/image1.png",
-                        // height: Get.height * 0.24,
+                    Expanded(
+                      child: Container(
+                        height: Get.height * 0.23,
+                        // width: Get.width * 0.5,
+                        child: Image.asset(
+                          "assets/images/image1.png",
+                          // height: Get.height * 0.24,
+                        ),
                       ),
                     ),
                   ],
@@ -111,13 +113,13 @@ class _QuizResultPageState extends State<QuizResultPage> {
                 buildProgress("Organizing", 90, progressColor,
                     Colors.grey.withOpacity(0.04), 0.9),
                 SizedBox(
-                  height: Get.height * 0.02,
+                  height: Get.height * 0.03,
                 ),
                 Align(
                   alignment: Alignment.center,
                   child: Container(
                     width: Get.width * 0.4,
-                    height: Get.height * 0.043,
+                    height: Get.height * 0.053,
                     decoration: BoxDecoration(
                         border: Border.all(
                             width: 1, color: Colors.grey.withOpacity(0.2)),
@@ -139,7 +141,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   AppConst.QUIZ_RESULT_PAGE_QUESTION,
                   style: TextStyle(
                       color: grey800,
-                      fontSize: 24,
+                      fontSize: 23,
                       fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
@@ -198,11 +200,11 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   alignment: Alignment.center,
                   child: Container(
                     width: Get.width * 0.4,
-                    height: Get.height * 0.04,
+                    height: Get.height * 0.05,
                     decoration: BoxDecoration(
                         border: Border.all(
                             width: 1, color: Colors.grey.withOpacity(0.2)),
-                        borderRadius: BorderRadius.circular(15)),
+                        borderRadius: BorderRadius.circular(18)),
                     child: const Center(
                         child: Text(
                       "View all",
@@ -214,7 +216,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   ),
                 ),
                 SizedBox(
-                  height: Get.height * 0.02,
+                  height: Get.height * 0.03,
                 ),
                 CustomButton(
                   text: "GET STARTED",
@@ -283,54 +285,69 @@ class _QuizResultPageState extends State<QuizResultPage> {
       margin: EdgeInsets.only(bottom: Get.height * 0.02),
       child: Row(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                profession,
-                style: const TextStyle(
-                    color: grey900, fontSize: 16, fontWeight: FontWeight.w700),
-              ),
-              Text(
-                category,
-                style: const TextStyle(
-                    color: grey600, fontSize: 12, fontWeight: FontWeight.w500),
-              ),
-            ],
-          ),
-          const Spacer(),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Row(
+          Flexible(
+            flex: 10,
+            fit: FlexFit.tight,
+            
+            child: Container(
+              // color: Colors.red,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "$per%",
+                    profession,
                     style: const TextStyle(
-                        color: grey900,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700),
+                        color: grey900, fontSize: 16, fontWeight: FontWeight.w700),
                   ),
-                  SizedBox(
-                    width: Get.width * 0.01,
-                  ),
-                  const Text(
-                    "match",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12,
-                    ),
+                  Text(
+                    category,
+                    style: const TextStyle(
+                        color: grey600, fontSize: 12, fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
-              const Text(
-                "Find out more",
-                style: TextStyle(
-                    fontSize: 16,
-                    color: blueColor,
-                    fontWeight: FontWeight.w600),
+            ),
+          ),
+          // const Spacer(),
+          Flexible(
+            flex: 5,
+            fit: FlexFit.tight,
+            child: Container(
+              // color: Colors.amber,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "$per%",
+                        style: const TextStyle(
+                            color: grey900,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        width: Get.width * 0.01,
+                      ),
+                      const Text(
+                        "match",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Text(
+                    "Find out more",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: blueColor,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ],
       ),

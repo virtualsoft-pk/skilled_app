@@ -25,7 +25,7 @@ class ForgotPassword extends StatelessWidget {
               customBackButton(),
            
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
+                height: MediaQuery.of(context).size.height * 0.01,
               ),
              const Text(
                 'Forgot Password?',

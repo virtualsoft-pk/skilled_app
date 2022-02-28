@@ -25,7 +25,7 @@ class _SignInState extends State<SignIn> {
       body: Container(
         width: double.infinity,
         color: backgroundColor,
-        padding: const EdgeInsets.only(top: 40, left: 15, right: 15),
+        padding: const EdgeInsets.only(top: 30, left: 15, right: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -88,7 +88,7 @@ class _SignInState extends State<SignIn> {
             const SizedBox(
               height: 8,
             ),
-            customTextField(text:"Password" , icon: const Icon(Icons.visibility_off)),
+            customTextField(text:"Password" , icon: const Icon(Icons.visibility_off) , obsecure: true),
             const SizedBox(
               height: 16,
             ),

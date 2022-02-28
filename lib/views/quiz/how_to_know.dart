@@ -35,75 +35,77 @@ class _HowToKnowState extends State<HowToKnow> {
         body: SafeArea(
             child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-            SizedBox(height: screenheight * 0.02),
-          customBackButton(),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              SizedBox(height: screenheight * 0.01),
+            customBackButton(),
+                
               
-            SizedBox(
-              height: screenheight * 0.0,
-            ),
-            Text(
-                "How Did You Hear About Us?",
-                style: GoogleFonts.manrope(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700,
-                )),
-           
-            Container(
-              width: screenwidth * 0.92,
-              height: screenheight * 0.65,
-
-              child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: about.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(top: 10),
-                        width: screenwidth * 0.01,
-                        height: 62,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: greycolor
-                        ),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Image(
-                                image: AssetImage('${about[index].image}'),
-                                width: 40,
-                                height: 40,
+              Text(
+                  "How Did You Hear About Us?",
+                  style: GoogleFonts.manrope(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                  )),
+             
+              Container(
+                width: screenwidth * 0.90,
+                height: screenheight * 0.63,
+      
+                child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: about.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(top: 8),
+                          width: screenwidth * 0.01,
+                          height: 62,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: greycolor
+                          ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Image(
+                                  image: AssetImage('${about[index].image}'),
+                                  width: 40,
+                                  height: 40,
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: screenwidth * 0.06,
-                            ),
-                           myText(text: '${about[index].name}',style:  GoogleFonts.manrope(
-                             fontSize: 16,
-                             fontWeight: FontWeight.w600,
-                           )
-                           )
-                          ],
+
+                              
+                              SizedBox(
+                                width: screenwidth * 0.06,
+                              ),
+                             myText(text: '${about[index].name}',style:  GoogleFonts.manrope(
+                               fontSize: 16,
+                               fontWeight: FontWeight.w600,
+                             )
+                             )
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  }),
-            ),
-            SizedBox(
-              height: screenheight*0.02,
-            ),
-            Container(
-               
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                child: CustomButton(text: "SEE RESULTS",funct: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>QuizResultPage()));})
-            )
-          ]),
+                      );
+                    }),
+              ),
+              SizedBox(
+                height: screenheight*0.02,
+              ),
+              Container(
+                 
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                  child: CustomButton(text: "SEE RESULTS",funct: (){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>QuizResultPage()));})
+              )
+            ]),
+          ),
         )));
   }
 }

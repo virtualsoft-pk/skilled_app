@@ -14,7 +14,7 @@ class ResetPassword extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
+          padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
           width: double.infinity,
           color: backgroundColor,
           child: Column(
@@ -22,7 +22,7 @@ class ResetPassword extends StatelessWidget {
             children: [
               customBackButton(),
                SizedBox(
-                height: MediaQuery.of(context).size.height * 0.025,
+                height: MediaQuery.of(context).size.height * 0.01,
               ),
              const Text(
                 'Reset password',
@@ -66,7 +66,7 @@ class ResetPassword extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              customTextField(text: "New Password"),
+              customTextField(text: "New Password" , obsecure: true),
               const SizedBox(
                 height: 16,
               ),
@@ -92,7 +92,7 @@ class ResetPassword extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              customTextField(text: "Confirm New Password"),
+              customTextField(text: "Confirm New Password" , obsecure: true),
               const SizedBox(
                 height: 32,
               ),
