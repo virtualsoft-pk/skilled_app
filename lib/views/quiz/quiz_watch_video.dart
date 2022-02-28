@@ -28,6 +28,8 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
+                        SizedBox(height: 2),
+
                         Container(
                           height: MediaQuery.of(context).size.height * 0.20,
                           width: double.infinity,
@@ -54,7 +56,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                           ),
                         ),
                          SizedBox(
-                          height: Get.height * 0.02,
+                          height: Get.height * 0.010,
                         ),
                       const Text(
                           "You are an Inventor",
@@ -64,55 +66,55 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                               fontWeight: FontWeight.w700),
                         ),
                         SizedBox(
-                          height: Get.height * 0.010,
+                          height: Get.height * 0.005,
                         ),
                         buildQuestions(
                           AppConst.QUIZ_RESULT_PAGE_2_QUESTION_1,
                         ),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.018,
                         ),
                         buildOpints("Realistic"),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.008,
                         ),
                         buildOpints("Sensible"),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.008,
                         ),
                         buildOpints("Mechanical"),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.008,
                         ),
                         buildOpints("Traditional"),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.008,
                         ),
                         buildOpints("Down-to-earth"),
                         SizedBox(
-                          height: Get.height * 0.02,
+                          height: Get.height * 0.018,
                         ),
                         buildQuestions(
                           AppConst.QUIZ_RESULT_PAGE_2_QUESTION_2,
                         ),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.02,
                         ),
                         buildOpints("Practicality"),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.008,
                         ),
                         buildOpints("Productivity"),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.008,
                         ),
                         buildOpints("Structure"),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.008,
                         ),
                         buildOpints("Independence"),
                         SizedBox(
-                          height: Get.height * 0.014,
+                          height: Get.height * 0.008,
                         ),
                         buildOpints("Physical Skill"),
                         SizedBox(

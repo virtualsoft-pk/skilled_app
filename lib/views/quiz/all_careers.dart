@@ -4,7 +4,6 @@ import 'package:skilled_app/views/quiz/answer_list.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_const.dart';
-import '../../widgets/checkbox.dart';
 import '../../widgets/custom_widgets.dart';
 
 class AllCareers extends StatefulWidget {
@@ -51,25 +50,27 @@ class _AllCareersState extends State<AllCareers> {
                         ),
                       ),
                       SizedBox(
-                        height: Get.height * 0.01,
+                        height: Get.height * 0.015,
                       ),
                       Row(
                         children: [
-                          Text("Recommended Careers",
+                         const Text("Recommended Careers",
                               style: TextStyle(
                                   color: grey800,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18)),
-                          Spacer(),
+                        const  Spacer(),
                           RichText(
                               text: TextSpan(children: [
                             TextSpan(
                                 text: "4/",
                                 style: TextStyle(
+                                  fontWeight: FontWeight.w400,
                                     color: Colors.grey, fontSize: 24)),
                             TextSpan(
                                 text: "5",
                                 style: TextStyle(
+                                  fontWeight: FontWeight.w700,
                                     color: Colors.black, fontSize: 24))
                           ]))
                         ],
@@ -149,19 +150,23 @@ class _AllCareersState extends State<AllCareers> {
             ],
           ),
           Spacer(),
-          Checkbox(
-            side: BorderSide(color: quizBorderColor),
-            value: true,
-            onChanged: (val) {
-              setState(() {});
-            },
-            activeColor: lightGreenColor,
-            checkColor: Colors.black,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4),
-                side: BorderSide(
-                  color: Colors.black,
-                )),
+          Transform.scale(
+            scale: 1.3,
+            child: Checkbox(
+              side: BorderSide(color: quizBorderColor),
+              
+              value: true,
+              onChanged: (val) {
+                setState(() {});
+              },
+              activeColor: lightGreenColor,
+              checkColor: Colors.black,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4),
+                  side: BorderSide(
+                    color: Colors.black,
+                  )),
+            ),
           ),
         ],
       ),

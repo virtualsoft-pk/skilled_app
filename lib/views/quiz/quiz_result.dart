@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:rounded_linear_progress/rounded_linear_progress.dart';
+
 import 'package:skilled_app/views/quiz/quiz_watch_video.dart';
 
 import '../../utils/app_colors.dart';

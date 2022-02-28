@@ -66,7 +66,7 @@ class _AnswerListState extends State<AnswerList> {
                 ),
               ),
               Flexible(
-                  flex: 8,
+                  flex: 13,
                   fit: FlexFit.tight,
                   child: SingleChildScrollView(
                     child: Column(
@@ -103,16 +103,22 @@ class _AnswerListState extends State<AnswerList> {
               SizedBox(height: 10),
 
               Flexible(
-                flex: 1,
+                flex: 2,
                 fit: FlexFit.tight,
                 child: Container(
-                
-                  child: CustomButton(
-                      text: "EMAIL ME ANSWERS",
-                      funct: () {
-                        Get.to(() => Career());
-                      }),
+                  height: 50,
+                  child: CustomButton(text : "EMAIL ME ANSWERS" , funct: (){
+                    Get.to(()=> Career());
+                  },),
                 ),
+                // child: Container(
+                
+                //   child: CustomButton(
+                //       text: "EMAIL ME ANSWERS",
+                //       funct: () {
+                //         Get.to(() => Career());
+                //       }),
+                // ),
               ),
 
               //
@@ -140,15 +146,15 @@ class _AnswerListState extends State<AnswerList> {
                 fontSize: 14, color: grey600, fontWeight: FontWeight.w400),
           ),
           SizedBox(
-            height: Get.height * 0.01,
+            height: Get.height * 0.008,
           ),
           Text(
             question,
             style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.w600, color: grey800),
+                fontSize: 17, fontWeight: FontWeight.w600, color: grey800),
           ),
           SizedBox(
-            height: Get.height * 0.015,
+            height: Get.height * 0.010,
           ),
           Text(
             "Answer:",
@@ -156,7 +162,7 @@ class _AnswerListState extends State<AnswerList> {
                 fontSize: 14, color: grey600, fontWeight: FontWeight.w400),
           ),
           SizedBox(
-            height: Get.height * 0.01,
+            height: Get.height * 0.008,
           ),
           Text(
             answer,
