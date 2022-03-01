@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
-class upcoming_events_screen extends StatefulWidget {
-  const upcoming_events_screen({Key? key}) : super(key: key);
+
+
+class UpCommingEvent extends StatefulWidget {
+  const UpCommingEvent({Key? key}) : super(key: key);
 
   @override
-  _upcoming_events_screenState createState() => _upcoming_events_screenState();
+  _UpCommingEventState createState() => _UpCommingEventState();
 }
 
-class _upcoming_events_screenState extends State<upcoming_events_screen> {
+class _UpCommingEventState extends State<UpCommingEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
