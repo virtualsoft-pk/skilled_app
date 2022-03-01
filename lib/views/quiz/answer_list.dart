@@ -36,93 +36,98 @@ class _AnswerListState extends State<AnswerList> {
         child: Container(
           height: Get.height,
           //width: Get.width,
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: 16,
           ),
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 0),
-                      child: customBackButton(),
-                    ),
-                    SizedBox(width: Get.width * 0.2),
-                    Container(
-                      margin: EdgeInsets.only(top: 8),
-                      child: Text(
-                        "Answer List",
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: greyDarkColor),
-                        textAlign: TextAlign.center,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 0),
+                        child: customBackButton(),
                       ),
-                    ),
-                  ],
+                      SizedBox(width: Get.width * 0.2),
+                      Container(
+                        margin: EdgeInsets.only(top: 8),
+                        child: Text(
+                          "Answer List",
+                          style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              color: greyDarkColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Flexible(
-                  flex: 13,
-                  fit: FlexFit.tight,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        RecommendedCareerTile(
-                            "Question 1:",
-                            AppConst.QUIZ_RESULT_PAGE_4_QUESTION_1,
-                            "Extrovert"),
-                        SizedBox(
-                          height: Get.height * 0.02,
-                        ),
-                        RecommendedCareerTile("Question 2:",
-                            AppConst.QUIZ_RESULT_PAGE_4_QUESTION_2, "Painting"),
-                        SizedBox(
-                          height: Get.height * 0.02,
-                        ),
-                        RecommendedCareerTile(
-                            "Question 3:",
-                            AppConst.QUIZ_RESULT_PAGE_4_QUESTION_3,
-                            "Make excuse"),
-                        SizedBox(
-                          height: Get.height * 0.02,
-                        ),
-                        RecommendedCareerTile(
-                            "Question 3:",
-                            AppConst.QUIZ_RESULT_PAGE_4_QUESTION_3,
-                            "Make excuse"),
-                        SizedBox(
-                          height: Get.height * 0.02,
-                        ),
-                      ],
+                Container(
+                    height: MediaQuery.of(context).size.height * 0.76,
+                    
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          RecommendedCareerTile(
+                              "Question 1:",
+                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_1,
+                              "Extrovert"),
+                          SizedBox(
+                            height: Get.height * 0.02,
+                          ),
+                          RecommendedCareerTile("Question 2:",
+                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_2, "Painting"),
+                          SizedBox(
+                            height: Get.height * 0.02,
+                          ),
+                          RecommendedCareerTile(
+                              "Question 3:",
+                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_3,
+                              "Make excuse"),
+                          SizedBox(
+                            height: Get.height * 0.02,
+                          ),
+                          RecommendedCareerTile(
+                              "Question 3:",
+                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_3,
+                              "Make excuse"),
+                          SizedBox(
+                            height: Get.height * 0.02,
+                          ),
+                        ],
+                      ),
+                    )),
+                SizedBox(height: 10),
+          
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    
+                    child: Container(
+                      height: 50,
+                      child: CustomButton(text : "EMAIL ME ANSWERS" , funct: (){
+                        Get.to(()=> Career());
+                      },),
                     ),
-                  )),
-              SizedBox(height: 10),
-
-              Flexible(
-                flex: 2,
-                fit: FlexFit.tight,
-                child: Container(
-                  height: 50,
-                  child: CustomButton(text : "EMAIL ME ANSWERS" , funct: (){
-                    Get.to(()=> Career());
-                  },),
+                    // child: Container(
+                    
+                    //   child: CustomButton(
+                    //       text: "EMAIL ME ANSWERS",
+                    //       funct: () {
+                    //         Get.to(() => Career());
+                    //       }),
+                    // ),
+                  ),
                 ),
-                // child: Container(
-                
-                //   child: CustomButton(
-                //       text: "EMAIL ME ANSWERS",
-                //       funct: () {
-                //         Get.to(() => Career());
-                //       }),
-                // ),
-              ),
-
-              //
-            ],
+          
+                //
+              ],
+            ),
           ),
         ),
       ),

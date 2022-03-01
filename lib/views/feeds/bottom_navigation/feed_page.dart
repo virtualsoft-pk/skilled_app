@@ -27,7 +27,7 @@ class _FeedPageState extends State<FeedPage>
           child: Container(
             // height: Get.height,
             color: backgroundColor,
-            padding: const EdgeInsets.only(top: 35),
+            padding: const EdgeInsets.only(top: 10),
             child: Column(
               children: [
                 Container(
@@ -80,7 +80,7 @@ class _FeedPageState extends State<FeedPage>
                   ),
                 ),
                 const SizedBox(
-                  height: 32,
+                  height: 20,
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 16),

@@ -5,14 +5,14 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/eventCalander/upcoming_events_screen.dart';
 
 import 'completed_events_screen.dart';
-class events_screen extends StatefulWidget {
-  const events_screen({Key? key}) : super(key: key);
+class Events extends StatefulWidget {
+  const Events({Key? key}) : super(key: key);
 
   @override
-  _events_screenState createState() => _events_screenState();
+  _EventsState createState() => _EventsState();
 }
 
-class _events_screenState extends State<events_screen> {
+class _EventsState extends State<Events> {
   final Map<DateTime, List<CleanCalendarEvent>> _events = {
    
   };
@@ -27,13 +27,13 @@ class _events_screenState extends State<events_screen> {
             child: Column(
               children: [
                 SizedBox(
-                  height: Get.height*0.04,
+                  height: Get.height*0.01,
                 ),
                 ListTile(
                   leading: Text("Events",style: TextStyle(color: Colors.black,fontSize: 24,fontWeight: FontWeight.bold),),
                 trailing: Container(
                   height: 36,
-                  width: 110,
+                  // width: 110,
                   decoration: BoxDecoration(
                     color: tilecolor,
                     borderRadius: BorderRadius.circular(4),
@@ -106,8 +106,8 @@ class _events_screenState extends State<events_screen> {
                   height: Get.height * 0.6,
                   child: TabBarView(
                     children: [
-                      upcoming_events_screen(),
-                      completed_events_screen(),
+                      UpCommingEvent(),
+                      CompleteEvent(),
 
                     ],
                   ),

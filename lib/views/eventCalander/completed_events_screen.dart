@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 
-class completed_events_screen extends StatefulWidget {
-  const completed_events_screen({Key? key}) : super(key: key);
+class CompleteEvent extends StatefulWidget {
+  const CompleteEvent({Key? key}) : super(key: key);
 
   @override
-  _completed_events_screenState createState() => _completed_events_screenState();
+  _CompleteEventState createState() => _CompleteEventState();
 }
 
-class   _completed_events_screenState extends State<completed_events_screen> {
+class _CompleteEventState extends State<CompleteEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

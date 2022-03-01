@@ -24,34 +24,66 @@ class _InPersonState extends State<InPerson> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: Get.height * 0.03,
+                height: Get.height * 0.04,
               ),
-              ListTile(
-                leading: InkWell(
-                  onTap: () {
-                    dialougeBox();
-                  },
-                  child: CircleAvatar(
+
+              Container(
+                child: Row(
+                  children: [
+                    CircleAvatar(
                       backgroundColor: Color(0xffF4F4F5),
                       child: Icon(
                         Icons.arrow_back_ios,
                         size: 16,
                         color: Color(0xff5A5E67),
                       )),
-                ),
-                title: Padding(
-                  padding: const EdgeInsets.only(left: 70),
-                  child: Text("Event details",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                ),
-                trailing: CircleAvatar(
+
+                       Expanded(
+                         child: Center(
+                           child: Text("Event details",
+                                               style:
+                              TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                         ),
+                       ),
+                
+
+                CircleAvatar(
                     backgroundColor: Color(0xffF4F4F5),
                     child: Icon(
                       Icons.share,
                       color: Color(0xff5A5E67),
                     )),
+                
+                  ],
+                ),
               ),
+
+              // ListTile(
+              //   leading: InkWell(
+              //     onTap: () {
+              //       dialougeBox();
+              //     },
+              //     child: CircleAvatar(
+              //         backgroundColor: Color(0xffF4F4F5),
+              //         child: Icon(
+              //           Icons.arrow_back_ios,
+              //           size: 16,
+              //           color: Color(0xff5A5E67),
+              //         )),
+              //   ),
+              //   title: Padding(
+              //     padding: const EdgeInsets.only(left: 70),
+              //     child: Text("Event details",
+              //         style:
+              //             TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              //   ),
+              //   trailing: CircleAvatar(
+              //       backgroundColor: Color(0xffF4F4F5),
+              //       child: Icon(
+              //         Icons.share,
+              //         color: Color(0xff5A5E67),
+              //       )),
+              // ),
               SizedBox(
                 height: Get.height * 0.02,
               ),
