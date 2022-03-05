@@ -34,7 +34,7 @@ class _Quiz_05State extends State<Quiz_05> {
              borderRadius: BorderRadius.circular(42),
           ),
           onPressed: () {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>Quiz_06()));
+            Navigator.push(context, MaterialPageRoute(builder: (ctx)=>Quiz_06()));
           },
           backgroundColor: primaryColor,
           child:  Icon(Icons.add,color: Colors.black,),

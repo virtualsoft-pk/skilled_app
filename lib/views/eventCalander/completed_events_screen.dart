@@ -35,7 +35,7 @@ class _CompleteEventState extends State<CompleteEvent> {
                   crossAxisAlignment: CrossAxisAlignment.start,
 
                   children: [
-                    Text('2022 design meetup'),
+                    Text('2022 meetup'),
                     Text('By Likee',style: TextStyle(color: Colors.grey),),
                     SizedBox(
                       height: 6,

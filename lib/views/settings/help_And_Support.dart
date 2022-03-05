@@ -47,6 +47,7 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
       ),
       body: Container(
         width: Get.width,
+        height: Get.height,
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -216,20 +217,18 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
   Container expendedTile() {
     return Container(
         padding: EdgeInsets.symmetric(vertical: 5),
-        width: double.infinity,
+        // width: double.infinity,
         decoration: BoxDecoration(
             color: backButtonColor, borderRadius: BorderRadius.circular(8)),
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
-            title: ListTile(
-              leading: Text(
-                "How do I edit my careers list later?",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600),
-              ),
+            title: Text(
+              "How do I edit my careers list later?",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600),
             ),
             expandedCrossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -22,13 +22,18 @@ class _PrivacyState extends State<Privacy> {
             ListTile(
               leading: Padding(
                 padding: const EdgeInsets.only(left: 6),
-                child: CircleAvatar(
-                    backgroundColor: Color(0xffF4F4F5),
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      size: 16,
-                      color: Colors.black,
-                    )),
+                child: InkWell(
+                  onTap: (){
+                    Get.back();
+                  },
+                  child: CircleAvatar(
+                      backgroundColor: Color(0xffF4F4F5),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 16,
+                        color: Colors.black,
+                      )),
+                ),
               ),
               title: Padding(
                 padding: const EdgeInsets.only(left: 43),
@@ -143,9 +148,12 @@ class _PrivacyState extends State<Privacy> {
             //   ),
             // ),
 
-            CustomButton(text: "OKAY, GOT IT", funct: (){
-              Get.to(Notifications());
-            },),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              child: CustomButton(text: "OKAY, GOT IT", funct: (){
+                Get.to(Notifications());
+              },),
+            ),
           ],
         ),
       ),

@@ -1,12 +1,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/views/forum/quiz_05.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 
 import '../../utils/app_colors.dart';
+import '../../widgets/custom_button.dart';
 import '../../widgets/hashir.dart';
 
 class Quiz_06 extends StatefulWidget {
@@ -218,13 +220,20 @@ class _Quiz_06State extends State<Quiz_06> {
       SizedBox(
         height: screenheight*0.15,
       ),
-      Container(
-          width: screenwidth*3,
-          height: screenheight*0.08,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-          child: elevatedButton(text: "Post",onpress: (){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>Quiz_07()));})
-      )
+      // Container(
+          // width: screenwidth*3,
+          // height: screenheight*0.08,
+      //     decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+      //     child: elevatedButton(text: "Post",onpress: (){
+      //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>Quiz_07()));})
+      // ),
+
+      CustomButton(
+        text: 'POST',
+        funct: (){
+          Get.to(()=>Quiz_07());
+        },
+      ),
 
           ]
           )

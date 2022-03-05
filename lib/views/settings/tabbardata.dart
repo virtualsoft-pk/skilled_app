@@ -30,56 +30,67 @@ class _TabbarDataState extends State<TabbarData> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListView.builder(
-          itemCount: data.length,
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          itemBuilder: (context, i) {
-            index = i;
-            return Column(
-              children: [
-                i == 0
-                    ? SizedBox()
-                    : Divider(
-                        thickness: 0.9,
-                        color: Colors.grey,
-                      ),
-                Row(
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 16,vertical: 0),
+              separatorBuilder: (c,i){
+                return Divider(
+                );
+              },
+              itemCount: data.length,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, i) {
+                index = i;
+                return Column(
                   children: [
-                    SizedBox(width: Get.width * 0.03),
-                    Column(
+                    // i == 0
+                    //     ? SizedBox()
+                    //     : Divider(
+                    //   thickness: 0.9,
+                    //   color: Colors.grey,
+                    // ),
+                    Row(
                       children: [
-                        Image.asset(data[i].imagepath!),
-                      ],
-                    ),
-                    SizedBox(width: Get.width * 0.03),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: Get.height * 0.02),
-                        SizedBox(
-                            width: Get.width * 0.01, height: Get.height * 0.02),
-                        Text(data[i].description!),
-                        SizedBox(height: Get.height * 0.02),
-                        Text(data[i].time!, style: TextStyle(color: Colors.grey),
+                        // SizedBox(width: Get.width * 0.02),
+                        Column(
+                          children: [
+                            Image.asset(data[i].imagepath!),
+                          ],
                         ),
+                        // SizedBox(width: Get.width * 0.02),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // SizedBox(height: Get.height * 0.01),
+                            SizedBox(
+                                width: Get.width * 0.01, height: Get.height * 0.01),
+                            Text(data[i].description!),
+                            SizedBox(height: Get.height * 0.01),
+                            Text(data[i].time!, style: TextStyle(color: Colors.grey),
+                            ),
+                          ],
+                        )
                       ],
                     )
                   ],
-                )
-              ],
-            );
-          },
+                );
+              },
+            ),
+            // index == data.length - 1
+            //     ? SizedBox()
+            //     : Divider(
+            //   thickness: 0.9,
+            //   color: Colors.grey,
+            // ),
+          ],
         ),
-        index == data.length - 1
-            ? SizedBox()
-            : Divider(
-                thickness: 0.9,
-                color: Colors.grey,
-              ),
-      ],
+      ),
     );
   }
 }

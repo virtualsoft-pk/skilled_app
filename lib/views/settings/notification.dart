@@ -23,13 +23,18 @@ class _NotificationsState extends State<Notifications> {
             ListTile(
               leading: Padding(
                 padding: const EdgeInsets.only(left: 6),
-                child: CircleAvatar(
-                    backgroundColor: Color(0xffF4F4F5),
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      size: 16,
-                      color: Colors.black,
-                    )),
+                child: InkWell(
+                  onTap: (){
+                    Get.back();
+                  },
+                  child: CircleAvatar(
+                      backgroundColor: Color(0xffF4F4F5),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 16,
+                        color: Colors.black,
+                      )),
+                ),
               ),
               title: Padding(
                 padding: const EdgeInsets.only(left: 43),
@@ -61,21 +66,26 @@ class _NotificationsState extends State<Notifications> {
             SizedBox(height: Get.height * 0.02),
             Row(
               children: [
-                SizedBox(width: Get.width * 0.04),
+                SizedBox(width: 16),
                 Text(
                   "Today",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-            Container(
-              width: Get.width * 0.97,
-              height: Get.height * 0.51,
-              child: TabBarView(
-                children: [
-                  TabbarData(),
-                  TabbarData(),
-                ],
+            Expanded(
+
+              // width: Get.width * 0.97,
+              // height: Get.height * 0.51,
+              child: Container(
+                // color: Colors.red,
+                child: TabBarView(
+
+                  children: [
+                    TabbarData(),
+                    TabbarData(),
+                  ],
+                ),
               ),
             ),
           ],
