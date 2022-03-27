@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/views/auth/sign_in.dart';
+import 'package:skilled_app/views/auth/sign_up.dart';
 import 'package:skilled_app/views/settings/busnissScreen.dart';
 import 'package:skilled_app/views/settings/help_And_Support.dart';
+import 'package:skilled_app/views/settings/privacy.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_widgets.dart';
+import 'aboutUs.dart';
 import 'accountScreen.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -75,7 +80,7 @@ class _SettingScreenState extends State<SettingScreen> {
                               width: Get.width,
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   //   crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,31 +88,44 @@ class _SettingScreenState extends State<SettingScreen> {
                                     Text(
                                       "CREATE AN ACCOUNT TO ACCESS SETTINGS",
                                       textAlign: TextAlign.center,
+
                                       style: TextStyle(
+
                                           fontSize: 14,
-                                          fontWeight: FontWeight.bold),
+
+                                          letterSpacing: 2,
+                                          fontWeight: FontWeight.w700),
                                     ),
                                     SizedBox(
                                       height: Get.height * 0.03,
                                     ),
-                                    Container(
-                                      child: Image.asset(
-                                          "assets/images/dialogImage.png"),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children:[
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Image.asset(
+                                            "assets/images/dialogImage.png")
+                                      ]
                                     ),
-                                    resizableButton(
-                                        HPadding: Get.width * 0.15,
-                                        VPadding: 15,
-                                        border: 14,
-                                        name: "Create Account"),
-                                    SizedBox(
-                                      height: Get.height * 0.04,
-                                    ),
-                                    Text(
-                                      "BACK TO HOME",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12),
-                                    ),
+                                    CustomButton(
+                                      funct: (){
+                                        Get.to(()=> SignUpView());
+                                      },
+                                       text: "Create Account"),
+
+                                   InkWell(
+                                     onTap: (){
+                                       Get.back();
+                                     },
+                                     child:  Text(
+                                       "BACK TO HOME",
+                                       style: TextStyle(
+                                           fontWeight: FontWeight.bold,
+                                           fontSize: 12),
+                                     ),
+                                   ),
                                   ],
                                 ),
                               ),
@@ -125,7 +143,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               InkWell(
                   onTap: () {
-                    Get.to(Account());
+                    Get.to(()=>Account());
                   },
                   child: buildListTile("assets/images/user.png", "Account")),
               SizedBox(
@@ -143,20 +161,36 @@ class _SettingScreenState extends State<SettingScreen> {
               SizedBox(
                 height: Get.height * 0.01,
               ),
-              buildListTile("assets/images/Lock.png", "Privacy & Terms"),
+              InkWell(
+                onTap: (){
+                  Get.to(()=> Privacy());
+                },
+                child: buildListTile("assets/images/Lock.png", "Privacy & Terms"),
+              ),
               SizedBox(
                 height: Get.height * 0.01,
               ),
               InkWell(
                   onTap: () {
-                    Get.to(Get.to(HelpAndSupportScreen()));
+                    Get.to(()=>HelpAndSupportScreen());
                   },
                   child: buildListTile(
                       "assets/images/phone.png", "Help & Support")),
               SizedBox(height: Get.height * 0.01),
-              buildListTile("assets/images/Information.png", "About"),
+
+              InkWell(
+                onTap: (){
+                  Get.to(()=>AboustUs());
+                },
+                child: buildListTile("assets/images/Information.png", "About"),
+              ),
               SizedBox(height: Get.height * 0.01),
-              buildListTile("assets/images/logout.png", "Logout"),
+              InkWell(
+                onTap: (){
+                  Get.offAll(()=> SignIn());
+                },
+                child: buildListTile("assets/images/logout.png", "Logout"),
+              ),
             ],
           ),
         ),

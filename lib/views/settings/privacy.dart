@@ -151,7 +151,7 @@ class _PrivacyState extends State<Privacy> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 16),
               child: CustomButton(text: "OKAY, GOT IT", funct: (){
-                Get.to(Notifications());
+                Get.back();
               },),
             ),
           ],

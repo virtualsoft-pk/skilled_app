@@ -5,6 +5,7 @@ import 'package:skilled_app/widgets/custom_button.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_const.dart';
 import '../../widgets/custom_widgets.dart';
+import '../feeds/bottom_navigation/bottom_navigation.dart';
 
 class AllCareers extends StatefulWidget {
   @override
@@ -12,6 +13,11 @@ class AllCareers extends StatefulWidget {
 }
 
 class _AllCareersState extends State<AllCareers> {
+
+  List<bool> careerListOptions = [false,false,false,false,false];
+
+  int selectedCount = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +69,7 @@ class _AllCareersState extends State<AllCareers> {
                           RichText(
                               text: TextSpan(children: [
                             TextSpan(
-                                text: "4/",
+                                text: "$selectedCount /",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                     color: Colors.grey, fontSize: 24)),
@@ -79,34 +85,94 @@ class _AllCareersState extends State<AllCareers> {
                         height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile(
-                          "Astrophysicist", "Category : Physics and Space"),
+                          "Astrophysicist", "Category : Physics and Space",careerListOptions[0],(val){
+                            setState(() {
+                              careerListOptions[0] = val;
+
+                              if(careerListOptions[0]){
+
+                                selectedCount = selectedCount +1;
+
+                              }else{
+                                selectedCount = selectedCount -1;
+                              }
+
+                            });
+
+
+
+                      }),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile("Enviromental Scientist",
-                          "Category : Science and Environment"),
+                          "Category : Science and Environment",careerListOptions[1],(val){
+                            setState(() {
+                              careerListOptions[1] = val;
+                              if(careerListOptions[1]){
+
+                                selectedCount = selectedCount +1;
+
+                              }else{
+                                selectedCount = selectedCount -1;
+                              }
+                            });
+                          }),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile("UI/UX Designer",
-                          "Category : Design and Computer Science"),
+                          "Category : Design and Computer Science",careerListOptions[2],(val){
+                            setState(() {
+                              careerListOptions[2] = val;
+                              if(careerListOptions[2]){
+
+                                selectedCount = selectedCount +1;
+
+                              }else{
+                                selectedCount = selectedCount -1;
+                              }
+                            });
+                          }),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile("Software Engineer",
-                          "Category : Tech and Computer Science"),
+                          "Category : Tech and Computer Science",careerListOptions[3],(val){
+                            setState(() {
+                              careerListOptions[3] = val;
+                              if(careerListOptions[3]){
+
+                                selectedCount = selectedCount +1;
+
+                              }else{
+                                selectedCount = selectedCount -1;
+                              }
+                            });
+                          }),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile(
-                          "Doctor", "Category : Medical and Biology"),
+                          "Doctor", "Category : Medical and Biology",careerListOptions[4],(val){
+                        setState(() {
+                          careerListOptions[4] = val;
+                          if(careerListOptions[4]){
+
+                            selectedCount = selectedCount +1;
+
+                          }else{
+                            selectedCount = selectedCount -1;
+                          }
+                        });
+                      }),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
                       CustomButton(
                         text: "SAVE & CONTINUE TO FEED",
                         funct: () {
-                          Get.to(AnswerList());
+                          Get.offAll(()=> BottomNavigation());
                         },
                       ),
                       SizedBox(
@@ -123,52 +189,55 @@ class _AllCareersState extends State<AllCareers> {
     );
   }
 
-  Widget RecommendedCareerTile(String career, String type) {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(width: 1, color: borderColor),
-          borderRadius: BorderRadius.circular(12)),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                career,
-                style: TextStyle(
-                    fontSize: 18, fontWeight: FontWeight.w600, color: grey900),
-              ),
-              SizedBox(
-                height: Get.height * 0.01,
-              ),
-              Text(
-                type,
-                style: TextStyle(
-                    fontSize: 12, color: grey600, fontWeight: FontWeight.w500),
-              )
-            ],
-          ),
-          Spacer(),
-          Transform.scale(
-            scale: 1.3,
-            child: Checkbox(
-              side: BorderSide(color: quizBorderColor),
-              
-              value: true,
-              onChanged: (val) {
-                setState(() {});
-              },
-              activeColor: lightGreenColor,
-              checkColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4),
-                  side: BorderSide(
-                    color: Colors.black,
-                  )),
+  Widget RecommendedCareerTile(String career, String type,bool isSelected,Function onPressed) {
+    return InkWell(
+      onTap: (){
+        onPressed(!isSelected);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(width: 1, color: borderColor),
+            borderRadius: BorderRadius.circular(12)),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        child: Row(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  career,
+                  style: TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w600, color: grey900),
+                ),
+                SizedBox(
+                  height: Get.height * 0.01,
+                ),
+                Text(
+                  type,
+                  style: TextStyle(
+                      fontSize: 12, color: grey600, fontWeight: FontWeight.w500),
+                )
+              ],
             ),
-          ),
-        ],
+            Spacer(),
+            Transform.scale(
+              scale: 1.3,
+              child: Checkbox(
+                side: BorderSide(color: quizBorderColor),
+
+                value: isSelected,
+                onChanged: (val) => onPressed(val),
+                activeColor: lightGreenColor,
+                checkColor: Colors.black,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    side: BorderSide(
+                      color: Colors.black,
+                    )),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

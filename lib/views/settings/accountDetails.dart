@@ -45,21 +45,26 @@ class _AccountDetailState extends State<AccountDetail> {
         actions: [
           InkWell(
               onTap: () {
-                Get.to(ProfileEdit());
+                Get.to(()=>ProfileEdit());
               },
               child: Image.asset(
                 "assets/images/edit.png",
                 width: Get.width * 0.04,
                 height: Get.height * 0.04,
               )),
-          Padding(
-            padding: const EdgeInsets.only(right: 20, top: 20),
-            child: Text(
-              "Edit",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500),
+          InkWell(
+            onTap: (){
+              Get.to(()=>ProfileEdit());
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20, top: 20,left: 10),
+              child: Text(
+                "Edit",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500),
+              ),
             ),
           )
         ],

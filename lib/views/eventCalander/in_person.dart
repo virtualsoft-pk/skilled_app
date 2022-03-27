@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/widgets/add_event_calender.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../widgets/custom_widgets.dart';
@@ -30,13 +31,18 @@ class _InPersonState extends State<InPerson> {
               Container(
                 child: Row(
                   children: [
-                    CircleAvatar(
-                      backgroundColor: Color(0xffF4F4F5),
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        size: 16,
-                        color: Color(0xff5A5E67),
-                      )),
+                    InkWell(
+                      onTap: (){
+                        Get.back();
+                      },
+                      child: CircleAvatar(
+                          backgroundColor: Color(0xffF4F4F5),
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            size: 16,
+                            color: Color(0xff5A5E67),
+                          )),
+                    ),
 
                        Expanded(
                          child: Center(
@@ -232,27 +238,32 @@ class _InPersonState extends State<InPerson> {
                     ],
                   ),
                   SizedBox(width: Get.width * 0.03),
-                  Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 12, top: 9),
-                        width: Get.width * 0.4,
-                        height: Get.height * 0.07,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            color: Colors.white),
-                        child: Row(
-                          children: [
-                            SizedBox(width: Get.width * 0.03),
-                            Icon(Icons.shopping_bag, color: Colors.grey),
-                            Text(
-                              "Add to Calendar ",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
+                  InkWell(
+                    onTap: (){
+                      AddEventCalender(context);
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 12, top: 9),
+                          width: Get.width * 0.4,
+                          height: Get.height * 0.07,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(18),
+                              color: Colors.white),
+                          child: Row(
+                            children: [
+                              SizedBox(width: Get.width * 0.03),
+                              Icon(Icons.shopping_bag, color: Colors.grey),
+                              Text(
+                                "Add to Calendar ",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),

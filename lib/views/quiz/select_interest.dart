@@ -44,9 +44,8 @@ class _SelectInterestState extends State<SelectInterest> {
                   children: [
                     InkWell(
                       onTap: () {
-                        // Navigator.pushReplacement(context,
-                        //     MaterialPageRoute(builder: (ctx) => Quiz02()));
-                      },
+                        Get.back();
+                        },
                       child: CircleAvatar(
                         radius: 22.0,
                         backgroundColor: Colors.grey[200],

@@ -77,199 +77,261 @@ class _QuizQuestionsState extends State<QuizQuestions> {
                   SizedBox(
                     height: screenheight * 0.04,
                   ),
-                  Container(
-                    height: screenheight * 0.085,
-                    width: screenwidth * 0.9,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: value[0] == false ? Colors.white : containercolor,
-                       border: Border.all(color: value[0] ?Colors.black: borderColor),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 13),
-                          child: Text(
-                              "Funny",
-                              style: GoogleFonts.manrope(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              )),
-                        ),
-                        Checkbox(
-                          side: BorderSide(color: borderColor),
-                          onChanged: (val) {
-                            setState(() {
-                              if (i == 0) {
-                                i = -1;
-                                value[0] = !value[0];
-                              } else if (i == -1) {
-                                i = 0;
-                                value[0] = !value[0];
-                              }
-                            });
-                          },
-                          value: value[0],
-                          activeColor: Colors.white,
-                          checkColor: grey900,
-            
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                              side: BorderSide(
-                                color: checkColor,
-                              )),
-            
-                          //fillColor: null,
-                        ),
-                      ],
+                  InkWell(
+                    onTap: (){
+                      setState(() {
+
+                        value = [false, false, false, false];
+
+                        if (i == 0) {
+                          i = -1;
+                          value[0] = !value[0];
+                        } else if (i == -1) {
+                          i = 0;
+                          value[0] = !value[0];
+                        }
+                      });
+                    },
+                    child: Container(
+                      height: screenheight * 0.085,
+                      width: screenwidth * 0.9,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: value[0] == false ? Colors.white : containercolor,
+                        border: Border.all(color: value[0] ?Colors.black: borderColor),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 13),
+                            child: Text(
+                                "Funny",
+                                style: GoogleFonts.manrope(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                          ),
+                          Checkbox(
+                            side: BorderSide(color: borderColor),
+                            onChanged: (val) {
+                              setState(() {
+
+                                value = [false, false, false, false];
+
+                                if (i == 0) {
+                                  i = -1;
+                                  value[0] = !value[0];
+                                } else if (i == -1) {
+                                  i = 0;
+                                  value[0] = !value[0];
+                                }
+                              });
+                            },
+                            value: value[0],
+                            activeColor: Colors.white,
+                            checkColor: grey900,
+
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                                side: BorderSide(
+                                  color: checkColor,
+                                )),
+
+                            //fillColor: null,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: screenheight * 0.02,
                   ),
-                  Container(
-                    height: screenheight * 0.076,
-                    width: screenwidth * 0.9,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: value[1] == false ? Colors.white : containercolor,
-                         border: Border.all(color: value[1] ?Colors.black: borderColor)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 13),
-                          child: Text(
-                              "Intelligence",
-                              style: GoogleFonts.manrope(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              )),
-                        ),
-                        Checkbox(
-                          side: BorderSide(color: borderColor),
-                          onChanged: (val) {
-                            setState(() {
-                              if (i == 0) {
-                                i = -1;
-                                value[1] = !value[1];
-                              } else if (i == -1) {
-                                i = 0;
-                                value[1] = !value[1];
-                              }
-                            });
-                          },
-                          value: value[1],
-                          activeColor: Colors.white,
-                          checkColor: grey900,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                              side: BorderSide(
-                                color: checkColor,
-                              )),
-            
-                          //fillColor: null,
-                        ),
-                      ],
+                  InkWell(
+                    onTap: (){
+                      setState(() {
+                        value = [false, false, false, false];
+                        if (i == 0) {
+                          i = -1;
+                          value[1] = !value[1];
+                        } else if (i == -1) {
+                          i = 0;
+                          value[1] = !value[1];
+                        }
+                      });
+                    },
+                    child: Container(
+                      height: screenheight * 0.076,
+                      width: screenwidth * 0.9,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: value[1] == false ? Colors.white : containercolor,
+                          border: Border.all(color: value[1] ?Colors.black: borderColor)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 13),
+                            child: Text(
+                                "Intelligence",
+                                style: GoogleFonts.manrope(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                          ),
+                          Checkbox(
+                            side: BorderSide(color: borderColor),
+                            onChanged: (val) {
+                              setState(() {
+                                value = [false, false, false, false];
+                                if (i == 0) {
+                                  i = -1;
+                                  value[1] = !value[1];
+                                } else if (i == -1) {
+                                  i = 0;
+                                  value[1] = !value[1];
+                                }
+                              });
+                            },
+                            value: value[1],
+                            activeColor: Colors.white,
+                            checkColor: grey900,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                                side: BorderSide(
+                                  color: checkColor,
+                                )),
+
+                            //fillColor: null,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: screenheight * 0.02,
                   ),
-                  Container(
-                    height: screenheight * 0.076,
-                    width: screenwidth * 0.9,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: value[2] == false ? Colors.white : containercolor,
-                        border: Border.all(color: value[2] ?Colors.black: borderColor)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 13),
-                          child: Text(
-                               "Creative",
-                              style: GoogleFonts.manrope(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              )),
-                        ),
-                        Checkbox(
-                          side: BorderSide(color: borderColor),
-                          onChanged: (val) {
-                            setState(() {
-                              if(i == 0){
-                                i = -1;
-                                value[2] = !value[2];}
-                              else if(i == -1){
-                                i = 0;
-                                value[2] = !value[2];}
-                            });
-                          },
-                          value: value[2],
-                          activeColor: Colors.white,
-                          checkColor: grey900,
-            
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                              side: BorderSide(
-                                color: checkColor,
-                              )),
-            
-                          //fillColor: null,
-                        ),
-                      ],
+                  InkWell(
+                    onTap: (){
+                      setState(() {
+                        value = [false, false, false, false];
+                        if(i == 0){
+                          i = -1;
+                          value[2] = !value[2];}
+                        else if(i == -1){
+                          i = 0;
+                          value[2] = !value[2];}
+                      });
+                    },
+                    child: Container(
+                      height: screenheight * 0.076,
+                      width: screenwidth * 0.9,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: value[2] == false ? Colors.white : containercolor,
+                          border: Border.all(color: value[2] ?Colors.black: borderColor)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 13),
+                            child: Text(
+                                "Creative",
+                                style: GoogleFonts.manrope(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                          ),
+                          Checkbox(
+                            side: BorderSide(color: borderColor),
+                            onChanged: (val) {
+                              setState(() {
+                                value = [false, false, false, false];
+                                if(i == 0){
+                                  i = -1;
+                                  value[2] = !value[2];}
+                                else if(i == -1){
+                                  i = 0;
+                                  value[2] = !value[2];}
+                              });
+                            },
+                            value: value[2],
+                            activeColor: Colors.white,
+                            checkColor: grey900,
+
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                                side: BorderSide(
+                                  color: checkColor,
+                                )),
+
+                            //fillColor: null,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: screenheight * 0.02,
                   ),
-                  Container(
-                    height: screenheight * 0.076,
-                    width: screenwidth * 0.9,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: value[3] == false ? Colors.white : containercolor,
-                        border: Border.all(color: value[3] ?Colors.black: borderColor)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 13),
-                          child: Text(
-                              "Kind",
-                              style: GoogleFonts.manrope(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              )),
-                        ),
-                        Checkbox(
-                          side: BorderSide(color: borderColor),
-                          onChanged: (val) {
-                            setState(() {
-                              if(i == 0){
-                                i = -1;
-                                value[3] = !value[3];}
-                              else if(i == -1){
-                                i = 0;
-                                value[3] = !value[3];}
-                            });
-                          },
-                          value: value[3],
-                          activeColor: Colors.white,
-                          checkColor: grey900,
-            
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                              side: BorderSide(
-                                color: borderColor,
-                              )),
-            
-                          //fillColor: null,
-                        ),
-                      ],
+                  InkWell(
+                    onTap: (){
+                      setState(() {
+                        value = [false, false, false, false];
+                        if(i == 0){
+                          i = -1;
+                          value[3] = !value[3];}
+                        else if(i == -1){
+                          i = 0;
+                          value[3] = !value[3];}
+                      });
+                    },
+                    child: Container(
+                      height: screenheight * 0.076,
+                      width: screenwidth * 0.9,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: value[3] == false ? Colors.white : containercolor,
+                          border: Border.all(color: value[3] ?Colors.black: borderColor)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 13),
+                            child: Text(
+                                "Kind",
+                                style: GoogleFonts.manrope(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                          ),
+                          Checkbox(
+                            side: BorderSide(color: borderColor),
+                            onChanged: (val) {
+                              setState(() {
+                                value = [false, false, false, false];
+                                if(i == 0){
+                                  i = -1;
+                                  value[3] = !value[3];}
+                                else if(i == -1){
+                                  i = 0;
+                                  value[3] = !value[3];}
+                              });
+                            },
+                            value: value[3],
+                            activeColor: Colors.white,
+                            checkColor: grey900,
+
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                                side: BorderSide(
+                                  color: borderColor,
+                                )),
+
+                            //fillColor: null,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(

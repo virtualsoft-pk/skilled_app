@@ -12,6 +12,26 @@ class ProfileEdit extends StatefulWidget {
 }
 
 class _ProfileEditState extends State<ProfileEdit> {
+
+  DateTime selectedDate = DateTime(2016,1,15);
+  TextEditingController dob = TextEditingController();
+
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        initialDatePickerMode: DatePickerMode.day,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2101));
+    if (picked != null){
+      setState(() {
+        selectedDate = picked;
+        dob.text = '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}';
+      });
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,11 +63,16 @@ class _ProfileEditState extends State<ProfileEdit> {
           style: TextStyle(color: Colors.black),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20, top: 20),
-            child: Text(
-              "Cancel",
-              style: TextStyle(color: Colors.black, fontSize: 18),
+          InkWell(
+            onTap: (){
+              Get.back();
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20, top: 20),
+              child: Text(
+                "Cancel",
+                style: TextStyle(color: Colors.black, fontSize: 18),
+              ),
             ),
           )
         ],
@@ -129,16 +154,49 @@ class _ProfileEditState extends State<ProfileEdit> {
                     SizedBox(
                       height: Get.height * 0.01,
                     ),
-                    customTextField(
-                        text: "09/09/2006", icon: Icon(Icons.calendar_today)),
+                    TextFormField(
+                      onTap: (){
+                        _selectDate(context);
+                      },
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: greyColor,
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: blueColor),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        disabledBorder:
+                        OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            12,
+                          ),
+                          borderSide:const BorderSide(
+                            color: deepOrangeColor,
+                          ),
+                        ),
+                        hintText: dob.text,
+                        hintStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff8D9196),
+                        ),
+                        suffixIcon: Icon(Icons.calendar_today),
+                      ),
+                    ),
                     SizedBox(
                       height: Get.height * 0.04,
                     ),
-                    InkWell(
-                        onTap: () {
-                          Get.to(ChangePassword());
-                        },
-                        child: CustomButton(text:"Save changes")),
+                    CustomButton(text:"Save changes",funct: () {
+
+                    },),
                   ],
                 ),
               )

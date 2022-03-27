@@ -16,12 +16,16 @@ class _JobsState extends State<Jobs> {
     return Scaffold(
       appBar: AppBar(
           title: Container(
-              margin: EdgeInsets.only(left: 60),
               child: Text(
                 "Available Jobs",
                 style: TextStyle(color: Colors.black, fontSize: 15),
               )),
-          leading: Icon(Icons.clear, color: Colors.black),
+          leading: IconButton(
+            onPressed: (){
+              Get.back();
+            },
+            icon: Icon(Icons.clear, color: Colors.black),
+          ),
           backgroundColor: Color(0xffF4F4F5)),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 16),
@@ -201,21 +205,26 @@ class _JobsState extends State<Jobs> {
               //   ),
               // ),
               SizedBox(height: Get.height * 0.01),
-              Row(
-                children: [
-                  SizedBox(width: Get.width * 0.25),
-                  CircleAvatar(
-                      radius: 15,
-                      backgroundColor: Color(0xffF4F4F5),
-                      child: Icon(Icons.arrow_back_ios,
-                          color: Colors.black, size: 12)),
-                  SizedBox(width: Get.width * 0.04),
-                  Text(
-                    "BACK TO CAREER",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  )
-                ],
-              )
+             InkWell(
+               onTap: (){
+                 Get.back();
+               },
+               child:  Row(
+                 children: [
+                   SizedBox(width: Get.width * 0.25),
+                   CircleAvatar(
+                       radius: 15,
+                       backgroundColor: Color(0xffF4F4F5),
+                       child: Icon(Icons.arrow_back_ios,
+                           color: Colors.black, size: 12)),
+                   SizedBox(width: Get.width * 0.04),
+                   Text(
+                     "BACK TO CAREER",
+                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                   )
+                 ],
+               ),
+             )
             ],
           ),
         ),

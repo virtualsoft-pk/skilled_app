@@ -55,7 +55,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           children: [
             InkWell(
               onTap: () {
-                Get.to(CareerListScreen());
+
               },
               child: buildListTile("Someome mention me",
                   "When someone replies to my\nforum post", firstCheck, (a) {

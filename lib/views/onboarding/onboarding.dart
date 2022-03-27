@@ -8,6 +8,8 @@ import 'package:skilled_app/views/auth/sign_in.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/views/onboarding/onboarding_widget.dart' as o;
 
+import '../feeds/bottom_navigation/bottom_navigation.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
 
@@ -89,6 +91,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             activeSize: Size(10, 10),
             inactiveSize: Size(8, 8),
           ),
+
           nextButton: OnBoardConsumer(
             builder: (context, ref, child) {
               final state = ref.watch(onBoardStateProvider);
@@ -123,10 +126,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
           Spacer(),
 
-          Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            child: Text("Continue as a guest",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w600 , color: grey900),),
-          ),
+      TextButton(
+        onPressed: (){
+          Get.to(()=> BottomNavigation());
+        },
+        child: const Text("Continue as a guest",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w600 , color: grey900),),
+      ),
+
+      SizedBox(
+        height: 20,
+      ),
+
     ],
       ),
     );

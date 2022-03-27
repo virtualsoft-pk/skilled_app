@@ -62,11 +62,18 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   height: Get.height * 0.02,
                   width: Get.width * 0.05,
                 )),
-            Padding(
-              padding: const EdgeInsets.only(right: 20, top: 20),
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.black),
+            InkWell(
+              onTap: (){
+                setState(() {
+                  changeView = !changeView;
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 20, top: 20),
+                child: Text(
+                  "Edit",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             )
           ],
@@ -136,20 +143,17 @@ class _CareerListScreenState extends State<CareerListScreen> {
                 height: changeView ? Get.height * 0.13 : Get.height * 0.04,
               ),
               changeView
-                  ? InkWell(
-                      onTap: () {
-                        // _settingModalBottomSheet(context);
-                        Get.bottomSheet(buttomSheet(),
-                            elevation: 20.0,
-                            enableDrag: false,
-                            backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30.0),
-                              topRight: Radius.circular(30.0),
-                            )));
-                      },
-                      child: CustomButton(text:"SAVE AND CONTINUE"))
+                  ? CustomButton(text:"SAVE AND CONTINUE",funct: (){
+                Get.bottomSheet(buttomSheet(),
+                    elevation: 20.0,
+                    enableDrag: false,
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0),
+                          topRight: Radius.circular(30.0),
+                        )));
+              },)
                   : Container(),
               // : Align(
               //     alignment: Alignment.topRight,
@@ -169,7 +173,17 @@ class _CareerListScreenState extends State<CareerListScreen> {
             : FloatingActionButton(
                 elevation: 5,
                 backgroundColor: buttonColor,
-                onPressed: () {},
+                onPressed: () {
+                  Get.bottomSheet(buttomSheet(),
+                      elevation: 20.0,
+                      enableDrag: false,
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.0),
+                            topRight: Radius.circular(30.0),
+                          )));
+                },
                 child: Icon(
                   Icons.add,
                   color: Colors.black,
@@ -180,6 +194,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
   Container buttomSheet() {
     return Container(
       height: Get.height * 0.5,
+      width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: SingleChildScrollView(
         child: Column(
@@ -195,17 +210,22 @@ class _CareerListScreenState extends State<CareerListScreen> {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                     Spacer(),
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      height: Get.height * 0.06,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.3),
-                          shape: BoxShape.circle),
-                      child: Center(
-                          child: Icon(
-                        Icons.close,
-                        size: 20,
-                      )),
+                    InkWell(
+                      onTap: (){
+                        Get.back();
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        height: Get.height * 0.06,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.withOpacity(0.3),
+                            shape: BoxShape.circle),
+                        child: Center(
+                            child: Icon(
+                              Icons.close,
+                              size: 20,
+                            )),
+                      ),
                     ),
                   ],
                 ),
@@ -366,7 +386,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       height: Get.height * 0.09,
       decoration: BoxDecoration(
-          color: checkColor,
+          color: lightGreenColor,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(width: 0.7)),
       child: Row(

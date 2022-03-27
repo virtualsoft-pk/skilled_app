@@ -3,7 +3,8 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/eventCalander/in_person.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
-import '../../forum/quiz_05.dart';
+import '../../eventCalander/events_screen.dart';
+import '../../forum/forum.dart';
 import '../../settings/settingPage.dart';
 import 'video_practice.dart';
 
@@ -19,8 +20,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   List _screens = [
     FeedPage(),
     Search(),
-    Quiz_05(),
-    InPerson(),
+    Forum(),
+    Events(),
     SettingScreen(),
   ];
 
@@ -63,21 +64,21 @@ class _BottomNavigationState extends State<BottomNavigation> {
           BottomNavigationBarItem(
             label: "Forum",
             icon: Image.asset(
-              'assets/layers.png',
+              _currentIndex == 2? 'assets/layersS.png':'assets/layers.png',
               height: 18,
             ),
           ),
           BottomNavigationBarItem(
             label: "Calendar",
             icon: Image.asset(
-              'assets/Calender.png',
+              _currentIndex == 3?'assets/CalenderS.png' :'assets/Calender.png',
               height: 18,
             ),
           ),
           BottomNavigationBarItem(
             label: 'Setting',
             icon: Image.asset(
-              'assets/Setting.png',
+              _currentIndex == 4? 'assets/SettingS.png':'assets/Setting.png',
               height: 18,
             ),
           )

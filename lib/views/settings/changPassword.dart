@@ -89,7 +89,6 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
             InkWell(
                 onTap: () {
-                  // Get.to(SocialMedia());
                 },
                 child: CustomButton(text: "Update")),
             SizedBox(

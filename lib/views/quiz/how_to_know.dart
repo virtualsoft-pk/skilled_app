@@ -26,6 +26,9 @@ class _HowToKnowState extends State<HowToKnow> {
     About(image: 'assets/images/tictok.png', name: 'TikTok'),
     About(image: 'assets/images/twitter.png', name: 'Twitter'),
   ];
+
+  int selectedItem = -1;
+
   @override
   Widget build(BuildContext context) {
     var screenheight = MediaQuery.of(context).size.height;
@@ -60,6 +63,9 @@ class _HowToKnowState extends State<HowToKnow> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
+                          setState(() {
+                            selectedItem = index;
+                          });
                         },
                         child: Container(
                           margin: EdgeInsets.only(top: 8),
@@ -67,7 +73,7 @@ class _HowToKnowState extends State<HowToKnow> {
                           height: 62,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: greycolor
+                            color: selectedItem == index? containercolor :greycolor
                           ),
                           child: Row(
                             children: [

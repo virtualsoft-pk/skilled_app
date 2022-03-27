@@ -120,7 +120,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                         SizedBox(
                           height: Get.height * 0.04,
                         ),
-                        CustomButton(text:"GO TO CAREAR LIST" , funct: (){
+                        CustomButton(text:"GO TO CAREERS LIST" , funct: (){
                           Get.to(AllCareers());
                         },),
                       ],

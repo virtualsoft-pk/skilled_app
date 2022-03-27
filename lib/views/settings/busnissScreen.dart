@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/views/settings/NotificationScreen.dart';
 
 import '../../utils/app_colors.dart';
 
@@ -11,6 +10,7 @@ class BusinessScreen extends StatefulWidget {
 }
 
 class _BusinessScreenState extends State<BusinessScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,69 +41,71 @@ class _BusinessScreenState extends State<BusinessScreen> {
       body: Container(
         width: Get.width,
         padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-        child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                child: Image.asset("assets/images/skilled.png"),
+        child: SingleChildScrollView(
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  child: Image.asset("assets/images/skilled.png"),
+                ),
               ),
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "Business",
-                style: TextStyle(fontSize: 25),
+              SizedBox(
+                height: Get.height * 0.02,
               ),
-            ),
-            SizedBox(
-              height: Get.height * 0.03,
-            ),
-            Container(
-              child: Image.asset(
-                "assets/images/businessImage.png",
-                width: Get.width * 0.83,
-                fit: BoxFit.fill,
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "Business",
+                  style: TextStyle(fontSize: 25),
+                ),
               ),
-            ),
-            SizedBox(
-              height: Get.height * 0.05,
-            ),
-            Text(
-              "Start advertising your business\nwith Skilld today!",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(
-              height: Get.height * 0.05,
-            ),
-            Container(
-              child: Image.asset(
-                "assets/images/ApplePlay.png",
-                height: Get.height * 0.075,
-                fit: BoxFit.cover,
+              SizedBox(
+                height: Get.height * 0.03,
               ),
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(NotificationScreen());
-              },
-              child: Container(
+              Container(
                 child: Image.asset(
-                  "assets/images/googlePlay.png",
+                  "assets/images/businessImage.png",
+                  width: Get.width * 0.83,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              SizedBox(
+                height: Get.height * 0.05,
+              ),
+              Text(
+                "Start advertising your business\nwith Skilld today!",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(
+                height: Get.height * 0.05,
+              ),
+              Container(
+                child: Image.asset(
+                  "assets/images/ApplePlay.png",
                   height: Get.height * 0.075,
                   fit: BoxFit.cover,
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: Get.height * 0.02,
+              ),
+              InkWell(
+                onTap: () {
+
+                },
+                child: Container(
+                  child: Image.asset(
+                    "assets/images/googlePlay.png",
+                    height: Get.height * 0.075,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

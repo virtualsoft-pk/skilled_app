@@ -4,9 +4,12 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/auth/forgot_password.dart';
 import 'package:skilled_app/views/quiz/quiz_demo.dart';
 import 'package:skilled_app/views/auth/sign_up.dart';
+import 'package:skilled_app/views/quiz/videos_screen.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
+
+import '../feeds/bottom_navigation/bottom_navigation.dart';
 
 class SignIn extends StatefulWidget {
   SignIn({Key? key}) : super(key: key);
@@ -18,9 +21,11 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   bool value = false;
 
+  bool isVisible = false;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(child: Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
@@ -29,8 +34,7 @@ class _SignInState extends State<SignIn> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            customBackButton(),
-           const Text(
+            const Text(
               'Welcome Back !',
               style: TextStyle(
                 color: textColor,
@@ -49,7 +53,7 @@ class _SignInState extends State<SignIn> {
                 color: lightgreyColor,
               ),
             ),
-             SizedBox(
+            SizedBox(
               height: Get.height * 0.04,
             ),
             Row(
@@ -88,7 +92,59 @@ class _SignInState extends State<SignIn> {
             const SizedBox(
               height: 8,
             ),
-            customTextField(text:"Password" , icon: const Icon(Icons.visibility_off) , obsecure: true),
+
+            TextFormField(
+              obscureText: !isVisible,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: greyColor,
+                border: const OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: blueColor),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                disabledBorder:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    12,
+                  ),
+                  borderSide:const BorderSide(
+                    color: deepOrangeColor,
+                  ),
+                ),
+                hintText: "Password",
+                hintStyle: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff8D9196),
+                ),
+                suffixIcon:IconButton(
+                  padding: EdgeInsets.all(0),
+                  onPressed: (){
+                    setState(() {
+                      isVisible = !isVisible;
+                    });
+                  },
+                  icon: Icon(!isVisible?Icons.visibility_off:Icons.visibility),
+                ) ,
+                // suffix: IconButton(
+                //   padding: EdgeInsets.all(0),
+                //   onPressed: (){
+                //     setState(() {
+                //       isVisible = !isVisible;
+                //     });
+                //   },
+                //   icon: Icon(!isVisible?Icons.visibility_off:Icons.visibility),
+                // )
+              ),
+            ),
+
             const SizedBox(
               height: 16,
             ),
@@ -105,17 +161,17 @@ class _SignInState extends State<SignIn> {
                         this.value = value!;
                       });
                     }),
-              const  Text(
+                const  Text(
                   'Remember me',
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 14,
                   ),
                 ),
-              const  Spacer(),
+                const  Spacer(),
                 InkWell(
                   onTap: () {
-                    
+
                     Get.to(() => const ForgotPassword());
                   },
                   child: const Text(
@@ -129,20 +185,21 @@ class _SignInState extends State<SignIn> {
                 ),
               ],
             ),
-          const  Spacer(),
+            const  Spacer(),
             CustomButton(text: 'LOG IN', funct: () {
-              Get.to(()=> QuizStartDemo());
+              Get.to(()=> VideoScreen());
+              // Get.to(()=> QuizStartDemo());
             }),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-             const Text(
+                const Text(
                   'Dont\' have account?',
                   style: TextStyle(
                     color: Colors.grey,
                   ),
                 ),
-              const  SizedBox(
+                const  SizedBox(
                   width: 5,
                 ),
                 InkWell(
@@ -159,23 +216,29 @@ class _SignInState extends State<SignIn> {
                 )
               ],
             ),
-          const SizedBox(
+            const SizedBox(
               height: 32,
             ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 40),
-              alignment: Alignment.center,
-              child: const Text(
-                'Continue as guest',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+
+          // Get.to(()=> BottomNavigation());
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                  onPressed: (){
+                    Get.to(()=> BottomNavigation());
+                  },
+                  child: const Text("Continue as a guest",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w600 , color: grey900),),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 20,
             ),
           ],
         ),
       ),
-    );
+    ));
   }
 }

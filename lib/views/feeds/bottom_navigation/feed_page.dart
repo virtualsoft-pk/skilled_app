@@ -7,6 +7,8 @@ import 'package:skilled_app/utils/app_colors.dart';
 
 import '../../../model/feed_model.dart';
 import '../../../model/video_feed_model.dart';
+import '../../eventCalander/in_person.dart';
+import '../../settings/notification.dart';
 
 class FeedPage extends StatefulWidget {
   FeedPage({Key? key}) : super(key: key);
@@ -41,16 +43,21 @@ class _FeedPageState extends State<FeedPage>
                       ),
                       Stack(
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(9),
-                            height: 44,
-                            width: 44,
-                            decoration: BoxDecoration(
-                              color: greyColor,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Image.asset(
-                              'assets/Notification.png',
+                          InkWell(
+                            onTap: (){
+                              Get.to(()=>Notifications());
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(9),
+                              height: 44,
+                              width: 44,
+                              decoration: BoxDecoration(
+                                color: greyColor,
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: Image.asset(
+                                'assets/Notification.png',
+                              ),
                             ),
                           ),
                           Positioned(
@@ -196,18 +203,23 @@ class _FeedPageState extends State<FeedPage>
                                 SizedBox(
                                   height: 12,
                                 ),
-                                Container(
-                                  height: 164,
-                                  decoration: BoxDecoration(
-                                    color: Colors.amber,
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(12),
-                                      topRight: Radius.circular(12),
-                                    ),
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image:
-                                          AssetImage(feedModel[i].mainImage!),
+                                InkWell(
+                                  onTap: (){
+                                    Get.to(()=> InPerson());
+                                  },
+                                  child: Container(
+                                    height: 164,
+                                    decoration: BoxDecoration(
+                                      color: Colors.amber,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(12),
+                                        topRight: Radius.circular(12),
+                                      ),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image:
+                                        AssetImage(feedModel[i].mainImage!),
+                                      ),
                                     ),
                                   ),
                                 ),

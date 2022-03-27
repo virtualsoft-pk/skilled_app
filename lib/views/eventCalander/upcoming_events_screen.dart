@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
+import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/views/eventCalander/in_person.dart';
+import 'package:skilled_app/widgets/add_event_calender.dart';
+
 
 
 class UpCommingEvent extends StatefulWidget {
@@ -28,6 +33,9 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: ListTile(
+                onTap: (){
+                  Get.to(()=> InPerson());
+                },
                 leading: CircleAvatar(
                   child: Image(image: AssetImage('assets/images/img.png'),fit: BoxFit.cover,),
                 ),
@@ -126,7 +134,7 @@ class _UpCommingEventState extends State<UpCommingEvent> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          AddEventCalender(context);
         },
         backgroundColor: floatingcolor,
         child: const Icon(Icons.add,size: 30,color: Colors.black,),

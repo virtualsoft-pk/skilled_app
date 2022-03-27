@@ -59,7 +59,7 @@ class _QuizStartDemoState extends State<QuizStartDemo> {
                     : CustomButton(
                         text: 'NEXT',
                         funct: (){
-                          Get.to(()=> QuizStart());
+
                         },
                       ),
               )

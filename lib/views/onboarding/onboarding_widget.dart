@@ -185,7 +185,7 @@ class _OnBoard extends HookConsumerWidget {
                   _onSkipPressed(onSkip);
                 },
                 child: const Text(
-                  "Skip",
+                  "",
                   style: TextStyle(color: Colors.blueAccent),
                 ),
               ),
@@ -217,15 +217,31 @@ class _OnBoard extends HookConsumerWidget {
                                     child: Container(
                                       margin: EdgeInsets.only(right: 20),
                                       child: const Text(
-                                        'Skip',
+                                        '',
                                         style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500),
                                       ),
                                     ),
                                   )),
-                              Container(
+                              index ==2 ? Positioned(
+
+                                  right: -Get.width*0.2,
+                                  bottom: 0,
+                                  left: 0,
+                                  top: 0,
+                                  child: Container(
+                                width: Get.width,
+                                // padding: EdgeInsets.only(left: index == 2? Get.width*0.15 : 0),
+                                child: Image.asset(
+                                  onBoardData[index].imgUrl,
+                                  width: imageWidth,
+                                  height: imageHeight,
+                                  fit: BoxFit.contain,
+                                ),
+                              )) :Container(
                                 width: double.infinity,
+                                // padding: EdgeInsets.only(left: index == 2? Get.width*0.15 : 0),
                                 child: Image.asset(
                                   onBoardData[index].imgUrl,
                                   width: imageWidth,

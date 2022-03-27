@@ -8,6 +8,7 @@ import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../utils/app_const.dart';
 import '../../widgets/custom_button.dart';
+import '../../widgets/custom_dialogs.dart';
 
 class AnswerList extends StatefulWidget {
   @override
@@ -111,7 +112,7 @@ class _AnswerListState extends State<AnswerList> {
                     child: Container(
                       height: 50,
                       child: CustomButton(text : "EMAIL ME ANSWERS" , funct: (){
-                        Get.to(()=> Career());
+                        sendEmailDialog(context);
                       },),
                     ),
                     // child: Container(

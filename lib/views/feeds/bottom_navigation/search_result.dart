@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../model/feed_model.dart';
 import '../../../utils/app_colors.dart';
 import '../../../widgets/all_widgets.dart';
+import '../../eventCalander/in_person.dart';
 
 class SearchResult extends StatefulWidget {
   SearchResult({Key? key}) : super(key: key);
@@ -30,7 +31,12 @@ class _SearchResultState extends State<SearchResult> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    backButton(imageUrl: 'assets/Vector.png'),
+                    InkWell(
+                      onTap: (){
+                        Get.back();
+                      },
+                      child: backButton(imageUrl: 'assets/back.png',),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 12),
                       child: Text(
@@ -564,20 +570,28 @@ class _SearchResultState extends State<SearchResult> {
                         SizedBox(
                           height: 12,
                         ),
-                        Container(
-                          height: 164,
-                          decoration: BoxDecoration(
-                            color: Colors.amber,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(12),
-                              topRight: Radius.circular(12),
-                            ),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(feedModel[i].mainImage!),
+
+
+                        InkWell(
+                    onTap: (){
+                      Get.to(()=> InPerson());
+
+                    },
+                          child: Container(
+                            height: 164,
+                            decoration: BoxDecoration(
+                              color: Colors.amber,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(12),
+                                topRight: Radius.circular(12),
+                              ),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(feedModel[i].mainImage!),
+                              ),
                             ),
                           ),
-                        ),
+                    ),
                         Container(
                           width: Get.width,
                           height: 54,

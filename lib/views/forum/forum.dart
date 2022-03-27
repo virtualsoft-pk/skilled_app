@@ -4,10 +4,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/views/forum/quiz_06.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
+import 'package:skilled_app/views/forum/see_all.dart';
+import 'package:skilled_app/views/forum/thread_detail.dart';
 
 import '../../model/aboutmodel.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/hashir.dart';
+import '../settings/notification.dart';
 
 
 class Forum extends StatefulWidget {
@@ -52,18 +55,24 @@ class _ForumState extends State<Forum> {
             children: [
               SizedBox(height: screenheight * 0.02),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image(
                     image: AssetImage('assets/img_7.png',),width: screenwidth*0.28,height: 18,
                   ),
-                  SizedBox(
-                    width: screenwidth * 0.5,
-                  ),
-                  CircleAvatar(
-                    radius: 22.0,
-                    backgroundColor: Colors.grey[200],
-                    child:
-                        Image(image: AssetImage('assets/img_8.png'), width: 18),
+                  // SizedBox(
+                  //   width: screenwidth * 0.5,
+                  // ),
+                  InkWell(
+                    onTap: (){
+                      Get.to(()=>Notifications());
+                    },
+                    child: CircleAvatar(
+                      radius: 22.0,
+                      backgroundColor: Colors.grey[200],
+                      child:
+                      Image(image: AssetImage('assets/img_8.png'), width: 18),
+                    ),
                   ),
                 ],
               ),
@@ -122,21 +131,26 @@ class _ForumState extends State<Forum> {
               SizedBox(
                 height: screenheight * 0.02,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  myText(
-                      text: 'A-Level Options ',
-                      style: GoogleFonts.manrope(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      )),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: arrow,
-                  )
-                ],
+              InkWell(
+                onTap: (){
+                  Get.to(()=> PopularThread('A-Level Options '));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    myText(
+                        text: 'A-Level Options ',
+                        style: GoogleFonts.manrope(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        )),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: arrow,
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: screenheight * 0.01,
@@ -148,21 +162,26 @@ class _ForumState extends State<Forum> {
               SizedBox(
                 height: screenheight * 0.02,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  myText(
-                      text: 'Computer Science',
-                      style: GoogleFonts.manrope(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      )),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: arrow,
-                  )
-                ],
+              InkWell(
+                onTap: (){
+                  Get.to(()=> PopularThread('Computer Science'));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    myText(
+                        text: 'Computer Science',
+                        style: GoogleFonts.manrope(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        )),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: arrow,
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: screenheight * 0.01,
@@ -174,21 +193,26 @@ class _ForumState extends State<Forum> {
               SizedBox(
                 height: screenheight * 0.02,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  myText(
-                      text: 'Workshops',
-                      style: GoogleFonts.manrope(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      )),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                    color: arrow,
-                  )
-                ],
+              InkWell(
+                onTap: (){
+                  Get.to(()=> PopularThread('Workshops'));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    myText(
+                        text: 'Workshops',
+                        style: GoogleFonts.manrope(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        )),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                      color: arrow,
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: screenheight * 0.01,
@@ -200,22 +224,27 @@ class _ForumState extends State<Forum> {
               SizedBox(
                 height: screenheight * 0.02,
               ),
-              Container(
-                height: screenheight * 0.06,
-                width: screenwidth * 0.25,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.white,
-                    border: Border.all(color: greycolor)),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                  child: myText(
-                      text: 'See more',
-                      style: GoogleFonts.manrope(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      )),
+              InkWell(
+                onTap: (){
+                  Get.to(()=> SeeAllThread());
+                },
+                child: Container(
+                  height: screenheight * 0.06,
+                  width: screenwidth * 0.25,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.white,
+                      border: Border.all(color: greycolor)),
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                    child: myText(
+                        text: 'See more',
+                        style: GoogleFonts.manrope(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        )),
+                  ),
                 ),
               ),
               SizedBox(

@@ -22,7 +22,7 @@ class _RateUsState extends State<RateUs> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 )),
             SizedBox(height: Get.height * 0.06),
-            Image.asset("Assets/Lastep.png"),
+            Image.asset("assets/Lastep.png"),
             SizedBox(height: Get.height * 0.05),
             Text(
               "Rate your experience",
@@ -38,16 +38,17 @@ class _RateUsState extends State<RateUs> {
                 width: Get.width * 0.43,
                 height: Get.height * 0.094,
                 decoration: BoxDecoration(
-                    color: Color(0xffE5E5E5),
-                    border: Border.all(color: Color(0xffF4F4F5)),
+                    // color: Color(0xffE5E5E5),
+                    border: Border.all(color: Color(0xffF4F4F5,),width: 2),
                     borderRadius: BorderRadius.circular(42)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Column(
                       children: [
                         SizedBox(height: Get.height * 0.03),
-                        Image.asset("Assets/playstore 1.png")
+                        Image.asset("assets/playstore 1.png")
                       ],
                     ),
                     SizedBox(

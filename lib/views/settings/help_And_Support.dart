@@ -49,43 +49,45 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
         width: Get.width,
         height: Get.height,
         padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: Get.height * 0.03,
-            ),
-            Text(
-              "Help, I have a question & I need an answer",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: Get.height * 0.03,
-            ),
-            Text(
-              "From your career list topics, we can suggest you best videos, courses, feeds for you",
-              style: TextStyle(fontSize: 16),
-            ),
-            SizedBox(
-              height: Get.height * 0.03,
-            ),
-            Text(
-              "FAQ",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            expendedTile(),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            expendedTile(),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            expendedTile(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              Text(
+                "Help, I have a question & I need an answer",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              Text(
+                "From your career list topics, we can suggest you best videos, courses, feeds for you",
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              Text(
+                "FAQ",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: Get.height * 0.01,
+              ),
+              expendedTile(),
+              SizedBox(
+                height: Get.height * 0.01,
+              ),
+              expendedTile(),
+              SizedBox(
+                height: Get.height * 0.01,
+              ),
+              expendedTile(),
+            ],
+          ),
         ),
       ),
       floatingActionButton: Padding(
@@ -185,7 +187,7 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
                               CustomButton(
                                 text: "SEND",
                                 funct: (){
-                                  Get.to(()=>Privacy());
+
                                 },
                               ),
                               // Align(

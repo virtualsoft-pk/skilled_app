@@ -64,7 +64,7 @@ class Search extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.to(() => SearchResult());
+
                       },
                       child: const Text(
                         'Clear all',
@@ -80,19 +80,26 @@ class Search extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
+
                 Wrap(
                   runSpacing: 10,
                   spacing: 24,
                   children: chiplist
                       .map(
-                        (e) => Chip(
-                          labelPadding: EdgeInsets.all(10),
-                          label: Text(
-                            '${e}',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff494F58),
+                        (e) => InkWell(
+                          onTap: (){
+                            Get.to(() => SearchResult());
+                          },
+                          child: Chip(
+
+                            labelPadding: EdgeInsets.all(10),
+                            label: Text(
+                              '${e}',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff494F58),
+                              ),
                             ),
                           ),
                         ),

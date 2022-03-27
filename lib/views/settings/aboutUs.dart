@@ -2,7 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/views/settings/feedback.dart';
+
+import 'feedback.dart';
 
 class AboustUs extends StatefulWidget {
   @override
@@ -37,8 +38,7 @@ class _AboustUsState extends State<AboustUs> {
               ),
               title:  InkWell(
                 onTap: () {
-                  // Get.to(() => a.Feedback());
-                  // Get.to(()=> RateUs());
+                  Get.to(()=> RateUs());
                 },
                 child: Container(
                   margin: EdgeInsets.only(left: Get.width*0.2),

@@ -7,12 +7,12 @@ import '../../utils/app_colors.dart';
 import '../../widgets/hashir.dart';
 
 
-class Quiz_07 extends StatefulWidget {
+class SearchOnForum extends StatefulWidget {
   @override
-  _Quiz_07State createState() => _Quiz_07State();
+  _SearchOnForumState createState() => _SearchOnForumState();
 }
 
-class _Quiz_07State extends State<Quiz_07> {
+class _SearchOnForumState extends State<SearchOnForum> {
   @override
   Widget build(BuildContext context) {
     var screenheight = MediaQuery.of(context).size.height;

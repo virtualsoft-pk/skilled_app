@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../utils/app_colors.dart';
+import 'NotificationScreen.dart';
 import 'accountDetails.dart';
+import 'changPassword.dart';
 
 class Account extends StatefulWidget {
   @override
@@ -56,13 +58,25 @@ class _AccountState extends State<Account> {
             SizedBox(
               height: Get.height * 0.02,
             ),
-            buildListTile("assets/images/Lock.png", "Change Password",
-                "It’s good idea to use strong password"),
+
+            InkWell(
+              onTap: (){
+                Get.to(()=>ChangePassword());
+              },
+              child: buildListTile("assets/images/Lock.png", "Change Password",
+                  "It’s good idea to use strong password"),
+            ),
             SizedBox(
               height: Get.height * 0.02,
             ),
-            buildListTile(
-                "assets/images/notification.png", "Notifications", ""),
+            InkWell(
+        onTap: (){
+          Get.to(()=>NotificationScreen());
+
+        },
+              child: buildListTile(
+                "assets/images/notification.png", "Notifications", "",),
+    ),
           ],
         ),
       ),

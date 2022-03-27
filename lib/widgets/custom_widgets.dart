@@ -36,19 +36,24 @@ Widget customAppBar(String title) {
   return Container(
     margin: EdgeInsets.only(top: 10),
     child: Row(
+
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 0),
           child: customBackButton(),
         ),
-        SizedBox(width: Get.width * 0.08),
+
+
         Text(
           title,
           style: const TextStyle(
               fontSize: 18, fontWeight: FontWeight.w600, color: greyDarkColor),
           textAlign: TextAlign.center,
         ),
+        Container(),
+        Container()
       ],
     ),
   );
@@ -106,7 +111,7 @@ modalBottomSheetMenu(BuildContext context){
                 child: CustomButton(
                   text: "YES, ADD TO MY CALENDER",
                   funct: (){
-                    Get.to(()=> Events());
+
                   },
                 ),
               ),

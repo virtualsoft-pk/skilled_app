@@ -57,7 +57,7 @@ class _NotificationsState extends State<Notifications> {
                 SizedBox(width: Get.width * 0.2),
                 InkWell(
                   onTap: () {
-                    Get.to(AboustUs());
+
                   },
                   child: Text("Mark all as read"),
                 ),

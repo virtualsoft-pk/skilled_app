@@ -3,8 +3,9 @@ import 'package:skilled_app/utils/app_colors.dart';
 
 
 
-Widget customTextField({String? text , Icon? icon , bool? obsecure}){
+Widget customTextField({String? text , Icon? icon , bool? obsecure,bool isReadOnly =false}){
   return TextFormField(
+    readOnly: isReadOnly,
       obscureText: obsecure ?? false,
       decoration: InputDecoration(
         filled: true,

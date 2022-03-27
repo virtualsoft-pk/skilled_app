@@ -6,6 +6,8 @@ import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../utils/app_colors.dart';
+import '../../widgets/custom_dialogs.dart';
+import '../../widgets/custom_text_field.dart';
 
 class Career extends StatefulWidget {
   @override
@@ -190,28 +192,12 @@ class _CareerState extends State<Career> {
 
 
                 SizedBox(height: Get.height * 0.1),
-                // InkWell(
-                //   onTap: () {
-                //     Get.to(Jobs());
-                //   },
-                //   child: Container(
-                //     width: Get.width * 0.9,
-                //     height: Get.height * 0.09,
-                //     decoration: BoxDecoration(
-                //         borderRadius: BorderRadius.circular(15),
-                //         color: Color(0xffFBC799)),
-                //     child: Center(
-                //         child: Text(
-                //       "AVAILABLE JOBS",
-                //       style: TextStyle(fontSize: 18),
-                //     )),
-                //   ),
-                // )
+
 
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 16),
                   child: CustomButton(text: "AVAILABLE JOBS", funct: (){
-                    Get.to(()=> Jobs());
+                  Get.to(()=> Jobs());
                   },),
                 ),
 
@@ -223,94 +209,4 @@ class _CareerState extends State<Career> {
     );
   }
 
-  void dialougeBox() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Dialog(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-            child: Container(
-              height: Get.height * 0.56,
-              width: Get.width * 0.83,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: Colors.white70,
-              ),
-              child: Column(
-                children: [
-                  SizedBox(height: Get.height * 0.08),
-                  Text(
-                    "ENTER YOUR EMAIL ADDRESS",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.9),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.02,
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 55, top: 132),
-                            child: Text("Email"),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 50),
-                            child: Image.asset("Assets/W.png"),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  Container(
-                    width: Get.width * 0.65,
-                    height: Get.height * 0.07,
-                    decoration: BoxDecoration(
-                        color: Color(0xffF4F4F5),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 16, left: 18),
-                      child: Text(
-                        "Enter your email",
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: Get.height * 0.04,
-                  ),
-                  Container(
-                    width: Get.width * 0.5,
-                    height: Get.height * 0.07,
-                    decoration: BoxDecoration(
-                        color: Color(0xffFBC799),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 16, left: 18),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 40, top: 2),
-                        child: Text(
-                          "SEND EMAIL",
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1.9),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          );
-        });
-  }
 }
