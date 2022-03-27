@@ -1,19 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/views/forum/quiz_06.dart';
+import 'package:skilled_app/views/forum/quiz_07.dart';
 
 import '../../model/aboutmodel.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/hashir.dart';
 
 
-class Quiz_05 extends StatefulWidget {
+class Forum extends StatefulWidget {
   @override
-  _Quiz_05State createState() => _Quiz_05State();
+  _ForumState createState() => _ForumState();
 }
 
-class _Quiz_05State extends State<Quiz_05> {
+class _ForumState extends State<Forum> {
 
   List<Post> post = [
     Post(message: 'assets/img_13.png',number: '212',heart:'assets/img_12.png',count: '2.1k',design3: 'web design',dgn2: 'Motion',image: 'assets/img_10.png', name: 'Hashir shah',date: 'Monday at 2:00AM',design: 'UI/UIX',desc: '13 best Skillshare classes for designers and artists?',desc2: 'We’ve noticed a bunch of talented designers and illustrators jumping onto Skillshare to... Read more'),
@@ -30,11 +32,11 @@ class _Quiz_05State extends State<Quiz_05> {
         height: screenheight*0.07,
         width: screenwidth*0.14,
         child: FloatingActionButton(
-          shape: OutlineInputBorder(borderSide: BorderSide.none,
-             borderRadius: BorderRadius.circular(42),
-          ),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (ctx)=>Quiz_06()));
+
+
+
+            Navigator.push(context, MaterialPageRoute(builder: (ctx)=>CreatePostOnForum()));
           },
           backgroundColor: primaryColor,
           child:  Icon(Icons.add,color: Colors.black,),
@@ -74,6 +76,10 @@ class _Quiz_05State extends State<Quiz_05> {
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(22)),
                 child: TextFormField(
+                  readOnly: true,
+                  onTap: (){
+                    Get.to(()=> SearchOnForum());
+                  },
                   style: TextStyle(color: Colors.grey),
                   decoration: InputDecoration(
                     errorBorder: InputBorder.none,
@@ -276,6 +282,7 @@ class _Quiz_05State extends State<Quiz_05> {
                                             color: dividercolor)),
                                   ],
                                 ),
+                                Spacer(),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 160),
                                   child: Image(
