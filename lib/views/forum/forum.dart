@@ -6,6 +6,7 @@ import 'package:skilled_app/views/forum/quiz_06.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:skilled_app/views/forum/see_all.dart';
 import 'package:skilled_app/views/forum/thread_detail.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../model/aboutmodel.dart';
 import '../../utils/app_colors.dart';
@@ -76,9 +77,9 @@ class _ForumState extends State<Forum> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: screenheight * 0.03,
-              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: customBackButton()),
               Container(
                 height: screenheight * 0.07,
                 width: screenwidth * 0.9,

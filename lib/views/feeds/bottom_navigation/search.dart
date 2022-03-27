@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search_result.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 
 import '../../../model/search_model.dart';
@@ -24,10 +25,11 @@ class Search extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
+            padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                customBackButton(),
                 TextFormField(
                   decoration: InputDecoration(
                     fillColor: greyColor,
@@ -130,28 +132,33 @@ class Search extends StatelessWidget {
                       mainAxisSpacing: 10,
                       childAspectRatio: 1.5),
                   itemBuilder: (context, i) {
-                    return Container(
-                      alignment: Alignment.center,
-                      height: Get.height * 0.12,
-                      width: Get.width * 0.2,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.amber,
-                        image: DecorationImage(
-                          colorFilter: ColorFilter.mode(
-                            filterColor,
-                            BlendMode.darken,
+                    return InkWell(
+                      onTap: (){
+                         Get.to(() => SearchResult());
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: Get.height * 0.12,
+                        width: Get.width * 0.2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.amber,
+                          image: DecorationImage(
+                            colorFilter: ColorFilter.mode(
+                              filterColor,
+                              BlendMode.darken,
+                            ),
+                            fit: BoxFit.cover,
+                            image: AssetImage(searchModel[i].bacGroundImage!),
                           ),
-                          fit: BoxFit.cover,
-                          image: AssetImage(searchModel[i].bacGroundImage!),
                         ),
-                      ),
-                      child: Text(
-                        searchModel[i].title!,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: backgroundColor,
+                        child: Text(
+                          searchModel[i].title!,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: backgroundColor,
+                          ),
                         ),
                       ),
                     );

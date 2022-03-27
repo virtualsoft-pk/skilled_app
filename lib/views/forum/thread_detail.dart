@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/views/forum/quiz_06.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../model/aboutmodel.dart';
 import '../../utils/app_colors.dart';
@@ -54,6 +55,8 @@ class _PopularThreadState extends State<PopularThread> {
               child: Column(
                 children: [
                   SizedBox(height: screenheight * 0.02),
+
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -76,9 +79,11 @@ class _PopularThreadState extends State<PopularThread> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: screenheight * 0.03,
-                  ),
+               SizedBox(height: 5),
+               Align(
+                 alignment: Alignment.topLeft,
+                 child: customBackButton()),
+                  
                   Container(
                     height: screenheight * 0.07,
                     width: screenwidth * 0.9,

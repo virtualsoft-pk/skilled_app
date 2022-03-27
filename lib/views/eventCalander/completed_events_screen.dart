@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 
@@ -243,29 +244,23 @@ class _CompleteEventState extends State<CompleteEvent> {
               SizedBox(
                 height: 17.68,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.star,size: 32,color: Colors.orange,),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  Icon(Icons.star,size: 32,color: Colors.orange,),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  Icon(Icons.star,size: 32,color: Colors.orange,),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  Icon(Icons.star,size: 32,color: Colors.orange,),
-                  SizedBox(
-                    width: 12,
-                  ),
-                  Icon(Icons.star_border,size: 32,),
-                ],
-              ),
+             Container(
+               child: RatingBar.builder(
+                initialRating: 3,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                itemBuilder: (context, _) => Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
+                onRatingUpdate: (rating) {
+                  print(rating);
+                },
+             ),
+             ),
               SizedBox(
                 height: 80,
               ),

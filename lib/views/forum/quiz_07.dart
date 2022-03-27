@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../utils/app_colors.dart';
 import '../../widgets/hashir.dart';
@@ -26,7 +27,8 @@ class _SearchOnForumState extends State<SearchOnForum> {
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          SizedBox(height: screenheight * 0.05),
+          SizedBox(height: screenheight * 0.03),
+          customBackButton(),
             Container(
               height: screenheight * 0.07,
               width: screenwidth * 0.9,
