@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search_result.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
-
 import '../../../model/search_model.dart';
 import '../../../utils/app_colors.dart';
 
@@ -65,9 +64,7 @@ class Search extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: const Text(
                         'Clear all',
                         style: TextStyle(
@@ -82,18 +79,16 @@ class Search extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
-
                 Wrap(
                   runSpacing: 10,
                   spacing: 24,
                   children: chiplist
                       .map(
                         (e) => InkWell(
-                          onTap: (){
+                          onTap: () {
                             Get.to(() => SearchResult());
                           },
                           child: Chip(
-
                             labelPadding: EdgeInsets.all(10),
                             label: Text(
                               '${e}',
@@ -112,7 +107,7 @@ class Search extends StatelessWidget {
                   height: 40,
                 ),
                 Text(
-                  'Popular On Skill-Ld',
+                  'Popular On Skilld',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -133,8 +128,8 @@ class Search extends StatelessWidget {
                       childAspectRatio: 1.5),
                   itemBuilder: (context, i) {
                     return InkWell(
-                      onTap: (){
-                         Get.to(() => SearchResult());
+                      onTap: () {
+                        Get.to(() => SearchResult());
                       },
                       child: Container(
                         alignment: Alignment.center,

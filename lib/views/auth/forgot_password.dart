@@ -15,19 +15,17 @@ class ForgotPassword extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
+          padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
           width: double.infinity,
           color: backgroundColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               customBackButton(),
-           
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
               ),
-             const Text(
+              const Text(
                 'Forgot Password?',
                 style: TextStyle(
                     fontSize: 32,
@@ -68,7 +66,7 @@ class ForgotPassword extends StatelessWidget {
                 height: 8,
               ),
               customTextField(text: "Enter your email"),
-            const  SizedBox(
+              const SizedBox(
                 height: 32,
               ),
               CustomButton(
