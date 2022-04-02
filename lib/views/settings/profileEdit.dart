@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
@@ -12,8 +15,7 @@ class ProfileEdit extends StatefulWidget {
 }
 
 class _ProfileEditState extends State<ProfileEdit> {
-
-  DateTime selectedDate = DateTime(2016,1,15);
+  DateTime selectedDate = DateTime(2016, 1, 15);
   TextEditingController dob = TextEditingController();
 
   Future<Null> _selectDate(BuildContext context) async {
@@ -23,13 +25,23 @@ class _ProfileEditState extends State<ProfileEdit> {
         initialDatePickerMode: DatePickerMode.day,
         firstDate: DateTime(2000),
         lastDate: DateTime(2101));
-    if (picked != null){
+    if (picked != null) {
       setState(() {
         selectedDate = picked;
-        dob.text = '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}';
+        dob.text =
+            '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}';
       });
     }
+  }
 
+  File? image;
+  final picker = ImagePicker();
+  Future pickFunction() async {
+    final pickImage = await picker.pickImage(source: ImageSource.gallery);
+    if (pickImage != null) {
+      image = File(pickImage.path);
+      setState(() {});
+    }
   }
 
   @override
@@ -64,7 +76,7 @@ class _ProfileEditState extends State<ProfileEdit> {
         ),
         actions: [
           InkWell(
-            onTap: (){
+            onTap: () {
               Get.back();
             },
             child: Padding(
@@ -87,33 +99,40 @@ class _ProfileEditState extends State<ProfileEdit> {
               Stack(
                 alignment: Alignment.bottomRight,
                 children: [
-                  CircleAvatar(
-                    radius: Get.height * 0.078,
-                    backgroundColor: Colors.grey.withOpacity(0.3),
-                    backgroundImage: AssetImage(
-                      "assets/images/profilePic.png",
-                    ),
-                    // child: Container(
-                    //   child: Image.asset(
-                    //     "assets/images/profilePic.png",
-                    //     fit: BoxFit.cover,
-                    //     height: Get.height * 0.1,
-                    //     width: Get.width * 0.17,
-                    //   ),
-                    // ),
-                  ),
+                  image == null
+                      ? CircleAvatar(
+                          radius: Get.height * 0.08,
+                          backgroundImage:
+                              AssetImage("assets/images/settingImage.png"),
+                        )
+                      : CircleAvatar(
+                          radius: Get.height * 0.08,
+                          backgroundImage: FileImage(image!),
+                        ),
+                  // child: Container(
+                  //   child: Image.asset(
+                  //     "assets/images/profilePic.png",
+                  //     fit: BoxFit.cover,
+                  //     height: Get.height * 0.1,
+                  //     width: Get.width * 0.17,
+                  //   ),
+                  // ),
+
                   Container(
                     padding: EdgeInsets.all(3),
                     decoration: BoxDecoration(
                         color: Colors.white, shape: BoxShape.circle),
-                    child: Container(
-                      padding: EdgeInsets.all(7),
-                      decoration: BoxDecoration(
-                          color: buttonColor, shape: BoxShape.circle),
-                      child: Image.asset(
-                        "assets/images/Camera.png",
-                        fit: BoxFit.cover,
-                        height: Get.height * 0.03,
+                    child: InkWell(
+                      onTap: pickFunction,
+                      child: Container(
+                        padding: EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                            color: buttonColor, shape: BoxShape.circle),
+                        child: Image.asset(
+                          "assets/images/Camera.png",
+                          fit: BoxFit.cover,
+                          height: Get.height * 0.03,
+                        ),
                       ),
                     ),
                   )
@@ -155,7 +174,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                       height: Get.height * 0.01,
                     ),
                     TextFormField(
-                      onTap: (){
+                      onTap: () {
                         _selectDate(context);
                       },
                       readOnly: true,
@@ -172,13 +191,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                           borderSide: const BorderSide(color: blueColor),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        disabledBorder:
-                        OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+                        disabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6)),
                         errorBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
                             12,
                           ),
-                          borderSide:const BorderSide(
+                          borderSide: const BorderSide(
                             color: deepOrangeColor,
                           ),
                         ),
@@ -194,9 +213,10 @@ class _ProfileEditState extends State<ProfileEdit> {
                     SizedBox(
                       height: Get.height * 0.04,
                     ),
-                    CustomButton(text:"Save changes",funct: () {
-
-                    },),
+                    CustomButton(
+                      text: "Save changes",
+                      funct: () {},
+                    ),
                   ],
                 ),
               )

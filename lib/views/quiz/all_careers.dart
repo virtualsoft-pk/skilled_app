@@ -13,8 +13,7 @@ class AllCareers extends StatefulWidget {
 }
 
 class _AllCareersState extends State<AllCareers> {
-
-  List<bool> careerListOptions = [false,false,false,false,false];
+  List<bool> careerListOptions = [false, false, false, false, false];
 
   int selectedCount = 0;
 
@@ -27,7 +26,27 @@ class _AllCareersState extends State<AllCareers> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                customAppBar(AppConst.QUIZ_RESULT_PAGE_3_TEXT),
+                Row(
+                  children: [
+                    Container(
+                      child: customBackButton(() {}),
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: Text(
+                        'Select All The Careers You Are Interested In',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(),
+                    ),
+                  ],
+                ),
                 Container(
                   child: Column(
                     children: [
@@ -60,24 +79,26 @@ class _AllCareersState extends State<AllCareers> {
                       ),
                       Row(
                         children: [
-                         const Text("Recommended Careers",
+                          const Text("Recommended Careers",
                               style: TextStyle(
                                   color: grey800,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18)),
-                        const  Spacer(),
+                          const Spacer(),
                           RichText(
                               text: TextSpan(children: [
                             TextSpan(
                                 text: "$selectedCount /",
                                 style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                    color: Colors.grey, fontSize: 24)),
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.grey,
+                                    fontSize: 24)),
                             TextSpan(
                                 text: "5",
                                 style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                    color: Colors.black, fontSize: 24))
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                    fontSize: 24))
                           ]))
                         ],
                       ),
@@ -85,84 +106,80 @@ class _AllCareersState extends State<AllCareers> {
                         height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile(
-                          "Astrophysicist", "Category : Physics and Space",careerListOptions[0],(val){
-                            setState(() {
-                              careerListOptions[0] = val;
+                          "Astrophysicist",
+                          "Category : Physics and Space",
+                          careerListOptions[0], (val) {
+                        setState(() {
+                          careerListOptions[0] = val;
 
-                              if(careerListOptions[0]){
-
-                                selectedCount = selectedCount +1;
-
-                              }else{
-                                selectedCount = selectedCount -1;
-                              }
-
-                            });
-
-
-
+                          if (careerListOptions[0]) {
+                            selectedCount = selectedCount + 1;
+                          } else {
+                            selectedCount = selectedCount - 1;
+                          }
+                        });
                       }),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
-                      RecommendedCareerTile("Enviromental Scientist",
-                          "Category : Science and Environment",careerListOptions[1],(val){
-                            setState(() {
-                              careerListOptions[1] = val;
-                              if(careerListOptions[1]){
-
-                                selectedCount = selectedCount +1;
-
-                              }else{
-                                selectedCount = selectedCount -1;
-                              }
-                            });
-                          }),
-                      SizedBox(
-                        height: Get.height * 0.02,
-                      ),
-                      RecommendedCareerTile("UI/UX Designer",
-                          "Category : Design and Computer Science",careerListOptions[2],(val){
-                            setState(() {
-                              careerListOptions[2] = val;
-                              if(careerListOptions[2]){
-
-                                selectedCount = selectedCount +1;
-
-                              }else{
-                                selectedCount = selectedCount -1;
-                              }
-                            });
-                          }),
-                      SizedBox(
-                        height: Get.height * 0.02,
-                      ),
-                      RecommendedCareerTile("Software Engineer",
-                          "Category : Tech and Computer Science",careerListOptions[3],(val){
-                            setState(() {
-                              careerListOptions[3] = val;
-                              if(careerListOptions[3]){
-
-                                selectedCount = selectedCount +1;
-
-                              }else{
-                                selectedCount = selectedCount -1;
-                              }
-                            });
-                          }),
+                      RecommendedCareerTile(
+                          "Enviromental Scientist",
+                          "Category : Science and Environment",
+                          careerListOptions[1], (val) {
+                        setState(() {
+                          careerListOptions[1] = val;
+                          if (careerListOptions[1]) {
+                            selectedCount = selectedCount + 1;
+                          } else {
+                            selectedCount = selectedCount - 1;
+                          }
+                        });
+                      }),
                       SizedBox(
                         height: Get.height * 0.02,
                       ),
                       RecommendedCareerTile(
-                          "Doctor", "Category : Medical and Biology",careerListOptions[4],(val){
+                          "UI/UX Designer",
+                          "Category : Design and Computer Science",
+                          careerListOptions[2], (val) {
+                        setState(() {
+                          careerListOptions[2] = val;
+                          if (careerListOptions[2]) {
+                            selectedCount = selectedCount + 1;
+                          } else {
+                            selectedCount = selectedCount - 1;
+                          }
+                        });
+                      }),
+                      SizedBox(
+                        height: Get.height * 0.02,
+                      ),
+                      RecommendedCareerTile(
+                          "Software Engineer",
+                          "Category : Tech and Computer Science",
+                          careerListOptions[3], (val) {
+                        setState(() {
+                          careerListOptions[3] = val;
+                          if (careerListOptions[3]) {
+                            selectedCount = selectedCount + 1;
+                          } else {
+                            selectedCount = selectedCount - 1;
+                          }
+                        });
+                      }),
+                      SizedBox(
+                        height: Get.height * 0.02,
+                      ),
+                      RecommendedCareerTile(
+                          "Doctor",
+                          "Category : Medical and Biology",
+                          careerListOptions[4], (val) {
                         setState(() {
                           careerListOptions[4] = val;
-                          if(careerListOptions[4]){
-
-                            selectedCount = selectedCount +1;
-
-                          }else{
-                            selectedCount = selectedCount -1;
+                          if (careerListOptions[4]) {
+                            selectedCount = selectedCount + 1;
+                          } else {
+                            selectedCount = selectedCount - 1;
                           }
                         });
                       }),
@@ -172,7 +189,7 @@ class _AllCareersState extends State<AllCareers> {
                       CustomButton(
                         text: "SAVE & CONTINUE TO FEED",
                         funct: () {
-                          Get.offAll(()=> BottomNavigation());
+                          Get.offAll(() => BottomNavigation());
                         },
                       ),
                       SizedBox(
@@ -189,9 +206,10 @@ class _AllCareersState extends State<AllCareers> {
     );
   }
 
-  Widget RecommendedCareerTile(String career, String type,bool isSelected,Function onPressed) {
+  Widget RecommendedCareerTile(
+      String career, String type, bool isSelected, Function onPressed) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         onPressed(!isSelected);
       },
       child: Container(
@@ -207,7 +225,9 @@ class _AllCareersState extends State<AllCareers> {
                 Text(
                   career,
                   style: TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w600, color: grey900),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: grey900),
                 ),
                 SizedBox(
                   height: Get.height * 0.01,
@@ -215,7 +235,9 @@ class _AllCareersState extends State<AllCareers> {
                 Text(
                   type,
                   style: TextStyle(
-                      fontSize: 12, color: grey600, fontWeight: FontWeight.w500),
+                      fontSize: 12,
+                      color: grey600,
+                      fontWeight: FontWeight.w500),
                 )
               ],
             ),
@@ -224,7 +246,6 @@ class _AllCareersState extends State<AllCareers> {
               scale: 1.3,
               child: Checkbox(
                 side: BorderSide(color: quizBorderColor),
-
                 value: isSelected,
                 onChanged: (val) => onPressed(val),
                 activeColor: lightGreenColor,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/quiz_start.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({Key? key}) : super(key: key);
@@ -15,28 +16,12 @@ class _VideoScreenState extends State<VideoScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(left: 16, right: 16, top: 10),
+          margin: EdgeInsets.only(left: 16, right: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(
-                onTap: () {
-                  Get.back();
-                },
-                child: CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Color(0xffF4F4F5),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 7),
-                    child: Icon(Icons.arrow_back_ios,
-                        color: Colors.black, size: 18),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: Get.height * 0.032,
-              ),
+              customBackButton(() {}),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 8),
                 child: Column(

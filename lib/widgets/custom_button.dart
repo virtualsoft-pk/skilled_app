@@ -13,15 +13,14 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       child: RaisedButton(
         color: primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0)
-        ),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
         onPressed: () {
           funct!();
         },
-        child:Text(
+        child: Text(
           text!,
-          style:const TextStyle(
+          style: const TextStyle(
             letterSpacing: 2,
             color: textColor,
             fontSize: 16,

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
 import 'package:get/get.dart';
@@ -57,87 +56,115 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       description: AppConst.ONBOARDING_5_SUB_TEXT,
       imgUrl: 'assets/images/onboard5.png',
     ),
-    
   ];
 
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Column(
-    children: [
-      Container(
-        width: double.infinity,
-        height: Get.height * 0.87,
-        child: o.OnBoard(
-          onBoardData: onBoardData,
-          pageController: _pageController,
-          titleStyles: const TextStyle(
-            color: textColor,
-            fontSize: 28.0,
-            fontWeight: FontWeight.w600,
+      body: Stack(
+        children: [
+          Column(
+            children: [
+              Container(
+                width: double.infinity,
+                height: Get.height * 0.86,
+                child: o.OnBoard(
+                  onBoardData: onBoardData,
+                  pageController: _pageController,
+                  titleStyles: const TextStyle(
+                    color: textColor,
+                    fontSize: 28.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  skipButton: const Text(""),
+                  descriptionStyles: const TextStyle(
+                    color: textColor,
+                    fontSize: 17.0,
+                  ),
+                  pageIndicatorStyle: const PageIndicatorStyle(
+                    activeColor: blueColor,
+                    width: 70,
+                    inactiveColor: indicatorColor,
+                    activeSize: Size(10, 10),
+                    inactiveSize: Size(8, 8),
+                  ),
+                  nextButton: OnBoardConsumer(
+                    builder: (context, ref, child) {
+                      final state = ref.watch(onBoardStateProvider);
+                      return Container(
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        child: CustomButton(
+                          text: state.isLastPage ? 'GET STARTED' : 'NEXT',
+                          funct: () {
+                            state.isLastPage ? Get.to(() => SignIn()) : null;
+                            _onNextTap(state);
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Already have an account ? ",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Get.to(() => SignIn());
+                      },
+                      child: Text(
+                        "Log in",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: blueColor),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Spacer(),
+              TextButton(
+                onPressed: () {
+                  Get.to(
+                    () => BottomNavigation(),
+                  );
+                },
+                child: const Text(
+                  "Continue as a guest",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: grey900),
+                ),
+              ),
+            ],
           ),
-          skipButton: const Text(""),
-          descriptionStyles: const
-           TextStyle(
-            color: textColor,
-            fontSize: 17.0,
-          ),
-          pageIndicatorStyle:const PageIndicatorStyle(
-            activeColor: blueColor,
-            width: 70,
-            inactiveColor: indicatorColor,
-            activeSize: Size(10, 10),
-            inactiveSize: Size(8, 8),
-          ),
-
-          nextButton: OnBoardConsumer(
-            builder: (context, ref, child) {
-              final state = ref.watch(onBoardStateProvider);
-              return Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                child: CustomButton(text:state.isLastPage ? 'GET STARTED' : 'NEXT',
-                    funct: () {
-                  state.isLastPage ? Get.to(() => SignIn()) : null;
-                  _onNextTap(state);
-                }),
-              );
-            },
-          ),
-        ),
-      ),
-     
-      
-
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Already have an account ? " , style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w400),),
-                InkWell(
-                  onTap: (){
-                    Get.to(()=> SignIn());
-                  },
-                  child: Text("Log in",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w700 , color: blueColor),)),
-              ],
+          Positioned(
+            top: Get.height * 0.07,
+            right: 13,
+            child: InkWell(
+              onTap: () {
+                Get.to(() => SignIn());
+              },
+              child: Text(
+                'Skip',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xff494F58),
+                ),
+              ),
             ),
           ),
-
-          Spacer(),
-
-      TextButton(
-        onPressed: (){
-          Get.to(()=> BottomNavigation());
-        },
-        child: const Text("Continue as a guest",style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w600 , color: grey900),),
-      ),
-
-      SizedBox(
-        height: 20,
-      ),
-
-    ],
+        ],
       ),
     );
   }

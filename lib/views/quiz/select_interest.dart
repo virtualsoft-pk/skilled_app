@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/views/quiz/how_to_know.dart';
 
-
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
-
+import '../../widgets/custom_widgets.dart';
 
 bool iscolored = false;
 
@@ -33,100 +32,85 @@ class _SelectInterestState extends State<SelectInterest> {
     var screenheight = MediaQuery.of(context).size.height;
     var screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: [
-                SizedBox(height: screenheight * 0.01),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Get.back();
-                        },
-                      child: CircleAvatar(
-                        radius: 22.0,
-                        backgroundColor: Colors.grey[200],
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 6),
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            size: 15,
-                            color: Colors.black,
-                          ),
-                        ),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  customBackButton(() {}),
+                  Container(
+                    margin: EdgeInsets.only(top: Get.height * 0.01),
+                    child: Text(
+                      "Quiz",
+                      style: GoogleFonts.manrope(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
-                      width: screenwidth * 0.3,
-                    ),
-                  Text(
-                         "Quiz",
-                        style: GoogleFonts.manrope(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ))
-                  ],
-                ),
-                SizedBox(
-                  height: screenheight * 0.02,
-                ),
-               Text("Select any of these that you are interested in learning",
-                    style: GoogleFonts.manrope(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    )),
-               const SizedBox(
-                  height: 20,
-                ),
+                  ),
+                  CircleAvatar(
+                    radius: 18,
+                    backgroundColor: Colors.transparent,
+                  )
+                ],
+              ),
+              SizedBox(
+                height: screenheight * 0.01,
+              ),
+              Text("Select any of these that you are interested in learning",
+                  style: GoogleFonts.manrope(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
 
-                Wrap(
-                  runSpacing: 10,
-                  spacing: 10,
-                  children: multiChipList.map(
-                        (e) {
-                      return multiChipEmptyList
-                          .contains(e)
-                          ? InkWell(
-                        onTap: (() {
-                          multiChipEmptyList
-                              .remove(e);
-                          setState(() {});
-                       Icon(Icons.clear);
-                        }),
-                        child: Chip(
-                        
-                          backgroundColor: containercolor,
-                          side: BorderSide(
-                              color: Colors.black),
-                          labelPadding:
-                          EdgeInsets.all(7),
-                          label: Text(e),
-                        ),
-                      )
-                          : InkWell(
-                        onTap: () {
-                          multiChipEmptyList.add(e);
-                          setState(() {});
-                        },
-                        child: Chip(
-                          labelPadding:
-                          EdgeInsets.all(8),
-                          label: Text(e),
-                          // Icon(Icons.clear,size: 14,color: Colors.blue,),
-            useDeleteButtonTooltip: true,deleteIcon: Icon(Icons.clear,size: 14,),
-                        deleteIconColor: Colors.green,
+              Wrap(
+                runSpacing: 10,
+                spacing: 10,
+                children: multiChipList.map(
+                  (e) {
+                    return multiChipEmptyList.contains(e)
+                        ? InkWell(
+                            onTap: (() {
+                              multiChipEmptyList.remove(e);
+                              setState(() {});
+                              Icon(Icons.clear);
+                            }),
+                            child: Chip(
+                              backgroundColor: containercolor,
+                              side: BorderSide(color: Colors.black),
+                              labelPadding: EdgeInsets.all(7),
+                              label: Text(e),
+                            ),
+                          )
+                        : InkWell(
+                            onTap: () {
+                              multiChipEmptyList.add(e);
+                              setState(() {});
+                            },
+                            child: Chip(
+                              labelPadding: EdgeInsets.all(8),
+                              label: Text(e),
+                              // Icon(Icons.clear,size: 14,color: Colors.blue,),
+                              useDeleteButtonTooltip: true,
+                              deleteIcon: Icon(
+                                Icons.clear,
+                                size: 14,
+                              ),
 
-                        ),
-                      );
-                    },
-                  ).toList(),
-                ),
-                SizedBox(
-                  height: screenheight * 0.22,
-                ),
+                              deleteIconColor: Colors.green,
+                            ),
+                          );
+                  },
+                ).toList(),
+              ),
 
               //  Container(
               //       width: screenwidth*3,
@@ -136,13 +120,19 @@ class _SelectInterestState extends State<SelectInterest> {
               //         Get.to(HowToKnow());
               //       })
               //   )
-
-              CustomButton(text: "NEXT", funct: (){
-                Get.to(()=> HowToKnow());
-              },),
-              ],
-            ),
+              Spacer(),
+              multiChipEmptyList.length == 0
+                  ? SizedBox()
+                  : CustomButton(
+                      text: "NEXT",
+                      funct: () {
+                        Get.to(() => HowToKnow());
+                      },
+                    ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

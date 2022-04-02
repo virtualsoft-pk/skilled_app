@@ -26,15 +26,19 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
-          width: double.infinity,
-          color: backgroundColor,
-          padding: const EdgeInsets.only(top: 30, left: 15, right: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Row(
+                children: [
+                  customBackButton(() {}),
+                ],
+              ),
               const Text(
                 'Welcome Back !',
                 style: TextStyle(
@@ -43,8 +47,8 @@ class _SignInState extends State<SignIn> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              const SizedBox(
-                height: 8,
+              SizedBox(
+                height: Get.height * 0.01,
               ),
               const Text(
                 'Please login to your account',
@@ -71,8 +75,8 @@ class _SignInState extends State<SignIn> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 8,
+              SizedBox(
+                height: Get.height * 0.01,
               ),
               customTextField(text: "Enter your Email"),
               const SizedBox(
@@ -91,8 +95,8 @@ class _SignInState extends State<SignIn> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 8,
+              SizedBox(
+                height: Get.height * 0.01,
               ),
 
               TextFormField(
@@ -148,9 +152,6 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
 
-              const SizedBox(
-                height: 16,
-              ),
               Row(
                 children: [
                   Checkbox(
@@ -187,7 +188,8 @@ class _SignInState extends State<SignIn> {
                   ),
                 ],
               ),
-              const Spacer(),
+
+              Spacer(),
               CustomButton(
                   text: 'LOG IN',
                   funct: () {
@@ -220,10 +222,9 @@ class _SignInState extends State<SignIn> {
                   )
                 ],
               ),
-              const SizedBox(
-                height: 32,
+              SizedBox(
+                height: Get.height * 0.02,
               ),
-
               // Get.to(()=> BottomNavigation());
 
               Row(
@@ -244,7 +245,7 @@ class _SignInState extends State<SignIn> {
                 ],
               ),
               SizedBox(
-                height: 20,
+                height: Get.height * 0.01,
               ),
             ],
           ),

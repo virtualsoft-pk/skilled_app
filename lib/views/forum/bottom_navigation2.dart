@@ -1,34 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/views/eventCalander/in_person.dart';
-import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
-import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
-import '../../eventCalander/events_screen.dart';
-import '../../forum/forum.dart';
-import '../../settings/settingPage.dart';
-import 'video_practice.dart';
+import 'package:skilled_app/views/forum/thread_detail.dart';
 
-class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({Key? key}) : super(key: key);
+import '../../utils/app_colors.dart';
+import '../eventCalander/events_screen.dart';
+import '../feeds/bottom_navigation/feed_page.dart';
+import '../feeds/bottom_navigation/search.dart';
+import '../settings/settingPage.dart';
+import 'forum.dart';
+
+class BottomNavigation2 extends StatefulWidget {
+  BottomNavigation2({Key? key, this.title}) : super(key: key);
+  String? title;
 
   @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
+  State<BottomNavigation2> createState() => _BottomNavigation2State();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
-  int _currentIndex = 0;
-  List _screens = [
-    FeedPage(),
-    Search(),
-    Forum(),
-    Events(),
-    SettingScreen(),
-  ];
-
+class _BottomNavigation2State extends State<BottomNavigation2> {
+  int _currentIndex = 2;
+  List _screens = [];
   void _updateIndex(int value) {
     setState(() {
       _currentIndex = value;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      FeedPage(),
+      Search(),
+      PopularThread(title: widget.title),
+      Events(),
+      SettingScreen(),
+    ];
   }
 
   @override

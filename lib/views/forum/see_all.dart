@@ -90,7 +90,7 @@ class _SeeAllThreadState extends State<SeeAllThread> {
               ),
               Align(
                 alignment: Alignment.topLeft,
-                child: customBackButton(),
+                child: customBackButton(() {}),
               ),
               Container(
                 height: screenheight * 0.07,
@@ -155,7 +155,9 @@ class _SeeAllThreadState extends State<SeeAllThread> {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.to(() => PopularThread(threads[i]));
+                          Get.to(() => PopularThread(
+                                title: threads[i],
+                              ));
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

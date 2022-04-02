@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
 
 import 'package:skilled_app/views/quiz/quiz_watch_video.dart';
 import 'package:skilled_app/views/settings/careerListScreen.dart';
@@ -53,8 +54,8 @@ class _QuizResultPageState extends State<QuizResultPage> {
                           height: Get.height * 0.02,
                         ),
                         InkWell(
-                          onTap: (){
-                            Get.to(()=> QuizWatchVideo());
+                          onTap: () {
+                            Get.to(() => QuizWatchVideo());
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -62,7 +63,8 @@ class _QuizResultPageState extends State<QuizResultPage> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
-                                  width: 1, color: Colors.grey.withOpacity(0.2)),
+                                  width: 1,
+                                  color: Colors.grey.withOpacity(0.2)),
                             ),
                             child: const Text(
                               "Find out more",
@@ -127,8 +129,8 @@ class _QuizResultPageState extends State<QuizResultPage> {
                 Align(
                   alignment: Alignment.center,
                   child: InkWell(
-                    onTap: (){
-                      Get.to(()=> AnswerList());
+                    onTap: () {
+                      Get.to(() => AnswerList());
                     },
                     child: Container(
                       width: Get.width * 0.4,
@@ -139,12 +141,12 @@ class _QuizResultPageState extends State<QuizResultPage> {
                           borderRadius: BorderRadius.circular(18)),
                       child: const Center(
                           child: Text(
-                            "View your Answer",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff333943),
-                                fontSize: 14),
-                          )),
+                        "View your Answer",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff333943),
+                            fontSize: 14),
+                      )),
                     ),
                   ),
                 ),
@@ -213,8 +215,10 @@ class _QuizResultPageState extends State<QuizResultPage> {
                 Align(
                   alignment: Alignment.center,
                   child: InkWell(
-                    onTap: (){
-                      Get.to(()=>CareerListScreen());
+                    onTap: () {
+                      Get.to(AllCareers());
+
+                      // Get.to(() => CareerListScreen());
                     },
                     child: Container(
                       width: Get.width * 0.4,
@@ -225,12 +229,12 @@ class _QuizResultPageState extends State<QuizResultPage> {
                           borderRadius: BorderRadius.circular(18)),
                       child: const Center(
                           child: Text(
-                            "View all",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: grey900),
-                          )),
+                        "View all",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: grey900),
+                      )),
                     ),
                   ),
                 ),
@@ -240,7 +244,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                 CustomButton(
                   text: "GET STARTED",
                   funct: () {
-                    Get.to(AllCareers());
+                    Get.offAll(() => BottomNavigation());
                   },
                 ),
                 SizedBox(
@@ -307,7 +311,6 @@ class _QuizResultPageState extends State<QuizResultPage> {
           Flexible(
             flex: 10,
             fit: FlexFit.tight,
-            
             child: Container(
               // color: Colors.red,
               child: Column(
@@ -316,12 +319,16 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   Text(
                     profession,
                     style: const TextStyle(
-                        color: grey900, fontSize: 16, fontWeight: FontWeight.w700),
+                        color: grey900,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700),
                   ),
                   Text(
                     category,
                     style: const TextStyle(
-                        color: grey600, fontSize: 12, fontWeight: FontWeight.w500),
+                        color: grey600,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -358,8 +365,8 @@ class _QuizResultPageState extends State<QuizResultPage> {
                     ],
                   ),
                   InkWell(
-                    onTap: (){
-                      Get.to(()=> Career());
+                    onTap: () {
+                      Get.to(() => Career());
                     },
                     child: const Text(
                       "Find out more",

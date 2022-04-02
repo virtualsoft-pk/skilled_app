@@ -63,7 +63,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   width: Get.width * 0.05,
                 )),
             InkWell(
-              onTap: (){
+              onTap: () {
                 setState(() {
                   changeView = !changeView;
                 });
@@ -79,93 +79,98 @@ class _CareerListScreenState extends State<CareerListScreen> {
           ],
           centerTitle: true,
         ),
-        body: Container(
-          width: Get.width,
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: Get.height * 0.03,
-              ),
-              Text(
-                "Your Career list",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: Get.height * 0.01,
-              ),
-              Text(
-                "From the careers here, we create you a\npersonalised feed of content.",
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(
-                height: Get.height * 0.03,
-              ),
-              careerListTile("Doctor"),
-              SizedBox(
-                height: Get.height * 0.01,
-              ),
-              careerListTile("Film maker"),
-              SizedBox(
-                height: Get.height * 0.01,
-              ),
-              careerListTile("UX Designer"),
-              SizedBox(
-                height: Get.height * 0.01,
-              ),
-              careerListTile("Musician"),
-              SizedBox(
-                height: Get.height * 0.09,
-              ),
-              changeView
-                  ? Container()
-                  : ListTile(
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.grey, width: 0.4),
-                          borderRadius: BorderRadius.circular(8)),
-                      title: Text(
-                        "Retake The Quiz",
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w600),
+        body: SingleChildScrollView(
+          child: Container(
+            width: Get.width,
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: Get.height * 0.03,
+                ),
+                Text(
+                  "Your Career list",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: Get.height * 0.01,
+                ),
+                Text(
+                  "From the careers here, we create you a\npersonalised feed of content.",
+                  style: TextStyle(fontSize: 16),
+                ),
+                SizedBox(
+                  height: Get.height * 0.03,
+                ),
+                careerListTile("Doctor"),
+                SizedBox(
+                  height: Get.height * 0.01,
+                ),
+                careerListTile("Film maker"),
+                SizedBox(
+                  height: Get.height * 0.01,
+                ),
+                careerListTile("UX Designer"),
+                SizedBox(
+                  height: Get.height * 0.01,
+                ),
+                careerListTile("Musician"),
+                SizedBox(
+                  height: Get.height * 0.09,
+                ),
+                changeView
+                    ? Container()
+                    : ListTile(
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.grey, width: 0.4),
+                            borderRadius: BorderRadius.circular(8)),
+                        title: Text(
+                          "Retake The Quiz",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w600),
+                        ),
+                        subtitle: Text(
+                          "Your careers list will be reset after this",
+                          style: TextStyle(
+                              color: notificationTextColor, fontSize: 12),
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 17,
+                        ),
                       ),
-                      subtitle: Text(
-                        "Your careers list will be reset after this",
-                        style: TextStyle(
-                            color: notificationTextColor, fontSize: 12),
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios,
-                        size: 17,
-                      ),
-                    ),
-              SizedBox(
-                height: changeView ? Get.height * 0.13 : Get.height * 0.04,
-              ),
-              changeView
-                  ? CustomButton(text:"SAVE AND CONTINUE",funct: (){
-                Get.bottomSheet(buttomSheet(),
-                    elevation: 20.0,
-                    enableDrag: false,
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30.0),
-                          topRight: Radius.circular(30.0),
-                        )));
-              },)
-                  : Container(),
-              // : Align(
-              //     alignment: Alignment.topRight,
-              //     child: Container(
-              //       height: Get.height * 0.07,
-              //       // width: Get.width * 0.04,
-              //       child: Center(child: Icon(Icons.add)),
-              //       decoration: BoxDecoration(
-              //           shape: BoxShape.circle, color: buttonColor),
-              //     ),
-              //   )
-            ],
+                SizedBox(
+                  height: changeView ? Get.height * 0.13 : Get.height * 0.04,
+                ),
+                changeView
+                    ? CustomButton(
+                        text: "SAVE AND CONTINUE",
+                        funct: () {
+                          Get.bottomSheet(buttomSheet(),
+                              elevation: 20.0,
+                              enableDrag: false,
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(30.0),
+                                topRight: Radius.circular(30.0),
+                              )));
+                        },
+                      )
+                    : Container(),
+                // : Align(
+                //     alignment: Alignment.topRight,
+                //     child: Container(
+                //       height: Get.height * 0.07,
+                //       // width: Get.width * 0.04,
+                //       child: Center(child: Icon(Icons.add)),
+                //       decoration: BoxDecoration(
+                //           shape: BoxShape.circle, color: buttonColor),
+                //     ),
+                //   )
+              ],
+            ),
           ),
         ),
         floatingActionButton: changeView
@@ -180,9 +185,9 @@ class _CareerListScreenState extends State<CareerListScreen> {
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
-                          )));
+                        topLeft: Radius.circular(30.0),
+                        topRight: Radius.circular(30.0),
+                      )));
                 },
                 child: Icon(
                   Icons.add,
@@ -211,7 +216,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                     ),
                     Spacer(),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Get.back();
                       },
                       child: Container(
@@ -222,9 +227,9 @@ class _CareerListScreenState extends State<CareerListScreen> {
                             shape: BoxShape.circle),
                         child: Center(
                             child: Icon(
-                              Icons.close,
-                              size: 20,
-                            )),
+                          Icons.close,
+                          size: 20,
+                        )),
                       ),
                     ),
                   ],
@@ -455,18 +460,23 @@ class _CareerListScreenState extends State<CareerListScreen> {
   }
 
   chipList() {
-    return Row(
-      children: [
-        _buildChip(
-          'UX  Design',
-        ),
-        _buildChip(
-          'Product design',
-        ),
-        _buildChip(
-          'UX/ Design',
-        ),
-      ],
+    return Container(
+      height: 50,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        children: [
+          _buildChip(
+            'UX  Design',
+          ),
+          _buildChip(
+            'Product design',
+          ),
+          _buildChip(
+            'UX/ Design',
+          ),
+        ],
+      ),
     );
   }
 }

@@ -29,18 +29,17 @@ class _VerifyCodeState extends State<VerifyCode> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15),
           width: double.infinity,
           color: backgroundColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customBackButton(),
-              
-               SizedBox(
+              customBackButton(() {}),
+              SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-             const Text(
+              const Text(
                 'Verification code',
                 style: TextStyle(
                   fontSize: 32,
@@ -86,7 +85,7 @@ class _VerifyCodeState extends State<VerifyCode> {
               const SizedBox(
                 height: 16,
               ),
-             const Text(
+              const Text(
                 'Resend code?',
                 style: TextStyle(
                   fontSize: 14,

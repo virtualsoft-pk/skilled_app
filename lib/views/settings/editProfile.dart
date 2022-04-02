@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:skilled_app/views/settings/changPassword.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import '../../utils/app_colors.dart';
@@ -125,7 +128,7 @@ class _EditedProfileState extends State<EditedProfile> {
                       onTap: () {
                         Get.to(ChangePassword());
                       },
-                      child: CustomButton(text:"Save changes")),
+                      child: CustomButton(text: "Save changes")),
                 ],
               ),
             )

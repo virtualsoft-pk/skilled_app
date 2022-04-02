@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/auth/sign_in.dart';
 import 'package:skilled_app/views/auth/sign_up.dart';
+import 'package:skilled_app/views/quiz/how_to_know.dart';
 import 'package:skilled_app/views/settings/busnissScreen.dart';
+import 'package:skilled_app/views/settings/careerListScreen.dart';
+import 'package:skilled_app/views/settings/chooseMedia.dart';
 import 'package:skilled_app/views/settings/help_And_Support.dart';
 import 'package:skilled_app/views/settings/privacy.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
@@ -62,88 +65,27 @@ class _SettingScreenState extends State<SettingScreen> {
                 height: Get.height * 0.02,
               ),
               InkWell(
-                  onTap: () {
-                    // showDialog(
-                    //     context: context,
-                    //     builder: (BuildContext context) {
-                    //       return customDialog();
-                    //     });
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Dialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    20.0)), //this right here
-                            child: Container(
-                              height: Get.height * 0.5,
-                              width: Get.width,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 20),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "CREATE AN ACCOUNT TO ACCESS SETTINGS",
-                                      textAlign: TextAlign.center,
+                onTap: () {
+                  // showDialog(
+                  //     context: context,
+                  //     builder: (BuildContext context) {
+                  //       return customDialog();
+                  //     });
 
-                                      style: TextStyle(
-
-                                          fontSize: 14,
-
-                                          letterSpacing: 2,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                    SizedBox(
-                                      height: Get.height * 0.03,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children:[
-                                        SizedBox(
-                                          width: 15,
-                                        ),
-                                        Image.asset(
-                                            "assets/images/dialogImage.png")
-                                      ]
-                                    ),
-                                    CustomButton(
-                                      funct: (){
-                                        Get.to(()=> SignUpView());
-                                      },
-                                       text: "Create Account"),
-
-                                   InkWell(
-                                     onTap: (){
-                                       Get.back();
-                                     },
-                                     child:  Text(
-                                       "BACK TO HOME",
-                                       style: TextStyle(
-                                           fontWeight: FontWeight.bold,
-                                           fontSize: 12),
-                                     ),
-                                   ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        });
-                  },
-                  child: resizableButton(
-                      HPadding: 16,
-                      VPadding: 10,
-                      border: 20,
-                      name: "Follow us on social Media")),
+                  Get.to(() => ChooseSocialMedia());
+                },
+                child: resizableButton(
+                    HPadding: 16,
+                    VPadding: 10,
+                    border: 20,
+                    name: "Follow us on social Media"),
+              ),
               SizedBox(
                 height: Get.height * 0.02,
               ),
               InkWell(
                   onTap: () {
-                    Get.to(()=>Account());
+                    Get.to(() => Account());
                   },
                   child: buildListTile("assets/images/user.png", "Account")),
               SizedBox(
@@ -157,37 +99,101 @@ class _SettingScreenState extends State<SettingScreen> {
               SizedBox(
                 height: Get.height * 0.01,
               ),
-              buildListTile("assets/images/list.png", "Careers List"),
+              InkWell(
+                onTap: () {
+                  Get.to(() => CareerListScreen());
+                },
+                child: buildListTile("assets/images/list.png", "Careers List"),
+              ),
               SizedBox(
                 height: Get.height * 0.01,
               ),
               InkWell(
-                onTap: (){
-                  Get.to(()=> Privacy());
+                onTap: () {
+                  Get.to(() => Privacy());
                 },
-                child: buildListTile("assets/images/Lock.png", "Privacy & Terms"),
+                child:
+                    buildListTile("assets/images/Lock.png", "Privacy & Terms"),
               ),
               SizedBox(
                 height: Get.height * 0.01,
               ),
               InkWell(
                   onTap: () {
-                    Get.to(()=>HelpAndSupportScreen());
+                    Get.to(() => HelpAndSupportScreen());
                   },
                   child: buildListTile(
                       "assets/images/phone.png", "Help & Support")),
               SizedBox(height: Get.height * 0.01),
-
               InkWell(
-                onTap: (){
-                  Get.to(()=>AboustUs());
+                onTap: () {
+                  Get.to(() => AboustUs());
                 },
                 child: buildListTile("assets/images/Information.png", "About"),
               ),
               SizedBox(height: Get.height * 0.01),
               InkWell(
-                onTap: (){
-                  Get.offAll(()=> SignIn());
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Dialog(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  20.0)), //this right here
+                          child: Container(
+                            height: Get.height * 0.5,
+                            width: Get.width,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                //   crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "CREATE AN ACCOUNT TO ACCESS SETTINGS",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        letterSpacing: 2,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  SizedBox(
+                                    height: Get.height * 0.03,
+                                  ),
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Image.asset(
+                                            "assets/images/dialogImage.png")
+                                      ]),
+                                  CustomButton(
+                                      funct: () {
+                                        Get.to(() => SignUpView());
+                                      },
+                                      text: "Create Account"),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.back();
+                                    },
+                                    child: Text(
+                                      "BACK TO HOME",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      });
                 },
                 child: buildListTile("assets/images/logout.png", "Logout"),
               ),

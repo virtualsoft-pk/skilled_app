@@ -43,33 +43,27 @@ class _AnswerListState extends State<AnswerList> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  margin: EdgeInsets.only(top: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 0),
-                        child: customBackButton(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    customBackButton(() {}),
+                    Text(
+                      "Answer List",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: greyDarkColor,
                       ),
-                      SizedBox(width: Get.width * 0.2),
-                      Container(
-                        margin: EdgeInsets.only(top: 8),
-                        child: Text(
-                          "Answer List",
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: greyDarkColor),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                    CircleAvatar(
+                      radius: 18,
+                      backgroundColor: Colors.transparent,
+                    )
+                  ],
                 ),
                 Container(
-                    height: MediaQuery.of(context).size.height * 0.76,
-                    
+                    height: MediaQuery.of(context).size.height * 0.72,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -80,8 +74,10 @@ class _AnswerListState extends State<AnswerList> {
                           SizedBox(
                             height: Get.height * 0.02,
                           ),
-                          RecommendedCareerTile("Question 2:",
-                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_2, "Painting"),
+                          RecommendedCareerTile(
+                              "Question 2:",
+                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_2,
+                              "Painting"),
                           SizedBox(
                             height: Get.height * 0.02,
                           ),
@@ -102,30 +98,16 @@ class _AnswerListState extends State<AnswerList> {
                         ],
                       ),
                     )),
-                SizedBox(height: 10),
-          
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.1,
-                    
-                    child: Container(
-                      height: 50,
-                      child: CustomButton(text : "EMAIL ME ANSWERS" , funct: (){
-                        sendEmailDialog(context);
-                      },),
-                    ),
-                    // child: Container(
-                    
-                    //   child: CustomButton(
-                    //       text: "EMAIL ME ANSWERS",
-                    //       funct: () {
-                    //         Get.to(() => Career());
-                    //       }),
-                    // ),
-                  ),
+                SizedBox(
+                  height: 10,
                 ),
-          
+                CustomButton(
+                  text: "EMAIL ME ANSWERS",
+                  funct: () {
+                    sendEmailDialog(context);
+                  },
+                ),
+
                 //
               ],
             ),

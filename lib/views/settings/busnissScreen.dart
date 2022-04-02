@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/widgets/all_widgets.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../utils/app_colors.dart';
 
@@ -10,45 +12,26 @@ class BusinessScreen extends StatefulWidget {
 }
 
 class _BusinessScreenState extends State<BusinessScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child: Container(
-              padding: EdgeInsets.all(15),
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: backButtonColor),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 15,
-                ),
-              ),
-            ),
+      body: SafeArea(
+        child: Container(
+          width: Get.width,
+          padding: EdgeInsets.symmetric(
+            horizontal: 15,
           ),
-        ),
-      ),
-      body: Container(
-        width: Get.width,
-        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-        child: SingleChildScrollView(
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              customBackButton(() {}),
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(
-                  child: Image.asset("assets/images/skilled.png"),
+                  child: Image.asset(
+                    "assets/images/skilled.png",
+                    width: Get.width * 0.55,
+                  ),
                 ),
               ),
               SizedBox(
@@ -58,51 +41,65 @@ class _BusinessScreenState extends State<BusinessScreen> {
                 alignment: Alignment.topLeft,
                 child: Text(
                   "Business",
-                  style: TextStyle(fontSize: 25),
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
-              SizedBox(
-                height: Get.height * 0.03,
-              ),
-              Container(
-                child: Image.asset(
-                  "assets/images/businessImage.png",
-                  width: Get.width * 0.83,
-                  fit: BoxFit.fill,
-                ),
-              ),
-              SizedBox(
-                height: Get.height * 0.05,
-              ),
-              Text(
-                "Start advertising your business\nwith Skilld today!",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
-              ),
-              SizedBox(
-                height: Get.height * 0.05,
-              ),
-              Container(
-                child: Image.asset(
-                  "assets/images/ApplePlay.png",
-                  height: Get.height * 0.075,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(
-                height: Get.height * 0.02,
-              ),
-              InkWell(
-                onTap: () {
-
-                },
+              Expanded(
+                flex: 3,
                 child: Container(
+                  padding: EdgeInsets.only(
+                      bottom: Get.height * 0.01, top: Get.height * 0.01),
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    "assets/images/business-laptop.png",
+                    // width: Get.width * 0.83,
+                    // fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Start advertising your business\nwith Skilld today!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff333943),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
+                  // padding: EdgeInsets.only(
+                  //   left: Get.width * 0.2,
+                  //   right: Get.width * 0.2,
+                  // ),
+                  child: Image.asset(
+                    "assets/images/ApplePlay.png",
+                    height: Get.height * 0.075,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.center,
                   child: Image.asset(
                     "assets/images/googlePlay.png",
                     height: Get.height * 0.075,
                     fit: BoxFit.cover,
                   ),
                 ),
+              ),
+              Expanded(
+                child: Container(),
               ),
             ],
           ),

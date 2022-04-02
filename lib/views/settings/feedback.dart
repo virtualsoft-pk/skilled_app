@@ -39,7 +39,11 @@ class _RateUsState extends State<RateUs> {
                 height: Get.height * 0.094,
                 decoration: BoxDecoration(
                     // color: Color(0xffE5E5E5),
-                    border: Border.all(color: Color(0xffF4F4F5,),width: 2),
+                    border: Border.all(
+                        color: Color(
+                          0xffF4F4F5,
+                        ),
+                        width: 2),
                     borderRadius: BorderRadius.circular(42)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -117,19 +121,21 @@ class _RateUsState extends State<RateUs> {
               height: Get.height * 0.07,
             ),
             Container(
+              margin: EdgeInsets.only(bottom: 20),
               width: Get.width * 0.9,
               height: Get.height * 0.077,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Color(0xffFBC799)),
               child: Center(
-                  child: Text(
-                "SUBMIT",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2.1),
-              )),
+                child: Text(
+                  "SUBMIT",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.1),
+                ),
+              ),
             ),
           ],
         ),

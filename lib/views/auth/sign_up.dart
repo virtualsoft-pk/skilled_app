@@ -45,7 +45,7 @@ class _SignUpViewState extends State<SignUpView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                customBackButton(),
+                customBackButton(() {}),
 
                 const Text(
                   'Create new account',

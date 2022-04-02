@@ -14,17 +14,17 @@ class ResetPassword extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15),
           width: double.infinity,
           color: backgroundColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customBackButton(),
-               SizedBox(
+              customBackButton(() {}),
+              SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
               ),
-             const Text(
+              const Text(
                 'Reset password',
                 style: TextStyle(
                   fontSize: 32,
@@ -47,7 +47,7 @@ class ResetPassword extends StatelessWidget {
               ),
               Row(
                 children: [
-                 Text(
+                  Text(
                     'New Password',
                     style: TextStyle(
                       color: textColor,
@@ -55,7 +55,7 @@ class ResetPassword extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                Text(
+                  Text(
                     '*',
                     style: TextStyle(
                       color: Colors.deepOrange,
@@ -66,14 +66,13 @@ class ResetPassword extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              customTextField(text: "New Password" , obsecure: true),
+              customTextField(text: "New Password", obsecure: true),
               const SizedBox(
                 height: 16,
               ),
-              
               Row(
                 children: [
-                 Text(
+                  Text(
                     'Confirme New Password',
                     style: TextStyle(
                       color: textColor,
@@ -92,7 +91,7 @@ class ResetPassword extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              customTextField(text: "Confirm New Password" , obsecure: true),
+              customTextField(text: "Confirm New Password", obsecure: true),
               const SizedBox(
                 height: 32,
               ),

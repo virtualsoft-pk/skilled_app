@@ -102,106 +102,110 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
                       shape: RoundedRectangleBorder(
                           borderRadius:
                               BorderRadius.circular(20.0)), //this right here
-                      child: Container(
-                        height: Get.height * 0.64,
-                        width: Get.width,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                          ),
-                          child: Column(
-                            //   mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "Contect Us",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    padding: EdgeInsets.all(5),
-                                    height: Get.height * 0.09,
-                                    decoration: BoxDecoration(
-                                        color: Colors.grey.withOpacity(0.3),
-                                        shape: BoxShape.circle),
-                                    child: Center(
-                                        child: Icon(
-                                      Icons.close,
-                                      size: 20,
-                                    )),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                "Name*",
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w500),
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.01,
-                              ),
-                              customTextField(
-                                text: "Your Name",
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                              Text(
-                                "Email Address*",
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w500),
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.01,
-                              ),
-                              customTextField(text: "Your Email Address"),
-                              SizedBox(
-                                height: Get.height * 0.02,
-                              ),
-                              Text(
-                                "What you want to know?*",
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w500),
-                              ),
-                              SizedBox(
-                                height: Get.height * 0.01,
-                              ),
+                      child: SingleChildScrollView(
+                        child: Container(
+                          height: Get.height * 0.64,
+                          width: Get.width,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                            ),
+                            child: Column(
+                              // shrinkWrap: true,
+                              //   mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Contect Us",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Spacer(),
+                                    Container(
+                                      margin: EdgeInsets.only(top: 15),
+                                      padding: EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          shape: BoxShape.circle),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Get.back();
+                                        },
+                                        child: Center(
+                                            child: Icon(
+                                          Icons.close,
+                                          size: 20,
+                                        )),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  "Name*",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.01,
+                                ),
+                                customTextField(
+                                  text: "Your Name",
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                Text(
+                                  "Email Address*",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.01,
+                                ),
+                                customTextField(text: "Your Email Address"),
+                                SizedBox(
+                                  height: Get.height * 0.02,
+                                ),
+                                Text(
+                                  "What you want to know?*",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                SizedBox(
+                                  height: Get.height * 0.01,
+                                ),
 
+                                ///TODO Multi line text field required
 
+                                customTextField(text: "Type issues here..."),
+                                SizedBox(
+                                  height: Get.height * 0.03,
+                                ),
 
-///TODO Multi line text field required
-
-
-
-                              customTextField(
-                                  text: "Type issues here..."),
-                              SizedBox(
-                                height: Get.height * 0.03,
-                              ),
-
-                              CustomButton(
-                                text: "SEND",
-                                funct: (){
-
-                                },
-                              ),
-                              // Align(
-                              //   alignment: Alignment.topCenter,
-                              //   child: resizableButton(
-                              //       HPadding: Get.width * 0.33,
-                              //       VPadding: 20,
-                              //       border: 14,
-                              //       name: "Send"),
-                              // ),
-                              SizedBox(
-                                height: Get.height * 0.01,
-                              ),
-                            ],
+                                CustomButton(
+                                  text: "SEND",
+                                  funct: () {},
+                                ),
+                                // Align(
+                                //   alignment: Alignment.topCenter,
+                                //   child: resizableButton(
+                                //       HPadding: Get.width * 0.33,
+                                //       VPadding: 20,
+                                //       border: 14,
+                                //       name: "Send"),
+                                // ),
+                                SizedBox(
+                                  height: Get.height * 0.01,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

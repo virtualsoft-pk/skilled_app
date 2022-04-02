@@ -174,25 +174,28 @@ class _OnBoard extends HookConsumerWidget {
         footerContentHeight -
         pageIndicatorHeight;
 
-    return Column(
-      children: <Widget>[
-        Container(
-          height: skipContainerHeight,
-          alignment: Alignment.centerRight,
-          child: skipButton ??
-              TextButton(
-                onPressed: () {
-                  _onSkipPressed(onSkip);
-                },
-                child: const Text(
-                  "",
-                  style: TextStyle(color: Colors.blueAccent),
-                ),
-              ),
-        ),
-        Expanded(
-          child: Container(
-            // color: Colors.red,
+    return SafeArea(
+      child: Column(
+        children: <Widget>[
+          // Container(
+          //   color: Colors.amber,
+          //   height: skipContainerHeight,
+          //   alignment: Alignment.centerRight,
+          //   child: skipButton ??
+          //       TextButton(
+          //         onPressed: () {
+          //           _onSkipPressed(onSkip);
+          //         },
+          //         child: const Text(
+          //           "",
+          //           style: TextStyle(color: Colors.blueAccent),
+          //         ),
+          //       ),
+          // ),
+
+          Expanded(
+            child: Container(
+              // color: Colors.red,
               height: pageViewHeight,
               child: PageView.builder(
                 controller: pageController,
@@ -204,42 +207,52 @@ class _OnBoard extends HookConsumerWidget {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          height: MediaQuery.of(context).size.height * 0.34,
+                          margin: EdgeInsets.only(
+                            top: index == 4
+                                ? Get.height * 0.1
+                                : Get.height * 0.06,
+                          ),
+                          height: MediaQuery.of(context).size.height * 0.3,
                           // width: 150,
+                          // color: Colors.amber,
                           child: Stack(
                             children: [
                               InkWell(
-                                  onTap: () {
-                                    Get.to(() => SignIn());
-                                  },
-                                  child: Align(
-                                    alignment: Alignment.topRight,
-                                    child: Container(
-                                      margin: EdgeInsets.only(right: 20),
-                                      child: const Text(
-                                        '',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                  )),
-                              index ==2 ? Positioned(
-
-                                  right: -Get.width*0.2,
-                                  bottom: 0,
-                                  left: 0,
-                                  top: 0,
+                                onTap: () {
+                                  Get.to(() => SignIn());
+                                },
+                                child: Align(
+                                  alignment: Alignment.topRight,
                                   child: Container(
-                                width: Get.width,
-                                // padding: EdgeInsets.only(left: index == 2? Get.width*0.15 : 0),
-                                child: Image.asset(
-                                  onBoardData[index].imgUrl,
-                                  width: imageWidth,
-                                  height: imageHeight,
-                                  fit: BoxFit.contain,
+                                    margin: EdgeInsets.only(right: 20),
+                                    child: const Text(
+                                      '',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
                                 ),
-                              )) :Container(
+                              ),
+                              //  Positioned(
+                              //         right: -Get.width * 0.2,
+                              //         bottom: 0,
+                              //         left: 0,
+                              //         top: 0,
+                              //         child: Container(
+                              //           width: Get.width,
+                              //           // padding: EdgeInsets.only(left: index == 2? Get.width*0.15 : 0),
+                              //           child: Image.asset(
+                              //             onBoardData[index].imgUrl,
+                              //             width: imageWidth,
+                              //             height: imageHeight,
+                              //             fit: BoxFit.contain,
+                              //           ),
+                              //         ),
+                              //       )
+
+                              Container(
+                                // margin: EdgeInsets.only(top: Get.height * 0.04),
                                 width: double.infinity,
                                 // padding: EdgeInsets.only(left: index == 2? Get.width*0.15 : 0),
                                 child: Image.asset(
@@ -253,10 +266,12 @@ class _OnBoard extends HookConsumerWidget {
                           ),
                         ),
                         Container(
+                          // color: Colors.amber,
+                          alignment: Alignment.topCenter,
                           margin: EdgeInsets.only(
                             left: 20,
                             right: 20,
-                            top: MediaQuery.of(context).size.height * 0.025,
+                            // top: MediaQuery.of(context).size.height * 0.02,
                           ),
                           child: Text(
                             onBoardData[index].title,
@@ -268,57 +283,67 @@ class _OnBoard extends HookConsumerWidget {
                                 ),
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 10),
-                          child: Text(
-                            onBoardData[index].description,
-                            textAlign: TextAlign.center,
-                            style: descriptionStyles ??
-                                const TextStyle(
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(
+                              left: 12,
+                              right: 12,
+                              // top: Get.height * 0.07,
+                            ),
+                            child: Text(
+                              onBoardData[index].description,
+                              textAlign: TextAlign.center,
+                              style: descriptionStyles ??
+                                  const TextStyle(
                                     fontSize: 16,
                                     color: Colors.black54,
-                                    fontWeight: FontWeight.w500),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
                           ),
                         ),
                       ],
                     ),
                   );
                 },
-              )),
-        ),
-        SizedBox(
-          height: 30,
-          child: PageIndicator(
-            count: onBoardData.length,
-            activePage: onBoardState.page,
-            pageIndicatorStyle: pageIndicatorStyle,
+              ),
+            ),
           ),
-        ),
-        Container(
-          height: footerContentHeight,
-          width: screenSize.width,
-          alignment: Alignment.center,
-          child: ButtonTheme(
-            minWidth: 230,
-            height: 40,
-            child: nextButton != null
-                ? nextButton!
-                : ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: const StadiumBorder(),
-                      elevation: 0,
-                    ),
-                    onPressed: () => _onNextTap(onBoardState),
-                    child: Text(
-                      onBoardState.isLastPage ? "Done" : "Next",
-                      style: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                  ),
+          Container(
+            margin: EdgeInsets.only(bottom: Get.height * 0.03),
+            height: 30,
+            child: PageIndicator(
+              count: onBoardData.length,
+              activePage: onBoardState.page,
+              pageIndicatorStyle: pageIndicatorStyle,
+            ),
           ),
-        ),
-      ],
+          Container(
+            height: footerContentHeight,
+            width: screenSize.width,
+            alignment: Alignment.center,
+            child: ButtonTheme(
+              minWidth: 230,
+              height: 40,
+              child: nextButton != null
+                  ? nextButton!
+                  : ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: const StadiumBorder(),
+                        elevation: 0,
+                      ),
+                      onPressed: () => _onNextTap(onBoardState),
+                      child: Text(
+                        onBoardState.isLastPage ? "Done" : "Next",
+                        style: const TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

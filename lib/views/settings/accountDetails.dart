@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:skilled_app/views/settings/profileEdit.dart';
 
 import '../../utils/app_colors.dart';
-
 
 class AccountDetail extends StatefulWidget {
   @override
@@ -12,6 +14,18 @@ class AccountDetail extends StatefulWidget {
 }
 
 class _AccountDetailState extends State<AccountDetail> {
+  File? image;
+  final picker = ImagePicker();
+  Future pickFunction() async {
+    final pickImage = await picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickImage != null) {
+        image = File(pickImage.path);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +59,7 @@ class _AccountDetailState extends State<AccountDetail> {
         actions: [
           InkWell(
               onTap: () {
-                Get.to(()=>ProfileEdit());
+                Get.to(() => ProfileEdit());
               },
               child: Image.asset(
                 "assets/images/edit.png",
@@ -53,11 +67,11 @@ class _AccountDetailState extends State<AccountDetail> {
                 height: Get.height * 0.04,
               )),
           InkWell(
-            onTap: (){
-              Get.to(()=>ProfileEdit());
+            onTap: () {
+              Get.to(() => ProfileEdit());
             },
             child: Padding(
-              padding: const EdgeInsets.only(right: 20, top: 20,left: 10),
+              padding: const EdgeInsets.only(right: 20, top: 20, left: 10),
               child: Text(
                 "Edit",
                 style: TextStyle(
@@ -78,33 +92,44 @@ class _AccountDetailState extends State<AccountDetail> {
             Stack(
               alignment: Alignment.bottomRight,
               children: [
-                CircleAvatar(
-                  radius: Get.height * 0.078,
-                  backgroundColor: Colors.grey.withOpacity(0.3),
-                  backgroundImage: AssetImage(
-                    "assets/images/profilePic.png",
-                  ),
-                  // child: Container(
-                  //   child: Image.asset(
-                  //     "assets/images/profilePic.png",
-                  //     fit: BoxFit.cover,
-                  //     height: Get.height * 0.1,
-                  //     width: Get.width * 0.17,
-                  //   ),
-                  // ),
-                ),
+                image == null
+                    ? CircleAvatar(
+                        radius: Get.height * 0.078,
+                        backgroundColor: Colors.grey.withOpacity(0.3),
+                        backgroundImage: AssetImage(
+                          "assets/images/profilePic.png",
+                        )
+                        // child: Container(
+                        //   child: Image.asset(
+                        //     "assets/images/profilePic.png",
+                        //     fit: BoxFit.cover,
+                        //     height: Get.height * 0.1,
+                        //     width: Get.width * 0.17,
+                        //   ),
+                        // ),
+                        )
+                    : CircleAvatar(
+                        radius: Get.height * 0.078,
+                        backgroundColor: Colors.grey.withOpacity(0.3),
+                        backgroundImage: FileImage(image!),
+                      ),
                 Container(
                   padding: EdgeInsets.all(3),
                   decoration: BoxDecoration(
                       color: Colors.white, shape: BoxShape.circle),
-                  child: Container(
-                    padding: EdgeInsets.all(7),
-                    decoration: BoxDecoration(
-                        color: buttonColor, shape: BoxShape.circle),
-                    child: Image.asset(
-                      "assets/images/Camera.png",
-                      fit: BoxFit.cover,
-                      height: Get.height * 0.03,
+                  child: InkWell(
+                    onTap: () {
+                      pickFunction();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(7),
+                      decoration: BoxDecoration(
+                          color: buttonColor, shape: BoxShape.circle),
+                      child: Image.asset(
+                        "assets/images/Camera.png",
+                        fit: BoxFit.cover,
+                        height: Get.height * 0.03,
+                      ),
                     ),
                   ),
                 )

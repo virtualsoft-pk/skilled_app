@@ -15,13 +15,13 @@ class ForgotPassword extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15),
           width: double.infinity,
           color: backgroundColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customBackButton(),
+              customBackButton(() {}),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
               ),

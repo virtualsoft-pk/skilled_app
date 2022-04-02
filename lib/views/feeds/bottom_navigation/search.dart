@@ -24,11 +24,11 @@ class Search extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.only(top: 20, left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                customBackButton(),
+                // customBackButton(() {}),
                 TextFormField(
                   decoration: InputDecoration(
                     fillColor: greyColor,

@@ -44,8 +44,8 @@ class _FeedPageState extends State<FeedPage>
                       Stack(
                         children: [
                           InkWell(
-                            onTap: (){
-                              Get.to(()=>Notifications());
+                            onTap: () {
+                              Get.to(() => Notifications());
                             },
                             child: Container(
                               padding: EdgeInsets.all(9),
@@ -154,7 +154,8 @@ class _FeedPageState extends State<FeedPage>
                                       radius: 22,
                                       backgroundColor: Colors.amber,
                                       backgroundImage: AssetImage(
-                                          feedModel[i].profileImage!),
+                                        feedModel[i].profileImage!,
+                                      ),
                                     ),
                                     const SizedBox(
                                       width: 10,
@@ -204,8 +205,8 @@ class _FeedPageState extends State<FeedPage>
                                   height: 12,
                                 ),
                                 InkWell(
-                                  onTap: (){
-                                    Get.to(()=> InPerson());
+                                  onTap: () {
+                                    Get.to(() => InPerson());
                                   },
                                   child: Container(
                                     height: 164,
@@ -218,7 +219,7 @@ class _FeedPageState extends State<FeedPage>
                                       image: DecorationImage(
                                         fit: BoxFit.cover,
                                         image:
-                                        AssetImage(feedModel[i].mainImage!),
+                                            AssetImage(feedModel[i].mainImage!),
                                       ),
                                     ),
                                   ),
