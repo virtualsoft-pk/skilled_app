@@ -254,7 +254,8 @@ class _OnBoard extends HookConsumerWidget {
                               Container(
                                 // margin: EdgeInsets.only(top: Get.height * 0.04),
                                 width: double.infinity,
-                                // padding: EdgeInsets.only(left: index == 2? Get.width*0.15 : 0),
+                                padding: EdgeInsets.only(
+                                    left: index == 2 ? Get.width * 0.15 : 0),
                                 child: Image.asset(
                                   onBoardData[index].imgUrl,
                                   width: imageWidth,

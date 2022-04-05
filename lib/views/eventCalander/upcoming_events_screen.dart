@@ -7,14 +7,18 @@ import 'package:skilled_app/views/eventCalander/in_person.dart';
 import 'package:skilled_app/widgets/add_event_calender.dart';
 
 class UpCommingEvent extends StatefulWidget {
-  const UpCommingEvent({Key? key}) : super(key: key);
-
+  UpCommingEvent({
+    Key? key,
+    this.fun,
+  }) : super(key: key);
+  Function? fun;
   @override
   _UpCommingEventState createState() => _UpCommingEventState();
 }
 
 class _UpCommingEventState extends State<UpCommingEvent> {
   bool isExpand = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,6 +154,7 @@ class _UpCommingEventState extends State<UpCommingEvent> {
             isExpand == false
                 ? InkWell(
                     onTap: () {
+                      widget.fun!();
                       isExpand = true;
                       setState(() {});
                     },

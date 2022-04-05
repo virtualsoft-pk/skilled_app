@@ -328,41 +328,44 @@ class _CompleteEventState extends State<CompleteEvent> {
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
-                                    actions: [
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 15),
-                                        child: Column(
-                                          children: [
-                                            Divider(),
-                                            SizedBox(
-                                              height: Get.height * 0.02,
-                                            ),
-                                            Text(
-                                              'Your rating has been submitted for the company to view.',
-                                              style: TextStyle(
-                                                color: Color(0xff333943),
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500,
+                                    content: Container(
+                                      height: 195,
+                                      child: Column(children: [
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 15),
+                                          child: Column(
+                                            children: [
+                                              Divider(),
+                                              SizedBox(
+                                                height: Get.height * 0.02,
                                               ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            SizedBox(
-                                              height: Get.height * 0.06,
-                                            ),
-                                            CustomButton(
-                                              funct: () {
-                                                Get.back();
-                                              },
-                                              text: 'BACK TO SKILLD',
-                                            ),
-                                            SizedBox(
-                                              height: 8,
-                                            ),
-                                          ],
+                                              Text(
+                                                'Your rating has been submitted for the company to view.',
+                                                style: TextStyle(
+                                                  color: Color(0xff333943),
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              SizedBox(
+                                                height: Get.height * 0.06,
+                                              ),
+                                              CustomButton(
+                                                funct: () {
+                                                  Get.back();
+                                                },
+                                                text: 'BACK TO SKILLD',
+                                              ),
+                                              SizedBox(
+                                                height: 8,
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ]);
+                                      ]),
+                                    ));
                               });
                           // Get.defaultDialog(
                           //   titleStyle: TextStyle(

@@ -9,8 +9,8 @@ import '../../settings/settingPage.dart';
 import 'video_practice.dart';
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({Key? key}) : super(key: key);
-
+  BottomNavigation({Key? key, this.index = 0}) : super(key: key);
+  int? index;
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();
 }
@@ -29,6 +29,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
     setState(() {
       _currentIndex = value;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.index != null) {
+      _currentIndex = widget.index!;
+      setState(() {});
+    }
   }
 
   @override

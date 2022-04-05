@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:skilled_app/views/forum/thread_detail.dart';
 
 import '../../utils/app_colors.dart';
 import '../eventCalander/events_screen.dart';
+import '../feeds/bottom_navigation/bottom_navigation.dart';
 import '../feeds/bottom_navigation/feed_page.dart';
 import '../feeds/bottom_navigation/search.dart';
 import '../settings/settingPage.dart';
@@ -20,6 +22,10 @@ class _BottomNavigation2State extends State<BottomNavigation2> {
   int _currentIndex = 2;
   List _screens = [];
   void _updateIndex(int value) {
+    Get.off(() => BottomNavigation(
+          index: value,
+        ));
+    return;
     setState(() {
       _currentIndex = value;
     });

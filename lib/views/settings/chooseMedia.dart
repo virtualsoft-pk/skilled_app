@@ -110,14 +110,16 @@ class _ChooseSocialMediaState extends State<ChooseSocialMedia> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
+            padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
               color: Colors.white,
-              image: DecorationImage(
-                image: AssetImage(image),
-              ),
+              borderRadius: BorderRadius.circular(40),
             ),
-            padding: EdgeInsets.all(22),
+            child: Image(
+              image: AssetImage(image),
+              width: 30,
+              height: 30,
+            ),
           ),
           SizedBox(
             width: Get.width * 0.04,

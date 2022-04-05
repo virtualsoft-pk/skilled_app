@@ -31,251 +31,266 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
     _tabController = TabController(length: 2, vsync: this);
   }
 
+  bool isExp = true;
+  bool isExpandi = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: NestedScrollView(
-        headerSliverBuilder: (context, value) {
-          return [
-            SliverToBoxAdapter(
-                child: Column(
-              children: [
-                SizedBox(
-                  height: Get.height * 0.01,
-                ),
-                ListTile(
-                  leading: Text(
-                    "Events",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+      body: SafeArea(
+        child: NestedScrollView(
+          headerSliverBuilder: (context, value) {
+            return [
+              SliverToBoxAdapter(
+                  child: Column(
+                children: [
+                  SizedBox(
+                    height: Get.height * 0.01,
                   ),
-                  trailing: Container(
-                    padding: EdgeInsets.only(left: 12, right: 12),
-                    decoration: BoxDecoration(
-                      color: Color(0xffF4F4F5),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: DropdownButton(
-                      underline: SizedBox(),
-                      // Initial Value
-                      value: dropdownvalue,
-                      // Down Arrow Icon
-                      icon: const Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Color(0xff777B82),
-                        size: 20,
+                  ListTile(
+                    leading: Text(
+                      "Events",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
                       ),
-                      // Array list of items
-                      items: items.map((String items) {
-                        return DropdownMenuItem(
-                          value: items,
-                          child: Text(
-                            items,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff777B82),
+                    ),
+                    trailing: Container(
+                      height: 40,
+                      padding: EdgeInsets.only(left: 12, right: 15),
+                      decoration: BoxDecoration(
+                        color: Color(0xffF4F4F5),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: DropdownButton(
+                        underline: SizedBox(),
+                        // Initial Value
+                        value: dropdownvalue,
+                        // Down Arrow Icon
+                        icon: const Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Color(0xff777B82),
+                          size: 20,
+                        ),
+                        // Array list of items
+                        items: items.map((String items) {
+                          return DropdownMenuItem(
+                            value: items,
+                            child: Text(
+                              items,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff777B82),
+                              ),
                             ),
-                          ),
-                        );
-                      }).toList(),
-                      // After selecting the desired option,it will
-                      // change button value to selected value
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownvalue = newValue!;
-                        });
-                      },
+                          );
+                        }).toList(),
+                        // After selecting the desired option,it will
+                        // change button value to selected value
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownvalue = newValue!;
+                          });
+                        },
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  height: 320,
-                  width: double.infinity,
-                  child: Calendar(
-                    //  hideBottomBar: true,
-                    // todayColor:  Appcolors.purple,
-                    selectedColor: purple,
-                    //eventDoneColor: Colors.purple,
-                    eventColor: purple,
-                    hideTodayIcon: true,
-                    bottomBarColor: purple,
-                    // isExpandable: true,
-                    startOnMonday: true,
-                    weekDays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
-                    events: _events,
-                    // locale: 'de_DE',
-                    // todayButtonText: 'Heute',
-                    isExpanded: true,
-                    // isExpandable: true,
-                    expandableDateFormat: 'EEEE, dd. MMMM yyyy',
-                    dayOfWeekStyle: TextStyle(
+                  Container(
+                    height: isExp == true ? 320 : 0,
+                    width: double.infinity,
+                    child: Calendar(
+                      //  hideBottomBar: true,
+                      // todayColor:  Appcolors.purple,
+                      selectedColor: purple,
+                      //eventDoneColor: Colors.purple,
+                      eventColor: purple,
+
+                      hideTodayIcon: true,
+                      bottomBarColor: Color(0xffEDEFF4),
+
+                      startOnMonday: true,
+                      weekDays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+                      events: _events,
+                      bottomBarArrowColor: Colors.black,
+                      bottomBarTextStyle: TextStyle(
+                        color: Colors.black,
+                      ),
+
+                      // locale: 'de_DE',
+                      // todayButtonText: 'Heute',
+                      isExpanded: isExp,
+                      isExpandable: isExpandi,
+                      expandableDateFormat: 'EEEE, dd. MMMM yyyy',
+                      dayOfWeekStyle: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w800,
-                        fontSize: 11),
-                  ),
-                ),
-              ],
-            )),
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      height: Get.height * 0.06,
-                      width: double.infinity,
-                      child: Center(
-                        child: TabBar(
-                          controller: _tabController,
-                          labelColor: Colors.black,
-                          isScrollable: true,
-                          tabs: [
-                            Tab(text: 'Upcoming Events'),
-                            Tab(text: 'Completed Events'),
-                          ],
-                        ),
+                        fontSize: 11,
                       ),
                     ),
                   ),
                 ],
+              )),
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        height: Get.height * 0.06,
+                        width: double.infinity,
+                        child: Center(
+                          child: TabBar(
+                            controller: _tabController,
+                            labelColor: Colors.black,
+                            isScrollable: true,
+                            tabs: [
+                              Tab(text: 'Upcoming Events'),
+                              Tab(text: 'Completed Events'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
+            ];
+          },
+          body: Container(
+            // color: Colors.grey,
+            // width: double.infinity,
+            // height: Get.height * 0.6,
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                UpCommingEvent(
+                  fun: () {
+                    isExp = false;
+                    isExpandi = true;
+                    setState(() {});
+                  },
+                ),
+                CompleteEvent(),
+              ],
             ),
-          ];
-        },
-        body: Container(
-          // color: Colors.grey,
-          // width: double.infinity,
-          // height: Get.height * 0.6,
-          child: TabBarView(
-            controller: _tabController,
-            children: [
-              UpCommingEvent(),
-              CompleteEvent(),
-            ],
           ),
         ),
       ),
-    )
 
-        //  SingleChildScrollView(
-        //   child: DefaultTabController(
-        //     length: 2,
-        //     child: Column(
-        //       children: [
-        //         SizedBox(
-        //           height: Get.height * 0.01,
-        //         ),
-        //         ListTile(
-        //           leading: Text(
-        //             "Events",
-        //             style: TextStyle(
-        //               color: Colors.black,
-        //               fontSize: 24,
-        //               fontWeight: FontWeight.bold,
-        //             ),
-        //           ),
-        //           trailing: Container(
-        //             padding: EdgeInsets.only(left: 12, right: 12),
-        //             decoration: BoxDecoration(
-        //               color: Color(0xffF4F4F5),
-        //               borderRadius: BorderRadius.circular(12),
-        //             ),
-        //             child: DropdownButton(
-        //               underline: SizedBox(),
-        //               // Initial Value
-        //               value: dropdownvalue,
-        //               // Down Arrow Icon
-        //               icon: const Icon(
-        //                 Icons.keyboard_arrow_down,
-        //                 color: Color(0xff777B82),
-        //                 size: 20,
-        //               ),
-        //               // Array list of items
-        //               items: items.map((String items) {
-        //                 return DropdownMenuItem(
-        //                   value: items,
-        //                   child: Text(
-        //                     items,
-        //                     style: TextStyle(
-        //                       fontSize: 12,
-        //                       fontWeight: FontWeight.w500,
-        //                       color: Color(0xff777B82),
-        //                     ),
-        //                   ),
-        //                 );
-        //               }).toList(),
-        //               // After selecting the desired option,it will
-        //               // change button value to selected value
-        //               onChanged: (String? newValue) {
-        //                 setState(() {
-        //                   dropdownvalue = newValue!;
-        //                 });
-        //               },
-        //             ),
-        //           ),
-        //         ),
-        //         Container(
-        //           height: 320,
-        //           width: double.infinity,
-        //           child: Calendar(
-        //             //  hideBottomBar: true,
-        //             // todayColor:  Appcolors.purple,
-        //             selectedColor: purple,
-        //             //eventDoneColor: Colors.purple,
-        //             eventColor: purple,
-        //             hideTodayIcon: true,
-        //             bottomBarColor: purple,
-        //             // isExpandable: true,
-        //             startOnMonday: true,
-        //             weekDays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
-        //             events: _events,
-        //             // locale: 'de_DE',
-        //             // todayButtonText: 'Heute',
-        //             isExpanded: true,
-        //             // expandableDateFormat: 'EEEE, dd. MMMM yyyy',
-        //             dayOfWeekStyle: TextStyle(
-        //                 color: Colors.black,
-        //                 fontWeight: FontWeight.w800,
-        //                 fontSize: 11),
-        //           ),
-        //         ),
-
-        //         Container(
-        //           height: Get.height * 0.06,
-        //           width: double.infinity,
-        //           child: Center(
-        //             child: TabBar(
-        //               labelColor: Colors.black,
-        //               isScrollable: true,
-        //               tabs: [
-        //                 Tab(text: 'Upcoming Events'),
-        //                 Tab(text: 'Completed Events'),
-        //               ],
-        //             ),
-        //           ),
-        //         ),
-        //         Container(
-        //           color: Colors.grey,
-        //           width: double.infinity,
-        //           height: Get.height * 0.6,
-        //           child: TabBarView(
-        //             children: [
-        //               UpCommingEvent(),
-        //               CompleteEvent(),
-        //             ],
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
-
-        );
+      //  SingleChildScrollView(
+      //   child: DefaultTabController(
+      //     length: 2,
+      //     child: Column(
+      //       children: [
+      //         SizedBox(
+      //           height: Get.height * 0.01,
+      //         ),
+      //         ListTile(
+      //           leading: Text(
+      //             "Events",
+      //             style: TextStyle(
+      //               color: Colors.black,
+      //               fontSize: 24,
+      //               fontWeight: FontWeight.bold,
+      //             ),
+      //           ),
+      //           trailing: Container(
+      //             padding: EdgeInsets.only(left: 12, right: 12),
+      //             decoration: BoxDecoration(
+      //               color: Color(0xffF4F4F5),
+      //               borderRadius: BorderRadius.circular(12),
+      //             ),
+      //             child: DropdownButton(
+      //               underline: SizedBox(),
+      //               // Initial Value
+      //               value: dropdownvalue,
+      //               // Down Arrow Icon
+      //               icon: const Icon(
+      //                 Icons.keyboard_arrow_down,
+      //                 color: Color(0xff777B82),
+      //                 size: 20,
+      //               ),
+      //               // Array list of items
+      //               items: items.map((String items) {
+      //                 return DropdownMenuItem(
+      //                   value: items,
+      //                   child: Text(
+      //                     items,
+      //                     style: TextStyle(
+      //                       fontSize: 12,
+      //                       fontWeight: FontWeight.w500,
+      //                       color: Color(0xff777B82),
+      //                     ),
+      //                   ),
+      //                 );
+      //               }).toList(),
+      //               // After selecting the desired option,it will
+      //               // change button value to selected value
+      //               onChanged: (String? newValue) {
+      //                 setState(() {
+      //                   dropdownvalue = newValue!;
+      //                 });
+      //               },
+      //             ),
+      //           ),
+      //         ),
+      //         Container(
+      //           height: 320,
+      //           width: double.infinity,
+      //           child: Calendar(
+      //             //  hideBottomBar: true,
+      //             // todayColor:  Appcolors.purple,
+      //             selectedColor: purple,
+      //             //eventDoneColor: Colors.purple,
+      //             eventColor: purple,
+      //             hideTodayIcon: true,
+      //             bottomBarColor: purple,
+      //             // isExpandable: true,
+      //             startOnMonday: true,
+      //             weekDays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+      //             events: _events,
+      //             // locale: 'de_DE',
+      //             // todayButtonText: 'Heute',
+      //             isExpanded: true,
+      //             // expandableDateFormat: 'EEEE, dd. MMMM yyyy',
+      //             dayOfWeekStyle: TextStyle(
+      //                 color: Colors.black,
+      //                 fontWeight: FontWeight.w800,
+      //                 fontSize: 11),
+      //           ),
+      //         ),
+      //         Container(
+      //           height: Get.height * 0.06,
+      //           width: double.infinity,
+      //           child: Center(
+      //             child: TabBar(
+      //               labelColor: Colors.black,
+      //               isScrollable: true,
+      //               tabs: [
+      //                 Tab(text: 'Upcoming Events'),
+      //                 Tab(text: 'Completed Events'),
+      //               ],
+      //             ),
+      //           ),
+      //         ),
+      //         Container(
+      //           color: Colors.grey,
+      //           width: double.infinity,
+      //           height: Get.height * 0.6,
+      //           child: TabBarView(
+      //             children: [
+      //               UpCommingEvent(),
+      //               CompleteEvent(),
+      //             ],
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+    );
   }
 
   void _handleNewDate(date) {

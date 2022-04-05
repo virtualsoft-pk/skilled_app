@@ -41,72 +41,76 @@ class _HowToKnowState extends State<HowToKnow> {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Stack(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customBackButton(() {}),
-                  SizedBox(
-                    height: screenheight * 0.01,
-                  ),
-                  Text(
-                    "How Did You Hear About Us?",
-                    style: GoogleFonts.manrope(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w700,
+              SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    customBackButton(() {}),
+                    SizedBox(
+                      height: screenheight * 0.01,
                     ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(bottom: 22),
-                    width: screenwidth * 0.90,
-                    height: screenheight * 0.6,
-                    child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: about.length,
-                        itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              setState(
-                                () {
-                                  selectedItem = index;
-                                },
-                              );
-                            },
-                            child: Container(
-                              margin: EdgeInsets.only(top: 8),
-                              width: screenwidth * 0.01,
-                              height: 62,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: selectedItem == index
-                                      ? containercolor
-                                      : greycolor),
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),
-                                    child: Image(
-                                      image:
-                                          AssetImage('${about[index].image}'),
-                                      width: 40,
-                                      height: 40,
+                    Text(
+                      "How Did You Hear About Us?",
+                      style: GoogleFonts.manrope(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(bottom: 22),
+                      width: screenwidth * 0.90,
+                      // height: screenheight * 0.6,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemCount: about.length,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              onTap: () {
+                                setState(
+                                  () {
+                                    selectedItem = index;
+                                  },
+                                );
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(top: 8),
+                                width: screenwidth * 0.01,
+                                height: 62,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: selectedItem == index
+                                        ? containercolor
+                                        : greycolor),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 15),
+                                      child: Image(
+                                        image:
+                                            AssetImage('${about[index].image}'),
+                                        width: 40,
+                                        height: 40,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: screenwidth * 0.06,
-                                  ),
-                                  myText(
-                                      text: '${about[index].name}',
-                                      style: GoogleFonts.manrope(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                      ))
-                                ],
+                                    SizedBox(
+                                      width: screenwidth * 0.06,
+                                    ),
+                                    myText(
+                                        text: '${about[index].name}',
+                                        style: GoogleFonts.manrope(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                        ))
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        }),
-                  ),
-                ],
+                            );
+                          }),
+                    ),
+                  ],
+                ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,

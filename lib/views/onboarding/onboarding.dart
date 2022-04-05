@@ -6,7 +6,6 @@ import 'package:skilled_app/utils/app_const.dart';
 import 'package:skilled_app/views/auth/sign_in.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/views/onboarding/onboarding_widget.dart' as o;
-
 import '../feeds/bottom_navigation/bottom_navigation.dart';
 
 class OnboardingScreen extends StatefulWidget {
