@@ -15,6 +15,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        // pageTransitionsTheme: PageTransitionsTheme(
+        //   builders: {
+        //     TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+        //     TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        //   },
+        // ),
         textTheme: GoogleFonts.manropeTextTheme(
           Theme.of(context).textTheme,
         ),

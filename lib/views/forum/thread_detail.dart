@@ -350,61 +350,86 @@ class _PopularThreadState extends State<PopularThread> {
                                   children: [
                                     Row(
                                       children: [
-                                        Container(
-                                          margin: EdgeInsets.only(left: 5),
-                                          width: screenwidth * 0.21,
-                                          height: screenheight * 0.04,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            color: Color(0xffFFE2DC),
-                                            // border: Border.all(
-                                            //   color: backcolor,
-                                            // ),
-                                          ),
-                                          child: Center(
-                                            child: myText(
-                                                text: '${post[index].design}',
-                                                style: GoogleFonts.manrope(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.black)),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: screenwidth * 0.02,
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(left: 5),
-                                          width: screenwidth * 0.21,
-                                          height: screenheight * 0.04,
-                                          decoration: BoxDecoration(
+                                        InkWell(
+                                          onTap: () {
+                                            Get.to(
+                                              () => PopularThread(
+                                                title: 'UI/UIX',
+                                              ),
+                                            );
+                                            print('object');
+                                          },
+                                          child: Container(
+                                            margin: EdgeInsets.only(left: 5),
+                                            width: screenwidth * 0.21,
+                                            height: screenheight * 0.04,
+                                            decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(15),
-                                              color: Color(0xffFDE3CC),
-                                              border:
-                                                  Border.all(color: backcolor)),
-                                          child: Center(
-                                              child:
-                                                  Text('${post[index].dgn2}')),
+                                              color: Color(0xffFFE2DC),
+                                              // border: Border.all(
+                                              //   color: backcolor,
+                                              // ),
+                                            ),
+                                            child: Center(
+                                              child: myText(
+                                                  text: '${post[index].design}',
+                                                  style: GoogleFonts.manrope(
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: Colors.black)),
+                                            ),
+                                          ),
                                         ),
                                         SizedBox(
                                           width: screenwidth * 0.02,
                                         ),
-                                        Container(
-                                          margin: EdgeInsets.only(left: 5),
-                                          width: screenwidth * 0.3,
-                                          height: screenheight * 0.045,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            color: Color(0xffE4F0EE),
-                                            // border: Border.all(
-                                            //     color: backcolor),
+                                        InkWell(
+                                          onTap: () {
+                                            Get.to(() => PopularThread(
+                                                  title: 'Motion',
+                                                ));
+                                          },
+                                          child: Container(
+                                            margin: EdgeInsets.only(left: 5),
+                                            width: screenwidth * 0.21,
+                                            height: screenheight * 0.04,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                color: Color(0xffFDE3CC),
+                                                border: Border.all(
+                                                    color: backcolor)),
+                                            child: Center(
+                                                child: Text(
+                                                    '${post[index].dgn2}')),
                                           ),
-                                          child: Center(
-                                              child: Text(
-                                                  '${post[index].design3}')),
+                                        ),
+                                        SizedBox(
+                                          width: screenwidth * 0.02,
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            Get.to(() => PopularThread(
+                                                  title: 'Web Design',
+                                                ));
+                                          },
+                                          child: Container(
+                                            margin: EdgeInsets.only(left: 5),
+                                            width: screenwidth * 0.3,
+                                            height: screenheight * 0.045,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              color: Color(0xffE4F0EE),
+                                              // border: Border.all(
+                                              //     color: backcolor),
+                                            ),
+                                            child: Center(
+                                                child: Text(
+                                                    '${post[index].design3}')),
+                                          ),
                                         ),
                                       ],
                                     ),

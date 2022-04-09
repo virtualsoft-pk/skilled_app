@@ -17,8 +17,7 @@ class FeedPage extends StatefulWidget {
   State<FeedPage> createState() => _FeedPageState();
 }
 
-class _FeedPageState extends State<FeedPage>
-    with SingleTickerProviderStateMixin {
+class _FeedPageState extends State<FeedPage> {
   //  DateTime currentTime = DateTime.now();
   @override
   Widget build(BuildContext context) {
@@ -140,7 +139,6 @@ class _FeedPageState extends State<FeedPage>
                     physics: NeverScrollableScrollPhysics(),
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
                         child: ListView.builder(
                           itemCount: feedModel.length,
                           shrinkWrap: true,
@@ -148,165 +146,191 @@ class _FeedPageState extends State<FeedPage>
                             return Column(
                               children: [
                                 const SizedBox(height: 15),
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 22,
-                                      backgroundColor: Colors.amber,
-                                      backgroundImage: AssetImage(
-                                        feedModel[i].profileImage!,
+                                Container(
+                                  padding: EdgeInsets.only(left: 16),
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 22,
+                                        backgroundColor: Colors.amber,
+                                        backgroundImage: AssetImage(
+                                          feedModel[i].profileImage!,
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          feedModel[i].name!,
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                            color: textColor,
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            feedModel[i].name!,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                              color: textColor,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          feedModel[i].dateTime!.toString(),
-                                          style: const TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400,
-                                            color: lightGrey,
+                                          Text(
+                                            feedModel[i].dateTime!.toString(),
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400,
+                                              color: lightGrey,
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Spacer(),
-                                    Image.asset(
-                                      'assets/more-vertical.png',
-                                      height: 20,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 12,
-                                ),
-                                Text(
-                                  feedModel[i].text!,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
+                                        ],
+                                      ),
+                                      Spacer(),
+                                      PopupMenuButton(
+                                        itemBuilder: (context) => [
+                                          PopupMenuItem(
+                                            child: Text("Save for Later"),
+                                            value: 1,
+                                          ),
+                                          PopupMenuItem(
+                                            child: Text("Not Interested"),
+                                            value: 2,
+                                          ),
+                                          PopupMenuItem(
+                                            child: Text("Report"),
+                                            value: 2,
+                                          ),
+                                          PopupMenuItem(
+                                            child: Text("Share"),
+                                            value: 2,
+                                          )
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 SizedBox(
                                   height: 12,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Get.to(() => InPerson());
-                                  },
-                                  child: Container(
-                                    height: 164,
-                                    decoration: BoxDecoration(
-                                      color: Colors.amber,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(12),
-                                        topRight: Radius.circular(12),
-                                      ),
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image:
-                                            AssetImage(feedModel[i].mainImage!),
-                                      ),
-                                    ),
-                                  ),
                                 ),
                                 Container(
-                                  width: Get.width,
-                                  height: 54,
-                                  decoration: BoxDecoration(
-                                    color: greyColor,
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(12),
-                                      bottomRight: Radius.circular(12),
-                                    ),
-                                  ),
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 8),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          feedModel[i].website!,
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400,
-                                            color: websitegreyColor,
+                                  padding: EdgeInsets.symmetric(horizontal: 15),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        feedModel[i].text!,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 12,
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          Get.to(() => InPerson());
+                                        },
+                                        child: Container(
+                                          height: 164,
+                                          decoration: BoxDecoration(
+                                            color: Colors.amber,
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(12),
+                                              topRight: Radius.circular(12),
+                                            ),
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: AssetImage(
+                                                  feedModel[i].mainImage!),
+                                            ),
                                           ),
                                         ),
-                                        Text(
-                                          feedModel[i].websiteDesc!,
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w400,
-                                            color: textColor,
+                                      ),
+                                      Container(
+                                        width: Get.width,
+                                        height: 54,
+                                        decoration: BoxDecoration(
+                                          color: greyColor,
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(12),
+                                            bottomRight: Radius.circular(12),
                                           ),
-                                        )
-                                      ],
-                                    ),
+                                        ),
+                                        child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 12, vertical: 8),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                feedModel[i].website!,
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: websitegreyColor,
+                                                ),
+                                              ),
+                                              Text(
+                                                feedModel[i].websiteDesc!,
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: textColor,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 12,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            'assets/heart.png',
+                                            height: 18,
+                                          ),
+                                          SizedBox(
+                                            width: 13,
+                                          ),
+                                          Text(
+                                            feedModel[i].likes.toString(),
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 38,
+                                          ),
+                                          Image.asset(
+                                            'assets/share-2.png',
+                                            height: 20,
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Text(
+                                            feedModel[i].shares.toString(),
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 16,
+                                      ),
+                                      Divider(
+                                        color: dividerColor,
+                                      )
+                                    ],
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 12,
-                                ),
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      'assets/heart.png',
-                                      height: 18,
-                                    ),
-                                    SizedBox(
-                                      width: 13,
-                                    ),
-                                    Text(
-                                      feedModel[i].likes.toString(),
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 38,
-                                    ),
-                                    Image.asset(
-                                      'assets/share-2.png',
-                                      height: 20,
-                                    ),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Text(
-                                      feedModel[i].shares.toString(),
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 16,
-                                ),
-                                Divider(
-                                  color: dividerColor,
-                                )
                               ],
                             );
                           },

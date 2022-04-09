@@ -16,12 +16,11 @@ class Events extends StatefulWidget {
 class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
   final Map<DateTime, List<CleanCalendarEvent>> _events = {};
   String dropdownvalue = 'Today';
-
   // List of items in our dropdown menu
   var items = [
     'Today',
+    'This Week',
     'This Month',
-    'This Year',
   ];
   TabController? _tabController;
 
@@ -31,8 +30,10 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
     _tabController = TabController(length: 2, vsync: this);
   }
 
-  bool isExp = true;
-  bool isExpandi = false;
+  // bool isExp = false;
+  bool isExpanded = false;
+  bool isExpandedForMonth = false;
+  bool isHideCalader = true;
 
   @override
   Widget build(BuildContext context) {
@@ -42,96 +43,110 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
           headerSliverBuilder: (context, value) {
             return [
               SliverToBoxAdapter(
-                  child: Column(
-                children: [
-                  SizedBox(
-                    height: Get.height * 0.01,
-                  ),
-                  ListTile(
-                    leading: Text(
-                      "Events",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: Get.height * 0.01,
+                    ),
+                    ListTile(
+                      leading: Text(
+                        "Events",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      trailing: Container(
+                        height: 40,
+                        padding: EdgeInsets.only(left: 12, right: 15),
+                        decoration: BoxDecoration(
+                          color: Color(0xffF4F4F5),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: DropdownButton(
+                          underline: SizedBox(),
+                          // Initial Value
+                          value: dropdownvalue,
+                          // Down Arrow Icon
+                          icon: const Icon(
+                            Icons.keyboard_arrow_down,
+                            color: Color(0xff777B82),
+                            size: 20,
+                          ),
+                          // Array list of items
+                          items: items.map(
+                            (String e) {
+                              return DropdownMenuItem(
+                                onTap: () {
+                                  e == 'Today'
+                                      ? isHideCalader = true
+                                      : isHideCalader = false;
+                                  e == 'This week' ? isExpanded = true : null;
+                                  e == 'This Month' ? isExpanded = true : null;
+                                },
+                                value: e,
+                                child: Text(
+                                  e,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xff777B82),
+                                  ),
+                                ),
+                              );
+                            },
+                          ).toList(),
+                          // After selecting the desired option,it will
+                          // change button value to selected value
+                          onChanged: (String? newValue) {
+                            setState(
+                              () {
+                                dropdownvalue = newValue!;
+                              },
+                            );
+                          },
+                        ),
                       ),
                     ),
-                    trailing: Container(
-                      height: 40,
-                      padding: EdgeInsets.only(left: 12, right: 15),
-                      decoration: BoxDecoration(
-                        color: Color(0xffF4F4F5),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: DropdownButton(
-                        underline: SizedBox(),
-                        // Initial Value
-                        value: dropdownvalue,
-                        // Down Arrow Icon
-                        icon: const Icon(
-                          Icons.keyboard_arrow_down,
-                          color: Color(0xff777B82),
-                          size: 20,
-                        ),
-                        // Array list of items
-                        items: items.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(
-                              items,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xff777B82),
+                    isHideCalader == true
+                        ? SizedBox()
+                        : Container(
+                            height: isExpanded == true ? 320 : 140,
+                            width: double.infinity,
+                            child: Calendar(
+                              selectedColor: purple,
+                              eventColor: purple,
+                              hideTodayIcon: true,
+                              bottomBarColor: Color(0xffEDEFF4),
+                              startOnMonday: true,
+                              weekDays: [
+                                'Mo',
+                                'Di',
+                                'Mi',
+                                'Do',
+                                'Fr',
+                                'Sa',
+                                'So',
+                              ],
+                              events: _events,
+                              bottomBarArrowColor: Colors.black,
+                              bottomBarTextStyle: TextStyle(
+                                color: Colors.black,
+                              ),
+                              isExpanded: isExpanded,
+                              // isExpandable: true,
+                              expandableDateFormat: 'EEEE, dd. MMMM yyyy',
+                              dayOfWeekStyle: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w800,
+                                fontSize: 11,
                               ),
                             ),
-                          );
-                        }).toList(),
-                        // After selecting the desired option,it will
-                        // change button value to selected value
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            dropdownvalue = newValue!;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: isExp == true ? 320 : 0,
-                    width: double.infinity,
-                    child: Calendar(
-                      //  hideBottomBar: true,
-                      // todayColor:  Appcolors.purple,
-                      selectedColor: purple,
-                      //eventDoneColor: Colors.purple,
-                      eventColor: purple,
-
-                      hideTodayIcon: true,
-                      bottomBarColor: Color(0xffEDEFF4),
-
-                      startOnMonday: true,
-                      weekDays: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
-                      events: _events,
-                      bottomBarArrowColor: Colors.black,
-                      bottomBarTextStyle: TextStyle(
-                        color: Colors.black,
-                      ),
-
-                      // locale: 'de_DE',
-                      // todayButtonText: 'Heute',
-                      isExpanded: isExp,
-                      isExpandable: isExpandi,
-                      expandableDateFormat: 'EEEE, dd. MMMM yyyy',
-                      dayOfWeekStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 11,
-                      ),
-                    ),
-                  ),
-                ],
-              )),
+                          ),
+                  ],
+                ),
+              ),
               SliverToBoxAdapter(
                 child: Column(
                   children: [
@@ -167,8 +182,8 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
               children: [
                 UpCommingEvent(
                   fun: () {
-                    isExp = false;
-                    isExpandi = true;
+                    isHideCalader = true;
+                    isExpanded = false;
                     setState(() {});
                   },
                 ),
