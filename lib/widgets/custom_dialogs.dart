@@ -13,69 +13,71 @@ void sendEmailDialog(BuildContext context) {
     builder: (context) {
       return Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Container(
-          height: Get.height * 0.56,
-          width: Get.width,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.white70,
-          ),
-          child: Column(
-            children: [
-              SizedBox(height: Get.height * 0.08),
-              Text(
-                "ENTER YOUR EMAIL ADDRESS",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.9),
-              ),
-              SizedBox(
-                height: Get.height * 0.02,
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 12),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Email",
-                        ),
-                        Text(
-                          '*',
-                          style: TextStyle(
-                            color: Colors.deepOrange,
+        child: SingleChildScrollView(
+          child: Container(
+            height: Get.height * 0.56,
+            width: Get.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white70,
+            ),
+            child: Column(
+              children: [
+                SizedBox(height: Get.height * 0.08),
+                Text(
+                  "ENTER YOUR EMAIL ADDRESS",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.9),
+                ),
+                SizedBox(
+                  height: Get.height * 0.02,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 12),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Email",
                           ),
-                        )
-                      ],
-                    ),
-                    Image.asset("assets/W.png"),
-                    Container(),
-                  ],
+                          Text(
+                            '*',
+                            style: TextStyle(
+                              color: Colors.deepOrange,
+                            ),
+                          )
+                        ],
+                      ),
+                      Image.asset("assets/W.png"),
+                      Container(),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                child: customTextField(text: "Enter your Email"),
-              ),
-              Spacer(),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: Get.width * 0.1),
-                child: CustomButton(
-                  funct: () {
-                    Get.back();
-                    emailSentDialog(context);
-                  },
-                  text: 'SEND EMAIL',
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: customTextField(text: "Enter your Email"),
                 ),
-              ),
-              SizedBox(
-                height: Get.height * 0.02,
-              )
-            ],
+                Spacer(),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: Get.width * 0.1),
+                  child: CustomButton(
+                    funct: () {
+                      Get.back();
+                      emailSentDialog(context);
+                    },
+                    text: 'SEND EMAIL',
+                  ),
+                ),
+                SizedBox(
+                  height: Get.height * 0.02,
+                )
+              ],
+            ),
           ),
         ),
       );

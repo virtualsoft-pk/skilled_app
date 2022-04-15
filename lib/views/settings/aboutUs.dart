@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,8 +13,11 @@ class _AboustUsState extends State<AboustUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16,),
+        margin: EdgeInsets.symmetric(
+          horizontal: 16,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,9 +25,8 @@ class _AboustUsState extends State<AboustUs> {
               height: Get.height * 0.07,
             ),
             ListTile(
-
               leading: InkWell(
-                onTap: (){
+                onTap: () {
                   Get.back();
                 },
                 child: CircleAvatar(
@@ -36,20 +37,22 @@ class _AboustUsState extends State<AboustUs> {
                       color: Colors.black,
                     )),
               ),
-              title:  InkWell(
+              title: InkWell(
                 onTap: () {
-                  Get.to(()=> RateUs());
+                  Get.to(() => RateUs());
                 },
                 child: Container(
-                  margin: EdgeInsets.only(left: Get.width*0.2),
+                  margin: EdgeInsets.only(left: Get.width * 0.2),
                   child: Text(
                     "About Us ",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                     // textAlign: TextAlign.center,
                   ),
                 ),
               ),
-
             ),
             SizedBox(
               height: Get.height * 0.03,
@@ -72,11 +75,10 @@ class _AboustUsState extends State<AboustUs> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: (){
-
-                  },
+                  onTap: () {},
                   child: Text("About Us",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
@@ -85,24 +87,18 @@ class _AboustUsState extends State<AboustUs> {
             ),
             Container(
               width: double.infinity,
-              height: Get.height*0.2,
+              height: Get.height * 0.2,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                      image: AssetImage(
-                          'assets/unsplash_wD1LRb9OeEo.png'
-                      ),
-                      fit: BoxFit.cover
-                  )
-              ),
-
+                      image: AssetImage('assets/unsplash_wD1LRb9OeEo.png'),
+                      fit: BoxFit.cover)),
             ),
             SizedBox(
               height: Get.height * 0.04,
             ),
             Row(
               children: [
-
                 Container(
                   width: Get.width * 0.02,
                   height: Get.height * 0.01,

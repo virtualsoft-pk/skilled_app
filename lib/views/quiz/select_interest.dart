@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/views/quiz/how_to_know.dart';
-
+import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_widgets.dart';
@@ -126,7 +127,12 @@ class _SelectInterestState extends State<SelectInterest> {
                   : CustomButton(
                       text: "NEXT",
                       funct: () {
-                        Get.to(() => HowToKnow());
+                        context.navigator.push<void>(
+                          SwipeablePageRoute(
+                            builder: (_) => HowToKnow(),
+                          ),
+                        );
+                        // Get.to(() => HowToKnow());
                       },
                     ),
             ],

@@ -14,6 +14,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -43,65 +44,64 @@ class _ChangePasswordState extends State<ChangePassword> {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        width: Get.width,
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: Get.height * 0.04,
-            ),
-            Text(
-              "Current password",
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            customTextField(
-              text: "Current password",
-            ),
-            SizedBox(
-              height: Get.height * 0.03,
-            ),
-            Text(
-              "New Password",
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            customTextField(text: "New password"),
-            SizedBox(
-              height: Get.height * 0.03,
-            ),
-            Text(
-              "Confirm New Password",
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: Get.height * 0.01,
-            ),
-            customTextField(text: "Confirm new password"),
-            SizedBox(
-              height: Get.height * 0.04,
-            ),
-            InkWell(
-                onTap: () {
-                },
-                child: CustomButton(text: "Update")),
-            SizedBox(
-              height: Get.height * 0.04,
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Text(
-                "Forgot Password?",
-                style: TextStyle(color: Colors.blue),
+      body: SingleChildScrollView(
+        child: Container(
+          width: Get.width,
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: Get.height * 0.04,
               ),
-            ),
-          ],
+              Text(
+                "Current password",
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: Get.height * 0.02,
+              ),
+              customTextField(
+                text: "Current password",
+              ),
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              Text(
+                "New Password",
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: Get.height * 0.02,
+              ),
+              customTextField(text: "New password"),
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              Text(
+                "Confirm New Password",
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: Get.height * 0.01,
+              ),
+              customTextField(text: "Confirm new password"),
+              SizedBox(
+                height: Get.height * 0.04,
+              ),
+              InkWell(onTap: () {}, child: CustomButton(text: "Update")),
+              SizedBox(
+                height: Get.height * 0.04,
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

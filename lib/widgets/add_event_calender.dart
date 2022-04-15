@@ -27,7 +27,7 @@ AddEventCalender(BuildContext context) {
                     ),
                   ),
                   Container(
-                    height: 260,
+                    height: 275,
                     width: double.infinity,
                     // color: Colors.purple,
                     child: Calendar(

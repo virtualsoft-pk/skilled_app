@@ -15,6 +15,7 @@ class _CompleteEventState extends State<CompleteEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [

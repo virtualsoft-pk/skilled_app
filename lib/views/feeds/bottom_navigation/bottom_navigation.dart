@@ -43,6 +43,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _updateIndex,

@@ -4,6 +4,8 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({Key? key}) : super(key: key);
@@ -11,6 +13,7 @@ class ResetPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
@@ -95,7 +98,13 @@ class ResetPassword extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              CustomButton(text: 'RESET PASSWORD', funct: () {}),
+              CustomButton(
+                text: 'RESET PASSWORD',
+                funct: () {
+                  //  context.navigator.push<void>(
+                  //       SwipeablePageRoute(builder: (_) => ResetPassword()));
+                },
+              ),
             ],
           ),
         ),

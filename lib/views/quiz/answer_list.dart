@@ -19,6 +19,7 @@ class _AnswerListState extends State<AnswerList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       // appBar: AppBar(
       //   leading: Container(
       //     height: 40,

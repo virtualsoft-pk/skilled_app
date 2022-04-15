@@ -4,7 +4,8 @@ import 'package:skilled_app/model/about_model.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/quiz_result.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
-
+import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../widgets/custom_widgets.dart';
 import '../../widgets/hashir.dart';
 
@@ -119,12 +120,17 @@ class _HowToKnowState extends State<HowToKnow> {
                     : CustomButton(
                         text: "SEE RESULTS",
                         funct: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (ctx) => QuizResultPage(),
+                          context.navigator.push<void>(
+                            SwipeablePageRoute(
+                              builder: (_) => QuizResultPage(),
                             ),
                           );
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (ctx) => QuizResultPage(),
+                          //   ),
+                          // );
                         },
                       ),
               )

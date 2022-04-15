@@ -25,7 +25,6 @@ class _SearchOnForumState extends State<SearchOnForum> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: screenheight * 0.03),
                         customBackButton(() {}),
                         Container(
                           height: screenheight * 0.07,

@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/route_manager.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/auth/verify_code.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // final pageRoute = context.getSwipeablePageRoute<void>()!;
+
     return Scaffold(
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
@@ -72,7 +78,9 @@ class ForgotPassword extends StatelessWidget {
               CustomButton(
                 text: 'SEND CODE',
                 funct: () {
-                  Get.to(() => VerifyCode());
+                  context.navigator.push<void>(
+                      SwipeablePageRoute(builder: (_) => VerifyCode()));
+                  // Get.to(() => VerifyCode());
                 },
               )
             ],

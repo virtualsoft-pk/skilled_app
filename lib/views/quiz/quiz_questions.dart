@@ -7,9 +7,10 @@ import 'package:skilled_app/views/quiz/select_interest.dart';
 import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/views/quiz/select_interest.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
-
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class QuizQuestions extends StatefulWidget {
   @override
@@ -403,7 +404,7 @@ class _QuizQuestionsState extends State<QuizQuestions> {
                               borderRadius: BorderRadius.circular(12.0)),
                           onPressed: () {},
                           child: Text(
-                            'Next',
+                            'START QUIZ',
                             style: const TextStyle(
                               letterSpacing: 2,
                               color: textColor,
@@ -416,7 +417,12 @@ class _QuizQuestionsState extends State<QuizQuestions> {
                     : CustomButton(
                         text: "START QUIZ",
                         funct: () {
-                          Get.to(() => SelectInterest());
+                          context.navigator.push<void>(
+                            SwipeablePageRoute(
+                              builder: (_) => SelectInterest(),
+                            ),
+                          );
+                          // Get.to(() => SelectInterest());
                         },
                       )
               ],

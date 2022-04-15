@@ -6,7 +6,8 @@ import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart
 
 import 'package:skilled_app/views/quiz/quiz_watch_video.dart';
 import 'package:skilled_app/views/settings/careerListScreen.dart';
-
+import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_const.dart';
 import '../../widgets/custom_button.dart';
@@ -23,6 +24,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -55,7 +57,12 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         ),
                         InkWell(
                           onTap: () {
-                            Get.to(() => QuizWatchVideo());
+                            context.navigator.push<void>(
+                              SwipeablePageRoute(
+                                builder: (_) => QuizWatchVideo(),
+                              ),
+                            );
+                            // Get.to(() => QuizWatchVideo());
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -130,7 +137,12 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   alignment: Alignment.center,
                   child: InkWell(
                     onTap: () {
-                      Get.to(() => AnswerList());
+                      context.navigator.push<void>(
+                        SwipeablePageRoute(
+                          builder: (_) => AnswerList(),
+                        ),
+                      );
+                      // Get.to(() => AnswerList());
                     },
                     child: Container(
                       width: Get.width * 0.4,
@@ -216,7 +228,12 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   alignment: Alignment.center,
                   child: InkWell(
                     onTap: () {
-                      Get.to(AllCareers());
+                      context.navigator.push<void>(
+                        SwipeablePageRoute(
+                          builder: (_) => AllCareers(),
+                        ),
+                      );
+                      // Get.to(AllCareers());
 
                       // Get.to(() => CareerListScreen());
                     },
@@ -366,7 +383,12 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   ),
                   InkWell(
                     onTap: () {
-                      Get.to(() => Career());
+                      context.navigator.push<void>(
+                        SwipeablePageRoute(
+                          builder: (_) => Career(),
+                        ),
+                      );
+                      // Get.to(() => Career());
                     },
                     child: const Text(
                       "Find out more",

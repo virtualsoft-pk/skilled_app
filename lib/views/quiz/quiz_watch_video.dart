@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/all_careers.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../utils/app_const.dart';
 import '../../widgets/custom_widgets.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class QuizWatchVideo extends StatefulWidget {
   @override
@@ -15,6 +17,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -147,7 +150,12 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                 CustomButton(
                   text: "GO TO CAREERS LIST",
                   funct: () {
-                    Get.to(AllCareers());
+                    context.navigator.push<void>(
+                      SwipeablePageRoute(
+                        builder: (_) => AllCareers(),
+                      ),
+                    );
+                    // Get.to(AllCareers());
                   },
                 ),
               ],

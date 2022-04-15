@@ -14,6 +14,7 @@ class _PrivacyState extends State<Privacy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
           children: [

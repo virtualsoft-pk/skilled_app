@@ -3,10 +3,8 @@ import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/available_jobs.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
-
-import '../../utils/app_colors.dart';
-import '../../widgets/custom_dialogs.dart';
-import '../../widgets/custom_text_field.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 class Career extends StatefulWidget {
   @override
@@ -17,6 +15,7 @@ class _CareerState extends State<Career> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 16),
@@ -188,7 +187,12 @@ class _CareerState extends State<Career> {
                   child: CustomButton(
                     text: "AVAILABLE JOBS",
                     funct: () {
-                      Get.to(() => Jobs());
+                      context.navigator.push<void>(
+                        SwipeablePageRoute(
+                          builder: (_) => Jobs(),
+                        ),
+                      );
+                      // Get.to(() => Jobs());
                     },
                   ),
                 ),

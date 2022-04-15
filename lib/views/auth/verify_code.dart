@@ -5,6 +5,8 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/auth/reset_password.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class VerifyCode extends StatefulWidget {
   const VerifyCode({Key? key}) : super(key: key);
@@ -27,6 +29,7 @@ class _VerifyCodeState extends State<VerifyCode> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.only(left: 15, right: 15),
@@ -98,7 +101,9 @@ class _VerifyCodeState extends State<VerifyCode> {
               ),
               CustomButton(
                 funct: () {
-                  Get.to(() => ResetPassword());
+                  context.navigator.push<void>(
+                      SwipeablePageRoute(builder: (_) => ResetPassword()));
+                  // Get.to(() => ResetPassword());
                 },
                 text: 'SUBMIT CODE',
               )

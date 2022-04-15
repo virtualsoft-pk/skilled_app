@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/views/eventCalander/bottom_bar_for_month.dart';
 import 'package:skilled_app/views/eventCalander/upcoming_events_screen.dart';
+import 'package:skilled_app/widgets/month_calendar.dart';
 
+import 'bottom_bar_for_week.dart';
 import 'completed_events_screen.dart';
 
 class Events extends StatefulWidget {
-  const Events({Key? key}) : super(key: key);
+  Events({Key? key}) : super(key: key);
 
   @override
   _EventsState createState() => _EventsState();
 }
 
 class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
-  final Map<DateTime, List<CleanCalendarEvent>> _events = {};
   String dropdownvalue = 'Today';
   // List of items in our dropdown menu
   var items = [
@@ -31,13 +33,15 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
   }
 
   // bool isExp = false;
-  bool isExpanded = false;
-  bool isExpandedForMonth = false;
+  // bool isExpandeCalender = false;
+  // bool isExpandedForMonth = false;
   bool isHideCalader = true;
+  // bool isMonth = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: NestedScrollView(
           headerSliverBuilder: (context, value) {
@@ -46,7 +50,7 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: Get.height * 0.01,
+                      height: 10,
                     ),
                     ListTile(
                       leading: Text(
@@ -78,13 +82,6 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                           items: items.map(
                             (String e) {
                               return DropdownMenuItem(
-                                onTap: () {
-                                  e == 'Today'
-                                      ? isHideCalader = true
-                                      : isHideCalader = false;
-                                  e == 'This week' ? isExpanded = true : null;
-                                  e == 'This Month' ? isExpanded = true : null;
-                                },
                                 value: e,
                                 child: Text(
                                   e,
@@ -103,47 +100,24 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                             setState(
                               () {
                                 dropdownvalue = newValue!;
+                                if (newValue == 'Today') {
+                                  isHideCalader = true;
+                                }
+                                if (newValue == 'This Week') {
+                                  Get.offAll(() => BottomNavigationForWeek());
+                                }
+                                if (newValue == 'This Month') {
+                                  Get.offAll(() => BottomNavigationForMonth());
+                                }
                               },
                             );
                           },
                         ),
                       ),
                     ),
-                    isHideCalader == true
-                        ? SizedBox()
-                        : Container(
-                            height: isExpanded == true ? 320 : 140,
-                            width: double.infinity,
-                            child: Calendar(
-                              selectedColor: purple,
-                              eventColor: purple,
-                              hideTodayIcon: true,
-                              bottomBarColor: Color(0xffEDEFF4),
-                              startOnMonday: true,
-                              weekDays: [
-                                'Mo',
-                                'Di',
-                                'Mi',
-                                'Do',
-                                'Fr',
-                                'Sa',
-                                'So',
-                              ],
-                              events: _events,
-                              bottomBarArrowColor: Colors.black,
-                              bottomBarTextStyle: TextStyle(
-                                color: Colors.black,
-                              ),
-                              isExpanded: isExpanded,
-                              // isExpandable: true,
-                              expandableDateFormat: 'EEEE, dd. MMMM yyyy',
-                              dayOfWeekStyle: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w800,
-                                fontSize: 11,
-                              ),
-                            ),
-                          ),
+
+                    ///Here to Show Today Calander
+                    isHideCalader == true ? SizedBox() : SizedBox()
                   ],
                 ),
               ),
@@ -157,6 +131,7 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                         width: double.infinity,
                         child: Center(
                           child: TabBar(
+                            indicatorColor: Color(0xff6E928C),
                             controller: _tabController,
                             labelColor: Colors.black,
                             isScrollable: true,
@@ -183,7 +158,6 @@ class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
                 UpCommingEvent(
                   fun: () {
                     isHideCalader = true;
-                    isExpanded = false;
                     setState(() {});
                   },
                 ),

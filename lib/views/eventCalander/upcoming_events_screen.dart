@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/eventCalander/in_person.dart';
 import 'package:skilled_app/widgets/add_event_calender.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class UpCommingEvent extends StatefulWidget {
   UpCommingEvent({
@@ -22,6 +24,7 @@ class _UpCommingEventState extends State<UpCommingEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -43,7 +46,9 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                       ),
                       child: ListTile(
                         onTap: () {
-                          Get.to(() => InPerson());
+                          context.navigator.push<void>(
+                              SwipeablePageRoute(builder: (_) => InPerson()));
+                          // Get.to(() => InPerson());
                         },
                         leading: CircleAvatar(
                           child: Image(

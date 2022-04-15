@@ -18,7 +18,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -54,9 +54,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         child: Column(
           children: [
             InkWell(
-              onTap: () {
-
-              },
+              onTap: () {},
               child: buildListTile("Someome mention me",
                   "When someone replies to my\nforum post", firstCheck, (a) {
                 setState(() {

@@ -2,9 +2,13 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'package:skilled_app/utils/app_colors.dart';
-
+import 'package:skilled_app/views/feeds/bottom_navigation/company_profile.dart';
+import 'package:skilled_app/views/feeds/bottom_navigation_4.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import '../../../model/feed_model.dart';
 import '../../../model/video_feed_model.dart';
 import '../../eventCalander/in_person.dart';
@@ -19,9 +23,14 @@ class FeedPage extends StatefulWidget {
 
 class _FeedPageState extends State<FeedPage> {
   //  DateTime currentTime = DateTime.now();
+  bool isLike = false;
+  bool isLikw1 = false;
+  int count1 = 200;
+  int count2 = 971;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: DefaultTabController(
           length: 2,
@@ -32,7 +41,7 @@ class _FeedPageState extends State<FeedPage> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -44,7 +53,9 @@ class _FeedPageState extends State<FeedPage> {
                         children: [
                           InkWell(
                             onTap: () {
-                              Get.to(() => Notifications());
+                              context.navigator.push<void>(SwipeablePageRoute(
+                                  builder: (_) => Notifications()));
+                              // Get.to(() => Notifications());
                             },
                             child: Container(
                               padding: EdgeInsets.all(9),
@@ -138,35 +149,57 @@ class _FeedPageState extends State<FeedPage> {
                   child: TabBarView(
                     physics: NeverScrollableScrollPhysics(),
                     children: <Widget>[
-                      Container(
-                        child: ListView.builder(
-                          itemCount: feedModel.length,
-                          shrinkWrap: true,
-                          itemBuilder: (context, i) {
-                            return Column(
-                              children: [
-                                const SizedBox(height: 15),
-                                Container(
-                                  padding: EdgeInsets.only(left: 16),
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
+                      ListView.builder(
+                        itemCount: feedModel.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, i) {
+                          return Column(
+                            children: [
+                              const SizedBox(height: 15),
+                              Container(
+                                padding: EdgeInsets.only(left: 16),
+                                child: Row(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        context.navigator.push<void>(
+                                          SwipeablePageRoute(
+                                            builder: (_) => BottomNavigation4(
+                                              image: feedModel[i].profileImage!,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: CircleAvatar(
                                         radius: 22,
                                         backgroundColor: Colors.amber,
                                         backgroundImage: AssetImage(
                                           feedModel[i].profileImage!,
                                         ),
                                       ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Text(
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            context.navigator.push<void>(
+                                              SwipeablePageRoute(
+                                                builder: (_) =>
+                                                    BottomNavigation4(
+                                                  image: feedModel[i]
+                                                      .profileImage!,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
                                             feedModel[i].name!,
                                             style: TextStyle(
                                               fontSize: 14,
@@ -174,167 +207,228 @@ class _FeedPageState extends State<FeedPage> {
                                               color: textColor,
                                             ),
                                           ),
-                                          Text(
-                                            feedModel[i].dateTime!.toString(),
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w400,
-                                              color: lightGrey,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                      PopupMenuButton(
-                                        itemBuilder: (context) => [
-                                          PopupMenuItem(
-                                            child: Text("Save for Later"),
-                                            value: 1,
-                                          ),
-                                          PopupMenuItem(
-                                            child: Text("Not Interested"),
-                                            value: 2,
-                                          ),
-                                          PopupMenuItem(
-                                            child: Text("Report"),
-                                            value: 2,
-                                          ),
-                                          PopupMenuItem(
-                                            child: Text("Share"),
-                                            value: 2,
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 12,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 15),
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        feedModel[i].text!,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 12,
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          Get.to(() => InPerson());
-                                        },
-                                        child: Container(
-                                          height: 164,
-                                          decoration: BoxDecoration(
-                                            color: Colors.amber,
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(12),
-                                              topRight: Radius.circular(12),
-                                            ),
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: AssetImage(
-                                                  feedModel[i].mainImage!),
-                                            ),
+                                        Text(
+                                          feedModel[i].dateTime!.toString(),
+                                          style: const TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400,
+                                            color: lightGrey,
                                           ),
                                         ),
+                                      ],
+                                    ),
+                                    Spacer(),
+                                    PopupMenuButton(
+                                      itemBuilder: (context) => [
+                                        PopupMenuItem(
+                                          child: Text("Save for Later"),
+                                          value: 1,
+                                        ),
+                                        PopupMenuItem(
+                                          child: Text("Not Interested"),
+                                          value: 2,
+                                        ),
+                                        PopupMenuItem(
+                                          child: Text("Report"),
+                                          value: 2,
+                                        ),
+                                        PopupMenuItem(
+                                          child: Text("Share"),
+                                          value: 2,
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 12,
+                              ),
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 15),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      feedModel[i].text!,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
                                       ),
-                                      Container(
-                                        width: Get.width,
-                                        height: 54,
+                                    ),
+                                    SizedBox(
+                                      height: 12,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        context.navigator.push<void>(
+                                            SwipeablePageRoute(
+                                                builder: (_) => InPerson()));
+                                        // Get.to(() => InPerson());
+                                      },
+                                      child: Container(
+                                        height: 164,
                                         decoration: BoxDecoration(
-                                          color: greyColor,
+                                          color: Colors.amber,
                                           borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(12),
-                                            bottomRight: Radius.circular(12),
+                                            topLeft: Radius.circular(12),
+                                            topRight: Radius.circular(12),
+                                          ),
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: AssetImage(
+                                                feedModel[i].mainImage!),
                                           ),
                                         ),
-                                        child: Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 12, vertical: 8),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                feedModel[i].website!,
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: websitegreyColor,
-                                                ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: Get.width,
+                                      height: 54,
+                                      decoration: BoxDecoration(
+                                        color: greyColor,
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(12),
+                                          bottomRight: Radius.circular(12),
+                                        ),
+                                      ),
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12, vertical: 8),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              feedModel[i].website!,
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: websitegreyColor,
                                               ),
-                                              Text(
-                                                feedModel[i].websiteDesc!,
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: textColor,
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                            ),
+                                            Text(
+                                              feedModel[i].websiteDesc!,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                                color: textColor,
+                                              ),
+                                            )
+                                          ],
                                         ),
                                       ),
-                                      const SizedBox(
-                                        height: 12,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Image.asset(
-                                            'assets/heart.png',
-                                            height: 18,
+                                    ),
+                                    const SizedBox(
+                                      height: 12,
+                                    ),
+                                    Row(
+                                      children: [
+                                        i == 0
+                                            ? isLike == false
+                                                ? InkWell(
+                                                    onTap: () {
+                                                      isLike = true;
+                                                      count1++;
+                                                      setState(() {});
+                                                    },
+                                                    child: Image.asset(
+                                                      'assets/heart.png',
+                                                      height: 20,
+                                                      width: 18,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  )
+                                                : InkWell(
+                                                    onTap: () {
+                                                      isLike = false;
+                                                      count1--;
+                                                      setState(() {});
+                                                    },
+                                                    child: Image.asset(
+                                                      'assets/icons/2107845.png',
+                                                      height: 20,
+                                                      width: 18,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  )
+                                            : isLikw1 == false
+                                                ? InkWell(
+                                                    onTap: () {
+                                                      isLikw1 = true;
+                                                      count2++;
+                                                      setState(() {});
+                                                    },
+                                                    child: Image.asset(
+                                                      'assets/heart.png',
+                                                      height: 20,
+                                                      width: 18,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  )
+                                                : InkWell(
+                                                    onTap: () {
+                                                      isLikw1 = false;
+                                                      count2--;
+                                                      setState(() {});
+                                                    },
+                                                    child: Image.asset(
+                                                      'assets/icons/2107845.png',
+                                                      height: 20,
+                                                      width: 18,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  ),
+                                        SizedBox(
+                                          width: 13,
+                                        ),
+                                        Text(
+                                          i == 0
+                                              ? count1.toString()
+                                              : count2.toString(),
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
                                           ),
-                                          SizedBox(
-                                            width: 13,
-                                          ),
-                                          Text(
-                                            feedModel[i].likes.toString(),
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 38,
-                                          ),
-                                          Image.asset(
+                                        ),
+                                        SizedBox(
+                                          width: 38,
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            Share.share('assets/share-2.png');
+                                          },
+                                          child: Image.asset(
                                             'assets/share-2.png',
                                             height: 20,
                                           ),
-                                          SizedBox(
-                                            width: 8,
+                                        ),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Text(
+                                          feedModel[i].shares.toString(),
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
                                           ),
-                                          Text(
-                                            feedModel[i].shares.toString(),
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 16,
-                                      ),
-                                      Divider(
-                                        color: dividerColor,
-                                      )
-                                    ],
-                                  ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    Divider(
+                                      color: dividerColor,
+                                    )
+                                  ],
                                 ),
-                              ],
-                            );
-                          },
-                        ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
                       PageView.builder(
                         scrollDirection: Axis.vertical,

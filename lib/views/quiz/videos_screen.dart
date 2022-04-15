@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class _VideoScreenState extends State<VideoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.only(left: 16, right: 16),
@@ -86,7 +89,9 @@ class _VideoScreenState extends State<VideoScreen> {
               Spacer(),
               MaterialButton(
                   onPressed: () {
-                    Get.to(() => QuizStart());
+                    context.navigator.push<void>(
+                        SwipeablePageRoute(builder: (_) => QuizStart()));
+                    // Get.to(() => QuizStart());
                   },
                   minWidth: double.infinity,
                   height: 62,

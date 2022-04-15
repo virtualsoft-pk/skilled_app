@@ -15,6 +15,7 @@ class _BusinessScreenState extends State<BusinessScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           width: Get.width,

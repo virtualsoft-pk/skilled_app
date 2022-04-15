@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:skilled_app/views/settings/notification.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import '../../utils/app_colors.dart';
 import 'NotificationScreen.dart';
 import 'accountDetails.dart';
@@ -16,6 +18,7 @@ class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -51,17 +54,20 @@ class _AccountState extends State<Account> {
           children: [
             InkWell(
                 onTap: () {
-                  Get.to(AccountDetail());
+                  context.navigator.push<void>(
+                      SwipeablePageRoute(builder: (_) => AccountDetail()));
+                  // Get.to(AccountDetail());
                 },
                 child: buildListTile(
                     "assets/images/user.png", "Account Details", "")),
             SizedBox(
               height: Get.height * 0.02,
             ),
-
             InkWell(
-              onTap: (){
-                Get.to(()=>ChangePassword());
+              onTap: () {
+                context.navigator.push<void>(
+                    SwipeablePageRoute(builder: (_) => ChangePassword()));
+                // Get.to(() => ChangePassword());
               },
               child: buildListTile("assets/images/Lock.png", "Change Password",
                   "It’s good idea to use strong password"),
@@ -70,13 +76,17 @@ class _AccountState extends State<Account> {
               height: Get.height * 0.02,
             ),
             InkWell(
-        onTap: (){
-          Get.to(()=>NotificationScreen());
-
-        },
+              onTap: () {
+                context.navigator.push<void>(
+                    SwipeablePageRoute(builder: (_) => NotificationScreen()));
+                // Get.to(() => NotificationScreen());
+              },
               child: buildListTile(
-                "assets/images/notification.png", "Notifications", "",),
-    ),
+                "assets/images/notification.png",
+                "Notifications",
+                "",
+              ),
+            ),
           ],
         ),
       ),

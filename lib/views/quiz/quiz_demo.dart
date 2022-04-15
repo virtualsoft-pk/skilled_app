@@ -11,17 +11,17 @@ class QuizStartDemo extends StatefulWidget {
 }
 
 class _QuizStartDemoState extends State<QuizStartDemo> {
-  
   bool isSkip = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           width: double.infinity,
           height: Get.height,
-          decoration:const BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
               image: AssetImage('assets/images/unsplash_wD1LRb9OeEo.png'),
@@ -47,7 +47,7 @@ class _QuizStartDemoState extends State<QuizStartDemo> {
                               isSkip = false;
                               setState(() {});
                             },
-                            child:const Text(
+                            child: const Text(
                               'Skip',
                               style: TextStyle(
                                 fontSize: 24,
@@ -58,9 +58,7 @@ class _QuizStartDemoState extends State<QuizStartDemo> {
                       )
                     : CustomButton(
                         text: 'NEXT',
-                        funct: (){
-
-                        },
+                        funct: () {},
                       ),
               )
             ],

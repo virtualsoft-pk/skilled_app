@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search_result.dart';
+import 'package:skilled_app/views/forum/bottom_navigation2.dart';
+import 'package:skilled_app/views/forum/bottom_navigation_3.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
-
+import 'package:black_hole_flutter/black_hole_flutter.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../../model/search_model.dart';
 import '../../../utils/app_colors.dart';
 
@@ -21,6 +24,7 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -86,7 +90,12 @@ class Search extends StatelessWidget {
                       .map(
                         (e) => InkWell(
                           onTap: () {
-                            Get.to(() => SearchResult());
+                            context.navigator.push<void>(
+                              SwipeablePageRoute(
+                                builder: (_) => BottomNavigation3(),
+                              ),
+                            );
+                            // Get.to(() => BottomNavigation3());
                           },
                           child: Chip(
                             labelPadding: EdgeInsets.all(10),
@@ -129,7 +138,12 @@ class Search extends StatelessWidget {
                   itemBuilder: (context, i) {
                     return InkWell(
                       onTap: () {
-                        Get.to(() => SearchResult());
+                        context.navigator.push<void>(
+                          SwipeablePageRoute(
+                            builder: (_) => SearchResult(),
+                          ),
+                        );
+                        // Get.to(() => SearchResult());
                       },
                       child: Container(
                         alignment: Alignment.center,

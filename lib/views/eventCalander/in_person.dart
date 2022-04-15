@@ -17,6 +17,7 @@ class _InPersonState extends State<InPerson> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 16),
@@ -213,7 +214,10 @@ class _InPersonState extends State<InPerson> {
                   children: [
                     Row(
                       children: [
-                        Image.asset("assets/Ellipse 583.png"),
+                        Image.asset(
+                          "assets/Ellipse 583.png",
+                          height: Get.height * 0.04,
+                        ),
                         SizedBox(width: Get.width * 0.01),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

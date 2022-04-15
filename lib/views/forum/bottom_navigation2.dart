@@ -22,7 +22,7 @@ class _BottomNavigation2State extends State<BottomNavigation2> {
   int _currentIndex = 2;
   List _screens = [];
   void _updateIndex(int value) {
-    Get.off(() => BottomNavigation(
+    Get.offAll(() => BottomNavigation(
           index: value,
         ));
     return;
@@ -46,6 +46,7 @@ class _BottomNavigation2State extends State<BottomNavigation2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _updateIndex,

@@ -23,6 +23,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
@@ -388,12 +389,16 @@ class _CareerListScreenState extends State<CareerListScreen> {
 
   Container careerListTile(String name) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      alignment: Alignment.center,
+      padding: EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
       height: Get.height * 0.09,
       decoration: BoxDecoration(
-          color: lightGreenColor,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(width: 0.7)),
+        color: lightGreenColor,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(width: 0.7),
+      ),
       child: Row(
         children: [
           Text(

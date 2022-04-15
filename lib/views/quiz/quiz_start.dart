@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/quiz_questions.dart';
 import 'package:skilled_app/views/quiz/quiz_questions.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../widgets/custom_button.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class QuizStart extends StatefulWidget {
   @override
@@ -46,7 +48,9 @@ class _QuizStartState extends State<QuizStart> {
             CustomButton(
               text: "START QUIZ",
               funct: () {
-                Get.to(() => QuizQuestions());
+                context.navigator.push<void>(
+                    SwipeablePageRoute(builder: (_) => QuizQuestions()));
+                // Get.to(() => QuizQuestions());
               },
             )
           ],

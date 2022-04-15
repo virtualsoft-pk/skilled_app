@@ -20,6 +20,7 @@ class _AllCareersState extends State<AllCareers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 16),

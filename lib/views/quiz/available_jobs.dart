@@ -13,6 +13,7 @@ class _JobsState extends State<Jobs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
           title: Container(
               child: Text(
@@ -181,7 +182,7 @@ class _JobsState extends State<Jobs> {
               CustomButton(
                 text: "ADD TO CAREER LIST",
                 funct: () {
-                  Get.to(() => BottomNavigation());
+                  Get.offAll(() => BottomNavigation());
                 },
               ),
               InkWell(

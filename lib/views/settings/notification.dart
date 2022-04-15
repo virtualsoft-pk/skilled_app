@@ -15,6 +15,7 @@ class _NotificationsState extends State<Notifications> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Column(
           children: [
             SizedBox(
@@ -24,7 +25,7 @@ class _NotificationsState extends State<Notifications> {
               leading: Padding(
                 padding: const EdgeInsets.only(left: 6),
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     Get.back();
                   },
                   child: CircleAvatar(
@@ -56,9 +57,7 @@ class _NotificationsState extends State<Notifications> {
                 ),
                 SizedBox(width: Get.width * 0.2),
                 InkWell(
-                  onTap: () {
-
-                  },
+                  onTap: () {},
                   child: Text("Mark all as read"),
                 ),
               ],
@@ -74,13 +73,11 @@ class _NotificationsState extends State<Notifications> {
               ],
             ),
             Expanded(
-
               // width: Get.width * 0.97,
               // height: Get.height * 0.51,
               child: Container(
                 // color: Colors.red,
                 child: TabBarView(
-
                   children: [
                     TabbarData(),
                     TabbarData(),

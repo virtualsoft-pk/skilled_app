@@ -5,10 +5,14 @@ import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart
 import 'package:skilled_app/views/forum/quiz_06.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../model/aboutmodel.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/hashir.dart';
 import '../settings/notification.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
+
+import 'bottom_navigation_for_comment.dart';
 
 class PopularThread extends StatefulWidget {
   String? title;
@@ -49,24 +53,27 @@ class _PopularThreadState extends State<PopularThread> {
         desc: '13 best Skillshare classes for designers and artists?',
         desc2:
             'We’ve noticed a bunch of talented designers and illustrators jumping onto Skillshare to... Read more'),
-    Post(
-        color: Color(0xffE4F0EE),
-        message: 'assets/img_13.png',
-        number: '212',
-        heart: 'assets/img_12.png',
-        count: '2.1k',
-        design3: 'web design',
-        dgn2: 'Motion',
-        image: 'assets/img_10.png',
-        name: 'Hashir shah',
-        date: 'Monday at 2:00AM',
-        design: 'UI/UIX',
-        desc: '13 best Skillshare classes for designers and artists?',
-        desc2:
-            'We’ve noticed a bunch of talented designers and illustrators jumping onto Skillshare to... Read more'),
+    // Post(
+    //     color: Color(0xffE4F0EE),
+    //     message: 'assets/img_13.png',
+    //     number: '212',
+    //     heart: 'assets/img_12.png',
+    //     count: '2.1k',
+    //     design3: 'web design',
+    //     dgn2: 'Motion',
+    //     image: 'assets/img_10.png',
+    //     name: 'Hashir shah',
+    //     date: 'Monday at 2:00AM',
+    //     design: 'UI/UIX',
+    //     desc: '13 best Skillshare classes for designers and artists?',
+    //     desc2:
+    //         'We’ve noticed a bunch of talented designers and illustrators jumping onto Skillshare to... Read more'),
   ];
   bool isFollow = false;
-
+  bool isLike = false;
+  bool isLikw1 = false;
+  double val = 2.1;
+  double val1 = 1.8;
   @override
   Widget build(BuildContext context) {
     var screenheight = MediaQuery.of(context).size.height;
@@ -94,7 +101,7 @@ class _PopularThreadState extends State<PopularThread> {
           child: Container(
             child: Column(
               children: [
-                SizedBox(height: screenheight * 0.02),
+                SizedBox(height: 10),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
@@ -104,10 +111,9 @@ class _PopularThreadState extends State<PopularThread> {
                         children: [
                           Image(
                             image: AssetImage(
-                              'assets/img_7.png',
+                              'assets/image 29.png',
                             ),
-                            width: screenwidth * 0.28,
-                            height: 18,
+                            height: 20,
                           ),
                           // SizedBox(
                           //   width: screenwidth * 0.5,
@@ -456,12 +462,59 @@ class _PopularThreadState extends State<PopularThread> {
                                     ),
                                     Row(
                                       children: [
-                                        Image(
-                                          image: AssetImage(
-                                              '${post[index].heart}'),
-                                          width: 17.5,
-                                          height: 15,
-                                        ),
+                                        index == 0
+                                            ? isLike == false
+                                                ? InkWell(
+                                                    onTap: () {
+                                                      isLike = true;
+                                                      setState(() {});
+                                                    },
+                                                    child: Image(
+                                                      image: AssetImage(
+                                                          '${post[index].heart}'),
+                                                      width: 20,
+                                                      height: 18,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  )
+                                                : InkWell(
+                                                    onTap: () {
+                                                      isLike = false;
+                                                      setState(() {});
+                                                    },
+                                                    child: Image.asset(
+                                                      'assets/icons/2107845.png',
+                                                      width: 20,
+                                                      height: 18,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  )
+                                            : isLikw1 == false
+                                                ? InkWell(
+                                                    onTap: () {
+                                                      isLikw1 = true;
+                                                      setState(() {});
+                                                    },
+                                                    child: Image(
+                                                      image: AssetImage(
+                                                          '${post[index].heart}'),
+                                                      width: 20,
+                                                      height: 18,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  )
+                                                : InkWell(
+                                                    onTap: () {
+                                                      isLikw1 = false;
+                                                      setState(() {});
+                                                    },
+                                                    child: Image.asset(
+                                                      'assets/icons/2107845.png',
+                                                      width: 20,
+                                                      height: 18,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                  ),
                                         SizedBox(
                                           width: screenwidth * 0.02,
                                         ),
@@ -469,11 +522,30 @@ class _PopularThreadState extends State<PopularThread> {
                                         SizedBox(
                                           width: screenwidth * 0.04,
                                         ),
-                                        Image(
-                                          image: AssetImage(
-                                              '${post[index].message}'),
-                                          width: 17.5,
-                                          height: 15,
+                                        InkWell(
+                                          onTap: () {
+                                            context.navigator.push<void>(
+                                              SwipeablePageRoute(
+                                                builder: (_) =>
+                                                    BottomForComment(
+                                                  date: post[index].date,
+                                                  desc1: post[index].desc,
+                                                  desc2: post[index].desc2,
+                                                  image: post[index].image,
+                                                  motion: post[index].dgn2,
+                                                  name: post[index].name,
+                                                  ui: post[index].design,
+                                                  web: post[index].design3,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Image(
+                                            image: AssetImage(
+                                                '${post[index].message}'),
+                                            width: 17.5,
+                                            height: 15,
+                                          ),
                                         ),
                                         SizedBox(
                                           width: screenwidth * 0.02,
@@ -490,6 +562,7 @@ class _PopularThreadState extends State<PopularThread> {
                             ]);
                       }),
                 ),
+
                 // Stack(
                 //   children:
                 //   Positioned(
