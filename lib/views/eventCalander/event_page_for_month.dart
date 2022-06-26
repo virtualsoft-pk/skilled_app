@@ -15,7 +15,7 @@ class EventPageForMonth extends StatefulWidget {
 
 class _EventPageForMonthState extends State<EventPageForMonth>
     with SingleTickerProviderStateMixin {
-  String dropdownvalue = 'Today';
+  String dropdownvalue = 'This Month';
   // List of items in our dropdown menu
   var items = [
     'Today',
@@ -96,7 +96,13 @@ class _EventPageForMonthState extends State<EventPageForMonth>
                                 isHideCalader = true;
                               }
                               if (newValue == 'This Week') {
-                                Get.to(() => BottomNavigationForWeek());
+
+                                Navigator.pushReplacement(
+                                  context,
+                                  PageRouteBuilder(pageBuilder: (_, __, ___) => BottomNavigationForWeek()),
+                                );
+
+                                // Get.off(() => BottomNavigationForWeek());
                               }
                               if (newValue == 'This Month') {
                                 isHideCalader = false;

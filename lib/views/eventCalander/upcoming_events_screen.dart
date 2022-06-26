@@ -174,17 +174,17 @@ class _UpCommingEventState extends State<UpCommingEvent> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          AddEventCalender(context);
-        },
-        backgroundColor: floatingcolor,
-        child: const Icon(
-          Icons.add,
-          size: 30,
-          color: Colors.black,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     AddEventCalender(context);
+      //   },
+      //   backgroundColor: floatingcolor,
+      //   child: const Icon(
+      //     Icons.add,
+      //     size: 30,
+      //     color: Colors.black,
+      //   ),
+      // ),
     );
   }
 }

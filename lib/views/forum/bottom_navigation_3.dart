@@ -12,8 +12,10 @@ import '../settings/settingPage.dart';
 import 'forum.dart';
 
 class BottomNavigation3 extends StatefulWidget {
-  BottomNavigation3({Key? key, this.title}) : super(key: key);
+  BottomNavigation3({Key? key, this.title,this.isFromCompanyProfile = false}) : super(key: key);
   String? title;
+
+  bool? isFromCompanyProfile;
 
   @override
   State<BottomNavigation3> createState() => _BottomNavigation3State();
@@ -37,7 +39,7 @@ class _BottomNavigation3State extends State<BottomNavigation3> {
     super.initState();
     _screens = [
       FeedPage(),
-      SearchResult(),
+      SearchResult(isFromCompany: widget.isFromCompanyProfile,),
       Forum(),
       Events(),
       SettingScreen(),

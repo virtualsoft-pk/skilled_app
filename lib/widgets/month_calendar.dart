@@ -7,7 +7,7 @@ import '../utils/app_colors.dart';
 Widget monthCalendar() {
   final Map<DateTime, List<CleanCalendarEvent>> _events = {};
   return Container(
-    height: 320,
+    height: 324,
     width: double.infinity,
     child: Calendar(
       selectedColor: Colors.transparent,

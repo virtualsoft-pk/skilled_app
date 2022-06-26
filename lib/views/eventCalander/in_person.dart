@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/widgets/add_event_calender.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/custom_widgets.dart';
 
@@ -14,6 +16,15 @@ class InPerson extends StatefulWidget {
 }
 
 class _InPersonState extends State<InPerson> {
+  Future<void> share() async {
+    await FlutterShare.share(
+        title: 'Example share',
+        text: 'Example share text',
+        linkUrl: 'https://flutter.dev/',
+        chooserTitle: 'Example Chooser Title');
+  }
+
+  bool isShow = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,12 +48,17 @@ class _InPersonState extends State<InPerson> {
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                         ),
                       ),
-                      CircleAvatar(
-                          backgroundColor: Color(0xffF4F4F5),
-                          child: Icon(
-                            Icons.share,
-                            color: Color(0xff5A5E67),
-                          )),
+                      InkWell(
+                        onTap: () {
+                          share();
+                        },
+                        child: CircleAvatar(
+                            backgroundColor: Color(0xffF4F4F5),
+                            child: Icon(
+                              Icons.share,
+                              color: Color(0xff5A5E67),
+                            )),
+                      ),
                     ],
                   ),
                 ),
@@ -275,7 +291,9 @@ class _InPersonState extends State<InPerson> {
                 CustomButton(
                   text: "VISIT THE WEBSITE",
                   funct: () {
-                    modalBottomSheetMenu(context);
+                    isShow
+                        ? modalBottomSheetMenu(context)
+                        : redirectToWebsite();
                   },
                 )
               ],
@@ -284,6 +302,19 @@ class _InPersonState extends State<InPerson> {
         ),
       ),
     );
+  }
+
+  void redirectToWebsite() async {
+    String url =
+        'https://search.yahoo.com/search?fr=mcafee&type=E210US91213G0&p=google';
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: false);
+    } else {
+      print('Not Found');
+    }
+    setState(() {
+      isShow = true;
+    });
   }
 
   void dialougeBox() {

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/views/forum/bottom_navigation_for_comment.dart';
@@ -14,6 +15,7 @@ import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../../model/aboutmodel.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/hashir.dart';
+import '../feeds/bottom_navigation/bottom_navigation.dart';
 import '../settings/notification.dart';
 import 'bottom_navigation2.dart';
 
@@ -157,9 +159,16 @@ class _ForumState extends State<Forum> {
                             ],
                           ),
 
-                          // Align(
-                          //     alignment: Alignment.topLeft,
-                          //     child: customBackButton(() {})),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: customBackButton(
+                              () {
+                                Get.offAll(
+                                  () => BottomNavigation(index: 0),
+                                );
+                              },
+                            ),
+                          ),
                           SizedBox(
                             height: 10,
                           ),
@@ -425,7 +434,7 @@ class _ForumState extends State<Forum> {
                                 child: Row(
                                   children: [
                                     myText(
-                                      text: 'Top Post',
+                                      text: 'Top Posts',
                                       style: GoogleFonts.manrope(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w700,
@@ -502,18 +511,24 @@ class _ForumState extends State<Forum> {
                                                     ],
                                                   ),
                                                   Spacer(),
-                                                  PopupMenuButton(
-                                                    itemBuilder: (context) => [
-                                                      PopupMenuItem(
-                                                        child: Text("First"),
-                                                        value: 1,
-                                                      ),
-                                                      PopupMenuItem(
-                                                        child: Text("Second"),
-                                                        value: 2,
-                                                      )
-                                                    ],
-                                                  )
+                                                   IconButton(
+                                        onPressed: () {
+                                          share();
+                                        },
+                                        icon: Icon(Icons.more_horiz),
+                                      ),
+                                                  // PopupMenuButton(
+                                                  //   itemBuilder: (context) => [
+                                                  //     PopupMenuItem(
+                                                  //       child: Text("First"),
+                                                  //       value: 1,
+                                                  //     ),
+                                                  //     PopupMenuItem(
+                                                  //       child: Text("Second"),
+                                                  //       value: 2,
+                                                  //     )
+                                                  //   ],
+                                                  // )
                                                 ],
                                               ),
                                             ),
@@ -695,134 +710,176 @@ class _ForumState extends State<Forum> {
                                                   SizedBox(
                                                     height: screenheight * 0.02,
                                                   ),
-                                                  Row(
-                                                    children: [
-                                                      index == 0
-                                                          ? isLike == false
-                                                              ? InkWell(
-                                                                  onTap: () {
-                                                                    isLike =
-                                                                        true;
-                                                                    setState(
-                                                                        () {});
-                                                                  },
-                                                                  child: Image(
-                                                                    image: AssetImage(
-                                                                        '${post[index].heart}'),
-                                                                    width: 20,
-                                                                    height: 18,
-                                                                    fit: BoxFit
-                                                                        .contain,
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        index == 0
+                                                            ? isLike == false
+                                                                ? InkWell(
+                                                                    onTap: () {
+                                                                      isLike =
+                                                                          true;
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets.all(
+                                                                              10),
+                                                                      child:
+                                                                          Image(
+                                                                        image: AssetImage(
+                                                                            '${post[index].heart}'),
+                                                                        width:
+                                                                            20,
+                                                                        height:
+                                                                            18,
+                                                                        fit: BoxFit
+                                                                            .contain,
+                                                                      ),
+                                                                    ),
+                                                                  )
+                                                                : InkWell(
+                                                                    onTap: () {
+                                                                      isLike =
+                                                                          false;
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets.all(
+                                                                              10),
+                                                                      child: Image
+                                                                          .asset(
+                                                                        'assets/icons/2107845.png',
+                                                                        width:
+                                                                            20,
+                                                                        height:
+                                                                            18,
+                                                                        fit: BoxFit
+                                                                            .contain,
+                                                                      ),
+                                                                    ),
+                                                                  )
+                                                            : isLikw1 == false
+                                                                ? InkWell(
+                                                                    onTap: () {
+                                                                      isLikw1 =
+                                                                          true;
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets.all(
+                                                                              10),
+                                                                      child:
+                                                                          Image(
+                                                                        image: AssetImage(
+                                                                            '${post[index].heart}'),
+                                                                        width:
+                                                                            20,
+                                                                        height:
+                                                                            18,
+                                                                        fit: BoxFit
+                                                                            .contain,
+                                                                      ),
+                                                                    ))
+                                                                : InkWell(
+                                                                    onTap: () {
+                                                                      isLikw1 =
+                                                                          false;
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child:
+                                                                        Padding(
+                                                                      padding:
+                                                                          EdgeInsets.all(
+                                                                              10),
+                                                                      child: Image
+                                                                          .asset(
+                                                                        'assets/icons/2107845.png',
+                                                                        width:
+                                                                            20,
+                                                                        height:
+                                                                            18,
+                                                                        fit: BoxFit
+                                                                            .contain,
+                                                                      ),
+                                                                    ),
                                                                   ),
-                                                                )
-                                                              : InkWell(
-                                                                  onTap: () {
-                                                                    isLike =
-                                                                        false;
-                                                                    setState(
-                                                                        () {});
-                                                                  },
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/icons/2107845.png',
-                                                                    width: 20,
-                                                                    height: 18,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                )
-                                                          : isLikw1 == false
-                                                              ? InkWell(
-                                                                  onTap: () {
-                                                                    isLikw1 =
-                                                                        true;
-                                                                    setState(
-                                                                        () {});
-                                                                  },
-                                                                  child: Image(
-                                                                    image: AssetImage(
-                                                                        '${post[index].heart}'),
-                                                                    width: 20,
-                                                                    height: 18,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                )
-                                                              : InkWell(
-                                                                  onTap: () {
-                                                                    isLikw1 =
-                                                                        false;
-                                                                    setState(
-                                                                        () {});
-                                                                  },
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/icons/2107845.png',
-                                                                    width: 20,
-                                                                    height: 18,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                ),
-                                                      SizedBox(
-                                                        width:
-                                                            screenwidth * 0.02,
-                                                      ),
-                                                      myText(
-                                                          text:
-                                                              '${post[index].count}'),
-                                                      SizedBox(
-                                                        width:
-                                                            screenwidth * 0.04,
-                                                      ),
-                                                      InkWell(
-                                                        onTap: () {
-                                                          context.navigator
-                                                              .push<void>(
-                                                            SwipeablePageRoute(
-                                                              builder: (_) =>
-                                                                  BottomForComment(
-                                                                date:
-                                                                    post[index]
-                                                                        .date,
-                                                                desc1:
-                                                                    post[index]
-                                                                        .desc,
-                                                                desc2:
-                                                                    post[index]
-                                                                        .desc2,
-                                                                image:
-                                                                    post[index]
-                                                                        .image,
-                                                                motion:
-                                                                    post[index]
-                                                                        .dgn2,
-                                                                name:
-                                                                    post[index]
-                                                                        .name,
-                                                                ui: post[index]
-                                                                    .design,
-                                                                web: post[index]
-                                                                    .design3,
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                        child: Image(
-                                                          image: AssetImage(
-                                                              '${post[index].message}'),
-                                                          width: 17.5,
-                                                          height: 15,
+                                                        SizedBox(
+                                                          width: screenwidth *
+                                                              0.02,
                                                         ),
-                                                      ),
-                                                      SizedBox(
-                                                        width:
-                                                            screenwidth * 0.02,
-                                                      ),
-                                                      myText(
-                                                          text:
-                                                              '${post[index].number}'),
-                                                    ],
+                                                        myText(
+                                                            text:
+                                                                '${post[index].count}'),
+                                                        SizedBox(
+                                                          width: screenwidth *
+                                                              0.04,
+                                                        ),
+                                                        InkWell(
+                                                          onTap: () {
+                                                            context.navigator
+                                                                .push<void>(
+                                                              SwipeablePageRoute(
+                                                                builder: (_) =>
+                                                                    BottomForComment(
+                                                                  date: post[
+                                                                          index]
+                                                                      .date,
+                                                                  desc1: post[
+                                                                          index]
+                                                                      .desc,
+                                                                  desc2: post[
+                                                                          index]
+                                                                      .desc2,
+                                                                  image: post[
+                                                                          index]
+                                                                      .image,
+                                                                  motion: post[
+                                                                          index]
+                                                                      .dgn2,
+                                                                  name: post[
+                                                                          index]
+                                                                      .name,
+                                                                  ui: post[
+                                                                          index]
+                                                                      .design,
+                                                                  web: post[
+                                                                          index]
+                                                                      .design3,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    10),
+                                                            child: Image(
+                                                              image: AssetImage(
+                                                                  '${post[index].message}'),
+                                                              width: 17.5,
+                                                              height: 15,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: screenwidth *
+                                                              0.02,
+                                                        ),
+                                                        myText(
+                                                            text:
+                                                                '${post[index].number}'),
+                                                      ],
+                                                    ),
                                                   ),
                                                   SizedBox(
                                                     height: screenheight * 0.03,
@@ -1008,5 +1065,14 @@ class _ForumState extends State<Forum> {
         ),
       ),
     );
+  }
+
+
+    Future<void> share() async {
+    await FlutterShare.share(
+        title: 'Example share',
+        text: 'Example share text',
+        linkUrl: 'https://flutter.dev/',
+        chooserTitle: 'Example Chooser Title');
   }
 }

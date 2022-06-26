@@ -151,72 +151,7 @@ class _SettingScreenState extends State<SettingScreen> {
               SizedBox(height: Get.height * 0.01),
               InkWell(
                 onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return Dialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            20.0,
-                          ),
-                        ), //this right here
-                        child: Container(
-                          height: Get.height * 0.5,
-                          width: Get.width,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              //   crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "CREATE AN ACCOUNT TO ACCESS SETTINGS",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      letterSpacing: 2,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                                SizedBox(
-                                  height: Get.height * 0.03,
-                                ),
-                                Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        width: 15,
-                                      ),
-                                      Image.asset(
-                                        "assets/images/dialogImage.png",
-                                        height: Get.height * 0.2,
-                                      )
-                                    ]),
-                                CustomButton(
-                                    funct: () {
-                                      context.navigator.push<void>(
-                                          SwipeablePageRoute(
-                                              builder: (_) => SignUpView()));
-                                      // Get.to(() => SignUpView());
-                                    },
-                                    text: "Create Account"),
-                                InkWell(
-                                  onTap: () {
-                                    Get.back();
-                                  },
-                                  child: Text(
-                                    "BACK TO HOME",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  );
+                  Get.offAll(()=> SignIn());
                 },
                 child: buildListTile("assets/images/logout.png", "Logout"),
               ),
@@ -264,4 +199,73 @@ class _SettingScreenState extends State<SettingScreen> {
           size: 15,
         ),
       );
+
+  void createAnAccountToAccessSettingsDiaglog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              20.0,
+            ),
+          ), //this right here
+          child: Container(
+            height: Get.height * 0.5,
+            width: Get.width,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "CREATE AN ACCOUNT TO ACCESS SETTINGS",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 14,
+                        letterSpacing: 2,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.03,
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Image.asset(
+                          "assets/images/dialogImage.png",
+                          height: Get.height * 0.2,
+                        )
+                      ]),
+                  CustomButton(
+                      funct: () {
+                        context.navigator.push<void>(
+                            SwipeablePageRoute(
+                                builder: (_) => SignUpView()));
+                        // Get.to(() => SignUpView());
+                      },
+                      text: "Create Account"),
+                  InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Text(
+                      "BACK TO HOME",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 }

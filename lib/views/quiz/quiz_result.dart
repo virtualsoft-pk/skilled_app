@@ -29,7 +29,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: const Text(
-          "Quiz Result",
+          "Quiz Results",
           style: TextStyle(
               fontSize: 18, fontWeight: FontWeight.w700, color: textColor),
         ),
@@ -261,7 +261,11 @@ class _QuizResultPageState extends State<QuizResultPage> {
                 CustomButton(
                   text: "GET STARTED",
                   funct: () {
-                    Get.offAll(() => BottomNavigation());
+                    context.navigator.push<void>(
+                      SwipeablePageRoute(
+                        builder: (_) => AllCareers(),
+                      ),
+                    );
                   },
                 ),
                 SizedBox(

@@ -137,9 +137,7 @@ class _PopularThreadState extends State<PopularThread> {
                         children: [
                           InkWell(
                             onTap: () {
-                              Get.off(() => BottomNavigation(
-                                    index: 2,
-                                  ));
+                              Get.back();
                             },
                             child: Container(
                               margin: EdgeInsets.only(
@@ -219,55 +217,86 @@ class _PopularThreadState extends State<PopularThread> {
                           SizedBox(
                             width: Get.width * 0.02,
                           ),
-                          isFollow == false
-                              ? Container(
-                                  alignment: Alignment.center,
-                                  width: 110,
-                                  height: 35,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(40),
-                                    border: Border.all(width: 1.5),
-                                  ),
-                                  child: TextButton(
-                                    style: TextButton.styleFrom(),
-                                    onPressed: () {
-                                      isFollow = true;
-                                      setState(() {});
-                                    },
-                                    child: Text(
-                                      'Follow',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              : Container(
-                                  alignment: Alignment.center,
-                                  width: 110,
-                                  height: 35,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(40),
-                                    border: Border.all(color: Colors.white),
-                                  ),
-                                  child: TextButton(
-                                    style: TextButton.styleFrom(),
-                                    onPressed: () {
-                                      isFollow = false;
-                                      setState(() {});
-                                    },
-                                    child: Text(
-                                      'Following',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w700,
-                                        color: Color(0xff8D9196),
-                                      ),
-                                    ),
-                                  ),
-                                )
+
+
+                          InkWell(
+                            onTap: () {
+                              isFollow = !isFollow;
+                              setState(() {});
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 1,
+                                    color: Colors.grey.shade300,
+                                    offset: const Offset(0, 1),
+                                    spreadRadius: 1,
+                                  )
+                                ],
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: isFollow == false
+                                  ? Image.asset('assets/icons/plus.png')
+                                  : Image.asset(
+                                'assets/icons/heartBlack.png',
+                              ),
+                            ),
+                          ),
+
+                          // isFollow == false
+                          //     ? Container(
+                          //         alignment: Alignment.center,
+                          //         width: 110,
+                          //         height: 35,
+                          //         decoration: BoxDecoration(
+                          //           borderRadius: BorderRadius.circular(40),
+                          //           border: Border.all(width: 1.5),
+                          //         ),
+                          //         child: TextButton(
+                          //           style: TextButton.styleFrom(),
+                          //           onPressed: () {
+                          //             isFollow = true;
+                          //             setState(() {});
+                          //           },
+                          //           child: Text(
+                          //             'Follow',
+                          //             style: TextStyle(
+                          //               fontSize: 12,
+                          //               fontWeight: FontWeight.w700,
+                          //               color: Colors.black,
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       )
+                          //     : Container(
+                          //         alignment: Alignment.center,
+                          //         width: 110,
+                          //         height: 35,
+                          //         decoration: BoxDecoration(
+                          //           borderRadius: BorderRadius.circular(40),
+                          //           border: Border.all(color: Colors.white),
+                          //         ),
+                          //         child: TextButton(
+                          //           style: TextButton.styleFrom(),
+                          //           onPressed: () {
+                          //             isFollow = false;
+                          //             setState(() {});
+                          //           },
+                          //           child: Text(
+                          //             'Following',
+                          //             style: TextStyle(
+                          //               fontSize: 12,
+                          //               fontWeight: FontWeight.w700,
+                          //               color: Color(0xff8D9196),
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       )
                         ],
                       ),
                       SizedBox(
@@ -460,99 +489,248 @@ class _PopularThreadState extends State<PopularThread> {
                                     SizedBox(
                                       height: screenheight * 0.02,
                                     ),
-                                    Row(
-                                      children: [
-                                        index == 0
-                                            ? isLike == false
-                                                ? InkWell(
-                                                    onTap: () {
-                                                      isLike = true;
-                                                      setState(() {});
-                                                    },
-                                                    child: Image(
-                                                      image: AssetImage(
-                                                          '${post[index].heart}'),
-                                                      width: 20,
-                                                      height: 18,
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                  )
-                                                : InkWell(
-                                                    onTap: () {
-                                                      isLike = false;
-                                                      setState(() {});
-                                                    },
-                                                    child: Image.asset(
-                                                      'assets/icons/2107845.png',
-                                                      width: 20,
-                                                      height: 18,
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                  )
-                                            : isLikw1 == false
-                                                ? InkWell(
-                                                    onTap: () {
-                                                      isLikw1 = true;
-                                                      setState(() {});
-                                                    },
-                                                    child: Image(
-                                                      image: AssetImage(
-                                                          '${post[index].heart}'),
-                                                      width: 20,
-                                                      height: 18,
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                  )
-                                                : InkWell(
-                                                    onTap: () {
-                                                      isLikw1 = false;
-                                                      setState(() {});
-                                                    },
-                                                    child: Image.asset(
-                                                      'assets/icons/2107845.png',
-                                                      width: 20,
-                                                      height: 18,
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                  ),
-                                        SizedBox(
-                                          width: screenwidth * 0.02,
-                                        ),
-                                        myText(text: '${post[index].count}'),
-                                        SizedBox(
-                                          width: screenwidth * 0.04,
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            context.navigator.push<void>(
-                                              SwipeablePageRoute(
-                                                builder: (_) =>
-                                                    BottomForComment(
-                                                  date: post[index].date,
-                                                  desc1: post[index].desc,
-                                                  desc2: post[index].desc2,
-                                                  image: post[index].image,
-                                                  motion: post[index].dgn2,
-                                                  name: post[index].name,
-                                                  ui: post[index].design,
-                                                  web: post[index].design3,
-                                                ),
+
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          index == 0
+                                              ? isLike == false
+                                              ? InkWell(
+                                            onTap: () {
+                                              isLike =
+                                              true;
+                                              setState(
+                                                      () {});
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Image(
+                                                image: AssetImage(
+                                                    '${post[index].heart}'),
+                                                width: 20,
+                                                height: 18,
+                                                fit: BoxFit
+                                                    .contain,
                                               ),
-                                            );
-                                          },
-                                          child: Image(
-                                            image: AssetImage(
-                                                '${post[index].message}'),
-                                            width: 17.5,
-                                            height: 15,
+                                            ),
+                                          )
+                                              : InkWell(
+                                            onTap: () {
+                                              isLike =
+                                              false;
+                                              setState(
+                                                      () {});
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Image
+                                                  .asset(
+                                                'assets/icons/2107845.png',
+                                                width: 20,
+                                                height: 18,
+                                                fit: BoxFit
+                                                    .contain,
+                                              ),
+                                            ),
+                                          )
+                                              :
+                                          isLikw1 == false
+                                              ? InkWell(
+                                              onTap: () {
+                                                isLikw1 =
+                                                true;
+                                                setState(
+                                                        () {});
+                                              },
+                                              child: Padding(
+                                                padding: EdgeInsets.all(10),
+                                                child: Image(
+                                                  image: AssetImage(
+                                                      '${post[index].heart}'),
+                                                  width: 20,
+                                                  height: 18,
+                                                  fit: BoxFit
+                                                      .contain,
+                                                ),
+                                              )
+                                          )
+                                              : InkWell(
+                                            onTap: () {
+                                              isLikw1 =
+                                              false;
+                                              setState(
+                                                      () {});
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Image
+                                                  .asset(
+                                                'assets/icons/2107845.png',
+                                                width: 20,
+                                                height: 18,
+                                                fit: BoxFit
+                                                    .contain,
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width: screenwidth * 0.02,
-                                        ),
-                                        myText(text: '${post[index].number}'),
-                                      ],
+                                          SizedBox(
+                                            width:
+                                            screenwidth * 0.02,
+                                          ),
+                                          myText(
+                                              text:
+                                              '${post[index].count}'),
+                                          SizedBox(
+                                            width:
+                                            screenwidth * 0.04,
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              context.navigator
+                                                  .push<void>(
+                                                SwipeablePageRoute(
+                                                  builder: (_) =>
+                                                      BottomForComment(
+                                                        date:
+                                                        post[index]
+                                                            .date,
+                                                        desc1:
+                                                        post[index]
+                                                            .desc,
+                                                        desc2:
+                                                        post[index]
+                                                            .desc2,
+                                                        image:
+                                                        post[index]
+                                                            .image,
+                                                        motion:
+                                                        post[index]
+                                                            .dgn2,
+                                                        name:
+                                                        post[index]
+                                                            .name,
+                                                        ui: post[index]
+                                                            .design,
+                                                        web: post[index]
+                                                            .design3,
+                                                      ),
+                                                ),
+                                              );
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Image(
+                                                image: AssetImage(
+                                                    '${post[index].message}'),
+                                                width: 17.5,
+                                                height: 15,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width:
+                                            screenwidth * 0.02,
+                                          ),
+                                          myText(
+                                              text:
+                                              '${post[index].number}'),
+                                        ],
+                                      ),
                                     ),
+
+                                    // Row(
+                                    //   children: [
+                                    //     index == 0
+                                    //         ? isLike == false
+                                    //             ? InkWell(
+                                    //                 onTap: () {
+                                    //                   isLike = true;
+                                    //                   setState(() {});
+                                    //                 },
+                                    //                 child: Image(
+                                    //                   image: AssetImage(
+                                    //                       '${post[index].heart}'),
+                                    //                   width: 20,
+                                    //                   height: 18,
+                                    //                   fit: BoxFit.contain,
+                                    //                 ),
+                                    //               )
+                                    //             : InkWell(
+                                    //                 onTap: () {
+                                    //                   isLike = false;
+                                    //                   setState(() {});
+                                    //                 },
+                                    //                 child: Image.asset(
+                                    //                   'assets/icons/2107845.png',
+                                    //                   width: 20,
+                                    //                   height: 18,
+                                    //                   fit: BoxFit.contain,
+                                    //                 ),
+                                    //               )
+                                    //         : isLikw1 == false
+                                    //             ? InkWell(
+                                    //                 onTap: () {
+                                    //                   isLikw1 = true;
+                                    //                   setState(() {});
+                                    //                 },
+                                    //                 child: Image(
+                                    //                   image: AssetImage(
+                                    //                       '${post[index].heart}'),
+                                    //                   width: 20,
+                                    //                   height: 18,
+                                    //                   fit: BoxFit.contain,
+                                    //                 ),
+                                    //               )
+                                    //             : InkWell(
+                                    //                 onTap: () {
+                                    //                   isLikw1 = false;
+                                    //                   setState(() {});
+                                    //                 },
+                                    //                 child: Image.asset(
+                                    //                   'assets/icons/2107845.png',
+                                    //                   width: 20,
+                                    //                   height: 18,
+                                    //                   fit: BoxFit.contain,
+                                    //                 ),
+                                    //               ),
+                                    //     SizedBox(
+                                    //       width: screenwidth * 0.02,
+                                    //     ),
+                                    //     myText(text: '${post[index].count}'),
+                                    //     SizedBox(
+                                    //       width: screenwidth * 0.04,
+                                    //     ),
+                                    //     InkWell(
+                                    //       onTap: () {
+                                    //         context.navigator.push<void>(
+                                    //           SwipeablePageRoute(
+                                    //             builder: (_) =>
+                                    //                 BottomForComment(
+                                    //               date: post[index].date,
+                                    //               desc1: post[index].desc,
+                                    //               desc2: post[index].desc2,
+                                    //               image: post[index].image,
+                                    //               motion: post[index].dgn2,
+                                    //               name: post[index].name,
+                                    //               ui: post[index].design,
+                                    //               web: post[index].design3,
+                                    //             ),
+                                    //           ),
+                                    //         );
+                                    //       },
+                                    //       child: Image(
+                                    //         image: AssetImage(
+                                    //             '${post[index].message}'),
+                                    //         width: 17.5,
+                                    //         height: 15,
+                                    //       ),
+                                    //     ),
+                                    //     SizedBox(
+                                    //       width: screenwidth * 0.02,
+                                    //     ),
+                                    //     myText(text: '${post[index].number}'),
+                                    //   ],
+                                    // ),
                                     SizedBox(
                                       height: screenheight * 0.03,
                                     ),

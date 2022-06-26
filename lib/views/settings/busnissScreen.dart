@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/widgets/all_widgets.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../utils/app_colors.dart';
 
@@ -82,20 +83,42 @@ class _BusinessScreenState extends State<BusinessScreen> {
                   //   left: Get.width * 0.2,
                   //   right: Get.width * 0.2,
                   // ),
-                  child: Image.asset(
-                    "assets/images/ApplePlay.png",
-                    height: Get.height * 0.075,
-                    fit: BoxFit.cover,
+                  child: InkWell(
+                    onTap: () async {
+                      String url =
+                          'https://play.google.com/store/apps/details?id=com.skilled_app.skilled_app';
+                      if (await canLaunch(url)) {
+                        await launch(url, forceSafariVC: false);
+                      } else {
+                        print('Not Found');
+                      }
+                    },
+                    child: Image.asset(
+                      "assets/images/ApplePlay.png",
+                      height: Get.height * 0.075,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
               Expanded(
                 child: Container(
                   alignment: Alignment.center,
-                  child: Image.asset(
-                    "assets/images/googlePlay.png",
-                    height: Get.height * 0.075,
-                    fit: BoxFit.cover,
+                  child: InkWell(
+                    onTap: () async {
+                      String url =
+                          'https://play.google.com/store/apps/details?id=com.skilled_app.skilled_app';
+                      if (await canLaunch(url)) {
+                        await launch(url, forceSafariVC: false);
+                      } else {
+                        print('Not Found');
+                      }
+                    },
+                    child: Image.asset(
+                      "assets/images/googlePlay.png",
+                      height: Get.height * 0.075,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),

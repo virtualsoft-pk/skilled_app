@@ -404,7 +404,7 @@ class _QuizQuestionsState extends State<QuizQuestions> {
                               borderRadius: BorderRadius.circular(12.0)),
                           onPressed: () {},
                           child: Text(
-                            'START QUIZ',
+                            'NEXT',
                             style: const TextStyle(
                               letterSpacing: 2,
                               color: textColor,
@@ -415,7 +415,7 @@ class _QuizQuestionsState extends State<QuizQuestions> {
                         ),
                       )
                     : CustomButton(
-                        text: "START QUIZ",
+                        text: "NEXT",
                         funct: () {
                           context.navigator.push<void>(
                             SwipeablePageRoute(

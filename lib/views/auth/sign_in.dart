@@ -4,6 +4,7 @@ import 'package:get/route_manager.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/auth/forgot_password.dart';
 import 'package:skilled_app/views/auth/sign_up.dart';
+import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/views/quiz/videos_screen.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
@@ -241,7 +242,9 @@ class _SignInState extends State<SignIn> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        Get.offAll(() => BottomNavigation());
+                        context.navigator.push<void>(
+                            SwipeablePageRoute(builder: (_) => QuizStart()));
+                        // Get.offAll(() => BottomNavigation());
                       },
                       child: const Text(
                         "Continue as a guest",

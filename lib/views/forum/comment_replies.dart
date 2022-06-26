@@ -164,12 +164,16 @@ class _CommentRepliesState extends State<CommentReplies> {
                       Container(
                         padding:
                             EdgeInsets.only(left: 15, bottom: 20, right: 15),
-                        child: Text(
-                          widget.comment!,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
+                        child: Row(
+                          children: [
+                            Text(
+                              widget.comment!,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )
+                          ],
                         ),
                       ),
                       addComment.length == 0
@@ -207,7 +211,7 @@ class _CommentRepliesState extends State<CommentReplies> {
                                                 ),
                                               ),
                                               SizedBox(
-                                                width: Get.width * 0.1,
+                                                width: Get.width * 0.02,
                                               ),
                                               const Text(
                                                 'Monday at 2.00 AM',
@@ -221,16 +225,18 @@ class _CommentRepliesState extends State<CommentReplies> {
                                           ),
                                           Container(
                                             margin: EdgeInsets.symmetric(
-                                                vertical: 10),
-                                            padding: EdgeInsets.all(10),
+                                                vertical: 10,horizontal: 10),
                                             width: Get.width,
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                                  BorderRadius.circular(15),
+                                                  BorderRadius.circular(16),
                                             ),
-                                            child: Text(
-                                              addComment[i],
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+                                              child: Text(
+                                                addComment[i],
+                                              ),
                                             ),
                                           ),
                                           SizedBox(

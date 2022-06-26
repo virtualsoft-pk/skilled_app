@@ -335,7 +335,7 @@ class _CommentSectionState extends State<CommentSection> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width: Get.width * 0.1,
+                                            width: Get.width * 0.02,
                                           ),
                                           const Text(
                                             'Monday at 2.00 AM',
@@ -349,16 +349,18 @@ class _CommentSectionState extends State<CommentSection> {
                                       ),
                                       Container(
                                         margin:
-                                            EdgeInsets.symmetric(vertical: 10),
-                                        padding: EdgeInsets.all(10),
+                                            EdgeInsets.symmetric(vertical: 10,),
                                         width: Get.width,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius:
-                                              BorderRadius.circular(15),
+                                              BorderRadius.circular(16),
                                         ),
-                                        child: Text(
-                                          addComment[i],
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+                                          child: Text(
+                                            addComment[i],
+                                          ),
                                         ),
                                       ),
                                       Row(
@@ -434,6 +436,7 @@ class _CommentSectionState extends State<CommentSection> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
+
                   margin: EdgeInsets.only(bottom: 5, left: 15, right: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),

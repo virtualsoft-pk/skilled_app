@@ -5,6 +5,7 @@ import 'package:skilled_app/splash_screen.dart';
 
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:skilled_app/views/onboarding/onboarding.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 void main() {
@@ -33,192 +34,75 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// void main() => runApp(MyApp());
+// import 'package:flutter/material.dart';
+// import 'package:flutter_typeahead/flutter_typeahead.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
 
 // class MyApp extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: '🔙 swipeable_page_route example',
-//       home: FirstPage(),
-//     );
+//     return MaterialApp(home: Home());
 //   }
 // }
 
-// class FirstPage extends StatelessWidget {
+// class Home extends StatefulWidget {
+//   @override
+//   State<Home> createState() => _HomeState();
+// }
+
+// class _HomeState extends State<Home> {
+//   List<String> suggestons = [
+//     "USA",
+//     "UK",
+//     "Uganda",
+//     "Uruguay",
+//     "United Arab Emirates"
+//   ];
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-//       appBar: MorphingAppBar(
-//         title: Text('🔙 swipeable_page_route example'),
-//       ),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () {
-//             context.navigator
-//                 .push<void>(SwipeablePageRoute(builder: (_) => SecondPage()));
-//           },
-//           child: Text('Open page 2'),
-//         ),
-//       ),
-//     );
-//   }
-// }
+//         appBar: AppBar(
+//             title: Text("Autocomplete on TextField"),
+//             backgroundColor: Colors.redAccent),
+//         body: Container(
+//           margin: EdgeInsets.all(30),
+//           alignment: Alignment.topCenter,
+//           child: Column(
+//             children: [
+//               TypeAheadField(
+//                 animationStart: 0,
+//                 animationDuration: Duration.zero,
+//                 textFieldConfiguration: TextFieldConfiguration(
+//                     autofocus: true,
+//                     style: TextStyle(fontSize: 15),
+//                     decoration: InputDecoration(border: OutlineInputBorder())),
+//                 suggestionsBoxDecoration:
+//                     SuggestionsBoxDecoration(color: Colors.lightBlue[50]),
+//                 suggestionsCallback: (pattern) {
+//                   List<String> matches = <String>[];
+//                   matches.addAll(suggestons);
 
-// class SecondPage extends StatefulWidget {
-//   @override
-//   _SecondPageState createState() => _SecondPageState();
-// }
-
-// class _SecondPageState extends State<SecondPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     // Gets the `SwipeablePageRoute` wrapping the current page.
-//     final pageRoute = context.getSwipeablePageRoute<void>()!;
-
-//     return Scaffold(
-//       appBar: MorphingAppBar(
-//         title: Text('Page 2'),
-//         actions: [
-//           IconButton(
-//             key: ValueKey('check'),
-//             icon: Icon(Icons.check),
-//             onPressed: () {},
-//           ),
-//           IconButton(
-//             key: ValueKey('star'),
-//             icon: Icon(Icons.star),
-//             onPressed: () {},
-//           ),
-//           IconButton(
-//             key: ValueKey('play_arrow'),
-//             icon: Icon(Icons.play_arrow),
-//             onPressed: () {},
-//           ),
-//           PopupMenuButton<void>(
-//             itemBuilder: (context) => [
-//               PopupMenuItem(child: Text('One')),
-//               PopupMenuItem(child: Text('Two')),
+//                   matches.retainWhere((s) {
+//                     return s.toLowerCase().contains(pattern.toLowerCase());
+//                   });
+//                   return matches;
+//                 },
+//                 itemBuilder: (context, sone) {
+//                   return Card(
+//                       child: Container(
+//                     padding: EdgeInsets.all(10),
+//                     child: Text(sone.toString()),
+//                   ));
+//                 },
+//                 onSuggestionSelected: (suggestion) {
+//                   print(suggestion);
+//                 },
+//               )
 //             ],
 //           ),
-//         ],
-//       ),
-//       body: SizedBox.expand(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Text('Can swipe: ${pageRoute.canSwipe}'),
-//             TextButton(
-//               onPressed: () {
-//                 // You can disable swiping completely using `canSwipe`:
-//                 setState(() => pageRoute.canSwipe = !pageRoute.canSwipe);
-//               },
-//               child: Text('Toggle'),
-//             ),
-//             SizedBox(height: 32),
-//             ElevatedButton(
-//               onPressed: () {
-//                 context.navigator.push<void>(SwipeablePageRoute(
-//                   // You can customize the width of the detection area with
-//                   // `backGestureDetectionWidth`.
-//                   builder: (_) => ThirdPage(),
-//                 ));
-//               },
-//               child: Text('Open page 3'),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class ThirdPage extends StatefulWidget {
-//   @override
-//   _ThirdPageState createState() => _ThirdPageState();
-// }
-
-// class _ThirdPageState extends State<ThirdPage>
-//     with SingleTickerProviderStateMixin {
-//   static const _tabCount = 3;
-//   late final TabController _tabController;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _tabController = TabController(length: _tabCount, vsync: this);
-//     _tabController.addListener(() {
-//       if (mounted) {
-//         final canSwipe = _tabController.index == 0;
-//         context.getSwipeablePageRoute<void>()!.canSwipe = canSwipe;
-//       }
-//     });
-//   }
-
-//   @override
-//   void dispose() {
-//     _tabController.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: MorphingAppBar(
-//         backgroundColor: Colors.green,
-//         title: Text('Page 3'),
-//         actions: [
-//           IconButton(
-//             key: ValueKey('star'),
-//             icon: Icon(Icons.star),
-//             onPressed: () {},
-//           ),
-//           IconButton(
-//             key: ValueKey('play_arrow'),
-//             icon: Icon(Icons.play_arrow),
-//             onPressed: () {},
-//           ),
-//           IconButton(
-//             key: ValueKey('favorite'),
-//             icon: Icon(Icons.favorite),
-//             onPressed: () {},
-//           ),
-//           PopupMenuButton<void>(
-//             itemBuilder: (context) => [
-//               PopupMenuItem(child: Text('One')),
-//               PopupMenuItem(child: Text('Two')),
-//             ],
-//           ),
-//         ],
-//         bottom: TabBar(
-//           controller: _tabController,
-//           indicatorColor: Colors.white,
-//           isScrollable: true,
-//           tabs: [
-//             for (var i = 0; i < _tabCount; i++) Tab(text: 'Tab ${i + 1}'),
-//           ],
-//         ),
-//       ),
-//       body: TabBarView(
-//         controller: _tabController,
-//         children: [
-//           for (var i = 0; i < _tabCount; i++)
-//             Column(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Text('This is tab ${i + 1}'),
-//                 ElevatedButton(
-//                   onPressed: () {
-//                     context.navigator.push<void>(
-//                       SwipeablePageRoute(builder: (_) => SecondPage()),
-//                     );
-//                   },
-//                   child: Text('Open page 2'),
-//                 ),
-//               ],
-//             ),
-//         ],
-//       ),
-//     );
+//         ));
 //   }
 // }

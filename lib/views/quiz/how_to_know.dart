@@ -24,7 +24,7 @@ class _HowToKnowState extends State<HowToKnow> {
     About(
         image: 'assets/icons/persons.png', name: 'Friends/ Family/ Colleagues'),
     About(image: 'assets/images/instagram.png', name: 'Instagram'),
-    About(image: 'assets/images/youtube.png', name: 'You Tube'),
+    About(image: 'assets/images/youtube.png', name: 'YouTube'),
     About(image: 'assets/images/tictok.png', name: 'TikTok'),
     About(image: 'assets/images/twitter.png', name: 'Twitter'),
   ];

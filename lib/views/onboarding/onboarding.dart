@@ -4,9 +4,13 @@ import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/utils/app_const.dart';
 import 'package:skilled_app/views/auth/sign_in.dart';
+import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/views/onboarding/onboarding_widget.dart' as o;
+import 'package:swipeable_page_route/swipeable_page_route.dart';
 import '../feeds/bottom_navigation/bottom_navigation.dart';
+import '../quiz/quiz_questions.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -69,6 +73,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 width: double.infinity,
                 height: Get.height * 0.86,
                 child: o.OnBoard(
+                  imageWidth: Get.width * 0.8,
                   onBoardData: onBoardData,
                   pageController: _pageController,
                   titleStyles: const TextStyle(
@@ -132,9 +137,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Spacer(),
               TextButton(
                 onPressed: () {
-                  Get.to(
-                    () => BottomNavigation(),
-                  );
+                  context.navigator.push<void>(
+                      SwipeablePageRoute(builder: (_) => QuizStart()));
+                  // Get.to(
+                  //   () => BottomNavigation(),
+                  // );
                 },
                 child: const Text(
                   "Continue as a guest",
@@ -143,6 +150,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       fontWeight: FontWeight.w600,
                       color: grey900),
                 ),
+              ),
+              SizedBox(
+                height: 20,
               ),
             ],
           ),

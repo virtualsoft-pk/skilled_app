@@ -45,7 +45,7 @@ class _CareerState extends State<Career> {
                   height: Get.height * 0.015,
                 ),
                 Text(
-                  "What the “UX Designer” Career?",
+                  "What is a UX designer?",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(

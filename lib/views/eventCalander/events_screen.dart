@@ -17,7 +17,7 @@ class Events extends StatefulWidget {
 }
 
 class _EventsState extends State<Events> with SingleTickerProviderStateMixin {
-  String dropdownvalue = 'Today';
+  String dropdownvalue = 'This Month';
   // List of items in our dropdown menu
   var items = [
     'Today',

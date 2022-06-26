@@ -3,6 +3,10 @@ import 'package:get/get.dart';
 import 'package:skilled_app/views/eventCalander/in_person.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+
+import 'all_careers.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class Jobs extends StatefulWidget {
   @override
@@ -180,38 +184,43 @@ class _JobsState extends State<Jobs> {
                 height: Get.height * 0.025,
               ),
               CustomButton(
-                text: "ADD TO CAREER LIST",
+                text: "BACK TO CAREER",
                 funct: () {
-                  Get.offAll(() => BottomNavigation());
+                  context.navigator.push<void>(
+                    SwipeablePageRoute(
+                      builder: (_) => AllCareers(),
+                    ),
+                  );
                 },
               ),
-              InkWell(
-                onTap: () {
-                  Get.back();
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 15,
-                      backgroundColor: Color(0xffF4F4F5),
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.black,
-                        size: 12,
-                      ),
-                    ),
-                    SizedBox(
-                      width: Get.width * 0.04,
-                    ),
-                    Text(
-                      "BACK TO CAREER",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     Get.back();
+              //   },
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       CircleAvatar(
+              //         radius: 15,
+              //         backgroundColor: Color(0xffF4F4F5),
+              //         child: Icon(
+              //           Icons.arrow_back_ios,
+              //           color: Colors.black,
+              //           size: 12,
+              //         ),
+              //       ),
+              //       SizedBox(
+              //         width: Get.width * 0.04,
+              //       ),
+              //       Text(
+              //         "BACK TO CAREER",
+              //         style:
+              //             TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              //       )
+              //     ],
+              //   ),
+              // ),
+              
               SizedBox(
                 height: 15,
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
@@ -12,7 +13,12 @@ import 'company_profile.dart';
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class SearchResult extends StatefulWidget {
-  SearchResult({Key? key}) : super(key: key);
+
+  bool? isFromCompany;
+
+  String? image;
+
+  SearchResult({this.isFromCompany = false,this.image});
 
   @override
   State<SearchResult> createState() => _SearchResultState();
@@ -554,10 +560,10 @@ class _SearchResultState extends State<SearchResult> {
                           )
                         ],
                       ),
-                      SizedBox(
+                     widget.isFromCompany!? Container() : SizedBox(
                         height: Get.height * 0.03,
                       ),
-                      Text(
+                      widget.isFromCompany!? Container() :  Text(
                         'Best career for me',
                         style: TextStyle(
                           fontSize: 24,
@@ -565,7 +571,7 @@ class _SearchResultState extends State<SearchResult> {
                           color: textColor,
                         ),
                       ),
-                      SizedBox(
+                      widget.isFromCompany!? Container() :  SizedBox(
                         height: 6,
                       ),
                       Text(
@@ -655,26 +661,33 @@ class _SearchResultState extends State<SearchResult> {
                                 ],
                               ),
                               Spacer(),
-                              PopupMenuButton(
-                                itemBuilder: (context) => [
-                                  PopupMenuItem(
-                                    child: Text("Save for Later"),
-                                    value: 1,
-                                  ),
-                                  PopupMenuItem(
-                                    child: Text("Not Interested"),
-                                    value: 2,
-                                  ),
-                                  PopupMenuItem(
-                                    child: Text("Report"),
-                                    value: 2,
-                                  ),
-                                  PopupMenuItem(
-                                    child: Text("Share"),
-                                    value: 2,
-                                  )
-                                ],
-                              ),
+                               IconButton(
+                                        onPressed: () {
+                                          share();
+                                        },
+                                        icon: Icon(Icons.more_horiz),
+                                      ),
+                              // PopupMenuButton(
+                              //   itemBuilder: (context) => [
+                              //     PopupMenuItem(
+                              //       child: Text("Save for Later"),
+                              //       value: 1,
+                              //     ),
+                              //     PopupMenuItem(
+                              //       child: Text("Not Interested"),
+                              //       value: 2,
+                              //     ),
+                              //     PopupMenuItem(
+                              //       child: Text("Report"),
+                              //       value: 2,
+                              //     ),
+                              //     PopupMenuItem(
+                              //       child: Text("Share"),
+                              //       value: 2,
+                              //     )
+                              //   ],
+                              // ),
+                            
                             ],
                           ),
                         ),
@@ -754,11 +767,14 @@ class _SearchResultState extends State<SearchResult> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 12,
-                              ),
+                              // const SizedBox(
+                              //   height: 12,
+                              // ),
                               Row(
                                 children: [
+                                  const SizedBox(
+                                    width: 12,
+                                  ),
                                   i == 0
                                       ? isLike == false
                                           ? InkWell(
@@ -767,11 +783,14 @@ class _SearchResultState extends State<SearchResult> {
                                                 count1++;
                                                 setState(() {});
                                               },
-                                              child: Image.asset(
-                                                'assets/heart.png',
-                                                height: 20,
-                                                width: 18,
-                                                fit: BoxFit.contain,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(10),
+                                                child: Image.asset(
+                                                  'assets/heart.png',
+                                                  height: 20,
+                                                  width: 18,
+                                                  fit: BoxFit.contain,
+                                                ),
                                               ),
                                             )
                                           : InkWell(
@@ -780,11 +799,14 @@ class _SearchResultState extends State<SearchResult> {
                                                 count1--;
                                                 setState(() {});
                                               },
-                                              child: Image.asset(
-                                                'assets/icons/2107845.png',
-                                                height: 20,
-                                                width: 18,
-                                                fit: BoxFit.contain,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(10),
+                                                child: Image.asset(
+                                                  'assets/icons/2107845.png',
+                                                  height: 20,
+                                                  width: 18,
+                                                  fit: BoxFit.contain,
+                                                ),
                                               ),
                                             )
                                       : isLikw1 == false
@@ -794,11 +816,14 @@ class _SearchResultState extends State<SearchResult> {
                                                 count2++;
                                                 setState(() {});
                                               },
-                                              child: Image.asset(
-                                                'assets/heart.png',
-                                                height: 20,
-                                                width: 18,
-                                                fit: BoxFit.contain,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(10),
+                                                child: Image.asset(
+                                                  'assets/heart.png',
+                                                  height: 20,
+                                                  width: 18,
+                                                  fit: BoxFit.contain,
+                                                ),
                                               ),
                                             )
                                           : InkWell(
@@ -807,11 +832,14 @@ class _SearchResultState extends State<SearchResult> {
                                                 count2--;
                                                 setState(() {});
                                               },
-                                              child: Image.asset(
-                                                'assets/icons/2107845.png',
-                                                height: 20,
-                                                width: 18,
-                                                fit: BoxFit.contain,
+                                              child: Padding(
+                                                padding: EdgeInsets.all(10),
+                                                child: Image.asset(
+                                                  'assets/icons/2107845.png',
+                                                  height: 20,
+                                                  width: 18,
+                                                  fit: BoxFit.contain,
+                                                ),
                                               ),
                                             ),
                                   SizedBox(
@@ -851,7 +879,7 @@ class _SearchResultState extends State<SearchResult> {
                                 ],
                               ),
                               SizedBox(
-                                height: 16,
+                                height: 6,
                               ),
                               Divider(
                                 color: dividerColor,
@@ -888,4 +916,13 @@ class _SearchResultState extends State<SearchResult> {
   ];
 
   List multiChipEmptyList = [];
+
+
+    Future<void> share() async {
+    await FlutterShare.share(
+        title: 'Example share',
+        text: 'Example share text',
+        linkUrl: 'https://flutter.dev/',
+        chooserTitle: 'Example Chooser Title');
+  }
 }

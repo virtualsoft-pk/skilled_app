@@ -3,6 +3,7 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/eventCalander/in_person.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
+import '../../eventCalander/event_page_for_month.dart';
 import '../../eventCalander/events_screen.dart';
 import '../../forum/forum.dart';
 import '../../settings/settingPage.dart';
@@ -21,7 +22,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
     FeedPage(),
     Search(),
     Forum(),
-    Events(),
+    EventPageForMonth(),
+
+    // Events(),
     SettingScreen(),
   ];
 

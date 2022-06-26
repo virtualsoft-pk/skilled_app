@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ChooseSocialMedia extends StatefulWidget {
   @override
@@ -58,15 +59,20 @@ class _ChooseSocialMediaState extends State<ChooseSocialMedia> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "You can Follow us ",
+                  "You can follow us ",
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
                 InkWell(
-                  onTap: () {
-                    //Get.to(AccountScreen());
+                  onTap: () async {
+                    String url = 'https://www.tiktok.com/@skilld_ltd';
+                    if (await canLaunch(url)) {
+                      await launch(url, forceSafariVC: false);
+                    } else {
+                      print('Not Found');
+                    }
                   },
                   child: buildChooseMediaTile(
                     "assets/images/tiktok.png",
@@ -76,23 +82,53 @@ class _ChooseSocialMediaState extends State<ChooseSocialMedia> {
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                buildChooseMediaTile(
-                  "assets/images/twitter.png",
-                  "twitter",
+                InkWell(
+                  onTap: () async {
+                    String url = 'https://twitter.com/@skilld_ltd';
+                    if (await canLaunch(url)) {
+                      await launch(url, forceSafariVC: false);
+                    } else {
+                      print('Not Found');
+                    }
+                  },
+                  child: buildChooseMediaTile(
+                    "assets/images/twitter.png",
+                    "Twitter",
+                  ),
                 ),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                buildChooseMediaTile(
-                  "assets/images/youtube.png",
-                  "Youtube",
+                InkWell(
+                  onTap: () async {
+                    String url = 'https://www.youtube.com/@skilld_ltd';
+                    if (await canLaunch(url)) {
+                      await launch(url, forceSafariVC: false);
+                    } else {
+                      print('Not Found');
+                    }
+                  },
+                  child: buildChooseMediaTile(
+                    "assets/images/youtube.png",
+                    "Youtube",
+                  ),
                 ),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                buildChooseMediaTile(
-                  "assets/images/insta.png",
-                  "Instagram",
+                InkWell(
+                  onTap: () async {
+                    String url = 'https://www.instagram.com/@skilld_ltd';
+                    if (await canLaunch(url)) {
+                      await launch(url, forceSafariVC: false);
+                    } else {
+                      print('Not Found');
+                    }
+                  },
+                  child: buildChooseMediaTile(
+                    "assets/images/insta.png",
+                    "Instagram",
+                  ),
                 ),
               ],
             ),

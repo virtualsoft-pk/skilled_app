@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../../utils/app_colors.dart';
+import '../../forum/bottom_navigation_3.dart';
+
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class CompanyProfile extends StatefulWidget {
   CompanyProfile({Key? key, this.image}) : super(key: key);
@@ -76,6 +79,10 @@ class _CompanyProfileState extends State<CompanyProfile> {
                             ),
                           ],
                         ),
+                        
+                        
+                        // AnimatedIcon(icon: AnimatedIcons., progress: progress)
+                        
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: InkWell(
@@ -85,8 +92,9 @@ class _CompanyProfileState extends State<CompanyProfile> {
                             },
                             child: Container(
                               padding: EdgeInsets.all(5),
-                              height: 40,
-                              width: 40,
+                              margin: EdgeInsets.only(bottom: 5),
+                              height: 30,
+                              width: 30,
                               decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -205,6 +213,11 @@ class _CompanyProfileState extends State<CompanyProfile> {
                   const SizedBox(
                     height: 15,
                   ),
+
+
+
+
+
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 15),
                     child: GridView.builder(
@@ -218,14 +231,23 @@ class _CompanyProfileState extends State<CompanyProfile> {
                         childAspectRatio: 3 / 2,
                       ),
                       itemBuilder: (context, i) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(
-                                imgs[i],
+                        return InkWell(
+                          onTap: (){
+                            context.navigator.push<void>(
+                              SwipeablePageRoute(
+                                builder: (_) => BottomNavigation3(isFromCompanyProfile: true,),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade300,
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                  imgs[i],
+                                ),
                               ),
                             ),
                           ),

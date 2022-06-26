@@ -246,6 +246,41 @@ class _PrivacyState extends State<Privacy> {
                     ),
 
                     SizedBox(
+                      height: 40,
+                    ),
+
+                    Text(
+                      'Credits',
+                      style: TextStyle(
+                        fontSize: 13,
+                        height: 2.4,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff494F58),
+                      ),
+                    ),
+
+
+
+                    Text(
+                      'https://icons8.com ',
+                      style: TextStyle(
+                        fontSize: 13,
+                        height: 2.4,
+                        color: Color(0xff494F58),
+                      ),
+                    ),
+
+                    Text(
+                      'https://flaticon.com ',
+                      style: TextStyle(
+                        fontSize: 13,
+                        height: 2.4,
+                        color: Color(0xff494F58),
+                      ),
+                    ),
+
+
+                    SizedBox(
                       height: 100,
                     )
                     // InkWell(

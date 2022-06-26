@@ -21,6 +21,13 @@ class _NotificationsState extends State<Notifications> {
             SizedBox(
               height: Get.height * 0.07,
             ),
+
+            // Row(
+            //   children: [
+            //
+            //   ],
+            // ),
+
             ListTile(
               leading: Padding(
                 padding: const EdgeInsets.only(left: 6),
@@ -37,31 +44,33 @@ class _NotificationsState extends State<Notifications> {
                       )),
                 ),
               ),
+
               title: Padding(
-                padding: const EdgeInsets.only(left: 43),
+                padding:  EdgeInsets.only(right: Get.width*0.15),
                 child: Text(
-                  "Notofications ",
+                  "Notifications",
+                  textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
             SizedBox(height: Get.height * 0.014),
-            Row(
-              children: [
-                Container(
-                  width: Get.width * 0.46,
-                  child: TabBar(
-                    labelColor: Colors.black,
-                    tabs: [Tab(text: "Direct"), Tab(text: "Overall")],
-                  ),
-                ),
-                SizedBox(width: Get.width * 0.2),
-                InkWell(
-                  onTap: () {},
-                  child: Text("Mark all as read"),
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Container(
+            //       width: Get.width * 0.46,
+            //       child: TabBar(
+            //         labelColor: Colors.black,
+            //         tabs: [Tab(text: "Direct"), Tab(text: "Overall")],
+            //       ),
+            //     ),
+            //     SizedBox(width: Get.width * 0.2),
+            //     InkWell(
+            //       onTap: () {},
+            //       child: Text("Mark all as read"),
+            //     ),
+            //   ],
+            // ),
             SizedBox(height: Get.height * 0.02),
             Row(
               children: [
@@ -73,17 +82,16 @@ class _NotificationsState extends State<Notifications> {
               ],
             ),
             Expanded(
-              // width: Get.width * 0.97,
-              // height: Get.height * 0.51,
-              child: Container(
-                // color: Colors.red,
-                child: TabBarView(
-                  children: [
-                    TabbarData(),
-                    TabbarData(),
-                  ],
-                ),
-              ),
+              child:  TabbarData(),
+              // Container(
+              //   // color: Colors.red,
+              //   child: TabBarView(
+              //     children: [
+              //       TabbarData(),
+              //       TabbarData(),
+              //     ],
+              //   ),
+              // ),
             ),
           ],
         ),
