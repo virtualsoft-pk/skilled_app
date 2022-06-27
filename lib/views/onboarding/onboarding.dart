@@ -1,16 +1,14 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/utils/app_const.dart';
 import 'package:skilled_app/views/auth/sign_in.dart';
+import 'package:skilled_app/views/onboarding/onboarding_widget.dart' as o;
 import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
-import 'package:skilled_app/views/onboarding/onboarding_widget.dart' as o;
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import '../feeds/bottom_navigation/bottom_navigation.dart';
-import '../quiz/quiz_questions.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -69,7 +67,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           Column(
             children: [
-              Container(
+              SizedBox(
                 width: double.infinity,
                 height: Get.height * 0.86,
                 child: o.OnBoard(
@@ -97,7 +95,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     builder: (context, ref, child) {
                       final state = ref.watch(onBoardStateProvider);
                       return Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
                         child: CustomButton(
                           text: state.isLastPage ? 'GET STARTED' : 'NEXT',
                           funct: () {
@@ -110,31 +108,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
               ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Already have an account ? ",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Already have an account ? ",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.to(() => SignIn());
+                    },
+                    child: const Text(
+                      "Log in",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: blueColor),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Get.to(() => SignIn());
-                      },
-                      child: Text(
-                        "Log in",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: blueColor),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Spacer(),
+              const Spacer(),
               TextButton(
                 onPressed: () {
                   context.navigator.push<void>(
@@ -151,19 +146,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       color: grey900),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ],
           ),
           Positioned(
             top: Get.height * 0.07,
-            right: 13,
+            right: 16,
             child: InkWell(
               onTap: () {
                 Get.to(() => SignIn());
               },
-              child: Text(
+              child: const Text(
                 'Skip',
                 style: TextStyle(
                   fontSize: 16,

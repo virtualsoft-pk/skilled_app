@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
 import 'package:flutter_onboard/src/contants/constants.dart';
-import 'package:flutter_onboard/src/models/onboard_state_model.dart';
-import 'package:flutter_onboard/src/models/page_indicator_style_model.dart';
-import 'package:flutter_onboard/src/providers/providers.dart';
 import 'package:flutter_onboard/src/widgets/page_indicator.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -194,7 +191,7 @@ class _OnBoard extends HookConsumerWidget {
           // ),
 
           Expanded(
-            child: Container(
+            child: SizedBox(
               // color: Colors.red,
               height: pageViewHeight,
               child: PageView.builder(
@@ -224,7 +221,7 @@ class _OnBoard extends HookConsumerWidget {
                                 child: Align(
                                   alignment: Alignment.topRight,
                                   child: Container(
-                                    margin: EdgeInsets.only(right: 20),
+                                    margin: const EdgeInsets.only(right: 20),
                                     child: const Text(
                                       '',
                                       style: TextStyle(
@@ -254,11 +251,17 @@ class _OnBoard extends HookConsumerWidget {
                               Container(
                                 // margin: EdgeInsets.only(top: Get.height * 0.04),
                                 width: double.infinity,
-                                padding: index == 0? EdgeInsets.symmetric(horizontal: Get.width*0.1) :EdgeInsets.only(
-                                    left: index == 2 ? Get.width * 0.15 : 0),
+                                padding: index == 0
+                                    ? EdgeInsets.symmetric(
+                                        horizontal: Get.width * 0.1)
+                                    : EdgeInsets.only(
+                                        left:
+                                            index == 2 ? Get.width * 0.15 : 0),
                                 child: Image.asset(
                                   onBoardData[index].imgUrl,
-                                  width: index == 0?  imageWidth!*0.8:imageWidth,
+                                  width: index == 0
+                                      ? imageWidth! * 0.8
+                                      : imageWidth,
                                   height: imageHeight,
                                   fit: BoxFit.contain,
                                 ),
@@ -269,7 +272,7 @@ class _OnBoard extends HookConsumerWidget {
                         Container(
                           // color: Colors.amber,
                           alignment: Alignment.topCenter,
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             left: 20,
                             right: 20,
                             // top: MediaQuery.of(context).size.height * 0.02,
@@ -287,7 +290,7 @@ class _OnBoard extends HookConsumerWidget {
                         Expanded(
                           child: Container(
                             alignment: Alignment.center,
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                               left: 12,
                               right: 12,
                               // top: Get.height * 0.07,

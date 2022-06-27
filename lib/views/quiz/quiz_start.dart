@@ -1,14 +1,15 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/views/quiz/quiz_questions.dart';
-import 'package:skilled_app/views/quiz/quiz_questions.dart';
+import 'package:skilled_app/views/quiz/quiz_page.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import '../../widgets/custom_button.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 
+import '../../widgets/custom_button.dart';
 import '../../widgets/custom_widgets.dart';
 
 class QuizStart extends StatefulWidget {
+  const QuizStart({Key? key}) : super(key: key);
+
   @override
   _QuizStartState createState() => _QuizStartState();
 }
@@ -23,11 +24,11 @@ class _QuizStartState extends State<QuizStart> {
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-                 Row(
-                   children: [
-                     customBackButton(() {}),
-                   ],
-                 ),
+              Row(
+                children: [
+                  customBackButton(() {}),
+                ],
+              ),
               Container(
                   margin: EdgeInsets.only(left: 25, top: Get.height * 0.18),
                   width: Get.width * 0.8,
@@ -46,7 +47,7 @@ class _QuizStartState extends State<QuizStart> {
                 height: 2,
               ),
               const Text(
-                "Use this fun quiz  to help us to find a \nbest career for you.",
+                "Use this fun quiz  to help us to find the \nbest career for you.",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                 textAlign: TextAlign.center,
               ),
@@ -57,7 +58,7 @@ class _QuizStartState extends State<QuizStart> {
                 text: "START QUIZ",
                 funct: () {
                   context.navigator.push<void>(
-                      SwipeablePageRoute(builder: (_) => QuizQuestions()));
+                      SwipeablePageRoute(builder: (_) => const QuizPage()));
                   // Get.to(() => QuizQuestions());
                 },
               )

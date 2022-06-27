@@ -1,15 +1,18 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/auth/reset_password.dart';
-import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:skilled_app/views/auth/sign_in.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class VerifyCode extends StatefulWidget {
-  const VerifyCode({Key? key}) : super(key: key);
+  const VerifyCode({this.isFromSignUp = false, Key? key}) : super(key: key);
+
+  final bool isFromSignUp;
 
   @override
   State<VerifyCode> createState() => _VerifyCodeState();
@@ -101,8 +104,10 @@ class _VerifyCodeState extends State<VerifyCode> {
               ),
               CustomButton(
                 funct: () {
-                  context.navigator.push<void>(
-                      SwipeablePageRoute(builder: (_) => ResetPassword()));
+                  context.navigator.push<void>(SwipeablePageRoute(
+                      builder: (_) => widget.isFromSignUp
+                          ? const SignIn()
+                          : const ResetPassword()));
                   // Get.to(() => ResetPassword());
                 },
                 text: 'SUBMIT CODE',
@@ -117,7 +122,7 @@ class _VerifyCodeState extends State<VerifyCode> {
   void _showSnackBar(String pin, BuildContext context) {
     final snackBar = SnackBar(
       duration: const Duration(seconds: 3),
-      content: Container(
+      content: SizedBox(
         height: 80.0,
         child: Center(
           child: Text(

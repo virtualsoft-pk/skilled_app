@@ -1,3 +1,4 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
@@ -6,16 +7,14 @@ import 'package:skilled_app/views/auth/forgot_password.dart';
 import 'package:skilled_app/views/auth/sign_up.dart';
 import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/views/quiz/videos_screen.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
-import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:swipe/swipe.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import '../feeds/bottom_navigation/bottom_navigation.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class SignIn extends StatefulWidget {
-  SignIn({Key? key}) : super(key: key);
+  const SignIn({Key? key}) : super(key: key);
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -139,7 +138,7 @@ class _SignInState extends State<SignIn> {
                       color: Color(0xff8D9196),
                     ),
                     suffixIcon: IconButton(
-                      padding: EdgeInsets.all(0),
+                      padding: const EdgeInsets.all(0),
                       onPressed: () {
                         setState(() {
                           isVisible = !isVisible;
@@ -148,15 +147,6 @@ class _SignInState extends State<SignIn> {
                       icon: Icon(
                           !isVisible ? Icons.visibility_off : Icons.visibility),
                     ),
-                    // suffix: IconButton(
-                    //   padding: EdgeInsets.all(0),
-                    //   onPressed: (){
-                    //     setState(() {
-                    //       isVisible = !isVisible;
-                    //     });
-                    //   },
-                    //   icon: Icon(!isVisible?Icons.visibility_off:Icons.visibility),
-                    // )
                   ),
                 ),
 
@@ -164,8 +154,8 @@ class _SignInState extends State<SignIn> {
                   children: [
                     Checkbox(
                         shape: RoundedRectangleBorder(
-                          side: const BorderSide(width: 0.2),
-                          borderRadius: BorderRadius.circular(3),
+                          side: const BorderSide(width: 1, color: Colors.grey),
+                          borderRadius: BorderRadius.circular(4),
                         ),
                         value: value,
                         onChanged: (bool? value) {
@@ -184,7 +174,7 @@ class _SignInState extends State<SignIn> {
                     InkWell(
                       onTap: () {
                         context.navigator.push<void>(SwipeablePageRoute(
-                            builder: (_) => ForgotPassword()));
+                            builder: (_) => const ForgotPassword()));
                       },
                       child: const Text(
                         'Forgot Password?',
@@ -198,12 +188,12 @@ class _SignInState extends State<SignIn> {
                   ],
                 ),
 
-                Spacer(),
+                const Spacer(),
                 CustomButton(
                     text: 'LOG IN',
                     funct: () {
-                      context.navigator.push<void>(
-                          SwipeablePageRoute(builder: (_) => VideoScreen()));
+                      context.navigator.push<void>(SwipeablePageRoute(
+                          builder: (_) => const VideoScreen()));
                     }),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -219,8 +209,8 @@ class _SignInState extends State<SignIn> {
                     ),
                     InkWell(
                       onTap: () {
-                        context.navigator.push<void>(
-                            SwipeablePageRoute(builder: (_) => SignUpView()));
+                        context.navigator.push<void>(SwipeablePageRoute(
+                            builder: (_) => const SignUpView()));
                       },
                       child: const Text(
                         'Sign up',

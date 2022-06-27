@@ -1,10 +1,10 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/views/quiz/how_to_know.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import '../../utils/app_colors.dart';
+
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_widgets.dart';
 
@@ -70,47 +70,6 @@ class _SelectInterestState extends State<SelectInterest> {
                   )),
               const SizedBox(
                 height: 20,
-              ),
-
-              Wrap(
-                runSpacing: 10,
-                spacing: 10,
-                children: multiChipList.map(
-                  (e) {
-                    return multiChipEmptyList.contains(e)
-                        ? InkWell(
-                            onTap: (() {
-                              multiChipEmptyList.remove(e);
-                              setState(() {});
-                              Icon(Icons.clear);
-                            }),
-                            child: Chip(
-                              backgroundColor: containercolor,
-                              side: BorderSide(color: Colors.black),
-                              labelPadding: EdgeInsets.all(7),
-                              label: Text(e),
-                            ),
-                          )
-                        : InkWell(
-                            onTap: () {
-                              multiChipEmptyList.add(e);
-                              setState(() {});
-                            },
-                            child: Chip(
-                              labelPadding: EdgeInsets.all(8),
-                              label: Text(e),
-                              // Icon(Icons.clear,size: 14,color: Colors.blue,),
-                              useDeleteButtonTooltip: true,
-                              deleteIcon: Icon(
-                                Icons.clear,
-                                size: 14,
-                              ),
-
-                              deleteIconColor: Colors.green,
-                            ),
-                          );
-                  },
-                ).toList(),
               ),
 
               //  Container(

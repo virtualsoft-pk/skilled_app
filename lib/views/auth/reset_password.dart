@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/views/auth/sign_in.dart';
+import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
-import 'package:skilled_app/widgets/custom_button.dart';
-import 'package:swipeable_page_route/swipeable_page_route.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({Key? key}) : super(key: key);
@@ -39,7 +38,7 @@ class ResetPassword extends StatelessWidget {
                 height: 8,
               ),
               const Text(
-                'Enter 4 digit has been sent to your email',
+                'Type your new passcode.',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
@@ -49,7 +48,7 @@ class ResetPassword extends StatelessWidget {
                 height: 40,
               ),
               Row(
-                children: [
+                children: const [
                   Text(
                     'New Password',
                     style: TextStyle(
@@ -74,7 +73,7 @@ class ResetPassword extends StatelessWidget {
                 height: 16,
               ),
               Row(
-                children: [
+                children: const [
                   Text(
                     'Confirme New Password',
                     style: TextStyle(
@@ -83,7 +82,7 @@ class ResetPassword extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const Text(
+                  Text(
                     '*',
                     style: TextStyle(
                       color: Colors.deepOrange,
@@ -101,8 +100,7 @@ class ResetPassword extends StatelessWidget {
               CustomButton(
                 text: 'RESET PASSWORD',
                 funct: () {
-                  //  context.navigator.push<void>(
-                  //       SwipeablePageRoute(builder: (_) => ResetPassword()));
+                  Get.to(() => const SignIn());
                 },
               ),
             ],

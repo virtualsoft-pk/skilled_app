@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../utils/app_colors.dart';
-import '../views/eventCalander/events_screen.dart';
-import '../views/settings/privacy.dart';
 import 'add_event_calender.dart';
 
 Widget customBackButton(
@@ -37,7 +35,7 @@ Widget customBackButton(
 
 Widget customAppBar(String title) {
   return Container(
-    margin: EdgeInsets.only(top: 10),
+    margin: const EdgeInsets.only(top: 10),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,7 +64,7 @@ Container resizableButton(
     required String name}) {
   return Container(
     decoration: BoxDecoration(
-      color: Color(0xffFBC799),
+      color: const Color(0xffFBC799),
       borderRadius: BorderRadius.circular(border),
     ),
     padding: EdgeInsets.symmetric(horizontal: HPadding, vertical: VPadding),
@@ -81,7 +79,7 @@ modalBottomSheetMenu(BuildContext context) {
       builder: (builder) {
         return Container(
           height: Get.height * 0.5,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15), topRight: Radius.circular(15)),
             color: Colors.white,
@@ -90,13 +88,13 @@ modalBottomSheetMenu(BuildContext context) {
             child: Column(
               children: [
                 SizedBox(height: Get.height * 0.025),
-                Text(
+                const Text(
                   "Did you sign up to\n this?",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: Get.height * 0.03),
-                Container(
+                SizedBox(
                     height: 50,
                     width: 50,
                     child: Image.asset(
@@ -104,14 +102,14 @@ modalBottomSheetMenu(BuildContext context) {
                       fit: BoxFit.cover,
                     )),
                 SizedBox(height: Get.height * 0.02),
-                Text(
+                const Text(
                   "The Young Engineer Program",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                Text("InvestIN"),
+                const Text("InvestIN"),
                 SizedBox(height: Get.height * 0.025),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 18),
+                  margin: const EdgeInsets.symmetric(horizontal: 18),
                   child: CustomButton(
                     text: "YES, ADD TO MY CALENDER",
                     funct: () async {
@@ -123,12 +121,12 @@ modalBottomSheetMenu(BuildContext context) {
                 SizedBox(height: Get.height * 0.01),
                 Container(
                   // width: Get.width*0.9,
-                  margin: EdgeInsets.symmetric(horizontal: 18),
+                  margin: const EdgeInsets.symmetric(horizontal: 18),
                   height: 52,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.deepOrange),
                       borderRadius: BorderRadius.circular(12)),
-                  child: Center(
+                  child: const Center(
                       child: Text(
                     "No, don’t add",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

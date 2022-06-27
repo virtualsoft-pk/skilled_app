@@ -1,10 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/views/auth/verify_code.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 
-import '../../widgets/custom_widgets.dart';
 import '../../widgets/custom_button.dart';
+import '../../widgets/custom_widgets.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({Key? key}) : super(key: key);
@@ -16,22 +18,6 @@ class SignUpView extends StatefulWidget {
 class _SignUpViewState extends State<SignUpView> {
   DateTime selectedDate = DateTime(2016, 1, 15);
   TextEditingController dob = TextEditingController();
-
-  Future<Null> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        initialDatePickerMode: DatePickerMode.day,
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2101));
-    if (picked != null) {
-      setState(() {
-        selectedDate = picked;
-        dob.text =
-            '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}';
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +33,6 @@ class _SignUpViewState extends State<SignUpView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 customBackButton(() {}),
-
                 const Text(
                   'Create new account',
                   style: TextStyle(
@@ -56,7 +41,7 @@ class _SignUpViewState extends State<SignUpView> {
                     color: textColor,
                   ),
                 ),
-                SizedBox(height: 5.0),
+                const SizedBox(height: 5.0),
                 const Text(
                   'Create a new account to join with us',
                   style: TextStyle(
@@ -129,7 +114,7 @@ class _SignUpViewState extends State<SignUpView> {
                     Container(
                       margin: const EdgeInsets.only(right: 4),
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
+                      child: const Text(
                         '.',
                         style: TextStyle(
                           color: textColor,
@@ -138,14 +123,14 @@ class _SignUpViewState extends State<SignUpView> {
                         ),
                       ),
                     ),
-                    Text(
-                      'Password 8-16 charecter',
+                    const Text(
+                      'Password should be 8-16 charecter',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                   ],
@@ -167,63 +152,16 @@ class _SignUpViewState extends State<SignUpView> {
                   height: 8,
                 ),
                 customTextField(text: "Password", obsecure: true),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
-                Text('Date of birth'),
+                const Text('Date of birth'),
                 const SizedBox(
                   height: 8,
                 ),
-                // Container(
-                //   height: 62,
-                //   decoration: BoxDecoration(
-                //     borderRadius: BorderRadius.circular(12),
-                //     color: greyColor,
-                //   ),
-                //   child: TextFormField(
-                //
-                //     decoration: InputDecoration(
-                //       filled: true,
-                //       fillColor: greyColor,
-                //       border: const OutlineInputBorder(
-                //         borderSide: BorderSide.none,
-                //         borderRadius: BorderRadius.all(
-                //           Radius.circular(10),
-                //         ),
-                //       ),
-                //       focusedBorder: OutlineInputBorder(
-                //         borderSide: BorderSide(color: blueColor),
-                //         borderRadius: BorderRadius.circular(10),
-                //       ),
-                //       disabledBorder: OutlineInputBorder(
-                //           borderRadius: BorderRadius.circular(6)),
-                //       errorBorder: OutlineInputBorder(
-                //         borderRadius: BorderRadius.circular(
-                //           12,
-                //         ),
-                //         borderSide: BorderSide(
-                //           color: Color(0xffE94235),
-                //         ),
-                //       ),
-                //       hintText: '20/3/2022',
-                //       hintStyle: TextStyle(
-                //         fontSize: 16,
-                //         fontWeight: FontWeight.w500,
-                //         color: Color(0xff8D9196),
-                //       ),
-                //       suffixIcon: Container(
-                //         child: Image.asset(
-                //           'assets/images/calendar.png',
-                //           cacheHeight: 20,
-                //           cacheWidth: 20,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 TextFormField(
                   onTap: () {
-                    _selectDate(context);
+                    _getDateFromUser(context);
                   },
                   readOnly: true,
                   decoration: InputDecoration(
@@ -255,7 +193,7 @@ class _SignUpViewState extends State<SignUpView> {
                       fontWeight: FontWeight.w500,
                       color: Color(0xff8D9196),
                     ),
-                    suffixIcon: Icon(Icons.calendar_today),
+                    suffixIcon: const Icon(Icons.calendar_month_outlined),
                   ),
                 ),
                 const SizedBox(
@@ -264,7 +202,7 @@ class _SignUpViewState extends State<SignUpView> {
                 CustomButton(
                   text: 'SIGN UP',
                   funct: () {
-                    // Get.to(() => QuizStartView());
+                    Get.to(() => const VerifyCode(isFromSignUp: true));
                   },
                 ),
               ],
@@ -273,5 +211,31 @@ class _SignUpViewState extends State<SignUpView> {
         ),
       ),
     );
+  }
+
+  void _getDateFromUser(ctx) {
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 190,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 180,
+                    child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.date,
+                        initialDateTime: DateTime.now(),
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            selectedDate = val;
+                            dob.text =
+                                '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}';
+                          });
+                        }),
+                  ),
+                ],
+              ),
+            ));
   }
 }

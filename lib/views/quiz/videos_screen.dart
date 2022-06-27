@@ -1,9 +1,9 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class VideoScreen extends StatefulWidget {
   const VideoScreen({Key? key}) : super(key: key);
@@ -19,19 +19,19 @@ class _VideoScreenState extends State<VideoScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.only(left: 16, right: 16),
+          margin: const EdgeInsets.only(left: 16, right: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               customBackButton(() {}),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'How it works',
                       style: TextStyle(
                           fontSize: 32,
@@ -41,7 +41,7 @@ class _VideoScreenState extends State<VideoScreen> {
                     SizedBox(
                       height: Get.height * 0.008,
                     ),
-                    Text(
+                    const Text(
                       'Watch the short video below,\nbefore getting started, to learn about Skilld.',
                       style: TextStyle(
                           fontSize: 16,
@@ -54,13 +54,13 @@ class _VideoScreenState extends State<VideoScreen> {
               SizedBox(
                 height: Get.height * 0.045,
               ),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 height: Get.height * 0.38,
                 child: Stack(
                   children: [
                     Image(
-                      image: AssetImage('assets/userdemo.png'),
+                      image: const AssetImage('assets/userdemo.png'),
                       fit: BoxFit.fill,
                       width: Get.width,
                     ),
@@ -68,9 +68,9 @@ class _VideoScreenState extends State<VideoScreen> {
                       alignment: Alignment.centerLeft,
                       child: Container(
                         height: Get.height * 0.07,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Colors.white, shape: BoxShape.circle),
-                        child: Center(child: Icon(Icons.play_arrow)),
+                        child: const Center(child: Icon(Icons.play_arrow)),
                       ),
                     ),
                   ],
@@ -79,14 +79,14 @@ class _VideoScreenState extends State<VideoScreen> {
               SizedBox(
                 height: Get.height * 0.014,
               ),
-              Text(
+              const Text(
                 'Watch More Videos',
                 style: TextStyle(
                     fontSize: 14,
                     color: Colors.blue,
                     fontWeight: FontWeight.w500),
               ),
-              Spacer(),
+              const Spacer(),
               MaterialButton(
                   onPressed: () {
                     context.navigator.push<void>(
@@ -95,18 +95,18 @@ class _VideoScreenState extends State<VideoScreen> {
                   },
                   minWidth: double.infinity,
                   height: 62,
-                  color: Color(0xffFBC799),
+                  color: const Color(0xffFBC799),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Text(
+                  child: const Text(
                     'GET STARTED',
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Colors.black),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
             ],
