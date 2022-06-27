@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:skilled_app/model/quiz_model.dart';
+import 'package:skilled_app/views/quiz/how_to_know.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../utils/app_colors.dart';
@@ -95,24 +96,36 @@ class _QuizPageState extends State<QuizPage> {
                                   },
                                 )),
                       )
-                    : Wrap(
-                        runSpacing: 10,
-                        spacing: 10,
-                        children: _quiz.options.map((e) {
-                          return QuizChip(
-                            selected:
-                                _quizSelectedOptions[_currentQuiz].contains(e),
-                            optionTxt: e,
-                            // onTap: () {
-                            //   setState(() {
-                            //     _quizSelectedOptions[_currentQuiz]
-                            //         .clear();
-                            //     _quizSelectedOptions[_currentQuiz]
-                            //         .add(_quiz.options[index]);
-                            //   });
-                            // },
-                          );
-                        }).toList(),
+                    : Align(
+                        alignment: Alignment.topLeft,
+                        child: Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.end,
+                          runSpacing: 12,
+                          spacing: 12,
+                          children: _quiz.options.map((e) {
+                            return QuizChip(
+                                selected: _quizSelectedOptions[_currentQuiz]
+                                    .contains(e),
+                                optionTxt: e,
+                                onTap: () {
+                                  if (!_quizSelectedOptions[_currentQuiz]
+                                      .contains(e)) {
+                                    setState(() {
+                                      _quizSelectedOptions[_currentQuiz].add(e);
+                                    });
+                                  }
+                                },
+                                onDeleteTap: () {
+                                  if (_quizSelectedOptions[_currentQuiz]
+                                      .contains(e)) {
+                                    setState(() {
+                                      _quizSelectedOptions[_currentQuiz]
+                                          .remove(e);
+                                    });
+                                  }
+                                });
+                          }).toList(),
+                        ),
                       ),
               ),
               Row(
@@ -165,13 +178,18 @@ class _QuizPageState extends State<QuizPage> {
               SizedBox(
                 height: screenheight * 0.03,
               ),
+              // if (_quizSelectedOptions[_currentQuiz].isNotEmpty)
               CustomButton(
                 text: "NEXT",
                 funct: () {
-                  if (_currentQuiz < quizList.length - 1) {
+                  if (_currentQuiz < quizList.length - 1 &&
+                      _quizSelectedOptions[_currentQuiz].isNotEmpty) {
                     setState(() {
                       _currentQuiz++;
                     });
+                  } else if (_currentQuiz == 4 &&
+                      _quizSelectedOptions[_currentQuiz].isNotEmpty) {
+                    Get.to(() => const HowToKnow());
                   }
                 },
               )
@@ -240,42 +258,41 @@ class QuizOption extends StatelessWidget {
 }
 
 class QuizChip extends StatelessWidget {
-  const QuizChip({required this.optionTxt, required this.selected, Key? key})
+  const QuizChip(
+      {required this.onTap,
+      required this.optionTxt,
+      required this.onDeleteTap,
+      required this.selected,
+      Key? key})
       : super(key: key);
   final String optionTxt;
   final bool selected;
+  final VoidCallback onTap, onDeleteTap;
 
   @override
   Widget build(BuildContext context) {
-    return selected
-        ? InkWell(
-            onTap: (() {
-              const Icon(Icons.clear);
-            }),
-            child: Chip(
-              backgroundColor: containercolor,
-              side: const BorderSide(color: Colors.black),
-              labelPadding: const EdgeInsets.all(7),
-              label: Text(optionTxt),
-            ),
-          )
-        : InkWell(
-            onTap: () {
-              // multiChipEmptyList.add(e);
-              // setState(() {});
-            },
-            child: Chip(
-              labelPadding: const EdgeInsets.all(8),
-              label: Text(optionTxt),
-              // Icon(Icons.clear,size: 14,color: Colors.blue,),
-              useDeleteButtonTooltip: true,
-              deleteIcon: const Icon(
-                Icons.clear,
-                size: 14,
+    return GestureDetector(
+      onTap: onTap,
+      child: Chip(
+        backgroundColor: selected ? containercolor : Colors.white,
+        side: BorderSide(
+            width: 1, color: selected ? Colors.black : const Color(0xFFD2D3D5)),
+        labelPadding: const EdgeInsets.fromLTRB(12, 6, 0, 6),
+        label: Text(
+          optionTxt,
+          style: const TextStyle(
+              fontSize: 14, fontWeight: FontWeight.w500, color: grey800),
+        ),
+        // avatar: selected ? null : const Icon(Icons.add, color: containercolor),
+        deleteIcon: selected
+            ? const Icon(Icons.close, size: 16, color: Colors.white)
+            : const Icon(
+                Icons.add,
+                size: 28,
+                color: containercolor,
               ),
-
-              deleteIconColor: Colors.green,
-            ),
-          );
+        onDeleted: selected ? onDeleteTap : onTap,
+      ),
+    );
   }
 }

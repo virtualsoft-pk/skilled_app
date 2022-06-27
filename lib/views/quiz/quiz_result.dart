@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
-
 import 'package:skilled_app/views/quiz/quiz_watch_video.dart';
-import 'package:skilled_app/views/settings/careerListScreen.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
+
 import '../../utils/app_colors.dart';
 import '../../utils/app_const.dart';
 import '../../widgets/custom_button.dart';
@@ -16,6 +13,8 @@ import 'answer_list.dart';
 import 'career_details.dart';
 
 class QuizResultPage extends StatefulWidget {
+  const QuizResultPage({Key? key}) : super(key: key);
+
   @override
   _QuizResultPageState createState() => _QuizResultPageState();
 }
@@ -85,7 +84,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                       ],
                     ),
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         height: Get.height * 0.23,
                         // width: Get.width * 0.5,
                         child: Image.asset(
@@ -288,10 +287,10 @@ class _QuizResultPageState extends State<QuizResultPage> {
         children: [
           Text(
             type,
-            style: const TextStyle(color: progressType, fontSize: 12),
+            style: const TextStyle(color: grey600, fontSize: 12),
           ),
-          SizedBox(
-            height: Get.height * 0.01,
+          const SizedBox(
+            height: 4,
           ),
           Row(
             children: [
@@ -304,8 +303,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                 width: 10,
               ),
               Expanded(
-                child: Container(
-                    child: LinearPercentIndicator(
+                child: LinearPercentIndicator(
                   // width: 100.0,
                   lineHeight: 7.0,
                   percent: value,
@@ -313,9 +311,9 @@ class _QuizResultPageState extends State<QuizResultPage> {
                   barRadius: const Radius.circular(20.0),
                   backgroundColor: greyColor,
                   addAutomaticKeepAlive: true,
-                  animationDuration: 1000,
+                  animationDuration: 500,
                   animation: true,
-                )),
+                ),
               ),
             ],
           ),
@@ -332,78 +330,73 @@ class _QuizResultPageState extends State<QuizResultPage> {
           Flexible(
             flex: 10,
             fit: FlexFit.tight,
-            child: Container(
-              // color: Colors.red,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    profession,
-                    style: const TextStyle(
-                        color: grey900,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    category,
-                    style: const TextStyle(
-                        color: grey600,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  profession,
+                  style: const TextStyle(
+                      color: grey900,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  category,
+                  style: const TextStyle(
+                      color: grey600,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
             ),
           ),
           // const Spacer(),
           Flexible(
             flex: 5,
             fit: FlexFit.tight,
-            child: Container(
-              // color: Colors.amber,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "$per%",
-                        style: const TextStyle(
-                            color: grey900,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        width: Get.width * 0.01,
-                      ),
-                      const Text(
-                        "match",
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
-                  InkWell(
-                    onTap: () {
-                      context.navigator.push<void>(
-                        SwipeablePageRoute(
-                          builder: (_) => Career(),
-                        ),
-                      );
-                      // Get.to(() => Career());
-                    },
-                    child: const Text(
-                      "Find out more",
-                      style: TextStyle(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "$per%",
+                      style: const TextStyle(
+                          color: grey900,
                           fontSize: 16,
-                          color: blueColor,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w700),
                     ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    const Text(
+                      "match",
+                      style: TextStyle(
+                        color: grey600,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+                InkWell(
+                  onTap: () {
+                    context.navigator.push<void>(
+                      SwipeablePageRoute(
+                        builder: (_) => Career(),
+                      ),
+                    );
+                    // Get.to(() => Career());
+                  },
+                  child: const Text(
+                    "Find out more",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: blueColor,
+                        fontWeight: FontWeight.w600),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

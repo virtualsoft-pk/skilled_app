@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/views/quiz/career_details.dart';
-import 'package:skilled_app/views/quiz/career_details.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../utils/app_const.dart';
@@ -11,6 +8,8 @@ import '../../widgets/custom_button.dart';
 import '../../widgets/custom_dialogs.dart';
 
 class AnswerList extends StatefulWidget {
+  const AnswerList({Key? key}) : super(key: key);
+
   @override
   _AnswerListState createState() => _AnswerListState();
 }
@@ -20,20 +19,6 @@ class _AnswerListState extends State<AnswerList> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   leading: Container(
-      //     height: 40,
-      //     width: 40,
-      //     child: customBackButton()),
-      //   elevation: 0,
-      //   backgroundColor: Colors.transparent,
-      //   title: Text(
-      //     AppConst.QUIZ_RESULT_PAGE_4_TEXT,
-      //     style: TextStyle(
-      //         fontSize: 18, fontWeight: FontWeight.w700, color: greyDarkColor),
-      //   ),
-      //   centerTitle: true,
-      // ),
       body: SafeArea(
         child: Container(
           height: Get.height,
@@ -49,21 +34,21 @@ class _AnswerListState extends State<AnswerList> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     customBackButton(() {}),
-                    Text(
+                    const Text(
                       "Answer List",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                         color: greyDarkColor,
                       ),
                     ),
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 18,
                       backgroundColor: Colors.transparent,
                     )
                   ],
                 ),
-                Container(
+                SizedBox(
                     height: MediaQuery.of(context).size.height * 0.72,
                     child: SingleChildScrollView(
                       child: Column(
@@ -99,7 +84,7 @@ class _AnswerListState extends State<AnswerList> {
                         ],
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 CustomButton(
@@ -125,13 +110,13 @@ class _AnswerListState extends State<AnswerList> {
       decoration: BoxDecoration(
           border: Border.all(width: 1, color: borderColor),
           borderRadius: BorderRadius.circular(12)),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             questionNumber,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 14, color: grey600, fontWeight: FontWeight.w400),
           ),
           SizedBox(
@@ -139,13 +124,13 @@ class _AnswerListState extends State<AnswerList> {
           ),
           Text(
             question,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 17, fontWeight: FontWeight.w600, color: grey800),
           ),
           SizedBox(
             height: Get.height * 0.010,
           ),
-          Text(
+          const Text(
             "Answer:",
             style: TextStyle(
                 fontSize: 14, color: grey600, fontWeight: FontWeight.w400),
@@ -155,7 +140,7 @@ class _AnswerListState extends State<AnswerList> {
           ),
           Text(
             answer,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 18, fontWeight: FontWeight.w600, color: grey900),
           )
         ],

@@ -1,14 +1,17 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/all_careers.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
+
 import '../../utils/app_const.dart';
 import '../../widgets/custom_widgets.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class QuizWatchVideo extends StatefulWidget {
+  const QuizWatchVideo({Key? key}) : super(key: key);
+
   @override
   _QuizWatchVideoState createState() => _QuizWatchVideoState();
 }
@@ -29,7 +32,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                     Container(
                       child: customBackButton(() {}),
                     ),
-                    Expanded(
+                    const Expanded(
                       flex: 5,
                       child: Text(
                         'Watch the video below to find out more',
@@ -46,17 +49,17 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 15),
+                  margin: const EdgeInsets.only(top: 15),
                   child: Column(
                     // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 2),
-                      Container(
+                      const SizedBox(height: 2),
+                      SizedBox(
                         height: MediaQuery.of(context).size.height * 0.20,
                         width: double.infinity,
                         child: Stack(
                           children: [
-                            Container(
+                            SizedBox(
                               width: double.infinity,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
@@ -70,16 +73,17 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                               alignment: Alignment.center,
                               child: Container(
                                 height: Get.height * 0.07,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.white,
                                     shape: BoxShape.circle),
-                                child: Center(child: Icon(Icons.play_arrow)),
+                                child:
+                                    const Center(child: Icon(Icons.play_arrow)),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       const Text(
@@ -89,7 +93,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       buildQuestions(
@@ -169,7 +173,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
   Row buildQuestions(String question) {
     return Row(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           backgroundColor: buttonColor,
           radius: 5,
         ),
@@ -178,7 +182,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
         ),
         Text(
           question,
-          style: TextStyle(
+          style: const TextStyle(
               color: grey900, fontSize: 16, fontWeight: FontWeight.w700),
         ),
       ],
@@ -187,11 +191,11 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
 
   Container buildOpints(String points) {
     return Container(
-      padding: EdgeInsets.only(left: 20),
+      padding: const EdgeInsets.only(left: 20),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 3,
+          const CircleAvatar(
+            radius: 2,
             backgroundColor: Colors.black,
           ),
           SizedBox(
@@ -199,7 +203,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
           ),
           Text(
             points,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 14,
             ),

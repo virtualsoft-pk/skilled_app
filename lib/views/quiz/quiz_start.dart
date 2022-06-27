@@ -17,10 +17,10 @@ class QuizStart extends StatefulWidget {
 class _QuizStartState extends State<QuizStart> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Container(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [

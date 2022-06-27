@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/model/about_model.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/quiz_result.dart';
-import 'package:skilled_app/widgets/custom_button.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
-import 'package:swipeable_page_route/swipeable_page_route.dart';
+
+import '../../widgets/custom_button.dart';
 import '../../widgets/custom_widgets.dart';
 import '../../widgets/hashir.dart';
 
 class HowToKnow extends StatefulWidget {
+  const HowToKnow({Key? key}) : super(key: key);
+
   @override
   _HowToKnowState createState() => _HowToKnowState();
 }
@@ -27,6 +29,7 @@ class _HowToKnowState extends State<HowToKnow> {
     About(image: 'assets/images/youtube.png', name: 'YouTube'),
     About(image: 'assets/images/tictok.png', name: 'TikTok'),
     About(image: 'assets/images/twitter.png', name: 'Twitter'),
+    About(image: 'assets/images/other.png', name: 'Other'),
   ];
 
   int selectedItem = -1;
@@ -40,101 +43,87 @@ class _HowToKnowState extends State<HowToKnow> {
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 16),
-          child: Stack(
-            children: [
-              SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    customBackButton(() {}),
-                    SizedBox(
-                      height: screenheight * 0.01,
-                    ),
-                    Text(
-                      "How Did You Hear About Us?",
-                      style: GoogleFonts.manrope(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(bottom: 22),
-                      width: screenwidth * 0.90,
-                      // height: screenheight * 0.6,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          itemCount: about.length,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                setState(
-                                  () {
-                                    selectedItem = index;
-                                  },
-                                );
-                              },
-                              child: Container(
-                                margin: EdgeInsets.only(top: 8),
-                                width: screenwidth * 0.01,
-                                height: 62,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: selectedItem == index
-                                        ? containercolor
-                                        : greycolor),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 15),
-                                      child: Image(
-                                        image:
-                                            AssetImage('${about[index].image}'),
-                                        width: 40,
-                                        height: 40,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: screenwidth * 0.06,
-                                    ),
-                                    myText(
-                                        text: '${about[index].name}',
-                                        style: GoogleFonts.manrope(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                        ))
-                                  ],
-                                ),
-                              ),
-                            );
-                          }),
-                    ),
-                  ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                customBackButton(() {}),
+                SizedBox(
+                  height: screenheight * 0.01,
                 ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: selectedItem == -1
-                    ? SizedBox()
-                    : CustomButton(
-                        text: "SEE RESULTS",
-                        funct: () {
-                          context.navigator.push<void>(
-                            SwipeablePageRoute(
-                              builder: (_) => QuizResultPage(),
+                Text(
+                  "How Did You Hear About Us?",
+                  style: GoogleFonts.manrope(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(bottom: 22),
+                  width: screenwidth * 0.90,
+                  // height: screenheight * 0.6,
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      itemCount: about.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            setState(
+                              () {
+                                selectedItem = index;
+                              },
+                            );
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(top: 12),
+                            width: screenwidth * 0.01,
+                            height: 62,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: selectedItem == index
+                                    ? containercolor
+                                    : greycolor),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Image(
+                                    image: AssetImage(about[index].image),
+                                    width: 40,
+                                    height: 40,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: screenwidth * 0.06,
+                                ),
+                                myText(
+                                    text: about[index].name,
+                                    style: GoogleFonts.manrope(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ))
+                              ],
                             ),
-                          );
-                          // Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (ctx) => QuizResultPage(),
-                          //   ),
-                          // );
-                        },
-                      ),
-              )
-            ],
+                          ),
+                        );
+                      }),
+                ),
+                CustomButton(
+                  text: "SEE RESULTS",
+                  funct: () {
+                    Get.to(() => QuizResultPage());
+                    // Navigator.pushReplacement(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (ctx) => QuizResultPage(),
+                    //   ),
+                    // );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
