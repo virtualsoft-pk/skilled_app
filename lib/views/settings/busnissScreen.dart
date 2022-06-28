@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/widgets/all_widgets.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../utils/app_colors.dart';
 
 class BusinessScreen extends StatefulWidget {
   @override
@@ -26,7 +23,7 @@ class _BusinessScreenState extends State<BusinessScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              customBackButton(() {}),
+              customBackButton(),
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(

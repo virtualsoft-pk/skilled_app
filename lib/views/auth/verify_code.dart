@@ -9,6 +9,8 @@ import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
+import '../responsive.dart';
+
 class VerifyCode extends StatefulWidget {
   const VerifyCode({this.isFromSignUp = false, Key? key}) : super(key: key);
 
@@ -33,65 +35,73 @@ class _VerifyCodeState extends State<VerifyCode> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.only(left: 15, right: 15),
-          width: double.infinity,
-          color: backgroundColor,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              customBackButton(() {}),
+      appBar: tabAppBar(),
+      body: Container(
+        padding: EdgeInsets.symmetric(
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.25 : 16),
+        width: double.infinity,
+        color: backgroundColor,
+        child: Column(
+          crossAxisAlignment: Responsive.isTablet(context)
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
+          mainAxisAlignment: Responsive.isTablet(context)
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.start,
+          children: [
+            if (Responsive.isMobile(context))
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-              const Text(
-                'Verification code',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w700,
-                  color: textColor,
-                ),
+            const Text(
+              'Verification code',
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.w700,
+                color: textColor,
               ),
-              const SizedBox(
-                height: 8,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const Text(
+              'Enter 4 digit has been sent to your email',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
               ),
-              const Text(
-                'Enter 4 digit has been sent to your email',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                ),
+            ),
+            SizedBox(
+              height: Get.height * 0.07,
+            ),
+            PinPut(
+              textStyle:
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              eachFieldHeight: 80,
+              eachFieldWidth: 70,
+              fieldsCount: 4,
+              onSubmit: (String pin) => _showSnackBar(pin, context),
+              focusNode: _pinPutFocusNode,
+              controller: _pinPutController,
+              submittedFieldDecoration: _pinPutDecoration.copyWith(
+                borderRadius: BorderRadius.circular(20.0),
               ),
-              SizedBox(
-                height: Get.height * 0.07,
-              ),
-              PinPut(
-                textStyle:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                eachFieldHeight: 80,
-                eachFieldWidth: 70,
-                fieldsCount: 4,
-                onSubmit: (String pin) => _showSnackBar(pin, context),
-                focusNode: _pinPutFocusNode,
-                controller: _pinPutController,
-                submittedFieldDecoration: _pinPutDecoration.copyWith(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                selectedFieldDecoration: _pinPutDecoration,
-                followingFieldDecoration: _pinPutDecoration.copyWith(
-                  borderRadius: BorderRadius.circular(20.0),
+              selectedFieldDecoration: _pinPutDecoration,
+              followingFieldDecoration: _pinPutDecoration.copyWith(
+                borderRadius: BorderRadius.circular(20.0),
 
-                  color: greyColor,
-                  // border: Border.all(
-                  //   color: Colors.deepPurpleAccent.withOpacity(.5),
-                  // ),
-                ),
+                color: greyColor,
+                // border: Border.all(
+                //   color: Colors.deepPurpleAccent.withOpacity(.5),
+                // ),
               ),
-              const SizedBox(
-                height: 16,
-              ),
-              const Text(
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
                 'Resend code?',
                 style: TextStyle(
                   fontSize: 14,
@@ -99,21 +109,21 @@ class _VerifyCodeState extends State<VerifyCode> {
                   color: blueColor,
                 ),
               ),
-              const SizedBox(
-                height: 32,
-              ),
-              CustomButton(
-                funct: () {
-                  context.navigator.push<void>(SwipeablePageRoute(
-                      builder: (_) => widget.isFromSignUp
-                          ? const SignIn()
-                          : const ResetPassword()));
-                  // Get.to(() => ResetPassword());
-                },
-                text: 'SUBMIT CODE',
-              )
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 32,
+            ),
+            CustomButton(
+              funct: () {
+                context.navigator.push<void>(SwipeablePageRoute(
+                    builder: (_) => widget.isFromSignUp
+                        ? const SignIn()
+                        : const ResetPassword()));
+                // Get.to(() => ResetPassword());
+              },
+              text: 'SUBMIT CODE',
+            )
+          ],
         ),
       ),
     );

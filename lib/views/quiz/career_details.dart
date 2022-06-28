@@ -1,9 +1,9 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/available_jobs.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 class Career extends StatefulWidget {
@@ -27,7 +27,7 @@ class _CareerState extends State<Career> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    customBackButton(() {}),
+                    customBackButton(),
                     Text(
                       'Career Details',
                       style: TextStyle(

@@ -7,6 +7,7 @@ import 'package:skilled_app/views/auth/forgot_password.dart';
 import 'package:skilled_app/views/auth/sign_up.dart';
 import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/views/quiz/videos_screen.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
@@ -30,21 +31,27 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
+      appBar: tabAppBar(),
       body: SafeArea(
         child: Swipe(
           onSwipeRight: () {
             Get.back();
           },
           child: Container(
-            padding: const EdgeInsets.only(left: 15, right: 15),
+            padding: EdgeInsets.symmetric(
+                horizontal:
+                    Responsive.isTablet(context) ? Get.width * 0.25 : 16),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: Responsive.isTablet(context)
+                  ? CrossAxisAlignment.center
+                  : CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    customBackButton(() {}),
-                  ],
-                ),
+                if (Responsive.isTablet(context))
+                  SizedBox(
+                    height: 150,
+                    width: 150,
+                    child: Image.asset("assets/images/skilldlogo.jpg"),
+                  ),
                 const Text(
                   'Welcome Back !',
                   style: TextStyle(

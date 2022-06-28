@@ -33,7 +33,7 @@ class _AnswerListState extends State<AnswerList> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    customBackButton(() {}),
+                    customBackButton(),
                     const Text(
                       "Answer List",
                       style: TextStyle(

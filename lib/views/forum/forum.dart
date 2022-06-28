@@ -1,17 +1,16 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/views/forum/bottom_navigation_for_comment.dart';
-import 'package:skilled_app/views/forum/comment_section.dart';
 import 'package:skilled_app/views/forum/quiz_06.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
-import 'package:skilled_app/views/forum/see_all.dart';
 import 'package:skilled_app/views/forum/thread_detail.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
+
 import '../../model/aboutmodel.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/hashir.dart';
@@ -162,7 +161,7 @@ class _ForumState extends State<Forum> {
                           Align(
                             alignment: Alignment.topLeft,
                             child: customBackButton(
-                              () {
+                              onBackTap: () {
                                 Get.offAll(
                                   () => BottomNavigation(index: 0),
                                 );
@@ -511,12 +510,13 @@ class _ForumState extends State<Forum> {
                                                     ],
                                                   ),
                                                   Spacer(),
-                                                   IconButton(
-                                        onPressed: () {
-                                          share();
-                                        },
-                                        icon: Icon(Icons.more_horiz),
-                                      ),
+                                                  IconButton(
+                                                    onPressed: () {
+                                                      share();
+                                                    },
+                                                    icon:
+                                                        Icon(Icons.more_horiz),
+                                                  ),
                                                   // PopupMenuButton(
                                                   //   itemBuilder: (context) => [
                                                   //     PopupMenuItem(
@@ -1067,8 +1067,7 @@ class _ForumState extends State<Forum> {
     );
   }
 
-
-    Future<void> share() async {
+  Future<void> share() async {
     await FlutterShare.share(
         title: 'Example share',
         text: 'Example share text',

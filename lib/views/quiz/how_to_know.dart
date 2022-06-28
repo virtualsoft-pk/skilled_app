@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/model/about_model.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/quiz_result.dart';
+import 'package:skilled_app/views/responsive.dart';
 
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_widgets.dart';
@@ -40,90 +41,91 @@ class _HowToKnowState extends State<HowToKnow> {
     var screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                customBackButton(() {}),
-                SizedBox(
-                  height: screenheight * 0.01,
+      appBar: tabAppBar(title: 'Quiz'),
+      body: Container(
+        margin: EdgeInsets.symmetric(
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.05 : 16),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: Responsive.isTablet(context)
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: screenheight * 0.01,
+              ),
+              Text(
+                "How Did You Hear About Us?",
+                style: GoogleFonts.manrope(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w700,
                 ),
-                Text(
-                  "How Did You Hear About Us?",
-                  style: GoogleFonts.manrope(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(bottom: 22),
-                  width: screenwidth * 0.90,
-                  // height: screenheight * 0.6,
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      itemCount: about.length,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            setState(
-                              () {
-                                selectedItem = index;
-                              },
-                            );
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.only(top: 12),
-                            width: screenwidth * 0.01,
-                            height: 62,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: selectedItem == index
-                                    ? containercolor
-                                    : greycolor),
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Image(
-                                    image: AssetImage(about[index].image),
-                                    width: 40,
-                                    height: 40,
-                                  ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(bottom: 22),
+                width: screenwidth * 0.90,
+                // height: screenheight * 0.6,
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: about.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          setState(
+                            () {
+                              selectedItem = index;
+                            },
+                          );
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 12),
+                          width: screenwidth * 0.01,
+                          height: 62,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: selectedItem == index
+                                  ? containercolor
+                                  : greycolor),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Image(
+                                  image: AssetImage(about[index].image),
+                                  width: 40,
+                                  height: 40,
                                 ),
-                                SizedBox(
-                                  width: screenwidth * 0.06,
-                                ),
-                                myText(
-                                    text: about[index].name,
-                                    style: GoogleFonts.manrope(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ))
-                              ],
-                            ),
+                              ),
+                              SizedBox(
+                                width: screenwidth * 0.06,
+                              ),
+                              myText(
+                                  text: about[index].name,
+                                  style: GoogleFonts.manrope(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ))
+                            ],
                           ),
-                        );
-                      }),
-                ),
-                CustomButton(
-                  text: "SEE RESULTS",
-                  funct: () {
-                    Get.to(() => QuizResultPage());
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (ctx) => QuizResultPage(),
-                    //   ),
-                    // );
-                  },
-                ),
-              ],
-            ),
+                        ),
+                      );
+                    }),
+              ),
+              CustomButton(
+                text: "SEE RESULTS",
+                funct: () {
+                  Get.to(() => QuizResultPage());
+                  // Navigator.pushReplacement(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (ctx) => QuizResultPage(),
+                  //   ),
+                  // );
+                },
+              ),
+            ],
           ),
         ),
       ),

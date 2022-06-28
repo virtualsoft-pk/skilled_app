@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/views/settings/notification.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
@@ -32,7 +30,7 @@ class _PrivacyState extends State<Privacy> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              customBackButton(() {}),
+                              customBackButton(),
                               Text(
                                 "Privacy & Terms ",
                                 style: TextStyle(
@@ -259,8 +257,6 @@ class _PrivacyState extends State<Privacy> {
                       ),
                     ),
 
-
-
                     Text(
                       'https://icons8.com ',
                       style: TextStyle(
@@ -278,7 +274,6 @@ class _PrivacyState extends State<Privacy> {
                         color: Color(0xff494F58),
                       ),
                     ),
-
 
                     SizedBox(
                       height: 100,

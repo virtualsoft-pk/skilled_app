@@ -7,7 +7,6 @@ import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:skilled_app/views/forum/thread_detail.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
-import '../../model/aboutmodel.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/hashir.dart';
 import '../settings/notification.dart';
@@ -90,7 +89,7 @@ class _SeeAllThreadState extends State<SeeAllThread> {
               ),
               Align(
                 alignment: Alignment.topLeft,
-                child: customBackButton(() {}),
+                child: customBackButton(),
               ),
               Container(
                 height: screenheight * 0.07,

@@ -30,7 +30,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                 Row(
                   children: [
                     Container(
-                      child: customBackButton(() {}),
+                      child: customBackButton(),
                     ),
                     const Expanded(
                       flex: 5,

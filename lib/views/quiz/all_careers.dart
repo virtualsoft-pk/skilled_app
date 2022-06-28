@@ -96,7 +96,7 @@ class _AllCareersState extends State<AllCareers> {
                 Row(
                   children: [
                     Container(
-                      child: customBackButton(() {}),
+                      child: customBackButton(),
                     ),
                     const Expanded(
                       flex: 5,

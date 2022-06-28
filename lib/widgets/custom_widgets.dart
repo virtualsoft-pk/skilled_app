@@ -1,24 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../utils/app_colors.dart';
 import 'add_event_calender.dart';
 
-Widget customBackButton(
-  Function? function,
-) {
+tabAppBar({title}) {
+  return PreferredSize(
+    preferredSize: const Size.fromHeight(100),
+    child: Builder(builder: (context) {
+      return Row(
+        children: [
+          const SizedBox(
+            width: 16,
+          ),
+          SizedBox(child: customBackButton()),
+          title != null ? const Spacer() : const SizedBox(),
+          title != null
+              ? Container(
+                  margin: EdgeInsets.only(top: Get.height * 0.01),
+                  child: Text(
+                    title,
+                    style: GoogleFonts.manrope(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                )
+              : const SizedBox(),
+          const Spacer(),
+        ],
+      );
+    }),
+  );
+}
+
+Widget customBackButton({
+  onBackTap,
+  width = 40.0,
+  height = 40.0,
+}) {
   return InkWell(
-    onTap: () {
-      function!();
-      Get.back();
-    },
+    onTap: onBackTap ??
+        () {
+          Get.back();
+        },
     child: Container(
       margin:
           EdgeInsets.only(bottom: Get.height * 0.02, top: Get.height * 0.03),
       padding: const EdgeInsets.all(12),
-      width: 40,
-      height: 40,
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
         color: greyColor,
@@ -42,7 +75,7 @@ Widget customAppBar(String title) {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 0),
-          child: customBackButton(() {}),
+          child: customBackButton(),
         ),
         Text(
           title,

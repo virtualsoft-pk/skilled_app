@@ -43,7 +43,7 @@ class _SelectInterestState extends State<SelectInterest> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  customBackButton(() {}),
+                  customBackButton(),
                   Container(
                     margin: EdgeInsets.only(top: Get.height * 0.01),
                     child: Text(

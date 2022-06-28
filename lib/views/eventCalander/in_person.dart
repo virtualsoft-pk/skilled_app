@@ -40,7 +40,7 @@ class _InPersonState extends State<InPerson> {
                 Container(
                   child: Row(
                     children: [
-                      customBackButton(() {}),
+                      customBackButton(),
                       Expanded(
                         child: Center(
                           child: Text("Event details",

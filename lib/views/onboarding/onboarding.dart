@@ -10,6 +10,8 @@ import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
+import '../responsive.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
 
@@ -61,17 +63,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print(Responsive.isTablet(context));
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Stack(
         children: [
           Column(
             children: [
+              if (Responsive.isTablet(context))
+                SizedBox(
+                  height: Get.height * 0.2,
+                ),
               SizedBox(
-                width: double.infinity,
-                height: Get.height * 0.86,
+                width: Responsive.isTablet(context)
+                    ? Get.width * 0.6
+                    : double.infinity,
+                height: Responsive.isTablet(context)
+                    ? Get.height * 0.65
+                    : Get.height * 0.86,
                 child: o.OnBoard(
-                  imageWidth: Get.width * 0.8,
+                  imageWidth: Responsive.isTablet(context)
+                      ? Get.width * 0.5
+                      : Get.width * 0.8,
                   onBoardData: onBoardData,
                   pageController: _pageController,
                   titleStyles: const TextStyle(
@@ -152,7 +165,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ],
           ),
           Positioned(
-            top: Get.height * 0.07,
+            top: Responsive.isTablet(context)
+                ? Get.height * 0.05
+                : Get.height * 0.07,
             right: 16,
             child: InkWell(
               onTap: () {
