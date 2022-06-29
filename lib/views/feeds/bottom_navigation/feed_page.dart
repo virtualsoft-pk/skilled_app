@@ -1,15 +1,13 @@
-import 'dart:ffi';
-
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 // import 'package:share_plus/share_plus.dart';
 
 import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/views/feeds/bottom_navigation/company_profile.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation_4.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
+
 import '../../../model/feed_model.dart';
 import '../../../model/video_feed_model.dart';
 import '../../eventCalander/in_person.dart';

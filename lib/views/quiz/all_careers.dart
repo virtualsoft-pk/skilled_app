@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/search_screen.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../../utils/app_colors.dart';
@@ -87,143 +88,125 @@ class _AllCareersState extends State<AllCareers> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      child: customBackButton(),
-                    ),
-                    const Expanded(
-                      flex: 5,
-                      child: Center(
-                        child: Text(
-                          'Select All The Careers You Are\nInterested In',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+      appBar: tabAppBar(title: "Select All The Careers You Are Interested In"),
+      body: Container(
+        margin: EdgeInsets.symmetric(
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.2 : 16),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 32,
+              ),
+              Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Get.to(() => const SearchSuggestionScreen());
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: backButtonColor,
+                          borderRadius: BorderRadius.circular(14)),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.search),
+                          SizedBox(
+                            width: Get.width * 0.02,
                           ),
-                        ),
-                      ),
-                    ),
-                    // Expanded(
-                    //   child: Container(),
-                    // ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Get.to(() => const SearchSuggestionScreen());
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: backButtonColor,
-                            borderRadius: BorderRadius.circular(14)),
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.search),
-                            SizedBox(
-                              width: Get.width * 0.02,
-                            ),
-                            SizedBox(
-                              height: Get.height * 0.07,
-                              width: Get.width * 0.5,
-                              child: TextField(
-                                onTap: () {
-                                  Get.to(() => const SearchSuggestionScreen());
-                                },
-                                readOnly: true,
-                                decoration: const InputDecoration(
-                                  hintText: "Search",
-                                  border: InputBorder.none,
-                                ),
+                          SizedBox(
+                            height: 60,
+                            width: Get.width * 0.5,
+                            child: TextField(
+                              onTap: () {
+                                Get.to(() => const SearchSuggestionScreen());
+                              },
+                              readOnly: true,
+                              textAlignVertical: TextAlignVertical.center,
+                              decoration: const InputDecoration(
+                                hintText: "Search",
+                                border: InputBorder.none,
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      height: Get.height * 0.015,
-                    ),
-                    Row(
-                      children: [
-                        const Text("Recommended Careers",
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.015,
+                  ),
+                  Row(
+                    children: [
+                      const Text("Recommended Careers",
+                          style: TextStyle(
+                              color: grey800,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18)),
+                      const Spacer(),
+                      RichText(
+                          text: TextSpan(children: [
+                        TextSpan(
+                            text: "$selectedCount/",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey,
+                                fontSize: 24)),
+                        const TextSpan(
+                            text: "5",
                             style: TextStyle(
-                                color: grey800,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18)),
-                        const Spacer(),
-                        RichText(
-                            text: TextSpan(children: [
-                          TextSpan(
-                              text: "$selectedCount/",
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.grey,
-                                  fontSize: 24)),
-                          const TextSpan(
-                              text: "5",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black,
-                                  fontSize: 24))
-                        ]))
-                      ],
-                    ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                    ...List.generate(
-                      careersList.length,
-                      (index) => RecommendedCareerTile(
-                        careersList[index]['name']!,
-                        careersList[index]['category']!,
-                        careerListOptions[index],
-                        (bool value) {
-                          if (selectedCount < 5) {
-                            setState(() {
-                              careerListOptions[index] =
-                                  !careerListOptions[index];
-                              if (value) {
-                                selectedCount++;
-                              } else {
-                                selectedCount--;
-                              }
-                            });
-                          } else if (careerListOptions[index]) {
-                            setState(() {
-                              careerListOptions[index] = false;
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                                fontSize: 24))
+                      ]))
+                    ],
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.02,
+                  ),
+                  ...List.generate(
+                    careersList.length,
+                    (index) => RecommendedCareerTile(
+                      careersList[index]['name']!,
+                      careersList[index]['category']!,
+                      careerListOptions[index],
+                      (bool value) {
+                        if (selectedCount < 5) {
+                          setState(() {
+                            careerListOptions[index] =
+                                !careerListOptions[index];
+                            if (value) {
+                              selectedCount++;
+                            } else {
                               selectedCount--;
-                            });
-                          }
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 38,
-                    ),
-                    CustomButton(
-                      text: "SAVE & CONTINUE TO FEED",
-                      funct: () {
-                        Get.offAll(() => BottomNavigation());
+                            }
+                          });
+                        } else if (careerListOptions[index]) {
+                          setState(() {
+                            careerListOptions[index] = false;
+                            selectedCount--;
+                          });
+                        }
                       },
                     ),
-                    SizedBox(
-                      height: Get.height * 0.02,
-                    ),
-                  ],
-                )
-              ],
-            ),
+                  ),
+                  const SizedBox(
+                    height: 38,
+                  ),
+                  CustomButton(
+                    text: "SAVE & CONTINUE TO FEED",
+                    funct: () {
+                      Get.offAll(() => BottomNavigation());
+                    },
+                  ),
+                  SizedBox(
+                    height: Get.height * 0.02,
+                  ),
+                ],
+              )
+            ],
           ),
         ),
       ),
@@ -241,7 +224,7 @@ class _AllCareersState extends State<AllCareers> {
             border: Border.all(width: 1, color: borderColor),
             borderRadius: BorderRadius.circular(12)),
         margin: const EdgeInsets.only(bottom: 12),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         child: Row(
           children: [
             Column(
@@ -254,8 +237,8 @@ class _AllCareersState extends State<AllCareers> {
                       fontWeight: FontWeight.w600,
                       color: grey900),
                 ),
-                SizedBox(
-                  height: Get.height * 0.01,
+                const SizedBox(
+                  height: 4,
                 ),
                 Text(
                   type,

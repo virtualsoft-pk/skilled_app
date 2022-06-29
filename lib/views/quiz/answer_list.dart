@@ -6,6 +6,7 @@ import 'package:skilled_app/widgets/custom_widgets.dart';
 import '../../utils/app_const.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_dialogs.dart';
+import '../responsive.dart';
 
 class AnswerList extends StatefulWidget {
   const AnswerList({Key? key}) : super(key: key);
@@ -19,84 +20,65 @@ class _AnswerListState extends State<AnswerList> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Container(
-          height: Get.height,
-          //width: Get.width,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    customBackButton(),
-                    const Text(
-                      "Answer List",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: greyDarkColor,
-                      ),
+      appBar: tabAppBar(title: "Answer List"),
+      body: Container(
+        height: Get.height,
+        //width: Get.width,
+        padding: EdgeInsets.symmetric(
+          horizontal: Responsive.isTablet(context) ? Get.width * 0.15 : 16,
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.72,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        RecommendedCareerTile(
+                            "Question 1:",
+                            AppConst.QUIZ_RESULT_PAGE_4_QUESTION_1,
+                            "Extrovert"),
+                        SizedBox(
+                          height: Get.height * 0.02,
+                        ),
+                        RecommendedCareerTile("Question 2:",
+                            AppConst.QUIZ_RESULT_PAGE_4_QUESTION_2, "Painting"),
+                        SizedBox(
+                          height: Get.height * 0.02,
+                        ),
+                        RecommendedCareerTile(
+                            "Question 3:",
+                            AppConst.QUIZ_RESULT_PAGE_4_QUESTION_3,
+                            "Make excuse"),
+                        SizedBox(
+                          height: Get.height * 0.02,
+                        ),
+                        RecommendedCareerTile(
+                            "Question 3:",
+                            AppConst.QUIZ_RESULT_PAGE_4_QUESTION_3,
+                            "Make excuse"),
+                        SizedBox(
+                          height: Get.height * 0.02,
+                        ),
+                      ],
                     ),
-                    const CircleAvatar(
-                      radius: 18,
-                      backgroundColor: Colors.transparent,
-                    )
-                  ],
-                ),
-                SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.72,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          RecommendedCareerTile(
-                              "Question 1:",
-                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_1,
-                              "Extrovert"),
-                          SizedBox(
-                            height: Get.height * 0.02,
-                          ),
-                          RecommendedCareerTile(
-                              "Question 2:",
-                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_2,
-                              "Painting"),
-                          SizedBox(
-                            height: Get.height * 0.02,
-                          ),
-                          RecommendedCareerTile(
-                              "Question 3:",
-                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_3,
-                              "Make excuse"),
-                          SizedBox(
-                            height: Get.height * 0.02,
-                          ),
-                          RecommendedCareerTile(
-                              "Question 3:",
-                              AppConst.QUIZ_RESULT_PAGE_4_QUESTION_3,
-                              "Make excuse"),
-                          SizedBox(
-                            height: Get.height * 0.02,
-                          ),
-                        ],
-                      ),
-                    )),
-                const SizedBox(
-                  height: 10,
-                ),
-                CustomButton(
-                  text: "EMAIL ME ANSWERS",
-                  funct: () {
-                    sendEmailDialog(context);
-                  },
-                ),
+                  )),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomButton(
+                text: "EMAIL ME ANSWERS",
+                funct: () {
+                  sendEmailDialog(context);
+                },
+              ),
 
-                //
-              ],
-            ),
+              //
+            ],
           ),
         ),
       ),

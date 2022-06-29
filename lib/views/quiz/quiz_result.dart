@@ -40,91 +40,122 @@ class _QuizResultPageState extends State<QuizResultPage> {
               ),
               centerTitle: true,
             ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "You are an \nInventor",
-                        style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: Get.height * 0.02,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          context.navigator.push<void>(
-                            SwipeablePageRoute(
-                              builder: (_) => QuizWatchVideo(),
+      body: Responsive.isMobile(context)
+          ? SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _YouAreTitle(),
+                            SizedBox(
+                              height: Get.height * 0.02,
                             ),
-                          );
-                          // Get.to(() => QuizWatchVideo());
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 9, vertical: 8),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                                width: 1, color: Colors.grey.withOpacity(0.2)),
-                          ),
-                          child: const Text(
-                            "Find out more",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: blueColor,
-                                fontWeight: FontWeight.w600),
+                            _FindOutMoreButton()
+                          ],
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            height: Get.height * 0.23,
+                            // width: Get.width * 0.5,
+                            child: Image.asset(
+                              "assets/images/image1.png",
+                              // height: Get.height * 0.24,
+                            ),
                           ),
                         ),
-                      )
-                    ],
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      height: Get.height * 0.23,
-                      // width: Get.width * 0.5,
-                      child: Image.asset(
-                        "assets/images/image1.png",
-                        // height: Get.height * 0.24,
-                      ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-              if (Responsive.isTablet(context))
-                Row(
-                  children: [
                     _YourResultProgressList(),
                     _CareerSuggestionList(),
+                    CustomButton(
+                      text: "GET STARTED",
+                      funct: () {
+                        context.navigator.push<void>(
+                          SwipeablePageRoute(
+                            builder: (_) => AllCareers(),
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.05,
+                    ),
                   ],
                 ),
-              if (Responsive.isMobile(context)) _YourResultProgressList(),
-              if (Responsive.isMobile(context)) _CareerSuggestionList(),
-              CustomButton(
-                text: "GET STARTED",
-                funct: () {
-                  context.navigator.push<void>(
-                    SwipeablePageRoute(
-                      builder: (_) => AllCareers(),
+              ),
+            )
+          :
+          // Responsive Layout for tablet (landscape orientation)
+          Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        _YouAreTitle(),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        _FindOutMoreButton(),
+                        const Spacer(),
+                        SizedBox(
+                          height: 100,
+                          child: Image.asset(
+                            "assets/images/image1.png",
+                            // height: Get.height * 0.24,
+                          ),
+                        ),
+                      ],
                     ),
-                  );
-                },
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _YourResultProgressList(),
+                        ),
+                        const SizedBox(width: 64),
+                        Expanded(
+                          child: _CareerSuggestionList(),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width: Get.width * 0.5,
+                        child: CustomButton(
+                          text: "GET STARTED",
+                          funct: () {
+                            context.navigator.push<void>(
+                              SwipeablePageRoute(
+                                builder: (_) => AllCareers(),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: Get.height * 0.05,
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(
-                height: Get.height * 0.05,
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 
@@ -206,6 +237,52 @@ class _QuizResultPageState extends State<QuizResultPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _YouAreTitle extends StatelessWidget {
+  const _YouAreTitle({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text(
+      "You are an Inventor",
+      style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
+    );
+  }
+}
+
+class _FindOutMoreButton extends StatelessWidget {
+  const _FindOutMoreButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        context.navigator.push<void>(
+          SwipeablePageRoute(
+            builder: (_) => QuizWatchVideo(),
+          ),
+        );
+        // Get.to(() => QuizWatchVideo());
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(width: 1, color: Colors.grey.withOpacity(0.2)),
+        ),
+        child: const Text(
+          "Find out more",
+          style: TextStyle(
+              fontSize: 14, color: blueColor, fontWeight: FontWeight.w600),
+        ),
       ),
     );
   }
@@ -294,6 +371,7 @@ class _CareerSuggestionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
           AppConst.QUIZ_RESULT_PAGE_QUESTION,
@@ -364,8 +442,8 @@ class _CareerSuggestionList extends StatelessWidget {
               // Get.to(() => CareerListScreen());
             },
             child: Container(
-              width: Get.width * 0.4,
-              height: Get.height * 0.05,
+              width: Responsive.isTablet(context) ? 160 : Get.width * 0.4,
+              height: Responsive.isTablet(context) ? 32 : Get.height * 0.05,
               decoration: BoxDecoration(
                   border:
                       Border.all(width: 1, color: Colors.grey.withOpacity(0.2)),
@@ -393,6 +471,7 @@ class _YourResultProgressList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
           "Your Results",
@@ -443,8 +522,8 @@ class _YourResultProgressList extends StatelessWidget {
               // Get.to(() => AnswerList());
             },
             child: Container(
-              width: Get.width * 0.4,
-              height: Get.height * 0.053,
+              width: Responsive.isTablet(context) ? 160 : Get.width * 0.4,
+              height: Responsive.isTablet(context) ? 32 : Get.height * 0.053,
               decoration: BoxDecoration(
                   border:
                       Border.all(width: 1, color: Colors.grey.withOpacity(0.2)),
@@ -470,7 +549,7 @@ class _YourResultProgressList extends StatelessWidget {
   Container buildProgress(String type, int progressPer, Color progressColor,
       Color background, double value) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 27),
+      //padding: const EdgeInsets.symmetric(horizontal: 27),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

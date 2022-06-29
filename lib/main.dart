@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:responsive_framework/responsive_framework.dart';
-
-import 'splash_screen.dart';
+import 'package:skilled_app/views/quiz/quiz_result.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +10,10 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    setOrientation();
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -26,16 +27,20 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme,
           ),
         ),
-        builder: (context, child) => ResponsiveWrapper.builder(child,
-            maxWidth: 1200,
-            minWidth: 480,
-            defaultScale: true,
-            breakpoints: const [
-              ResponsiveBreakpoint.resize(350, name: MOBILE),
-              ResponsiveBreakpoint.autoScale(600, name: TABLET),
-              ResponsiveBreakpoint.resize(800, name: DESKTOP),
-            ],
-            background: Container(color: const Color(0xFFF5F5F5))),
-        home: const SplashScreen());
+        home: const QuizResultPage());
+  }
+
+  void setOrientation() {
+    if (Get.width < 800) {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
+    } else {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ]);
+    }
   }
 }
