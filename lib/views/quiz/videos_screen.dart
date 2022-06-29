@@ -21,7 +21,7 @@ class _VideoScreenState extends State<VideoScreen> {
       appBar: tabAppBar(),
       body: Container(
         margin: EdgeInsets.symmetric(
-            horizontal: Responsive.isTablet(context) ? Get.width * 0.25 : 16),
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.3 : 16),
         child: Column(
           mainAxisAlignment: Responsive.isTablet(context)
               ? MainAxisAlignment.center

@@ -156,64 +156,108 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: _updateIndex,
-        type: BottomNavigationBarType.fixed,
-        unselectedItemColor: lightGrey,
-        selectedItemColor: textColor,
-        selectedFontSize: 11,
-        selectedLabelStyle: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-        items: [
-          BottomNavigationBarItem(
-              label: "Home",
-              icon: Image.asset(
-                _currentIndex == 0
-                    ? 'assets/Polygon 2.png'
-                    : 'assets/Polygon 1.png',
-                fit: BoxFit.cover,
-                height: 18,
-              )),
-          BottomNavigationBarItem(
-            label: "Discover",
-            icon: Image.asset(
-              _currentIndex == 1
-                  ? 'assets/icons/search-filled.png'
-                  : 'assets/Search.png',
-              height: 18,
-            ),
+      body: Row(children: [
+        Container(
+            height: double.infinity,
+            width: 120,
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _CustomBtmNavItem(
+                    label: 'Home',
+                    isSelected: _currentIndex == 0,
+                    iconPath: _currentIndex == 0
+                        ? 'assets/Polygon 2.png'
+                        : 'assets/Polygon 1.png',
+                    onTap: () {
+                      _updateIndex(0);
+                    }),
+                _CustomBtmNavItem(
+                    label: 'Discover',
+                    isSelected: _currentIndex == 1,
+                    iconPath: _currentIndex == 1
+                        ? 'assets/icons/search-filled.png'
+                        : 'assets/Search.png',
+                    onTap: () {
+                      _updateIndex(1);
+                    }),
+                _CustomBtmNavItem(
+                    label: 'Forum',
+                    isSelected: _currentIndex == 2,
+                    iconPath: _currentIndex == 2
+                        ? 'assets/layersS.png'
+                        : 'assets/layers.png',
+                    onTap: () {
+                      _updateIndex(2);
+                    }),
+                _CustomBtmNavItem(
+                    label: 'Calendar',
+                    isSelected: _currentIndex == 3,
+                    iconPath: _currentIndex == 3
+                        ? 'assets/CalenderS.png'
+                        : 'assets/Calender.png',
+                    onTap: () {
+                      _updateIndex(3);
+                    }),
+                _CustomBtmNavItem(
+                    label: 'Settings',
+                    isSelected: _currentIndex == 4,
+                    iconPath: _currentIndex == 4
+                        ? 'assets/SettingS.png'
+                        : 'assets/Setting.png',
+                    onTap: () {
+                      _updateIndex(4);
+                    }),
+                const SizedBox(
+                  height: 54,
+                ),
+              ],
+            )),
+        Expanded(child: _screens[_currentIndex])
+      ]),
+    );
+  }
+}
+
+class _CustomBtmNavItem extends StatelessWidget {
+  const _CustomBtmNavItem({
+    Key? key,
+    required this.label,
+    required this.iconPath,
+    required this.onTap,
+    required this.isSelected,
+  }) : super(key: key);
+
+  final String label, iconPath;
+  final VoidCallback onTap;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 56),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: onTap,
+            child: Image.asset(iconPath, height: 24),
           ),
-          BottomNavigationBarItem(
-            label: "Forum",
-            icon: Image.asset(
-              _currentIndex == 2 ? 'assets/layersS.png' : 'assets/layers.png',
-              height: 18,
+          if (isSelected)
+            const SizedBox(
+              height: 6,
             ),
-          ),
-          BottomNavigationBarItem(
-            label: "Calendar",
-            icon: Image.asset(
-              _currentIndex == 3
-                  ? 'assets/CalenderS.png'
-                  : 'assets/Calender.png',
-              height: 18,
+          if (isSelected)
+            Container(
+              height: 6,
+              width: 6,
+              decoration: BoxDecoration(
+                color: Color(0xFF497BC4),
+                shape: BoxShape.circle,
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Setting',
-            icon: Image.asset(
-              _currentIndex == 4 ? 'assets/SettingS.png' : 'assets/Setting.png',
-              height: 18,
-            ),
-          )
         ],
       ),
-      body: Row(children: [
-        Container(height: double.infinity, width: 100, color: Colors.blue),
-        Expanded(child: Placeholder())
-      ]),
     );
   }
 }

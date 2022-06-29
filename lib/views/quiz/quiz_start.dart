@@ -23,13 +23,13 @@ class _QuizStartState extends State<QuizStart> {
       appBar: tabAppBar(),
       body: Container(
         margin: EdgeInsets.symmetric(
-            horizontal: Responsive.isTablet(context) ? Get.width * 0.25 : 16),
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.3 : 16),
         child: Column(
           children: [
             Container(
                 margin: EdgeInsets.only(left: 25, top: Get.height * 0.18),
                 width: Responsive.isTablet(context)
-                    ? Get.width * 0.4
+                    ? Get.width * 0.3
                     : Get.width * 0.8,
                 child: Image.asset('assets/images/quiz_start.jpg')),
             SizedBox(

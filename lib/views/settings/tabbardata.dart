@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/model/model.dart';
-
+import 'package:skilled_app/views/responsive.dart';
 
 class TabbarData extends StatefulWidget {
   @override
@@ -36,10 +36,11 @@ class _TabbarDataState extends State<TabbarData> {
         child: Column(
           children: [
             ListView.separated(
-              padding: EdgeInsets.symmetric(horizontal: 16,vertical: 0),
-              separatorBuilder: (c,i){
-                return Divider(
-                );
+              padding: Responsive.isTablet(context)
+                  ? EdgeInsets.only()
+                  : EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+              separatorBuilder: (c, i) {
+                return Divider();
               },
               itemCount: data.length,
               scrollDirection: Axis.vertical,
@@ -48,6 +49,7 @@ class _TabbarDataState extends State<TabbarData> {
               itemBuilder: (context, i) {
                 index = i;
                 return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // i == 0
                     //     ? SizedBox()
@@ -56,6 +58,7 @@ class _TabbarDataState extends State<TabbarData> {
                     //   color: Colors.grey,
                     // ),
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // SizedBox(width: Get.width * 0.02),
                         Column(
@@ -64,15 +67,33 @@ class _TabbarDataState extends State<TabbarData> {
                           ],
                         ),
                         // SizedBox(width: Get.width * 0.02),
+                        if (Responsive.isTablet(context))
+                          const SizedBox(
+                            width: 8,
+                          ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // SizedBox(height: Get.height * 0.01),
-                            SizedBox(
-                                width: Get.width * 0.01, height: Get.height * 0.01),
-                            Text(data[i].description!),
+                            if (Responsive.isMobile(context))
+                              SizedBox(
+                                  width: Get.width * 0.01,
+                                  height: Get.height * 0.01),
+                            Text(
+                              data[i].description!,
+                              style: TextStyle(
+                                fontSize:
+                                    Responsive.isTablet(context) ? 10 : 14,
+                              ),
+                            ),
                             SizedBox(height: Get.height * 0.01),
-                            Text(data[i].time!, style: TextStyle(color: Colors.grey),
+                            Text(
+                              data[i].time!,
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize:
+                                    Responsive.isTablet(context) ? 10 : 14,
+                              ),
                             ),
                           ],
                         )
