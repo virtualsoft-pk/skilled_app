@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/views/settings/profileEdit.dart';
 
 import '../../utils/app_colors.dart';
@@ -64,8 +65,8 @@ class _AccountDetailState extends State<AccountDetail> {
               },
               child: Image.asset(
                 "assets/images/edit.png",
-                width: Get.width * 0.04,
-                height: Get.height * 0.04,
+                width: 16,
+                height: 16,
               )),
           InkWell(
             onTap: () {
@@ -87,7 +88,9 @@ class _AccountDetailState extends State<AccountDetail> {
       ),
       body: Container(
         width: Get.width,
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: EdgeInsets.symmetric(
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.35 : 20,
+            vertical: 20),
         child: Column(
           children: [
             Stack(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 
 import '../utils/app_colors.dart';
@@ -28,7 +29,9 @@ tabAppBar({title}) {
                     ),
                   ),
                 )
-              : const SizedBox(),
+              : SizedBox(
+                  width: Responsive.isTablet(context) ? 120 : 12,
+                ),
           const Spacer(),
         ],
       );

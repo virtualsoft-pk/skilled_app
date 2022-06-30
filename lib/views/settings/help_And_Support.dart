@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/views/settings/privacy.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
@@ -17,39 +17,12 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child: Container(
-              padding: EdgeInsets.all(15),
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: backButtonColor),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 15,
-                ),
-              ),
-            ),
-          ),
-        ),
-        title: Text(
-          "Help & Support",
-          style: TextStyle(color: Colors.black),
-        ),
-        centerTitle: true,
-      ),
+      appBar: tabAppBar(title: 'Help & Support'),
       body: Container(
         width: Get.width,
         height: Get.height,
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.08 : 20),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +65,12 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
         ),
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(right: 10, bottom: 20),
+        padding: Responsive.isTablet(context)
+            ? const EdgeInsets.only(
+                bottom: 36,
+                right: 74,
+              )
+            : const EdgeInsets.only(right: 10, bottom: 20),
         child: FloatingActionButton(
             backgroundColor: buttonColor,
             onPressed: () {
@@ -106,10 +84,13 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
                       child: SingleChildScrollView(
                         child: Container(
                           height: Get.height * 0.64,
-                          width: Get.width,
+                          width: Responsive.isTablet(context)
+                              ? Get.width * 0.5
+                              : Get.width,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
+                            padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  Responsive.isTablet(context) ? 24 : 12,
                             ),
                             child: Column(
                               // shrinkWrap: true,
@@ -185,7 +166,8 @@ class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
 
                                 ///TODO Multi line text field required
 
-                                customTextField(text: "Type issues here..."),
+                                customTextField(
+                                    text: "Type issues here...", maxLines: 4),
                                 SizedBox(
                                   height: Get.height * 0.03,
                                 ),

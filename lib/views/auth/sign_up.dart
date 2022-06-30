@@ -30,7 +30,7 @@ class _SignUpViewState extends State<SignUpView> {
           width: double.infinity,
           color: backgroundColor,
           padding: EdgeInsets.symmetric(
-              horizontal: Responsive.isTablet(context) ? Get.width * 0.25 : 16),
+              horizontal: Responsive.isTablet(context) ? Get.width * 0.3 : 16),
           child: Column(
             crossAxisAlignment: Responsive.isTablet(context)
                 ? CrossAxisAlignment.center

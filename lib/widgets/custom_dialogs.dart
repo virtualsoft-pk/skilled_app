@@ -16,7 +16,7 @@ void sendEmailDialog(BuildContext context) {
           child: Container(
             padding: EdgeInsets.all(Responsive.isTablet(context) ? 20 : 0),
             height: Get.height * 0.56,
-            width: Responsive.isTablet(context) ? Get.width * 0.5 : Get.width,
+            width: Responsive.isTablet(context) ? Get.width * 0.4 : Get.width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Colors.white70,
@@ -103,7 +103,7 @@ void emailSentDialog(BuildContext context) {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Container(
           height: Get.height * 0.56,
-          width: Responsive.isTablet(context) ? Get.width * 0.5 : Get.width,
+          width: Responsive.isTablet(context) ? Get.width * 0.4 : Get.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white70,

@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/views/settings/aboutUs.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/views/settings/tabbardata.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 class Notifications extends StatefulWidget {
   @override
@@ -16,84 +17,72 @@ class _NotificationsState extends State<Notifications> {
       length: 2,
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            SizedBox(
-              height: Get.height * 0.07,
-            ),
-
-            // Row(
-            //   children: [
-            //
-            //   ],
-            // ),
-
-            ListTile(
-              leading: Padding(
-                padding: const EdgeInsets.only(left: 6),
-                child: InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: CircleAvatar(
-                      backgroundColor: Color(0xffF4F4F5),
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        size: 16,
-                        color: Colors.black,
-                      )),
-                ),
+        appBar: tabAppBar(title: "Notifications"),
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal:
+                  Responsive.isTablet(context) ? Get.width * 0.1 : 16.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: Responsive.isTablet(context) ? 4 : Get.height * 0.07,
               ),
 
-              title: Padding(
-                padding:  EdgeInsets.only(right: Get.width*0.15),
-                child: Text(
-                  "Notifications",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            SizedBox(height: Get.height * 0.014),
-            // Row(
-            //   children: [
-            //     Container(
-            //       width: Get.width * 0.46,
-            //       child: TabBar(
-            //         labelColor: Colors.black,
-            //         tabs: [Tab(text: "Direct"), Tab(text: "Overall")],
-            //       ),
-            //     ),
-            //     SizedBox(width: Get.width * 0.2),
-            //     InkWell(
-            //       onTap: () {},
-            //       child: Text("Mark all as read"),
-            //     ),
-            //   ],
-            // ),
-            SizedBox(height: Get.height * 0.02),
-            Row(
-              children: [
-                SizedBox(width: 16),
-                Text(
-                  "Today",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            Expanded(
-              child:  TabbarData(),
-              // Container(
-              //   // color: Colors.red,
-              //   child: TabBarView(
-              //     children: [
-              //       TabbarData(),
-              //       TabbarData(),
-              //     ],
-              //   ),
+              // Row(
+              //   children: [
+              //
+              //   ],
               // ),
-            ),
-          ],
+
+              Row(
+                children: [
+                  Container(
+                    width: Get.width * 0.3,
+                    child: TabBar(
+                      indicatorWeight: 1,
+                      indicatorColor: Color(0xFF3B577E),
+                      labelColor: Colors.black,
+                      indicatorSize: TabBarIndicatorSize.label,
+                      tabs: [Tab(text: "Direct"), Tab(text: "Overall")],
+                    ),
+                  ),
+                  const Spacer(),
+                  // SizedBox(
+                  //     width: Responsive.isTablet(context)
+                  //         ? Get.width * 0.3
+                  //         : Get.width * 0.2),
+                  InkWell(
+                    onTap: () {},
+                    child: Text("Mark all as read"),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 28,
+              ),
+              Row(
+                children: [
+                  SizedBox(width: 16),
+                  Text(
+                    "Today",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: TabbarData(),
+                // Container(
+                //   // color: Colors.red,
+                //   child: TabBarView(
+                //     children: [
+                //       TabbarData(),
+                //       TabbarData(),
+                //     ],
+                //   ),
+                // ),
+              ),
+            ],
+          ),
         ),
       ),
     );

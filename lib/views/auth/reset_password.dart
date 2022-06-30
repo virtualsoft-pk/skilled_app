@@ -18,7 +18,7 @@ class ResetPassword extends StatelessWidget {
       appBar: tabAppBar(),
       body: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: Responsive.isTablet(context) ? Get.width * 0.25 : 16),
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.3 : 16),
         width: double.infinity,
         color: backgroundColor,
         child: Column(

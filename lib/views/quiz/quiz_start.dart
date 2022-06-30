@@ -42,8 +42,8 @@ class _QuizStartState extends State<QuizStart> {
                   letterSpacing: 0.5,
                   fontWeight: FontWeight.w700),
             ),
-            const SizedBox(
-              height: 2,
+            SizedBox(
+              height: Responsive.isTablet(context) ? 16 : 2,
             ),
             const Text(
               "Use this fun quiz  to help us to find the \nbest career for you.",
@@ -61,7 +61,7 @@ class _QuizStartState extends State<QuizStart> {
             ),
             if (Responsive.isTablet(context))
               SizedBox(
-                height: Get.height * 0.03,
+                height: Get.height * 0.04,
               ),
           ],
         ),

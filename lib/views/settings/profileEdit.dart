@@ -4,10 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
+
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
-import 'changPassword.dart';
 
 class ProfileEdit extends StatefulWidget {
   @override
@@ -92,7 +93,9 @@ class _ProfileEditState extends State<ProfileEdit> {
         centerTitle: true,
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: EdgeInsets.symmetric(
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.3 : 20,
+            vertical: 20),
         width: Get.width,
         child: SingleChildScrollView(
           child: Column(

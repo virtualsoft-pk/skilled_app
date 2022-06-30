@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'feedback.dart';
+import 'package:skilled_app/views/responsive.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 class AboustUs extends StatefulWidget {
   @override
@@ -14,48 +14,16 @@ class _AboustUsState extends State<AboustUs> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: tabAppBar(title: 'About Us'),
       body: Container(
         margin: EdgeInsets.symmetric(
-          horizontal: 16,
+          horizontal: Responsive.isTablet(context) ? Get.width * 0.08 : 16,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: Get.height * 0.07,
-            ),
-            ListTile(
-              leading: InkWell(
-                onTap: () {
-                  Get.back();
-                },
-                child: CircleAvatar(
-                    backgroundColor: Color(0xffF4F4F5),
-                    child: Icon(
-                      Icons.arrow_back_ios,
-                      size: 16,
-                      color: Colors.black,
-                    )),
-              ),
-              title: InkWell(
-                onTap: () {
-                  Get.to(() => RateUs());
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: Get.width * 0.2),
-                  child: Text(
-                    "About Us ",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    // textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: Get.height * 0.03,
+              height: 18,
             ),
             Text(
               "Skilld: Empowered to Discover",
@@ -66,7 +34,7 @@ class _AboustUsState extends State<AboustUs> {
             ),
             Text(
               "Our aim is to empower young people to discover more about industries and jobs that interest them, so they can make informed career path choices and so they can learn skills and develop behaviours.",
-              style: TextStyle(height: 1.6, fontSize: 16),
+              style: TextStyle(height: 1.2, fontSize: 14),
             ),
             SizedBox(
               height: Get.height * 0.02,
@@ -78,7 +46,7 @@ class _AboustUsState extends State<AboustUs> {
                   onTap: () {},
                   child: Text("About Us",
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
@@ -87,7 +55,9 @@ class _AboustUsState extends State<AboustUs> {
             ),
             Container(
               width: double.infinity,
-              height: Get.height * 0.2,
+              height: Responsive.isTablet(context)
+                  ? Get.height * 0.45
+                  : Get.height * 0.2,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
@@ -100,14 +70,14 @@ class _AboustUsState extends State<AboustUs> {
             Row(
               children: [
                 Container(
-                  width: Get.width * 0.02,
-                  height: Get.height * 0.01,
+                  width: 8,
+                  height: 8,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Color(0xffFBC799)),
                 ),
                 SizedBox(
-                  width: Get.width * 0.02,
+                  width: 4,
                 ),
                 Text(
                   "How can I find out more about Skilld?",

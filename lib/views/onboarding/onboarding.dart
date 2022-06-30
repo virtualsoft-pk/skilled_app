@@ -72,14 +72,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             children: [
               if (Responsive.isTablet(context))
                 SizedBox(
-                  height: Get.height * 0.2,
+                  height: Get.height * 0.1,
                 ),
               SizedBox(
                 width: Responsive.isTablet(context)
                     ? Get.width * 0.6
                     : double.infinity,
                 height: Responsive.isTablet(context)
-                    ? Get.height * 0.65
+                    ? Get.height * 0.75
                     : Get.height * 0.86,
                 child: o.OnBoard(
                   imageWidth: Responsive.isTablet(context)

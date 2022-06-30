@@ -251,7 +251,7 @@ class _CustomBtmNavItem extends StatelessWidget {
             Container(
               height: 6,
               width: 6,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFF497BC4),
                 shape: BoxShape.circle,
               ),

@@ -38,7 +38,7 @@ class _VerifyCodeState extends State<VerifyCode> {
       appBar: tabAppBar(),
       body: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: Responsive.isTablet(context) ? Get.width * 0.25 : 16),
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.3 : 16),
         width: double.infinity,
         color: backgroundColor,
         child: Column(
@@ -122,7 +122,11 @@ class _VerifyCodeState extends State<VerifyCode> {
                 // Get.to(() => ResetPassword());
               },
               text: 'SUBMIT CODE',
-            )
+            ),
+            if (Responsive.isTablet(context))
+              const SizedBox(
+                height: 120,
+              ),
           ],
         ),
       ),

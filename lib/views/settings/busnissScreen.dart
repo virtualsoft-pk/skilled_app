@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -25,23 +26,30 @@ class _BusinessScreenState extends State<BusinessScreen> {
             children: [
               customBackButton(),
               Align(
-                alignment: Alignment.topLeft,
+                alignment: Responsive.isTablet(context)
+                    ? Alignment.topCenter
+                    : Alignment.topLeft,
                 child: Container(
                   child: Image.asset(
                     "assets/images/skilled.png",
-                    width: Get.width * 0.55,
+                    width:
+                        Responsive.isMobile(context) ? Get.width * 0.55 : 140,
                   ),
                 ),
               ),
               SizedBox(
-                height: Get.height * 0.02,
+                height: 8,
               ),
               Align(
-                alignment: Alignment.topLeft,
+                alignment: Responsive.isTablet(context)
+                    ? Alignment.topCenter
+                    : Alignment.topLeft,
                 child: Text(
-                  "Business",
+                  Responsive.isMobile(context)
+                      ? "Business"
+                      : "Business\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t",
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: Responsive.isTablet(context) ? 18 : 25,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -50,7 +58,10 @@ class _BusinessScreenState extends State<BusinessScreen> {
                 flex: 3,
                 child: Container(
                   padding: EdgeInsets.only(
-                      bottom: Get.height * 0.01, top: Get.height * 0.01),
+                      bottom: Get.height * 0.01,
+                      top: Responsive.isTablet(context)
+                          ? 24
+                          : Get.height * 0.01),
                   alignment: Alignment.center,
                   child: Image.asset(
                     "assets/images/business-laptop.png",

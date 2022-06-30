@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
@@ -13,12 +14,15 @@ class _PrivacyState extends State<Privacy> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: tabAppBar(title: "Privacy & Terms"),
       body: SafeArea(
         child: Stack(
           children: [
             SingleChildScrollView(
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 15),
+                margin: EdgeInsets.symmetric(
+                    horizontal:
+                        Responsive.isTablet(context) ? Get.width * 0.08 : 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -27,21 +31,6 @@ class _PrivacyState extends State<Privacy> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              customBackButton(),
-                              Text(
-                                "Privacy & Terms ",
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              CircleAvatar(
-                                radius: 22,
-                                backgroundColor: Colors.transparent,
-                              )
-                            ],
-                          ),
                           SizedBox(
                             height: Get.height * 0.04,
                           ),
@@ -299,7 +288,9 @@ class _PrivacyState extends State<Privacy> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
+                margin: EdgeInsets.symmetric(
+                    horizontal:
+                        Responsive.isTablet(context) ? Get.width * 0.08 : 16),
                 child: CustomButton(
                   text: "OKAY, GOT IT",
                   funct: () {

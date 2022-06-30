@@ -40,7 +40,7 @@ class _SignInState extends State<SignIn> {
           child: Container(
             padding: EdgeInsets.symmetric(
                 horizontal:
-                    Responsive.isTablet(context) ? Get.width * 0.25 : 16),
+                    Responsive.isTablet(context) ? Get.width * 0.3 : 16),
             child: Column(
               crossAxisAlignment: Responsive.isTablet(context)
                   ? CrossAxisAlignment.center
