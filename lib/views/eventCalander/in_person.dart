@@ -4,6 +4,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/add_event_calender.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -29,40 +30,33 @@ class _InPersonState extends State<InPerson> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: tabAppBar(
+        title: "Event Details",
+        trailing: Padding(
+          padding:
+              EdgeInsets.only(right: Responsive.isMobile(context) ? 16 : 32),
+          child: InkWell(
+            onTap: () {
+              share();
+            },
+            child: CircleAvatar(
+                backgroundColor: Color(0xffF4F4F5),
+                child: Icon(
+                  Icons.share,
+                  color: Color(0xff5A5E67),
+                )),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 16),
+          margin: EdgeInsets.symmetric(
+              horizontal: Responsive.isTablet(context) ? 80 : 16),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  child: Row(
-                    children: [
-                      customBackButton(),
-                      Expanded(
-                        child: Center(
-                          child: Text("Event details",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          share();
-                        },
-                        child: CircleAvatar(
-                            backgroundColor: Color(0xffF4F4F5),
-                            child: Icon(
-                              Icons.share,
-                              color: Color(0xff5A5E67),
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
-
                 // ListTile(
                 //   leading: InkWell(
                 //     onTap: () {
@@ -94,7 +88,9 @@ class _InPersonState extends State<InPerson> {
                 ),
                 Container(
                     width: double.infinity,
-                    height: Get.height * 0.2,
+                    height: Responsive.isTablet(context)
+                        ? Get.height * 0.35
+                        : Get.height * 0.2,
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
@@ -114,11 +110,20 @@ class _InPersonState extends State<InPerson> {
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
-                const Text("The Young Engineer Online Weekend",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: grey900)),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("The Young Engineer Online Weekend",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: grey900)),
+                    if (Responsive.isTablet(context))
+                      SizedBox(
+                          height: 42, width: 200, child: _AddToCalendarButton())
+                  ],
+                ),
                 SizedBox(
                   height: Get.height * 0.01,
                 ),
@@ -258,43 +263,25 @@ class _InPersonState extends State<InPerson> {
                     ),
                     Column(
                       children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 12, top: 9),
-                          width: Get.width * 0.4,
-                          height: Get.height * 0.07,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            color: Color(0xffF4F4F5),
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              AddEventCalender(context);
-                            },
-                            child: Row(
-                              children: [
-                                SizedBox(width: Get.width * 0.03),
-                                Icon(Icons.shopping_bag, color: Colors.grey),
-                                Text(
-                                  "Add to Calendar ",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                )
-                              ],
-                            ),
-                          ),
-                        )
+                        if (Responsive.isMobile(context)) _AddToCalendarButton()
                       ],
                     ),
                   ],
                 ),
                 SizedBox(height: Get.height * 0.03),
 
-                CustomButton(
-                  text: "VISIT THE WEBSITE",
-                  funct: () {
-                    isShow
-                        ? modalBottomSheetMenu(context)
-                        : redirectToWebsite();
-                  },
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal:
+                          Responsive.isTablet(context) ? Get.width * 0.1 : .0),
+                  child: CustomButton(
+                    text: "VISIT THE WEBSITE",
+                    funct: () {
+                      isShow
+                          ? modalBottomSheetMenu(context)
+                          : redirectToWebsite();
+                    },
+                  ),
                 )
               ],
             ),
@@ -365,5 +352,39 @@ class _InPersonState extends State<InPerson> {
             ),
           );
         });
+  }
+}
+
+class _AddToCalendarButton extends StatelessWidget {
+  const _AddToCalendarButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(left: 12, top: 9),
+      width: Get.width * 0.4,
+      height: Get.height * 0.07,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        color: Color(0xffF4F4F5),
+      ),
+      child: InkWell(
+        onTap: () {
+          AddEventCalender(context);
+        },
+        child: Row(
+          children: [
+            SizedBox(width: Get.width * 0.03),
+            Icon(Icons.shopping_bag, color: Colors.grey),
+            Text(
+              "Add to Calendar ",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

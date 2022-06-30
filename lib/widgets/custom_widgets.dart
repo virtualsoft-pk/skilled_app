@@ -7,7 +7,7 @@ import 'package:skilled_app/widgets/custom_button.dart';
 import '../utils/app_colors.dart';
 import 'add_event_calender.dart';
 
-tabAppBar({title}) {
+tabAppBar({title, trailing}) {
   return PreferredSize(
     preferredSize: const Size.fromHeight(100),
     child: Builder(builder: (context) {
@@ -33,6 +33,7 @@ tabAppBar({title}) {
                   width: Responsive.isTablet(context) ? 120 : 12,
                 ),
           const Spacer(),
+          if (trailing != null) trailing,
         ],
       );
     }),

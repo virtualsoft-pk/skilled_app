@@ -1,3 +1,4 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
@@ -8,17 +9,14 @@ import '../../../model/feed_model.dart';
 import '../../../utils/app_colors.dart';
 import '../../../widgets/all_widgets.dart';
 import '../../eventCalander/in_person.dart';
-import '../bottom_navigation_4.dart';
 import 'company_profile.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 
 class SearchResult extends StatefulWidget {
-
   bool? isFromCompany;
 
   String? image;
 
-  SearchResult({this.isFromCompany = false,this.image});
+  SearchResult({this.isFromCompany = false, this.image});
 
   @override
   State<SearchResult> createState() => _SearchResultState();
@@ -560,20 +558,26 @@ class _SearchResultState extends State<SearchResult> {
                           )
                         ],
                       ),
-                     widget.isFromCompany!? Container() : SizedBox(
-                        height: Get.height * 0.03,
-                      ),
-                      widget.isFromCompany!? Container() :  Text(
-                        'Best career for me',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                          color: textColor,
-                        ),
-                      ),
-                      widget.isFromCompany!? Container() :  SizedBox(
-                        height: 6,
-                      ),
+                      widget.isFromCompany!
+                          ? Container()
+                          : SizedBox(
+                              height: Get.height * 0.03,
+                            ),
+                      widget.isFromCompany!
+                          ? Container()
+                          : Text(
+                              'Best career for me',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500,
+                                color: textColor,
+                              ),
+                            ),
+                      widget.isFromCompany!
+                          ? Container()
+                          : SizedBox(
+                              height: 6,
+                            ),
                       Text(
                         'Total 120 results found',
                         style: TextStyle(
@@ -610,7 +614,7 @@ class _SearchResultState extends State<SearchResult> {
                                 onTap: () {
                                   context.navigator.push<void>(
                                     SwipeablePageRoute(
-                                      builder: (_) => BottomNavigation4(
+                                      builder: (_) => CompanyProfile(
                                         image: feedModel[i].profileImage!,
                                       ),
                                     ),
@@ -635,7 +639,7 @@ class _SearchResultState extends State<SearchResult> {
                                     onTap: () {
                                       context.navigator.push<void>(
                                         SwipeablePageRoute(
-                                          builder: (_) => BottomNavigation4(
+                                          builder: (_) => CompanyProfile(
                                             image: feedModel[i].profileImage!,
                                           ),
                                         ),
@@ -661,12 +665,12 @@ class _SearchResultState extends State<SearchResult> {
                                 ],
                               ),
                               Spacer(),
-                               IconButton(
-                                        onPressed: () {
-                                          share();
-                                        },
-                                        icon: Icon(Icons.more_horiz),
-                                      ),
+                              IconButton(
+                                onPressed: () {
+                                  share();
+                                },
+                                icon: Icon(Icons.more_horiz),
+                              ),
                               // PopupMenuButton(
                               //   itemBuilder: (context) => [
                               //     PopupMenuItem(
@@ -687,7 +691,6 @@ class _SearchResultState extends State<SearchResult> {
                               //     )
                               //   ],
                               // ),
-                            
                             ],
                           ),
                         ),
@@ -917,8 +920,7 @@ class _SearchResultState extends State<SearchResult> {
 
   List multiChipEmptyList = [];
 
-
-    Future<void> share() async {
+  Future<void> share() async {
     await FlutterShare.share(
         title: 'Example share',
         text: 'Example share text',

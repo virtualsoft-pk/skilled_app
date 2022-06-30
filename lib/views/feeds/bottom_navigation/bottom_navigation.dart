@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
@@ -159,7 +160,7 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
       body: Row(children: [
         Container(
             height: double.infinity,
-            width: 120,
+            width: Get.width * 0.1,
             color: Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

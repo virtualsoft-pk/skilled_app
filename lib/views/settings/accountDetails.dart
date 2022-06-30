@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/views/settings/profileEdit.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../utils/app_colors.dart';
 
@@ -31,44 +32,9 @@ class _AccountDetailState extends State<AccountDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child: Container(
-              padding: EdgeInsets.all(15),
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: backButtonColor),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 15,
-                ),
-              ),
-            ),
-          ),
-        ),
-        title: Text(
-          "Account Details",
-          style: TextStyle(color: Colors.black),
-        ),
-        actions: [
-          InkWell(
-              onTap: () {
-                Get.to(() => ProfileEdit());
-              },
-              child: Image.asset(
-                "assets/images/edit.png",
-                width: 16,
-                height: 16,
-              )),
-          InkWell(
+      appBar: tabAppBar(
+          title: "Account Details",
+          trailing: InkWell(
             onTap: () {
               Get.to(() => ProfileEdit());
             },
@@ -82,10 +48,7 @@ class _AccountDetailState extends State<AccountDetail> {
                     fontWeight: FontWeight.w500),
               ),
             ),
-          )
-        ],
-        centerTitle: true,
-      ),
+          )),
       body: Container(
         width: Get.width,
         padding: EdgeInsets.symmetric(

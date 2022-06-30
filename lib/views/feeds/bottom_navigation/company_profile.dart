@@ -1,11 +1,11 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../utils/app_colors.dart';
-import '../../forum/bottom_navigation_3.dart';
-
+import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
+
+import '../../forum/bottom_navigation_3.dart';
+import '../../responsive.dart';
 
 class CompanyProfile extends StatefulWidget {
   CompanyProfile({Key? key, this.image}) : super(key: key);
@@ -31,6 +31,7 @@ class _CompanyProfileState extends State<CompanyProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: tabAppBar(),
       body: SafeArea(
         child: ListView(
           children: [
@@ -43,94 +44,76 @@ class _CompanyProfileState extends State<CompanyProfile> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      Get.back();
-                    },
+                  Align(
+                    alignment: Responsive.isTablet(context)
+                        ? Alignment.topLeft
+                        : Alignment.topCenter,
                     child: Container(
-                      margin: EdgeInsets.only(top: Get.height * 0.03),
-                      padding: const EdgeInsets.all(12),
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: greyColor,
-                      ),
-                      child: Container(
-                        margin: const EdgeInsets.all(2.5),
-                        child: Image.asset(
-                          'assets/back.png',
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: Get.width,
-                    alignment: Alignment.topCenter,
-                    height: 120,
-                    child: Stack(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundImage: AssetImage(widget.image!),
-                            ),
-                          ],
-                        ),
-                        
-                        
-                        // AnimatedIcon(icon: AnimatedIcons., progress: progress)
-                        
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: InkWell(
-                            onTap: () {
-                              isFavorite = !isFavorite;
-                              setState(() {});
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(5),
-                              margin: EdgeInsets.only(bottom: 5),
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 1,
-                                    color: Colors.grey.shade300,
-                                    offset: const Offset(0, 1),
-                                    spreadRadius: 1,
-                                  )
-                                ],
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(50),
+                      width: 105,
+                      height: 120,
+                      child: Stack(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 50,
+                                backgroundImage: AssetImage(widget.image!),
                               ),
-                              child: isFavorite == false
-                                  ? Image.asset('assets/icons/plus.png')
-                                  : Image.asset(
-                                      'assets/icons/heartBlack.png',
-                                    ),
-                            ),
+                            ],
                           ),
-                        )
-                        // Positioned(
-                        //   bottom: -10,
-                        //   left: 0,
-                        //   right: 0,
-                        //   child: CircleAvatar(
-                        //     radius: 20,
-                        //   ),
-                        // )
-                      ],
+
+                          // AnimatedIcon(icon: AnimatedIcons., progress: progress)
+
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: InkWell(
+                              onTap: () {
+                                isFavorite = !isFavorite;
+                                setState(() {});
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(5),
+                                margin: EdgeInsets.only(bottom: 5),
+                                height: 30,
+                                width: 30,
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 1,
+                                      color: Colors.grey.shade300,
+                                      offset: const Offset(0, 1),
+                                      spreadRadius: 1,
+                                    )
+                                  ],
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: isFavorite == false
+                                    ? Image.asset('assets/icons/plus.png')
+                                    : Image.asset(
+                                        'assets/icons/heartBlack.png',
+                                      ),
+                              ),
+                            ),
+                          )
+                          // Positioned(
+                          //   bottom: -10,
+                          //   left: 0,
+                          //   right: 0,
+                          //   child: CircleAvatar(
+                          //     radius: 20,
+                          //   ),
+                          // )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: Get.height * 0.03,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +125,7 @@ class _CompanyProfileState extends State<CompanyProfile> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          Text(
+                          const Text(
                             '@straightforward',
                             style: TextStyle(
                               fontSize: 13,
@@ -152,11 +135,11 @@ class _CompanyProfileState extends State<CompanyProfile> {
                           )
                         ],
                       ),
+                      const SizedBox(width: 12),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 3),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                         alignment: Alignment.center,
-                        height: 36,
-                        width: Get.width * 0.42,
                         decoration: BoxDecoration(
                           color: Color(0xffFBC799),
                           borderRadius: BorderRadius.circular(50),
@@ -174,11 +157,16 @@ class _CompanyProfileState extends State<CompanyProfile> {
                   SizedBox(
                     height: Get.height * 0.02,
                   ),
-                  Text(
-                    'StraightForward allows you to take quick architecture/ engineering sketches and turn them into professionally rendered drawings or mockups, making the brainstorming phase of designing, much faster!!',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
+                  SizedBox(
+                    width: Responsive.isTablet(context)
+                        ? Get.width * 0.6
+                        : Get.width,
+                    child: Text(
+                      'StraightForward allows you to take quick architecture/ engineering sketches and turn them into professionally rendered drawings or mockups, making the brainstorming phase of designing, much faster!!',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   )
                 ],
@@ -213,11 +201,6 @@ class _CompanyProfileState extends State<CompanyProfile> {
                   const SizedBox(
                     height: 15,
                   ),
-
-
-
-
-
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 15),
                     child: GridView.builder(
@@ -232,10 +215,12 @@ class _CompanyProfileState extends State<CompanyProfile> {
                       ),
                       itemBuilder: (context, i) {
                         return InkWell(
-                          onTap: (){
+                          onTap: () {
                             context.navigator.push<void>(
                               SwipeablePageRoute(
-                                builder: (_) => BottomNavigation3(isFromCompanyProfile: true,),
+                                builder: (_) => BottomNavigation3(
+                                  isFromCompanyProfile: true,
+                                ),
                               ),
                             );
                           },

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
@@ -18,21 +19,30 @@ class ProfileEdit extends StatefulWidget {
 class _ProfileEditState extends State<ProfileEdit> {
   DateTime selectedDate = DateTime(2016, 1, 15);
   TextEditingController dob = TextEditingController();
-
-  Future<Null> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        initialDatePickerMode: DatePickerMode.day,
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2101));
-    if (picked != null) {
-      setState(() {
-        selectedDate = picked;
-        dob.text =
-            '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}';
-      });
-    }
+  void _getDateFromUser(ctx) {
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 190,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 180,
+                    child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.date,
+                        initialDateTime: DateTime.now(),
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            selectedDate = val;
+                            dob.text =
+                                '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}';
+                          });
+                        }),
+                  ),
+                ],
+              ),
+            ));
   }
 
   File? image;
@@ -49,48 +59,20 @@ class _ProfileEditState extends State<ProfileEdit> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child: Container(
-              padding: EdgeInsets.all(15),
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: backButtonColor),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 15,
-                ),
-              ),
+      appBar: tabAppBar(
+        title: "Profile Edit",
+        trailing: InkWell(
+          onTap: () {
+            Get.back();
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(right: 20, top: 20),
+            child: Text(
+              "Cancel",
+              style: TextStyle(color: Colors.black, fontSize: 18),
             ),
           ),
         ),
-        title: Text(
-          "Profile Edit",
-          style: TextStyle(color: Colors.black),
-        ),
-        actions: [
-          InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20, top: 20),
-              child: Text(
-                "Cancel",
-                style: TextStyle(color: Colors.black, fontSize: 18),
-              ),
-            ),
-          )
-        ],
-        centerTitle: true,
       ),
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -179,7 +161,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                     ),
                     TextFormField(
                       onTap: () {
-                        _selectDate(context);
+                        _getDateFromUser(context);
                       },
                       readOnly: true,
                       decoration: InputDecoration(

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 // import 'package:share_plus/share_plus.dart';
 
 import 'package:skilled_app/utils/app_colors.dart';
-import 'package:skilled_app/views/feeds/bottom_navigation_4.dart';
+import 'package:skilled_app/views/feeds/bottom_navigation/company_profile.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
@@ -113,12 +113,8 @@ class _CompanyProfileMini extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                context.navigator.push<void>(
-                  SwipeablePageRoute(
-                    builder: (_) => BottomNavigation4(
-                      image: 'assets/images/skilldlogo.jpg',
-                    ),
-                  ),
+                CompanyProfile(
+                  image: 'assets/images/skilldlogo.jpg',
                 );
               },
               child: Text(
@@ -261,7 +257,7 @@ class _TabBarState extends State<_TabBar> {
                                     onTap: () {
                                       context.navigator.push<void>(
                                         SwipeablePageRoute(
-                                          builder: (_) => BottomNavigation4(
+                                          builder: (_) => CompanyProfile(
                                             image: feedModel[i].profileImage!,
                                           ),
                                         ),
@@ -287,7 +283,7 @@ class _TabBarState extends State<_TabBar> {
                                         onTap: () {
                                           context.navigator.push<void>(
                                             SwipeablePageRoute(
-                                              builder: (_) => BottomNavigation4(
+                                              builder: (_) => CompanyProfile(
                                                 image:
                                                     feedModel[i].profileImage!,
                                               ),
@@ -602,7 +598,7 @@ class _TabBarState extends State<_TabBar> {
                                     children: [
                                       InkWell(
                                         onTap: () {
-                                          Get.to(() => BottomNavigation4(
+                                          Get.to(() => CompanyProfile(
                                                 image: videoFeedModel[i].image!,
                                               ));
                                         },

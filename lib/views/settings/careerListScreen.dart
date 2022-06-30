@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/controller/quiz_controller.dart';
 import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/views/responsive.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:skilled_app/widgets/flutter_typeahead.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
@@ -39,61 +40,22 @@ class _CareerListScreenState extends State<CareerListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child: Container(
-              padding: EdgeInsets.all(15),
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: backButtonColor),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 15,
-                ),
-              ),
+      appBar: tabAppBar(
+        title: "Career List",
+        trailing: InkWell(
+          onTap: () {
+            setState(() {
+              changeView = !changeView;
+            });
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(right: 20, top: 20),
+            child: Text(
+              "Edit",
+              style: TextStyle(color: Colors.black),
             ),
           ),
         ),
-        title: Text(
-          "Career List",
-          style: TextStyle(color: Colors.black),
-        ),
-        actions: [
-          InkWell(
-              onTap: () {
-                setState(() {
-                  changeView = !changeView;
-                });
-              },
-              child: Image.asset(
-                "assets/images/edit.png",
-                height: 16,
-                width: 16,
-              )),
-          InkWell(
-            onTap: () {
-              setState(() {
-                changeView = !changeView;
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20, top: 20),
-              child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-          )
-        ],
-        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(

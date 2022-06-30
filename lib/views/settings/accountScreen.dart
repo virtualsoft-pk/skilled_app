@@ -2,6 +2,7 @@ import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/widgets/custom_widgets.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../utils/app_colors.dart';
@@ -20,35 +21,7 @@ class _AccountState extends State<Account> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            onTap: () {
-              Get.back();
-            },
-            child: Container(
-              padding: EdgeInsets.all(15),
-              decoration:
-                  BoxDecoration(shape: BoxShape.circle, color: backButtonColor),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 15,
-                ),
-              ),
-            ),
-          ),
-        ),
-        title: Text(
-          "Account",
-          style: TextStyle(color: Colors.black),
-        ),
-        centerTitle: true,
-      ),
+      appBar: tabAppBar(title: "Account"),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Responsive.isTablet(context)
