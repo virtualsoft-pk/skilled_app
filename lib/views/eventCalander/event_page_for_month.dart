@@ -20,6 +20,7 @@ class _EventPageForMonthState extends State<EventPageForMonth>
     'This Week',
     'This Month',
   ];
+
   TabController? _tabController;
 
   @override
@@ -35,41 +36,144 @@ class _EventPageForMonthState extends State<EventPageForMonth>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        Container(
-          height: Get.height,
-          child: Calendar(
-            selectedColor: Colors.transparent,
+      body: SizedBox.expand(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(children: [
+            // Align(
+            //     alignment: Alignment.topLeft,
+            //     child: Text(
+            //       'Events',
+            //       style: TextStyle(
+            //           color: Colors.black,
+            //           fontSize: 24,
+            //           fontWeight: FontWeight.bold),
+            //     )),
+            ListTile(
+              leading: Text(
+                "Events",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              trailing: Container(
+                height: 40,
+                padding: EdgeInsets.only(left: 12, right: 15),
+                decoration: BoxDecoration(
+                  color: Color(0xffF4F4F5),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: DropdownButton(
+                  underline: SizedBox(),
+                  // Initial Value
+                  value: dropdownvalue,
+                  // Down Arrow Icon
+                  icon: const Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Color(0xff777B82),
+                    size: 20,
+                  ),
+                  // Array list of items
+                  items: items.map(
+                    (String e) {
+                      return DropdownMenuItem(
+                        value: e,
+                        child: Text(
+                          e,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff777B82),
+                          ),
+                        ),
+                      );
+                    },
+                  ).toList(),
+                  // After selecting the desired option,it will
+                  // change button value to selected value
+                  onChanged: (String? newValue) {
+                    setState(
+                      () {
+                        // dropdownvalue = newValue!;
+                        // if (newValue == 'Today') {
+                        //   isHideCalader = true;
+                        // }
+                        // if (newValue == 'This Week') {
 
-            eventColor: purple,
-            hideTodayIcon: true,
-            bottomBarColor: Color(0xffEDEFF4),
-            startOnMonday: true,
-            weekDays: [
-              'Mo',
-              'Di',
-              'Mi',
-              'Do',
-              'Fr',
-              'Sa',
-              'So',
-            ],
-            events: _events,
-            // bottomBarArrowColor: Colors.black,
-            // bottomBarTextStyle: TextStyle(
-            //   color: Colors.black,
-            // ),
-            isExpanded: false,
-            isExpandable: false,
-            expandableDateFormat: 'EEEE, dd. MMMM yyyy',
-            dayOfWeekStyle: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w800,
-              fontSize: 11,
+                        //   Navigator.pushReplacement(
+                        //     context,
+                        //     PageRouteBuilder(pageBuilder: (_, __, ___) => BottomNavigationForWeek()),
+                        //   );
+
+                        //   // Get.off(() => BottomNavigationForWeek());
+                        // }
+                        // if (newValue == 'This Month') {
+                        //   isHideCalader = false;
+                        // }
+                      },
+                    );
+                  },
+                ),
+              ),
             ),
-          ),
-        )
-      ]),
+
+            Expanded(
+              child: Calendar(
+                selectedColor: Colors.transparent,
+
+                eventColor: purple,
+                hideTodayIcon: true,
+                bottomBarColor: Color(0xffEDEFF4),
+                startOnMonday: true,
+                weekDays: [
+                  'Mo',
+                  'Tu',
+                  'We',
+                  'Th',
+                  'Fr',
+                  'Sa',
+                  'Su',
+                ],
+                events: _events,
+                // bottomBarArrowColor: Colors.black,
+                // bottomBarTextStyle: TextStyle(
+                //   color: Colors.black,
+                // ),
+                isExpanded: false,
+                isExpandable: false,
+                hideBottomBar: true,
+                expandableDateFormat: 'EEEE, dd. MMMM yyyy',
+                dayOfWeekStyle: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 11,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Container(
+                height: Get.height * 0.06,
+                width: double.infinity,
+                child: Center(
+                  child: TabBar(
+                    indicatorColor: Color(0xff6E928C),
+                    controller: _tabController,
+                    labelColor: Colors.black,
+                    isScrollable: true,
+                    tabs: [
+                      Tab(text: 'Upcoming Events'),
+                      Tab(text: 'Completed Events'),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ]),
+        ),
+      ),
     );
   }
 }

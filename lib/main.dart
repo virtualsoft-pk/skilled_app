@@ -1,11 +1,19 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skilled_app/splash_screen.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      // DevicePreview(
+      //   enabled: !kReleaseMode,
+      //   builder: (context) => MyApp(), // Wrap your app
+      // ),
+      const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +35,7 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme,
           ),
         ),
-        home: BottomNavigation());
+        home: SplashScreen());
   }
 
   void setOrientation() {
