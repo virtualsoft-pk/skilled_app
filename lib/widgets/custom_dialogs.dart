@@ -24,7 +24,7 @@ void sendEmailDialog(BuildContext context) {
             child: Column(
               children: [
                 if (Responsive.isMobile(context))
-                  SizedBox(height: Get.height * 0.08),
+                  SizedBox(height: Get.height * 0.01),
                 if (Responsive.isMobile(context))
                   Text(
                     "ENTER YOUR EMAIL ADDRESS",

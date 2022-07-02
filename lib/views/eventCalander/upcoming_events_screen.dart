@@ -171,6 +171,7 @@ class _UpCommingEventState extends State<UpCommingEvent> {
           ],
         ),
       ),
+
     );
   }
 }

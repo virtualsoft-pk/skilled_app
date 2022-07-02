@@ -1,7 +1,7 @@
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skilled_app/views/feeds/bottom_navigation/search_result.dart';
+import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
 import 'package:skilled_app/views/forum/bottom_navigation_3.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
@@ -178,12 +178,7 @@ class Search extends StatelessWidget {
                         itemBuilder: (context, i) {
                           return InkWell(
                             onTap: () {
-                              context.navigator.push<void>(
-                                SwipeablePageRoute(
-                                  builder: (_) => SearchResult(),
-                                ),
-                              );
-                              // Get.to(() => SearchResult());
+                              Get.off(BottomNavigation());
                             },
                             child: Container(
                               alignment: Alignment.center,

@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:skilled_app/views/auth/sign_in.dart';
 
+import '../responsive.dart';
+
 class OnBoard extends HookConsumerWidget {
   /// Data for OnBoard [List<OnBoardModel>]
   /// @Required
@@ -203,6 +205,10 @@ class _OnBoard extends HookConsumerWidget {
                   return SizedBox(
                     child: Column(
                       children: <Widget>[
+                        if (Responsive.isMobile(context))
+                          const SizedBox(
+                            height: 64,
+                          ),
                         Container(
                           margin: EdgeInsets.only(
                             top: index == 4

@@ -14,7 +14,10 @@ class _ChooseSocialMediaState extends State<ChooseSocialMedia> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: tabAppBar(title: "Choose Social Media" + "\t" * 15),
+        appBar: tabAppBar(
+            title: Responsive.isMobile(context)
+                ? "Choose Social Media"
+                : "Choose Social Media" + "\t" * 15),
         body: SafeArea(
           child: Container(
             width: Get.width,

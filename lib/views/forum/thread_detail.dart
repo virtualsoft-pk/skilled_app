@@ -1,17 +1,16 @@
+import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
 import 'package:skilled_app/views/forum/quiz_06.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
-import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:skilled_app/views/responsive.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
+
 import '../../model/aboutmodel.dart';
 import '../../utils/app_colors.dart';
 import '../../widgets/hashir.dart';
 import '../settings/notification.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
-
 import 'bottom_navigation_for_comment.dart';
 
 class PopularThread extends StatefulWidget {
@@ -80,7 +79,10 @@ class _PopularThreadState extends State<PopularThread> {
     var screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       floatingActionButton: Container(
-        margin: EdgeInsets.only(right: 10),
+        margin: EdgeInsets.only(
+          right: Responsive.isTablet(context) ? 32 : 10,
+          bottom: Responsive.isTablet(context) ? 64 : 0,
+        ),
         height: screenheight * 0.07,
         width: screenwidth * 0.14,
         child: FloatingActionButton(
@@ -99,41 +101,19 @@ class _PopularThreadState extends State<PopularThread> {
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: Responsive.isTablet(context) ? Get.width * 0.1 : 0,
+            ),
             child: Column(
               children: [
                 SizedBox(height: 10),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  margin: EdgeInsets.symmetric(
+                      horizontal: Responsive.isTablet(context) ? 32 : 15),
                   child: Column(
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image(
-                            image: AssetImage(
-                              'assets/image 29.png',
-                            ),
-                            height: 20,
-                          ),
-                          // SizedBox(
-                          //   width: screenwidth * 0.5,
-                          // ),
-                          InkWell(
-                            onTap: () {
-                              Get.to(() => Notifications());
-                            },
-                            child: CircleAvatar(
-                              radius: 20.0,
-                              backgroundColor: Colors.grey[200],
-                              child: Image(
-                                  image: AssetImage('assets/img_8.png'),
-                                  width: 18),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           InkWell(
                             onTap: () {
@@ -159,8 +139,34 @@ class _PopularThreadState extends State<PopularThread> {
                               ),
                             ),
                           ),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          Image(
+                            image: AssetImage(
+                              'assets/image 29.png',
+                            ),
+                            height: 20,
+                          ),
+                          const Spacer(),
+                          InkWell(
+                            onTap: () {
+                              Get.to(() => Notifications());
+                            },
+                            child: CircleAvatar(
+                              radius: 20.0,
+                              backgroundColor: Colors.grey[200],
+                              child: Image(
+                                  image: AssetImage('assets/img_8.png'),
+                                  width: 18),
+                            ),
+                          ),
                         ],
                       ),
+                      if (Responsive.isTablet(context))
+                        SizedBox(
+                          height: screenheight * 0.02,
+                        ),
                       Container(
                         height: screenheight * 0.07,
                         width: screenwidth * 0.9,
@@ -200,10 +206,10 @@ class _PopularThreadState extends State<PopularThread> {
                         ),
                       ),
                       SizedBox(
-                        height: screenheight * 0.02,
+                        height: screenheight * 0.01,
                       ),
                       SizedBox(
-                        height: screenheight * 0.01,
+                        height: screenheight * 0.02,
                       ),
                       Row(
                         children: [
@@ -217,7 +223,6 @@ class _PopularThreadState extends State<PopularThread> {
                           SizedBox(
                             width: Get.width * 0.02,
                           ),
-
 
                           InkWell(
                             onTap: () {
@@ -243,8 +248,8 @@ class _PopularThreadState extends State<PopularThread> {
                               child: isFollow == false
                                   ? Image.asset('assets/icons/plus.png')
                                   : Image.asset(
-                                'assets/icons/heartBlack.png',
-                              ),
+                                      'assets/icons/heartBlack.png',
+                                    ),
                             ),
                           ),
 
@@ -337,9 +342,7 @@ class _PopularThreadState extends State<PopularThread> {
                                           image: AssetImage(
                                               '${post[index].image}')),
                                     ),
-                                    SizedBox(
-                                      width: screenwidth * 0.04,
-                                    ),
+                                    SizedBox(width: 12),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -360,6 +363,8 @@ class _PopularThreadState extends State<PopularThread> {
                                     ),
                                     Spacer(),
                                     PopupMenuButton(
+                                      icon:
+                                          Icon(Icons.more_vert, color: grey500),
                                       itemBuilder: (context) => [
                                         PopupMenuItem(
                                           child: Text("First"),
@@ -382,6 +387,7 @@ class _PopularThreadState extends State<PopularThread> {
                                   horizontal: 15,
                                 ),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
                                       children: [
@@ -395,9 +401,13 @@ class _PopularThreadState extends State<PopularThread> {
                                             print('object');
                                           },
                                           child: Container(
-                                            margin: EdgeInsets.only(left: 5),
-                                            width: screenwidth * 0.21,
-                                            height: screenheight * 0.04,
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 4,
+                                            ),
+                                            margin: EdgeInsets.only(
+                                              left: 5,
+                                            ),
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(15),
@@ -418,7 +428,7 @@ class _PopularThreadState extends State<PopularThread> {
                                           ),
                                         ),
                                         SizedBox(
-                                          width: screenwidth * 0.02,
+                                          width: 6,
                                         ),
                                         InkWell(
                                           onTap: () {
@@ -427,9 +437,11 @@ class _PopularThreadState extends State<PopularThread> {
                                                 ));
                                           },
                                           child: Container(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 4,
+                                            ),
                                             margin: EdgeInsets.only(left: 5),
-                                            width: screenwidth * 0.21,
-                                            height: screenheight * 0.04,
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(15),
@@ -442,7 +454,7 @@ class _PopularThreadState extends State<PopularThread> {
                                           ),
                                         ),
                                         SizedBox(
-                                          width: screenwidth * 0.02,
+                                          width: 6,
                                         ),
                                         InkWell(
                                           onTap: () {
@@ -451,9 +463,11 @@ class _PopularThreadState extends State<PopularThread> {
                                                 ));
                                           },
                                           child: Container(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 4,
+                                            ),
                                             margin: EdgeInsets.only(left: 5),
-                                            width: screenwidth * 0.3,
-                                            height: screenheight * 0.045,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(15),
@@ -487,7 +501,7 @@ class _PopularThreadState extends State<PopularThread> {
                                           fontWeight: FontWeight.w500,
                                         )),
                                     SizedBox(
-                                      height: screenheight * 0.02,
+                                      height: 8,
                                     ),
 
                                     Container(
@@ -495,125 +509,94 @@ class _PopularThreadState extends State<PopularThread> {
                                         children: [
                                           index == 0
                                               ? isLike == false
-                                              ? InkWell(
-                                            onTap: () {
-                                              isLike =
-                                              true;
-                                              setState(
-                                                      () {});
-                                            },
-                                            child: Padding(
-                                              padding: EdgeInsets.all(10),
-                                              child: Image(
-                                                image: AssetImage(
-                                                    '${post[index].heart}'),
-                                                width: 20,
-                                                height: 18,
-                                                fit: BoxFit
-                                                    .contain,
-                                              ),
-                                            ),
-                                          )
-                                              : InkWell(
-                                            onTap: () {
-                                              isLike =
-                                              false;
-                                              setState(
-                                                      () {});
-                                            },
-                                            child: Padding(
-                                              padding: EdgeInsets.all(10),
-                                              child: Image
-                                                  .asset(
-                                                'assets/icons/2107845.png',
-                                                width: 20,
-                                                height: 18,
-                                                fit: BoxFit
-                                                    .contain,
-                                              ),
-                                            ),
-                                          )
-                                              :
-                                          isLikw1 == false
-                                              ? InkWell(
-                                              onTap: () {
-                                                isLikw1 =
-                                                true;
-                                                setState(
-                                                        () {});
-                                              },
-                                              child: Padding(
-                                                padding: EdgeInsets.all(10),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      '${post[index].heart}'),
-                                                  width: 20,
-                                                  height: 18,
-                                                  fit: BoxFit
-                                                      .contain,
-                                                ),
-                                              )
-                                          )
-                                              : InkWell(
-                                            onTap: () {
-                                              isLikw1 =
-                                              false;
-                                              setState(
-                                                      () {});
-                                            },
-                                            child: Padding(
-                                              padding: EdgeInsets.all(10),
-                                              child: Image
-                                                  .asset(
-                                                'assets/icons/2107845.png',
-                                                width: 20,
-                                                height: 18,
-                                                fit: BoxFit
-                                                    .contain,
-                                              ),
-                                            ),
-                                          ),
+                                                  ? InkWell(
+                                                      onTap: () {
+                                                        isLike = true;
+                                                        setState(() {});
+                                                      },
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.all(10),
+                                                        child: Image(
+                                                          image: AssetImage(
+                                                              '${post[index].heart}'),
+                                                          width: 20,
+                                                          height: 18,
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                      ),
+                                                    )
+                                                  : InkWell(
+                                                      onTap: () {
+                                                        isLike = false;
+                                                        setState(() {});
+                                                      },
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.all(10),
+                                                        child: Image.asset(
+                                                          'assets/icons/2107845.png',
+                                                          width: 20,
+                                                          height: 18,
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                      ),
+                                                    )
+                                              : isLikw1 == false
+                                                  ? InkWell(
+                                                      onTap: () {
+                                                        isLikw1 = true;
+                                                        setState(() {});
+                                                      },
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.all(10),
+                                                        child: Image(
+                                                          image: AssetImage(
+                                                              '${post[index].heart}'),
+                                                          width: 20,
+                                                          height: 18,
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                      ))
+                                                  : InkWell(
+                                                      onTap: () {
+                                                        isLikw1 = false;
+                                                        setState(() {});
+                                                      },
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsets.all(10),
+                                                        child: Image.asset(
+                                                          'assets/icons/2107845.png',
+                                                          width: 20,
+                                                          height: 18,
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                      ),
+                                                    ),
                                           SizedBox(
-                                            width:
-                                            screenwidth * 0.02,
+                                            width: screenwidth * 0.02,
                                           ),
-                                          myText(
-                                              text:
-                                              '${post[index].count}'),
+                                          myText(text: '${post[index].count}'),
                                           SizedBox(
-                                            width:
-                                            screenwidth * 0.04,
+                                            width: screenwidth * 0.04,
                                           ),
                                           InkWell(
                                             onTap: () {
-                                              context.navigator
-                                                  .push<void>(
+                                              context.navigator.push<void>(
                                                 SwipeablePageRoute(
                                                   builder: (_) =>
                                                       BottomForComment(
-                                                        date:
-                                                        post[index]
-                                                            .date,
-                                                        desc1:
-                                                        post[index]
-                                                            .desc,
-                                                        desc2:
-                                                        post[index]
-                                                            .desc2,
-                                                        image:
-                                                        post[index]
-                                                            .image,
-                                                        motion:
-                                                        post[index]
-                                                            .dgn2,
-                                                        name:
-                                                        post[index]
-                                                            .name,
-                                                        ui: post[index]
-                                                            .design,
-                                                        web: post[index]
-                                                            .design3,
-                                                      ),
+                                                    date: post[index].date,
+                                                    desc1: post[index].desc,
+                                                    desc2: post[index].desc2,
+                                                    image: post[index].image,
+                                                    motion: post[index].dgn2,
+                                                    name: post[index].name,
+                                                    ui: post[index].design,
+                                                    web: post[index].design3,
+                                                  ),
                                                 ),
                                               );
                                             },
@@ -628,12 +611,9 @@ class _PopularThreadState extends State<PopularThread> {
                                             ),
                                           ),
                                           SizedBox(
-                                            width:
-                                            screenwidth * 0.02,
+                                            width: screenwidth * 0.02,
                                           ),
-                                          myText(
-                                              text:
-                                              '${post[index].number}'),
+                                          myText(text: '${post[index].number}'),
                                         ],
                                       ),
                                     ),

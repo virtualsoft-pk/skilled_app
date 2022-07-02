@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/views/responsive.dart';
 
 import '../utils/app_colors.dart';
 
@@ -15,7 +16,10 @@ AddEventCalender(BuildContext context) {
         ),
       ),
       builder: (context) => Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.symmetric(
+              horizontal: Responsive.isTablet(context) ? Get.width * 0.1 : 16,
+              vertical: Responsive.isTablet(context) ? 4 : 10,
+            ),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -26,8 +30,8 @@ AddEventCalender(BuildContext context) {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Container(
-                    height: 275,
+                  SizedBox(
+                    height: 220,
                     width: double.infinity,
                     // color: Colors.purple,
                     child: Calendar(
@@ -42,7 +46,7 @@ AddEventCalender(BuildContext context) {
                       //  eventColor: Colors.grey,
                       // locale: 'de_DE',
                       // todayButtonText: 'Heute',
-                      isExpanded: true,
+                      isExpanded: false,
                       expandableDateFormat: 'EEEE, dd. MMMM yyyy',
                       dayOfWeekStyle: TextStyle(
                           color: Colors.black,
@@ -64,7 +68,9 @@ AddEventCalender(BuildContext context) {
                     height: Get.height * 0.05,
                   ),
                   TimePickerSpinner(
-                    itemWidth: Get.width * 0.25,
+                    itemWidth: Responsive.isTablet(context)
+                        ? Get.width * 0.2
+                        : Get.width * 0.25,
                     is24HourMode: false,
                     normalTextStyle:
                         TextStyle(fontSize: 24, color: Colors.grey),

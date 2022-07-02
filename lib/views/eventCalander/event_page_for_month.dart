@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/views/eventCalander/upcoming_events_screen.dart';
+import 'package:skilled_app/views/responsive.dart';
 
 import '../../utils/app_colors.dart';
+import 'completed_events_screen.dart';
 
 class EventPageForMonth extends StatefulWidget {
   const EventPageForMonth({Key? key}) : super(key: key);
@@ -13,7 +16,7 @@ class EventPageForMonth extends StatefulWidget {
 
 class _EventPageForMonthState extends State<EventPageForMonth>
     with SingleTickerProviderStateMixin {
-  String dropdownvalue = 'This Month';
+  String? dropdownvalue = 'This Week';
   // List of items in our dropdown menu
   var items = [
     'Today',
@@ -31,26 +34,18 @@ class _EventPageForMonthState extends State<EventPageForMonth>
 
   final Map<DateTime, List<CleanCalendarEvent>> _events = {};
 
-  bool isHideCalader = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox.expand(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.symmetric(
+            horizontal: Responsive.isTablet(context) ? Get.width * 0.05 : 16,
+            vertical: Responsive.isTablet(context) ? 32 : 8,
+          ),
           child: Column(children: [
-            // Align(
-            //     alignment: Alignment.topLeft,
-            //     child: Text(
-            //       'Events',
-            //       style: TextStyle(
-            //           color: Colors.black,
-            //           fontSize: 24,
-            //           fontWeight: FontWeight.bold),
-            //     )),
             ListTile(
-              leading: Text(
+              leading: const Text(
                 "Events",
                 style: TextStyle(
                   color: Colors.black,
@@ -60,13 +55,13 @@ class _EventPageForMonthState extends State<EventPageForMonth>
               ),
               trailing: Container(
                 height: 40,
-                padding: EdgeInsets.only(left: 12, right: 15),
+                padding: const EdgeInsets.only(left: 12, right: 15),
                 decoration: BoxDecoration(
-                  color: Color(0xffF4F4F5),
+                  color: const Color(0xffF4F4F5),
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: DropdownButton(
-                  underline: SizedBox(),
+                  underline: const SizedBox(),
                   // Initial Value
                   value: dropdownvalue,
                   // Down Arrow Icon
@@ -82,7 +77,7 @@ class _EventPageForMonthState extends State<EventPageForMonth>
                         value: e,
                         child: Text(
                           e,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff777B82),
@@ -94,81 +89,84 @@ class _EventPageForMonthState extends State<EventPageForMonth>
                   // After selecting the desired option,it will
                   // change button value to selected value
                   onChanged: (String? newValue) {
-                    setState(
-                      () {
-                        // dropdownvalue = newValue!;
-                        // if (newValue == 'Today') {
-                        //   isHideCalader = true;
-                        // }
-                        // if (newValue == 'This Week') {
-
-                        //   Navigator.pushReplacement(
-                        //     context,
-                        //     PageRouteBuilder(pageBuilder: (_, __, ___) => BottomNavigationForWeek()),
-                        //   );
-
-                        //   // Get.off(() => BottomNavigationForWeek());
-                        // }
-                        // if (newValue == 'This Month') {
-                        //   isHideCalader = false;
-                        // }
-                      },
-                    );
+                    setState(() {
+                      dropdownvalue = newValue;
+                    });
                   },
                 ),
               ),
             ),
-
-            Expanded(
-              child: Calendar(
-                selectedColor: Colors.transparent,
-
-                eventColor: purple,
-                hideTodayIcon: true,
-                bottomBarColor: Color(0xffEDEFF4),
-                startOnMonday: true,
-                weekDays: [
-                  'Mo',
-                  'Tu',
-                  'We',
-                  'Th',
-                  'Fr',
-                  'Sa',
-                  'Su',
-                ],
-                events: _events,
-                // bottomBarArrowColor: Colors.black,
-                // bottomBarTextStyle: TextStyle(
-                //   color: Colors.black,
-                // ),
-                isExpanded: false,
-                isExpandable: false,
-                hideBottomBar: true,
-                expandableDateFormat: 'EEEE, dd. MMMM yyyy',
-                dayOfWeekStyle: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 11,
+            if (dropdownvalue == 'This Month' || dropdownvalue == 'This Week')
+              Expanded(
+                flex: dropdownvalue == 'This Month' ? 2 : 1,
+                child: Calendar(
+                  onDateSelected: (val) {},
+                  selectedColor: Colors.transparent,
+                  todayColor: Colors.transparent,
+                  eventColor: purple,
+                  hideTodayIcon: true,
+                  bottomBarColor: const Color(0xffEDEFF4),
+                  startOnMonday: true,
+                  weekDays: const [
+                    'Mo',
+                    'Tu',
+                    'We',
+                    'Th',
+                    'Fr',
+                    'Sa',
+                    'Su',
+                  ],
+                  events: _events,
+                  // bottomBarArrowColor: Colors.black,
+                  // bottomBarTextStyle: TextStyle(
+                  //   color: Colors.black,
+                  // ),
+                  isExpanded: false, //dropdownvalue == 'This Month',
+                  hideBottomBar: false,
+                  expandableDateFormat: 'EEEE, dd. MMMM yyyy',
+                  dayOfWeekStyle: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 11,
+                  ),
                 ),
               ),
-            ),
             Align(
               alignment: Alignment.topLeft,
-              child: Container(
+              child: SizedBox(
                 height: Get.height * 0.06,
                 width: double.infinity,
                 child: Center(
                   child: TabBar(
-                    indicatorColor: Color(0xff6E928C),
+                    indicatorColor: const Color(0xff6E928C),
                     controller: _tabController,
                     labelColor: Colors.black,
-                    isScrollable: true,
-                    tabs: [
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    isScrollable: false,
+                    tabs: const [
                       Tab(text: 'Upcoming Events'),
                       Tab(text: 'Completed Events'),
                     ],
                   ),
                 ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              // color: Colors.grey,
+              // width: double.infinity,
+              // height: Get.height * 0.6,
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  UpCommingEvent(
+                    fun: () {
+                      // isHideCalander = true;
+                      setState(() {});
+                    },
+                  ),
+                  CompleteEvent(),
+                ],
               ),
             ),
           ]),
@@ -177,148 +175,3 @@ class _EventPageForMonthState extends State<EventPageForMonth>
     );
   }
 }
-        // body: TabBarView(
-        //   controller: _tabController,
-        //   children: [
-        //     UpCommingEvent(
-        //       fun: () {
-        //         isHideCalader = true;
-        //         setState(() {});
-        //       },
-        //     ),
-        //     const CompleteEvent(),
-        //   ],
-        // ),
-
-
-// Align(
-//                     alignment: Alignment.topLeft,
-//                     child: Container(
-//                       //height: Get.height * 0.06,
-//                       width: double.infinity,
-//                       child: Center(
-//                         child: TabBar(
-//                           indicatorColor: Color(0xff6E928C),
-//                           controller: _tabController,
-//                           labelColor: Colors.black,
-//                           isScrollable: true,
-//                           tabs: [
-//                             Tab(text: 'Upcoming Events'),
-//                             Tab(text: 'Completed Events'),
-//                           ],
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-
-// return Container(
-//     height: 324,
-//     width: double.infinity,
-//     child: Calendar(
-//       selectedColor: Colors.transparent,
-
-//       eventColor: purple,
-//       hideTodayIcon: true,
-//       bottomBarColor: Color(0xffEDEFF4),
-//       startOnMonday: true,
-//       weekDays: [
-//         'Mo',
-//         'Di',
-//         'Mi',
-//         'Do',
-//         'Fr',
-//         'Sa',
-//         'So',
-//       ],
-//       events: _events,
-//       // bottomBarArrowColor: Colors.black,
-//       // bottomBarTextStyle: TextStyle(
-//       //   color: Colors.black,
-//       // ),
-//       isExpanded: true,
-//       isExpandable: false,
-//       expandableDateFormat: 'EEEE, dd. MMMM yyyy',
-//       dayOfWeekStyle: TextStyle(
-//         color: Colors.black,
-//         fontWeight: FontWeight.w800,
-//         fontSize: 11,
-//       ),
-//     ),
-//   )
-
-// class _EventHeading extends StatelessWidget {
-//   const _EventHeading({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListTile(
-//       leading: Text(
-//         "Events",
-//         style: TextStyle(
-//           color: Colors.black,
-//           fontSize: 24,
-//           fontWeight: FontWeight.bold,
-//         ),
-//       ),
-//       trailing: Container(
-//         height: 40,
-//         padding: EdgeInsets.only(left: 12, right: 15),
-//         decoration: BoxDecoration(
-//           color: Color(0xffF4F4F5),
-//           borderRadius: BorderRadius.circular(4),
-//         ),
-//         child: DropdownButton(
-//           underline: SizedBox(),
-//           // Initial Value
-//           value: dropdownvalue,
-//           // Down Arrow Icon
-//           icon: const Icon(
-//             Icons.keyboard_arrow_down,
-//             color: Color(0xff777B82),
-//             size: 20,
-//           ),
-//           // Array list of items
-//           items: items.map(
-//             (String e) {
-//               return DropdownMenuItem(
-//                 value: e,
-//                 child: Text(
-//                   e,
-//                   style: TextStyle(
-//                     fontSize: 12,
-//                     fontWeight: FontWeight.w500,
-//                     color: Color(0xff777B82),
-//                   ),
-//                 ),
-//               );
-//             },
-//           ).toList(),
-//           // After selecting the desired option,it will
-//           // change button value to selected value
-//           onChanged: (String? newValue) {
-//             setState(
-//               () {
-//                 dropdownvalue = newValue!;
-//                 if (newValue == 'Today') {
-//                   isHideCalader = true;
-//                 }
-//                 if (newValue == 'This Week') {
-//                   Navigator.pushReplacement(
-//                     context,
-//                     PageRouteBuilder(
-//                         pageBuilder: (_, __, ___) => BottomNavigationForWeek()),
-//                   );
-
-//                   // Get.off(() => BottomNavigationForWeek());
-//                 }
-//                 if (newValue == 'This Month') {
-//                   isHideCalader = false;
-//                 }
-//               },
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }

@@ -23,6 +23,7 @@ tabAppBar({title, trailing}) {
                   margin: EdgeInsets.only(top: Get.height * 0.01),
                   child: Text(
                     title,
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.manrope(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

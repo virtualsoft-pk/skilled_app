@@ -88,7 +88,10 @@ class _AllCareersState extends State<AllCareers> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: tabAppBar(title: "Select All The Careers You Are Interested In"),
+      appBar: tabAppBar(
+          title: Responsive.isMobile(context)
+              ? "Select All The Careers\nYou Are Interested In"
+              : "Select All The Careers You Are Interested In"),
       body: Container(
         margin: EdgeInsets.symmetric(
             horizontal: Responsive.isTablet(context) ? Get.width * 0.2 : 16),

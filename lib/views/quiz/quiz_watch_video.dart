@@ -22,7 +22,10 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: tabAppBar(title: "Watch the video below to find out more"),
+      appBar: tabAppBar(
+          title: Responsive.isTablet(context)
+              ? "Watch the video below to find out more"
+              : "Watch the video below\nto find out more"),
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: Responsive.isTablet(context) ? 32 : 16),
@@ -31,6 +34,7 @@ class _QuizWatchVideoState extends State<QuizWatchVideo> {
                 child: Column(
                   children: [
                     _VideoBar(),
+                    _PersonCareerDetails(),
                     CustomButton(
                       text: "GO TO CAREERS LIST",
                       funct: () {
