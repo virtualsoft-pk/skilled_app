@@ -1,17 +1,13 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skilled_app/splash_screen.dart';
+import 'package:skilled_app/views/splash_screen.dart';
 
 void main() {
   runApp(
-      // DevicePreview(
-      //   enabled: !kReleaseMode,
-      //   builder: (context) => MyApp(), // Wrap your app
-      // ),
-      const MyApp());
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
