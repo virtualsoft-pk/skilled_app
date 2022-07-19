@@ -25,45 +25,54 @@ class _SearchSuggestionScreenState extends State<SearchSuggestionScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            if (Responsive.isTablet(context))
-              const SizedBox(
-                height: 32,
-              ),
+            const SizedBox(
+              height: 32,
+            ),
             Container(
-              width: double.infinity,
-              margin: EdgeInsets.symmetric(
-                  horizontal:
-                      Responsive.isTablet(context) ? Get.width * 0.2 : 16),
-              height: 48,
-              color: Color(0xffF4F4F5),
-              child: TypeAheadField(
-                suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                    elevation: 0, color: Colors.transparent),
-                textFieldConfiguration: TextFieldConfiguration(
-                    autofocus: true,
-                    decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.clear),
-                        contentPadding: EdgeInsets.only(bottom: 10, left: 10),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12)))),
-                suggestionsCallback: (pattern) async {
-                  return await getSuggestions(pattern);
-                },
-                itemBuilder: (context, String suggestion) {
-                  return ListTile(
-                    leading: Icon(Icons.search),
-                    title: Transform.translate(
-                      offset: Offset(-20, 0),
-                      child: Text(suggestion),
-                    ),
-                  );
-                },
-                onSuggestionSelected: (suggestion) {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => Career()));
-                },
-              ),
-            )
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(
+                    horizontal:
+                        Responsive.isTablet(context) ? Get.width * 0.2 : 16),
+                height: 48,
+                decoration: BoxDecoration(
+                    color: const Color(0xffF4F4F5),
+                    borderRadius: BorderRadius.circular(12)),
+                child: GetBuilder<_SuggestionController>(
+                    init: _SuggestionController(),
+                    builder: (controller) {
+                      return TypeAheadField(
+                        suggestionsBoxDecoration:
+                            const SuggestionsBoxDecoration(
+                                elevation: 0, color: Colors.transparent),
+                        textFieldConfiguration: TextFieldConfiguration(
+                            autofocus: true,
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                            decoration: InputDecoration(
+                                suffixIcon:
+                                    const Icon(Icons.clear, color: Colors.grey),
+                                contentPadding:
+                                    const EdgeInsets.only(bottom: 10, left: 22),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12)))),
+                        suggestionsCallback: (pattern) async {
+                          controller.updatePattern(pattern);
+                          return getSuggestions(pattern);
+                        },
+                        itemBuilder: (context, String suggestion) {
+                          return ListTile(
+                            leading: const Icon(Icons.search),
+                            title: Transform.translate(
+                              offset: const Offset(-20, 0),
+                              child: Text(suggestion),
+                            ),
+                          );
+                        },
+                        onSuggestionSelected: (suggestion) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Career()));
+                        },
+                      );
+                    }))
           ],
         ),
       ),
@@ -75,5 +84,14 @@ class _SearchSuggestionScreenState extends State<SearchSuggestionScreen> {
         .where(
             (element) => element.toLowerCase().contains(pattern.toLowerCase()))
         .toList();
+  }
+}
+
+class _SuggestionController extends GetxController {
+  String pattern = "";
+
+  void updatePattern(String value) {
+    pattern = value;
+    update();
   }
 }

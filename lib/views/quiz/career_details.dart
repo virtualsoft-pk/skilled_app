@@ -17,7 +17,12 @@ class _CareerState extends State<Career> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: tabAppBar(title: "Career Details"),
+      appBar: tabAppBar(
+        title: "Career Details",
+        trailing: const SizedBox(
+          width: 32,
+        ),
+      ),
       body: Container(
         margin: EdgeInsets.symmetric(
             horizontal: Responsive.isTablet(context) ? 32 : 16),

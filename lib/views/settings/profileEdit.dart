@@ -56,6 +56,12 @@ class _ProfileEditState extends State<ProfileEdit> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    dob.text = "DD/MM/YYYY";
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,

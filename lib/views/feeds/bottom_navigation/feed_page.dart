@@ -300,7 +300,7 @@ class _TabBarState extends State<_TabBar> {
                                         ),
                                       ),
                                       Text(
-                                        feedModel[i].dateTime!.toString(),
+                                        "Monday at 2.00 AM",
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w400,
@@ -578,10 +578,10 @@ class _TabBarState extends State<_TabBar> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  // colorFilter: ColorFilter.mode(
-                                  //   filterColor,
-                                  //   BlendMode.darken,
-                                  // ),
+                                  colorFilter: ColorFilter.mode(
+                                    filterColor,
+                                    BlendMode.darken,
+                                  ),
                                   fit: BoxFit.cover,
                                   image: AssetImage(
                                     videoFeedModel[i].bgImage!,
@@ -640,9 +640,7 @@ class _TabBarState extends State<_TabBar> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  videoFeedModel[i]
-                                                      .dateTime!
-                                                      .toString(),
+                                                  "Monday at 2.00 AM",
                                                   style: TextStyle(
                                                     fontSize: 12,
                                                     fontWeight: FontWeight.w400,
@@ -842,6 +840,13 @@ class _TabBarState extends State<_TabBar> {
                                   ),
                                 ],
                               ),
+                            ),
+                            Center(
+                              child: CircleAvatar(
+                                  radius: 36,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(Icons.play_arrow,
+                                      color: Colors.black)),
                             ),
                           ],
                         );

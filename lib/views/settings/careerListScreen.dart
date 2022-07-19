@@ -42,17 +42,20 @@ class _CareerListScreenState extends State<CareerListScreen> {
       backgroundColor: Colors.white,
       appBar: tabAppBar(
         title: "Career List",
-        trailing: InkWell(
-          onTap: () {
-            setState(() {
-              changeView = !changeView;
-            });
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(right: 20, top: 20),
-            child: Text(
-              "Edit",
-              style: TextStyle(color: Colors.black),
+        trailing: Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                changeView = !changeView;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20, top: 20),
+              child: Text(
+                "Edit",
+                style: TextStyle(color: Colors.black),
+              ),
             ),
           ),
         ),

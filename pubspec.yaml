@@ -50,7 +50,6 @@ dev_dependencies:
   image_picker: ^0.8.4+11
   multi_select_flutter: ^4.0.0
   percent_indicator: ^4.0.0
-  pinput: null
   responsive_framework: ^0.2.0
   rounded_linear_progress: ^0.0.2
   share_plus: null
@@ -60,6 +59,7 @@ dev_dependencies:
   url_launcher: null
   video_player: ^2.4.5
   device_preview: ^0.8.0
+  pinput: ^1.2.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

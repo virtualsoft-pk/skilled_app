@@ -125,9 +125,7 @@ class Search extends StatelessWidget {
                                   // Get.to(() => BottomNavigation3());
                                 },
                                 child: Chip(
-                                  backgroundColor: Responsive.isTablet(context)
-                                      ? Colors.grey[200]
-                                      : grey700,
+                                  backgroundColor: Colors.grey[200],
                                   labelPadding: EdgeInsets.symmetric(
                                       horizontal: 10,
                                       vertical: Responsive.isTablet(context)

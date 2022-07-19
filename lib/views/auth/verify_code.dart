@@ -1,6 +1,7 @@
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pinput/pin_put/pin_put.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/auth/reset_password.dart';
 import 'package:skilled_app/views/auth/sign_in.dart';
@@ -73,29 +74,28 @@ class _VerifyCodeState extends State<VerifyCode> {
             SizedBox(
               height: Get.height * 0.07,
             ),
-            // PinPut(
-            //   textStyle:
-            //       const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            //   eachFieldHeight: 80,
-            //   eachFieldWidth: 70,
-            //   fieldsCount: 4,
-            //   onSubmit: (String pin) => _showSnackBar(pin, context),
-            //   focusNode: _pinPutFocusNode,
-            //   controller: _pinPutController,
-            //   submittedFieldDecoration: _pinPutDecoration.copyWith(
-            //     borderRadius: BorderRadius.circular(20.0),
-            //   ),
-            //   selectedFieldDecoration: _pinPutDecoration,
-            //   followingFieldDecoration: _pinPutDecoration.copyWith(
-            //     borderRadius: BorderRadius.circular(20.0),
+            PinPut(
+              textStyle:
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              eachFieldHeight: 80,
+              eachFieldWidth: 70,
+              fieldsCount: 4,
+              onSubmit: (String pin) => _showSnackBar(pin, context),
+              focusNode: _pinPutFocusNode,
+              controller: _pinPutController,
+              submittedFieldDecoration: _pinPutDecoration.copyWith(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              selectedFieldDecoration: _pinPutDecoration,
+              followingFieldDecoration: _pinPutDecoration.copyWith(
+                borderRadius: BorderRadius.circular(20.0),
 
-            //     color: greyColor,
-            //     // border: Border.all(
-            //     //   color: Colors.deepPurpleAccent.withOpacity(.5),
-            //     // ),
-            //   ),
-            // ),
-
+                color: greyColor,
+                // border: Border.all(
+                //   color: Colors.deepPurpleAccent.withOpacity(.5),
+                // ),
+              ),
+            ),
             const SizedBox(
               height: 16,
             ),

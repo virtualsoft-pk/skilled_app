@@ -16,7 +16,14 @@ class _ChangePasswordState extends State<ChangePassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: tabAppBar(title: "Change Password"),
+      appBar: tabAppBar(
+          title: "Change Password",
+          trailing: GestureDetector(
+            onTap: () {},
+            child: const Padding(
+                padding: EdgeInsets.only(top: 8, right: 12),
+                child: Text("Cancel")),
+          )),
       body: SingleChildScrollView(
         child: Container(
           width: Get.width,

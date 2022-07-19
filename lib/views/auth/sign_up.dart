@@ -21,6 +21,12 @@ class _SignUpViewState extends State<SignUpView> {
   TextEditingController dob = TextEditingController();
 
   @override
+  void initState() {
+    dob.text = "DD/MM/YYYY";
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -127,7 +133,7 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                   const Text(
-                    'Password should be 8-16 charecter',
+                    'Password should be 8-16 charactar',
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -141,7 +147,7 @@ class _SignUpViewState extends State<SignUpView> {
               Row(
                 children: const [
                   Text(
-                    'Confiem Password',
+                    'Confirm Password',
                   ),
                   Text(
                     '*',

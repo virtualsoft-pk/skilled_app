@@ -17,31 +17,39 @@ class _JobsState extends State<Jobs> {
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(
-          Responsive.isMobile(context) ? 0 : 80,
+          Responsive.isMobile(context) ? 80 : 80,
         ),
         child: AppBar(
+            centerTitle: Responsive.isMobile(context) ? true : false,
             elevation: 0,
-            title: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  child: Text(
-                    "Available Jobs",
-                    style: TextStyle(color: Colors.black, fontSize: 15),
+            title: Padding(
+              padding:
+                  EdgeInsets.only(top: Responsive.isMobile(context) ? 22 : 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Text(
+                      "Available Jobs",
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ),
                   ),
-                ),
-                if (Responsive.isTablet(context))
                   Text(
                     "www.google.com",
                     style: TextStyle(color: grey900, fontSize: 12),
                   )
-              ],
+                ],
+              ),
             ),
-            leading: IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: Icon(Icons.clear, color: Colors.black),
+            leading: Padding(
+              padding:
+                  EdgeInsets.only(top: Responsive.isMobile(context) ? 22 : 0),
+              child: IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Icon(Icons.clear, color: Colors.black),
+              ),
             ),
             backgroundColor: Color(0xffF4F4F5)),
       ),

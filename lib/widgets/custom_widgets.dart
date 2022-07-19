@@ -11,31 +11,34 @@ tabAppBar({title, trailing}) {
   return PreferredSize(
     preferredSize: const Size.fromHeight(100),
     child: Builder(builder: (context) {
-      return Row(
-        children: [
-          const SizedBox(
-            width: 16,
-          ),
-          SizedBox(child: customBackButton()),
-          title != null ? const Spacer() : const SizedBox(),
-          title != null
-              ? Container(
-                  margin: EdgeInsets.only(top: Get.height * 0.01),
-                  child: Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.manrope(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+      return SafeArea(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(
+              width: 16,
+            ),
+            SizedBox(child: customBackButton()),
+            title != null ? const Spacer() : const SizedBox(),
+            title != null
+                ? Container(
+                    margin: EdgeInsets.only(top: Get.height * 0.01),
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.manrope(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                  )
+                : SizedBox(
+                    width: Responsive.isTablet(context) ? 120 : 12,
                   ),
-                )
-              : SizedBox(
-                  width: Responsive.isTablet(context) ? 120 : 12,
-                ),
-          const Spacer(),
-          if (trailing != null) trailing,
-        ],
+            const Spacer(),
+            if (trailing != null) trailing,
+          ],
+        ),
       );
     }),
   );

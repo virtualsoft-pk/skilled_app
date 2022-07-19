@@ -20,7 +20,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: tabAppBar(title: "Notification Setting"),
+      appBar: tabAppBar(
+          title: "Notification Settings",
+          trailing: const SizedBox(
+            width: 32,
+          )),
       body: Container(
         width: Get.width,
         padding: EdgeInsets.symmetric(
@@ -58,35 +62,50 @@ class _NotificationScreenState extends State<NotificationScreen> {
     );
   }
 
-  ListTile buildListTile(
+  Widget buildListTile(
       String title, String subTitle, bool isChecked, Function onPressed) {
-    return ListTile(
-      title: Text(
-        title,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-      ),
-      subtitle: Text(
-        subTitle,
-        style: TextStyle(fontSize: 14, color: notificationTextColor),
-      ),
-      trailing: Container(
-        height: Get.height * 0.03,
-        width: Get.width * 0.13,
-        //color: Colors.black12,
-        child: FlutterSwitch(
-          height: 30.0,
-          width: 50.0,
-          padding: 4.0,
-          toggleSize: 15.0,
-          borderRadius: 14.0,
-          inactiveToggleColor: inActiveTogolColor,
-          activeColor: toggleColor,
-          inactiveColor: toggleColor.withOpacity(0.5),
-          toggleColor: progressColor,
-          value: isChecked,
-          onToggle: (value) => onPressed(value),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: Row(children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            SizedBox(
+              width: Get.width * 0.75,
+              child: Text(
+                subTitle,
+                style: TextStyle(fontSize: 14, color: notificationTextColor),
+              ),
+            ),
+          ],
         ),
-      ),
+        const Spacer(),
+        SizedBox(
+          height: Get.height * 0.03,
+          width: Get.width * 0.13,
+          //color: Colors.black12,
+          child: FlutterSwitch(
+            height: 30.0,
+            width: 50.0,
+            padding: 4.0,
+            toggleSize: 15.0,
+            borderRadius: 14.0,
+            inactiveToggleColor: inActiveTogolColor,
+            activeColor: toggleColor,
+            inactiveColor: toggleColor.withOpacity(0.5),
+            toggleColor: progressColor,
+            value: isChecked,
+            onToggle: (value) => onPressed(value),
+          ),
+        ),
+      ]),
     );
   }
 }

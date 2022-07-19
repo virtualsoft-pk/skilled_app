@@ -225,7 +225,9 @@ class QuizOption extends StatelessWidget {
             ),
             Checkbox(
               side: const BorderSide(color: borderColor),
-              onChanged: (val) {},
+              onChanged: (val) {
+                onTap();
+              },
               value: selected,
               activeColor: Colors.white,
               checkColor: grey900,
