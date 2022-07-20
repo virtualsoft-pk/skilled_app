@@ -101,8 +101,8 @@ class _EventPageForMonthState extends State<EventPageForMonth>
                 flex: dropdownvalue == 'This Month' ? 2 : 1,
                 child: Calendar(
                   onDateSelected: (val) {},
-                  selectedColor: Colors.transparent,
-                  todayColor: Colors.transparent,
+                  selectedColor: primaryColor,
+                  todayColor: primaryColor,
                   eventColor: purple,
                   hideTodayIcon: true,
                   bottomBarColor: const Color(0xffEDEFF4),

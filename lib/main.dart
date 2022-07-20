@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skilled_app/views/splash_screen.dart';
+import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
 
 void main() {
   runApp(
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme,
           ),
         ),
-        home: SplashScreen());
+        home: BottomNavigation());
   }
 
   void setOrientation() {

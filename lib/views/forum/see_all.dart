@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skilled_app/views/forum/quiz_06.dart';
+import 'package:skilled_app/views/forum/create_post.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:skilled_app/views/forum/thread_detail.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';

@@ -18,7 +18,7 @@ class _AccountDetailState extends State<AccountDetail> {
       appBar: tabAppBar(title: "Account"),
       body: Container(
         width: Get.width,
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
           children: [
             Stack(
@@ -26,17 +26,18 @@ class _AccountDetailState extends State<AccountDetail> {
               children: [
                 CircleAvatar(
                   radius: Get.height * 0.08,
-                  backgroundImage: AssetImage("assets/images/settingImage.png"),
+                  backgroundImage:
+                      const AssetImage("assets/images/settingImage.png"),
                 ),
                 Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(5),
+                  decoration: const BoxDecoration(
                       color: Colors.white, shape: BoxShape.circle),
                   child: Container(
-                    padding: EdgeInsets.all(7),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(7),
+                    decoration: const BoxDecoration(
                         color: buttonColor, shape: BoxShape.circle),
-                    child: Icon(
+                    child: const Icon(
                       Icons.camera_alt_outlined,
                       color: Colors.black,
                     ),
@@ -60,17 +61,17 @@ class _AccountDetailState extends State<AccountDetail> {
 
 Widget buildListTile(IconData icon, String title, String subtitle) => ListTile(
       leading: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           //shape: BoxShape.circle,
           borderRadius: BorderRadius.circular(18),
-          color: Color(0xffF4F4F5),
+          color: const Color(0xffF4F4F5),
         ),
         child: Icon(icon),
       ),
       title: Text(
         title,
-        style: TextStyle(fontSize: 14, color: Colors.grey),
+        style: const TextStyle(fontSize: 14, color: Colors.grey),
       ),
       subtitle: Text(
         subtitle,

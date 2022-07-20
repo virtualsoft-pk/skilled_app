@@ -236,28 +236,32 @@ class _CustomBtmNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 56),
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: onTap,
-            child: Image.asset(iconPath, height: 24),
-          ),
-          if (isSelected)
-            const SizedBox(
-              height: 6,
-            ),
-          if (isSelected)
-            Container(
-              height: 6,
-              width: 6,
-              decoration: const BoxDecoration(
-                color: Color(0xFF497BC4),
-                shape: BoxShape.circle,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        color: Colors.transparent,
+        width: 60,
+        height: 60,
+        padding: const EdgeInsets.only(top: 8),
+        margin: const EdgeInsets.only(bottom: 28),
+        child: Column(
+          children: [
+            Image.asset(iconPath, height: 24),
+            if (isSelected)
+              const SizedBox(
+                height: 6,
               ),
-            ),
-        ],
+            if (isSelected)
+              Container(
+                height: 6,
+                width: 6,
+                decoration: const BoxDecoration(
+                  color: Color(0xFF497BC4),
+                  shape: BoxShape.circle,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

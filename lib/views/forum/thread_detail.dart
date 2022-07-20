@@ -2,7 +2,7 @@ import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skilled_app/views/forum/quiz_06.dart';
+import 'package:skilled_app/views/forum/create_post.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skilled_app/views/forum/quiz_06.dart';
+import 'package:skilled_app/views/forum/create_post.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:skilled_app/views/forum/thread_detail.dart';
 import 'package:skilled_app/views/responsive.dart';

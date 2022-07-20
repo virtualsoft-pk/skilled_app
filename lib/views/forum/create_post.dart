@@ -27,6 +27,9 @@ class _CreatePostOnForumState extends State<CreatePostOnForum> {
     'UX Designer',
     'Musician',
   ];
+
+  var selectedThreadOption = 'A-level Options';
+
   @override
   Widget build(BuildContext context) {
     var screenheight = MediaQuery.of(context).size.height;
@@ -65,43 +68,50 @@ class _CreatePostOnForumState extends State<CreatePostOnForum> {
                       height: screenheight * 0.01,
                     ),
                     Container(
-                      //margin: EdgeInsets.symmetric(horizontal: 10),
-                      height: screenheight * 0.08,
-                      width: screenwidth * 0.9,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: Responsive.isTablet(context) ? 24 : 12),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: greycolor),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          myText(
-                              text: 'A-level Options',
-                              style: GoogleFonts.manrope(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              )),
-                          DropdownButtonHideUnderline(
-                            child: DropdownButton<String>(
-                              focusColor: null,
-                              //hint: Text('This month'),
-                              items: <String>[
-                                'A-level Options',
-                                'B-level Options',
-                                'C-level Options',
-                              ].map((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                              onChanged: (_) {},
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                        //margin: EdgeInsets.symmetric(horizontal: 10),
+                        height: screenheight * 0.08,
+                        width: screenwidth * 0.9,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Responsive.isTablet(context) ? 24 : 12),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: greycolor),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: selectedThreadOption,
+                            // focusColor: null,
+                            // hint: Text('This month'),
+                            items: <String>[
+                              'A-level Options',
+                              'B-level Options',
+                              'C-level Options',
+                            ].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (val) {
+                              setState(() {
+                                selectedThreadOption = val as String;
+                              });
+                            },
+                          ),
+                        )
+
+                        //  Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     // myText(
+                        //     //     text: 'A-level Options',
+                        //     //     style: GoogleFonts.manrope(
+                        //     //       fontSize: 16,
+                        //     //       fontWeight: FontWeight.w500,
+                        //     //     )),
+
+                        //   ],
+
+                        ),
                     SizedBox(
                       height: screenheight * 0.02,
                     ),
