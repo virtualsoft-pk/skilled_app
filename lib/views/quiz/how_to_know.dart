@@ -41,7 +41,7 @@ class _HowToKnowState extends State<HowToKnow> {
     var screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: tabAppBar(title: 'Quiz'),
+      appBar: tabAppBar(title: ''),
       body: Container(
         margin: EdgeInsets.symmetric(
             horizontal: Responsive.isTablet(context) ? Get.width * 0.05 : 16),

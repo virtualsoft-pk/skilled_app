@@ -104,12 +104,18 @@ class _SearchResultState extends State<SearchResult> {
                                                   ),
                                                 ),
                                                 Spacer(),
-                                                Text(
-                                                  'Apply',
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 14,
-                                                    color: Color(0xff60656D),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    Get.back();
+                                                  },
+                                                  child: Text(
+                                                    'Apply',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 14,
+                                                      color: Color(0xff60656D),
+                                                    ),
                                                   ),
                                                 ),
                                                 SizedBox(

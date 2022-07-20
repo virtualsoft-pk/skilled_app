@@ -35,7 +35,11 @@ class _QuizPageState extends State<QuizPage> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: tabAppBar(title: 'Quiz'),
+      appBar: tabAppBar(
+          title: 'Quiz',
+          trailing: const SizedBox(
+            width: 52,
+          )),
       body: Container(
         margin: EdgeInsets.symmetric(
             horizontal: Responsive.isTablet(context) ? Get.width * 0.25 : 16),

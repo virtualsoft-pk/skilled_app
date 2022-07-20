@@ -91,7 +91,10 @@ class _AllCareersState extends State<AllCareers> {
       appBar: tabAppBar(
           title: Responsive.isMobile(context)
               ? "Select All The Careers\nYou Are Interested In"
-              : "Select All The Careers You Are Interested In"),
+              : "Select All The Careers You Are Interested In",
+          trailing: SizedBox(
+            width: Responsive.isMobile(context) ? 48 : 0,
+          )),
       body: Container(
         margin: EdgeInsets.symmetric(
             horizontal: Responsive.isTablet(context) ? Get.width * 0.2 : 16),

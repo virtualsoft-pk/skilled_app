@@ -7,6 +7,8 @@ import 'package:skilled_app/widgets/custom_widgets.dart';
 import '../../widgets/custom_button.dart';
 
 class ChangePassword extends StatefulWidget {
+  const ChangePassword({Key? key}) : super(key: key);
+
   @override
   _ChangePasswordState createState() => _ChangePasswordState();
 }
@@ -35,9 +37,10 @@ class _ChangePasswordState extends State<ChangePassword> {
               SizedBox(
                 height: Get.height * 0.04,
               ),
-              Text(
+              const Text(
                 "Current password",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               SizedBox(
                 height: Get.height * 0.02,
@@ -48,9 +51,10 @@ class _ChangePasswordState extends State<ChangePassword> {
               SizedBox(
                 height: Get.height * 0.03,
               ),
-              Text(
+              const Text(
                 "New Password",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               SizedBox(
                 height: Get.height * 0.02,
@@ -59,9 +63,10 @@ class _ChangePasswordState extends State<ChangePassword> {
               SizedBox(
                 height: Get.height * 0.03,
               ),
-              Text(
+              const Text(
                 "Confirm New Password",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               SizedBox(
                 height: Get.height * 0.01,
@@ -70,16 +75,15 @@ class _ChangePasswordState extends State<ChangePassword> {
               SizedBox(
                 height: Get.height * 0.04,
               ),
-              InkWell(
-                  onTap: () {}, child: CustomButton(text: "RESET PASSWORD")),
+              InkWell(onTap: () {}, child: CustomButton(text: "UPDATE")),
               SizedBox(
                 height: Get.height * 0.04,
               ),
-              Align(
+              const Align(
                 alignment: Alignment.center,
                 child: Text(
                   "Forgot Password?",
-                  style: TextStyle(color: Colors.blue),
+                  style: const TextStyle(color: Colors.blue),
                 ),
               ),
             ],

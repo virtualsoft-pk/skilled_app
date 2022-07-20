@@ -9,6 +9,7 @@ import 'package:skilled_app/views/settings/profileEdit.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
 
 import '../../utils/app_colors.dart';
+import '../../widgets/settings_listtile.dart';
 
 class AccountDetail extends StatefulWidget {
   @override
@@ -36,10 +37,10 @@ class _AccountDetailState extends State<AccountDetail> {
           title: "Account Details",
           trailing: InkWell(
             onTap: () {
-              Get.to(() => ProfileEdit());
+              Get.to(() => const ProfileEdit());
             },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20, top: 20, left: 10),
+            child: const Padding(
+              padding: EdgeInsets.only(right: 20, top: 8, left: 10),
               child: Text(
                 "Edit",
                 style: TextStyle(
@@ -63,7 +64,7 @@ class _AccountDetailState extends State<AccountDetail> {
                     ? CircleAvatar(
                         radius: Get.height * 0.078,
                         backgroundColor: Colors.grey.withOpacity(0.3),
-                        backgroundImage: AssetImage(
+                        backgroundImage: const AssetImage(
                           "assets/images/profilePic.png",
                         )
                         // child: Container(
@@ -81,16 +82,16 @@ class _AccountDetailState extends State<AccountDetail> {
                         backgroundImage: FileImage(image!),
                       ),
                 Container(
-                  padding: EdgeInsets.all(3),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(3),
+                  decoration: const BoxDecoration(
                       color: Colors.white, shape: BoxShape.circle),
                   child: InkWell(
                     onTap: () {
                       pickFunction();
                     },
                     child: Container(
-                      padding: EdgeInsets.all(7),
-                      decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(7),
+                      decoration: const BoxDecoration(
                           color: buttonColor, shape: BoxShape.circle),
                       child: Image.asset(
                         "assets/images/Camera.png",
@@ -105,11 +106,23 @@ class _AccountDetailState extends State<AccountDetail> {
             SizedBox(
               height: Get.height * 0.02,
             ),
+            const SizedBox(
+              height: 8,
+            ),
             buildListTile(
                 "assets/images/user.png", "Full Name", "India Harris"),
+            const SizedBox(
+              height: 8,
+            ),
             buildListTile(
                 "assets/images/mail.png", "Email", "indiaharris345@gmail.com"),
+            const SizedBox(
+              height: 8,
+            ),
             buildListTile("assets/images/genders.png", "Gender", "Female"),
+            const SizedBox(
+              height: 8,
+            ),
             buildListTile("assets/images/simpleCalander.png", "Date of Birth",
                 "09/09/2006"),
           ],
@@ -118,27 +131,3 @@ class _AccountDetailState extends State<AccountDetail> {
     );
   }
 }
-
-Widget buildListTile(String icon, String title, String subtitle) => ListTile(
-      leading: Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          //shape: BoxShape.circle,
-          borderRadius: BorderRadius.circular(18),
-          color: Color(0xffF4F4F5),
-        ),
-        child: Image.asset(
-          icon,
-          height: Get.height * 0.03,
-        ),
-      ),
-      title: Text(
-        title,
-        style: TextStyle(fontSize: 12, color: tileTextColor),
-      ),
-      subtitle: Text(
-        subtitle,
-        style: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
-      ),
-    );

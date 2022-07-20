@@ -50,8 +50,8 @@ class _CareerListScreenState extends State<CareerListScreen> {
                 changeView = !changeView;
               });
             },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20, top: 20),
+            child: const Padding(
+              padding: EdgeInsets.only(right: 20, top: 20),
               child: Text(
                 "Edit",
                 style: TextStyle(color: Colors.black),
@@ -71,14 +71,14 @@ class _CareerListScreenState extends State<CareerListScreen> {
               SizedBox(
                 height: Get.height * 0.03,
               ),
-              Text(
+              const Text(
                 "Your Career list",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: Get.height * 0.01,
               ),
-              Text(
+              const Text(
                 "From the careers here, we create you a\npersonalised feed of content.",
                 style: TextStyle(fontSize: 16),
               ),
@@ -89,7 +89,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
               ListView.builder(
                 itemCount: careerList.length,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, i) {
                   return Column(
                     children: [
@@ -110,24 +110,25 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   ? Container()
                   : InkWell(
                       onTap: () {
-                        context.navigator.push<void>(
-                            SwipeablePageRoute(builder: (_) => QuizStart()));
+                        context.navigator.push<void>(SwipeablePageRoute(
+                            builder: (_) => const QuizStart()));
                       },
                       child: ListTile(
                         shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.grey, width: 0.4),
+                            side: const BorderSide(
+                                color: Colors.grey, width: 0.4),
                             borderRadius: BorderRadius.circular(8)),
-                        title: Text(
+                        title: const Text(
                           "Retake The Quiz",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w600),
                         ),
-                        subtitle: Text(
+                        subtitle: const Text(
                           "Your careers list will be reset after this",
                           style: TextStyle(
                               color: notificationTextColor, fontSize: 12),
                         ),
-                        trailing: Icon(
+                        trailing: const Icon(
                           Icons.arrow_forward_ios,
                           size: 17,
                         ),
@@ -144,7 +145,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                             elevation: 20.0,
                             enableDrag: false,
                             backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
+                            shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(30.0),
                               topRight: Radius.circular(30.0),
@@ -181,8 +182,8 @@ class _CareerListScreenState extends State<CareerListScreen> {
                     elevation: 20.0,
                     enableDrag: false,
                     backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(15.0),
                         topRight: Radius.circular(15.0),
                       ),
@@ -464,7 +465,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   //   },
                   // );
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.add,
                   color: Colors.black,
                 ),
@@ -482,7 +483,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
 
   buttomSheet() {
     return Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
         left: 15,
         right: 15,
         top: 15,
@@ -497,24 +498,24 @@ class _CareerListScreenState extends State<CareerListScreen> {
                 children: [
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "Add careers",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       InkWell(
                         onTap: () {
                           Get.back();
                         },
                         child: Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           height: Get.height * 0.06,
                           decoration: BoxDecoration(
                               color: Colors.grey.withOpacity(0.3),
                               shape: BoxShape.circle),
-                          child: Center(
-                            child: Icon(
+                          child: const Center(
+                            child: const Icon(
                               Icons.close,
                               size: 20,
                             ),
@@ -526,11 +527,11 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   SizedBox(
                     height: Get.height * 0.01,
                   ),
-                  Divider(),
+                  const Divider(),
                   SizedBox(
                     height: Get.height * 0.02,
                   ),
-                  Text(
+                  const Text(
                     "Tags",
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                   ),
@@ -554,7 +555,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                         autofocus: false,
                         controller: tagController,
                         enableSuggestions: true,
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                         decoration: InputDecoration(
                           hintText: 'Search Careers',
                           border: OutlineInputBorder(
@@ -562,7 +563,8 @@ class _CareerListScreenState extends State<CareerListScreen> {
                           ),
                         ),
                       ),
-                      suggestionsBoxDecoration: SuggestionsBoxDecoration(),
+                      suggestionsBoxDecoration:
+                          const SuggestionsBoxDecoration(),
                       suggestionsCallback: (pattern) {
                         List<String> matches = <String>[];
                         matches.addAll(careerList);
@@ -597,9 +599,10 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   SizedBox(
                     height: Get.height * 0.01,
                   ),
-                  Text(
+                  const Text(
                     "My selected tags",
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                    style: const TextStyle(
+                        fontSize: 12, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(
                     height: Get.height * 0.01,
@@ -608,7 +611,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                     width: double.infinity,
                     height: 40,
                     child: quizController!.selectedTags.value.length == 0
-                        ? Center(
+                        ? const Center(
                             child: Text("No tag yet"),
                           )
                         : ListView.builder(
@@ -627,14 +630,14 @@ class _CareerListScreenState extends State<CareerListScreen> {
                                   decoration: BoxDecoration(
                                       color: Colors.grey.withOpacity(0.3),
                                       borderRadius: BorderRadius.circular(15)),
-                                  margin: EdgeInsets.only(right: 5),
+                                  margin: const EdgeInsets.only(right: 5),
                                   child: Padding(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 5),
                                     child: Row(
                                       children: [
                                         Text(quizController!.selectedTags[i]),
-                                        Icon(
+                                        const Icon(
                                           Icons.clear,
                                           color: Colors.black,
                                           size: 15,
@@ -753,7 +756,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                                 borderRadius: BorderRadius.circular(20),
                                 border:
                                     Border.all(width: 0.3, color: Colors.grey)),
-                            child: Center(
+                            child: const Center(
                                 child: Text(
                               "Cancel",
                               style: TextStyle(
@@ -789,17 +792,17 @@ class _CareerListScreenState extends State<CareerListScreen> {
                               color: buttonColor,
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: Center(
+                            child: const Center(
                                 child: Text(
                               "Add",
-                              style: TextStyle(fontSize: 20),
+                              style: const TextStyle(fontSize: 20),
                             )),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   )
                 ],
@@ -827,7 +830,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
       },
       child: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 20,
         ),
         height: 60,
@@ -840,9 +843,9 @@ class _CareerListScreenState extends State<CareerListScreen> {
           children: [
             Text(
               name,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
-            Spacer(),
+            const Spacer(),
             changeView
                 ? InkWell(
                     onTap: () {
@@ -871,7 +874,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
         children: choiceChips
             .map((choiceChip) => ChoiceChip(
                   label: Text(choiceChip.label),
-                  labelStyle: TextStyle(
+                  labelStyle: const TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.white),
                   onSelected: (isSelected) => setState(() {
                     choiceChips = choiceChips.map((otherChip) {
@@ -895,16 +898,16 @@ class _CareerListScreenState extends State<CareerListScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Chip(
-        side: BorderSide(color: Colors.grey, width: 1),
+        side: const BorderSide(color: Colors.grey, width: 1),
         backgroundColor: Colors.white,
-        labelPadding: EdgeInsets.all(2.0),
+        labelPadding: const EdgeInsets.all(2.0),
         label: Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
           ),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       ),
     );
   }

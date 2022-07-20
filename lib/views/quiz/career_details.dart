@@ -20,7 +20,7 @@ class _CareerState extends State<Career> {
       appBar: tabAppBar(
         title: "Career Details",
         trailing: const SizedBox(
-          width: 32,
+          width: 48,
         ),
       ),
       body: Container(
