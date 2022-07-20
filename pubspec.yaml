@@ -60,6 +60,8 @@ dev_dependencies:
   video_player: ^2.4.5
   device_preview: ^0.8.0
   pinput: ^1.2.1
+  table_calendar: ^3.0.6
+  intl: ^0.17.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

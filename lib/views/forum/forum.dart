@@ -15,8 +15,12 @@ import '../../widgets/hashir.dart';
 import '../settings/notification.dart';
 
 class Forum extends StatefulWidget {
+  Forum({Key? key, this.thread}) : super(key: key);
+
   @override
   _ForumState createState() => _ForumState();
+
+  final String? thread;
 }
 
 class _ForumState extends State<Forum> {
@@ -206,7 +210,7 @@ class _ForumState extends State<Forum> {
                         Row(
                           children: [
                             myText(
-                              text: 'Popular Thread',
+                              text: widget.thread ?? 'Popular Thread',
                               style: GoogleFonts.manrope(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
@@ -217,190 +221,89 @@ class _ForumState extends State<Forum> {
                         SizedBox(
                           height: 10,
                         ),
-                        ListView.builder(
-                          itemCount: isNextScreen == false ? 3 : threads.length,
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemBuilder: (ctx, i) {
-                            return Column(
-                              children: [
-                                SizedBox(
-                                  height: screenheight * 0.01,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      isNextScreen = false;
-                                    });
-                                  },
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      myText(
-                                          text: threads[i],
-                                          style: GoogleFonts.manrope(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
-                                          )),
-                                      Icon(
-                                        Icons.arrow_forward_ios,
-                                        size: 15,
-                                        color: arrow,
-                                      )
-                                    ],
+                        if (widget.thread == null)
+                          ListView.builder(
+                            itemCount:
+                                isNextScreen == false ? 3 : threads.length,
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemBuilder: (ctx, i) {
+                              return Column(
+                                children: [
+                                  SizedBox(
+                                    height: screenheight * 0.01,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: screenheight * 0.01,
-                                ),
-                                Divider(
-                                  thickness: 0.3,
-                                  color: dividercolor,
-                                )
-                              ],
-                            );
-                          },
-                        ),
-                        // SizedBox(
-                        //   height: screenheight * 0.02,
-                        // ),
-                        // Row(
-                        //   children: [
-                        //     myText(
-                        //       text: 'Popular Thread',
-                        //       style: GoogleFonts.manrope(
-                        //         fontSize: 18,
-                        //         fontWeight: FontWeight.w700,
-                        //       ),
-                        //     )
-                        //   ],
-                        // ),
-                        // SizedBox(
-                        //   height: screenheight * 0.02,
-                        // ),
-                        // InkWell(
-                        //   onTap: () {
-                        //     Get.to(() => PopularThread('A-Level Options '));
-                        //   },
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       myText(
-                        //           text: 'A-Level Options ',
-                        //           style: GoogleFonts.manrope(
-                        //             fontSize: 16,
-                        //             fontWeight: FontWeight.w500,
-                        //           )),
-                        //       Icon(
-                        //         Icons.arrow_forward_ios,
-                        //         size: 15,
-                        //         color: arrow,
-                        //       )
-                        //     ],
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: screenheight * 0.01,
-                        // ),
-                        // Divider(
-                        //   thickness: 0.3,
-                        //   color: dividercolor,
-                        // ),
-                        // SizedBox(
-                        //   height: screenheight * 0.02,
-                        // ),
-                        // InkWell(
-                        //   onTap: () {
-                        //     Get.to(() => PopularThread('Computer Science'));
-                        //   },
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       myText(
-                        //           text: 'Computer Science',
-                        //           style: GoogleFonts.manrope(
-                        //             fontSize: 16,
-                        //             fontWeight: FontWeight.w500,
-                        //           )),
-                        //       Icon(
-                        //         Icons.arrow_forward_ios,
-                        //         size: 15,
-                        //         color: arrow,
-                        //       )
-                        //     ],
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: screenheight * 0.01,
-                        // ),
-                        // Divider(
-                        //   thickness: 0.3,
-                        //   color: dividercolor,
-                        // ),
-                        // SizedBox(
-                        //   height: screenheight * 0.02,
-                        // ),
-                        // InkWell(
-                        //   onTap: () {
-                        //     Get.to(() => PopularThread('Workshops'));
-                        //   },
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: [
-                        //       myText(
-                        //           text: 'Workshops',
-                        //           style: GoogleFonts.manrope(
-                        //             fontSize: 16,
-                        //             fontWeight: FontWeight.w500,
-                        //           )),
-                        //       Icon(
-                        //         Icons.arrow_forward_ios,
-                        //         size: 15,
-                        //         color: arrow,
-                        //       )
-                        //     ],
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: screenheight * 0.01,
-                        // ),
-                        // Divider(
-                        //   thickness: 0.3,
-                        //   color: dividercolor,
-                        // ),
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        isNextScreen = false;
+                                        // Get.to(() => Forum(
+                                        //       thread: threads[i],
+                                        //     ));
+                                      });
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        myText(
+                                            text: threads[i],
+                                            style: GoogleFonts.manrope(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                            )),
+                                        Icon(
+                                          Icons.arrow_forward_ios,
+                                          size: 15,
+                                          color: arrow,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: screenheight * 0.01,
+                                  ),
+                                  Divider(
+                                    thickness: 0.3,
+                                    color: dividercolor,
+                                  )
+                                ],
+                              );
+                            },
+                          ),
                         SizedBox(
                           height: screenheight * 0.02,
                         ),
-                        isNextScreen == false
-                            ? InkWell(
-                                onTap: () {
-                                  isNextScreen = true;
-                                  setState(() {});
-                                  // Get.to(() => SeeAllThread());
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  height: Responsive.isTablet(context)
-                                      ? 38
-                                      : screenheight * 0.06,
-                                  width: Responsive.isTablet(context)
-                                      ? 110
-                                      : screenheight * 0.25,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: Colors.white,
-                                      border: Border.all(color: greycolor)),
-                                  child: myText(
-                                    text: 'See more',
-                                    style: GoogleFonts.manrope(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
+                        if (widget.thread == null)
+                          isNextScreen == false
+                              ? InkWell(
+                                  onTap: () {
+                                    isNextScreen = true;
+                                    setState(() {});
+                                    // Get.to(() => SeeAllThread());
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: Responsive.isTablet(context)
+                                        ? 38
+                                        : screenheight * 0.06,
+                                    width: Responsive.isTablet(context)
+                                        ? 110
+                                        : screenheight * 0.25,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        color: Colors.white,
+                                        border: Border.all(color: greycolor)),
+                                    child: myText(
+                                      text: 'See more',
+                                      style: GoogleFonts.manrope(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              )
-                            : SizedBox(),
+                                )
+                              : SizedBox(),
                       ],
                     ),
                   ),
@@ -408,7 +311,6 @@ class _ForumState extends State<Forum> {
                   SizedBox(
                     height: screenheight * 0.01,
                   ),
-
                   isNextScreen == false
                       ? Column(
                           children: [
@@ -416,13 +318,14 @@ class _ForumState extends State<Forum> {
                               margin: EdgeInsets.symmetric(horizontal: 15),
                               child: Row(
                                 children: [
-                                  myText(
-                                    text: 'Top Posts',
-                                    style: GoogleFonts.manrope(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  )
+                                  if (widget.thread == null)
+                                    myText(
+                                      text: 'Top Posts',
+                                      style: GoogleFonts.manrope(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    )
                                 ],
                               ),
                             ),

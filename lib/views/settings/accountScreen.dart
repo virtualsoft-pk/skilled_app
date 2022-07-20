@@ -37,36 +37,32 @@ class _AccountState extends State<Account> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                                onTap: () {
-                                  Get.to(() => AccountDetail());
-                                },
-                                child: buildListTile("assets/images/user.png",
-                                    "Account Details")),
-                            InkWell(
-                                onTap: () {
-                                  Get.to(() => const ChangePassword());
-                                },
-                                child: buildListTile(
-                                    "assets/images/Lock.png",
-                                    "Change Password",
-                                    "It's good idea to use strong password")),
-                            InkWell(
-                                onTap: () {
-                                  Get.to(() => NotificationScreen());
-                                },
-                                child: buildListTile(
-                                  "assets/images/notification.png",
-                                  "Notifications",
-                                )),
-                            const SizedBox(
-                              width: 120,
-                            ),
-                          ],
+                        InkWell(
+                            onTap: () {
+                              Get.to(() => AccountDetail());
+                            },
+                            child: buildTabListTile(
+                              "assets/images/user.png",
+                              "Account Details",
+                            )),
+                        InkWell(
+                            onTap: () {
+                              Get.to(() => const ChangePassword());
+                            },
+                            child: buildTabListTile(
+                                "assets/images/Lock.png",
+                                "Change Password",
+                                "It's good idea to use strong password")),
+                        InkWell(
+                            onTap: () {
+                              Get.to(() => NotificationScreen());
+                            },
+                            child: buildTabListTile(
+                              "assets/images/notification.png",
+                              "Notifications",
+                            )),
+                        const SizedBox(
+                          width: 120,
                         ),
                       ],
                     ),
@@ -114,6 +110,49 @@ class _AccountState extends State<Account> {
                   ),
                 ],
               ),
+      ),
+    );
+  }
+
+  Widget buildTabListTile(String image, String text, [String? desc]) {
+    print(desc.toString());
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              //shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(15),
+              color: const Color(0xffF4F4F5),
+            ),
+            child: Image.asset(
+              image,
+              height: 16,
+            ),
+          ),
+          const SizedBox(
+            width: 12,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                text,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+              if (desc != null)
+                Text(
+                  desc,
+                  style: const TextStyle(fontSize: 14, color: Colors.grey),
+                ),
+            ],
+          ),
+        ],
       ),
     );
   }

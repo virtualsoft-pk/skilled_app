@@ -17,6 +17,7 @@ class _CompleteEventState extends State<CompleteEvent> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             Container(

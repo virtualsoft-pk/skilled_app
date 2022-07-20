@@ -23,17 +23,18 @@ class _UpCommingEventState extends State<UpCommingEvent> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             ListView.builder(
               itemCount: isExpand == false ? 1 : 4,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, i) {
                 return Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                           top: 10, left: 16, right: 16, bottom: 12),
                       // height: Get.height * 0.1,
                       // width: Get.width * 0.9,
@@ -47,7 +48,7 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                               SwipeablePageRoute(builder: (_) => InPerson()));
                           // Get.to(() => InPerson());
                         },
-                        leading: CircleAvatar(
+                        leading: const CircleAvatar(
                           child: Image(
                             image: AssetImage('assets/images/img.png'),
                             fit: BoxFit.cover,
@@ -58,7 +59,7 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('2022 design meetup'),
+                              const Text('2022 design meetup'),
                               Text(
                                 'By evento',
                                 style: TextStyle(color: Colors.grey[400]),
@@ -68,14 +69,15 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                         ),
                         trailing: Column(
                           children: [
-                            Text('24 Jan'),
-                            Text('5:30 am'),
+                            const Text('24 Jan'),
+                            const Text('5:30 am'),
                           ],
                         ),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 16, right: 16, bottom: 12),
+                      margin: const EdgeInsets.only(
+                          left: 16, right: 16, bottom: 12),
                       height: Get.height * 0.1,
                       width: Get.width * 0.9,
                       decoration: BoxDecoration(
@@ -83,7 +85,7 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: ListTile(
-                        leading: CircleAvatar(
+                        leading: const CircleAvatar(
                           child: Image(
                             image: AssetImage('assets/images/img_1.png'),
                             fit: BoxFit.cover,
@@ -94,7 +96,7 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Game of throns'),
+                              const Text('Game of throns'),
                               Text(
                                 'By Netflix',
                                 style: TextStyle(color: Colors.grey[400]),
@@ -104,14 +106,15 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                         ),
                         trailing: Column(
                           children: [
-                            Text('24 Jan'),
-                            Text('5:30 am'),
+                            const Text('24 Jan'),
+                            const Text('5:30 am'),
                           ],
                         ),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 16, right: 16, bottom: 12),
+                      margin: const EdgeInsets.only(
+                          left: 16, right: 16, bottom: 12),
                       height: Get.height * 0.1,
                       width: Get.width * 0.9,
                       decoration: BoxDecoration(
@@ -119,8 +122,8 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: ListTile(
-                        leading: CircleAvatar(
-                          child: Image(
+                        leading: const CircleAvatar(
+                          child: const Image(
                             image: AssetImage('assets/images/img_2.png'),
                             fit: BoxFit.cover,
                           ),
@@ -130,7 +133,7 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Awards show'),
+                              const Text('Awards show'),
                               Text(
                                 'By Evento',
                                 style: TextStyle(color: Colors.grey[400]),
@@ -140,8 +143,8 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                         ),
                         trailing: Column(
                           children: [
-                            Text('24 Jan'),
-                            Text('5:30 am'),
+                            const Text('24 Jan'),
+                            const Text('5:30 am'),
                           ],
                         ),
                       ),
@@ -160,18 +163,17 @@ class _UpCommingEventState extends State<UpCommingEvent> {
                       isExpand = true;
                       setState(() {});
                     },
-                    child: Center(
-                      child: Text(
+                    child: const Center(
+                      child: const Text(
                         'See all',
                         style: TextStyle(fontSize: 14),
                       ),
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       ),
-
     );
   }
 }

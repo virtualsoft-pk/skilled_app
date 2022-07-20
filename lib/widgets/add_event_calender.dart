@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/responsive.dart';
@@ -34,25 +33,27 @@ AddEventCalender(BuildContext context) {
                     height: 220,
                     width: double.infinity,
                     // color: Colors.purple,
-                    child: Calendar(
-                      startOnMonday: true,
-                      weekDays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-                      // events: _events,
-                      events: {},
-                      //  isExpandable: true,
-                      // eventDoneColor: Colors.green,
-                      //  selectedColor: Colors.pink,
-                      //  todayColor: Colors.blue,
-                      //  eventColor: Colors.grey,
-                      // locale: 'de_DE',
-                      // todayButtonText: 'Heute',
-                      isExpanded: false,
-                      expandableDateFormat: 'EEEE, dd. MMMM yyyy',
-                      dayOfWeekStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 11),
-                    ),
+
+                    // TODO: add calendar
+                    // child: Calendar(
+                    //   startOnMonday: true,
+                    //   weekDays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+                    //   // events: _events,
+                    //   events: {},
+                    //   //  isExpandable: true,
+                    //   // eventDoneColor: Colors.green,
+                    //   //  selectedColor: Colors.pink,
+                    //   //  todayColor: Colors.blue,
+                    //   //  eventColor: Colors.grey,
+                    //   // locale: 'de_DE',
+                    //   // todayButtonText: 'Heute',
+                    //   isExpanded: false,
+                    //   expandableDateFormat: 'EEEE, dd. MMMM yyyy',
+                    //   dayOfWeekStyle: TextStyle(
+                    //       color: Colors.black,
+                    //       fontWeight: FontWeight.w800,
+                    //       fontSize: 11),
+                    // ),
                   ),
                   Container(
                     height: 20,
