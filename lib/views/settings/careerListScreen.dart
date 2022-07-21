@@ -184,287 +184,12 @@ class _CareerListScreenState extends State<CareerListScreen> {
                     enableDrag: false,
                     backgroundColor: Colors.white,
                     shape: const RoundedRectangleBorder(
-                      borderRadius: const BorderRadius.only(
+                      borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15.0),
                         topRight: Radius.circular(15.0),
                       ),
                     ),
                   );
-
-                  // showModalBottomSheet(
-                  //   shape: RoundedRectangleBorder(
-                  //     borderRadius: BorderRadius.circular(15),
-                  //   ),
-                  //   context: context,
-                  //   isScrollControlled: true,
-                  //   builder: (context) {
-                  //     return StatefulBuilder(
-                  //       builder: (BuildContext context, set) {
-                  //         return ListView(
-                  //           children: [
-                  //             Column(
-                  //               crossAxisAlignment: CrossAxisAlignment.start,
-                  //               children: [
-                  //                 Row(
-                  //                   children: [
-                  //                     Text(
-                  //                       "Add careers",
-                  //                       style: TextStyle(
-                  //                           fontSize: 16,
-                  //                           fontWeight: FontWeight.w600),
-                  //                     ),
-                  //                     Spacer(),
-                  //                     InkWell(
-                  //                       onTap: () {
-                  //                         Get.back();
-                  //                       },
-                  //                       child: Container(
-                  //                         padding: EdgeInsets.all(5),
-                  //                         height: Get.height * 0.06,
-                  //                         decoration: BoxDecoration(
-                  //                             color: Colors.grey.withOpacity(0.3),
-                  //                             shape: BoxShape.circle),
-                  //                         child: Center(
-                  //                           child: Icon(
-                  //                             Icons.close,
-                  //                             size: 20,
-                  //                           ),
-                  //                         ),
-                  //                       ),
-                  //                     ),
-                  //                   ],
-                  //                 ),
-                  //                 SizedBox(
-                  //                   height: Get.height * 0.01,
-                  //                 ),
-                  //                 Divider(),
-                  //                 SizedBox(
-                  //                   height: Get.height * 0.02,
-                  //                 ),
-                  //                 Text(
-                  //                   "Tags",
-                  //                   style: TextStyle(
-                  //                       fontSize: 12,
-                  //                       fontWeight: FontWeight.w600),
-                  //                 ),
-                  //                 SizedBox(
-                  //                   height: Get.height * 0.01,
-                  //                 ),
-                  //                 Container(
-                  //                   margin: EdgeInsets.only(
-                  //                       bottom: Get.height * 0.01),
-                  //                   height: 55,
-                  //                   child: TypeAheadField(
-                  //                     function: () {
-                  //                       print('object');
-                  //                     },
-                  //                     animationStart: 0,
-                  //                     animationDuration: Duration.zero,
-                  //                     textFieldConfiguration:
-                  //                         TextFieldConfiguration(
-                  //                       autofocus: false,
-                  //                       controller: tagController,
-                  //                       enableSuggestions: true,
-                  //                       style: TextStyle(fontSize: 15),
-                  //                       decoration: InputDecoration(
-                  //                         border: OutlineInputBorder(
-                  //                           borderRadius:
-                  //                               BorderRadius.circular(16),
-                  //                         ),
-                  //                       ),
-                  //                     ),
-                  //                     suggestionsBoxDecoration:
-                  //                         SuggestionsBoxDecoration(),
-                  //                     suggestionsCallback: (pattern) {
-                  //                       List<String> matches = <String>[];
-                  //                       matches.addAll(careerList);
-                  //                       matches.retainWhere(
-                  //                         (s) {
-                  //                           return s.toLowerCase().contains(
-                  //                                 pattern.toLowerCase(),
-                  //                               );
-                  //                         },
-                  //                       );
-                  //                       return matches;
-                  //                     },
-                  //                     itemBuilder: (context, sone) {
-                  //                       return Card(
-                  //                         child: Container(
-                  //                           padding: const EdgeInsets.all(10),
-                  //                           child: Text(sone.toString()),
-                  //                         ),
-                  //                       );
-                  //                     },
-                  //                     onSuggestionSelected: (String suggestion) {
-                  //                       tagController.text = suggestion;
-                  //                       selectedTags.add(suggestion);
-                  //                       set(() {});
-                  //                       setState(() {});
-                  //                     },
-                  //                   ),
-                  //                 ),
-                  //                 Text(
-                  //                   "My selected tags",
-                  //                   style: TextStyle(
-                  //                       fontSize: 12,
-                  //                       fontWeight: FontWeight.w600),
-                  //                 ),
-                  //                 SizedBox(
-                  //                   height: Get.height * 0.01,
-                  //                 ),
-                  //                 TextFieldTags(
-                  //                     initialTags:
-                  //                         selectedTags.value as List<String>,
-                  //                     //     textSeparators: <String>[
-                  //                     //   //text tag seperators
-                  //                     //   //Default = " ", ","
-                  //                     // ],
-                  //                     // tags: <String>[
-                  //                     //   // List of tags
-                  //                     //   // Provide a list of initial tags to initialize it
-                  //                     // ],
-                  //                     textFieldStyler: TextFieldStyler(
-                  //                       //These are properties you can tweek for customization
-                  //                       textFieldBorder: OutlineInputBorder(
-                  //                         borderSide: BorderSide.none,
-                  //                         borderRadius: BorderRadius.circular(16),
-                  //                       ),
-                  //                       hintText: "",
-                  //                       hintStyle: TextStyle(
-                  //                           fontSize: 12,
-                  //                           fontWeight: FontWeight.w500),
-                  //                       // bool textFieldFilled = false,
-                  //                       // Icon icon,
-                  //                       // String helperText = 'Enter tags',
-                  //                       // TextStyle helperStyle,
-                  //                       // TextStyle hintStyle,
-                  //                       // EdgeInsets contentPadding,
-                  //                       // Color textFieldFilledColor,
-                  //                       // bool isDense = true,
-                  //                       // bool textFieldEnabled = true,
-                  //                       // OutlineInputBorder textFieldBorder = const OutlineInputBorder(),
-                  //                       // OutlineInputBorder textFieldFocusedBorder,
-                  //                       // OutlineInputBorder textFieldDisabledBorder,
-                  //                       // OutlineInputBorder textFieldEnabledBorder
-                  //                     ),
-                  //                     tagsStyler: TagsStyler(
-                  //                       //These are properties you can tweek for customization
-                  //                       tagTextStyle: TextStyle(
-                  //                           fontSize: 12,
-                  //                           fontWeight: FontWeight.w500),
-                  //                       tagCancelIcon: Icon(
-                  //                         Icons.close,
-                  //                         color: Colors.black,
-                  //                       ),
-                  //                       tagDecoration: BoxDecoration(
-                  //                           color: Colors.grey.withOpacity(0.3),
-                  //                           borderRadius:
-                  //                               BorderRadius.circular(15)),
-                  //                       //showHashtag = false,
-                  //                       //  EdgeInsets tagPadding = const EdgeInsets.all(4.0),
-                  //                       tagPadding: EdgeInsets.symmetric(
-                  //                           horizontal: 10, vertical: 10),
-                  //                       // EdgeInsets tagMargin = const EdgeInsets.symmetric(horizontal: 4.0),
-                  //                       // BoxDecoration tagDecoration = const BoxDecoration(color: Color.fromARGB(255, 74, 137, 92)),
-                  //                       // TextStyle tagTextStyle,
-                  //                       // Icon tagCancelIcon = const Icon(Icons.cancel, size: 18.0, color: Colors.green)
-                  //                     ),
-                  //                     onTag: (tag) {},
-                  //                     onDelete: (tag) {},
-                  //                     validator: (tag) {
-                  //                       if (tag.length > 15) {
-                  //                         return "hey that's too long";
-                  //                       } else if (tag.isEmpty) {
-                  //                         return "enter something";
-                  //                       }
-                  //                     }
-                  //                     //tagsDistanceFromBorderEnd: 0.725,
-                  //                     //scrollableTagsMargin: EdgeInsets.only(left: 9),
-                  //                     //scrollableTagsPadding: EdgeInsets.only(left: 9),
-                  //                     ),
-                  //                 Text(
-                  //                   "Suggestions from the top list:",
-                  //                   style: TextStyle(
-                  //                       fontSize: 12,
-                  //                       fontWeight: FontWeight.w600),
-                  //                 ),
-                  //               ],
-                  //             ),
-                  //             SizedBox(
-                  //               height: Get.height * 0.02,
-                  //             ),
-                  //             //Calling Chips form here..........................
-                  //             chipList(),
-                  //             Column(
-                  //               crossAxisAlignment: CrossAxisAlignment.start,
-                  //               children: [
-                  //                 SizedBox(
-                  //                   height: Get.height * 0.04,
-                  //                 ),
-                  //                 Row(
-                  //                   children: [
-                  //                     Expanded(
-                  //                       child: InkWell(
-                  //                         onTap: () {
-                  //                           Get.back();
-                  //                         },
-                  //                         child: Container(
-                  //                           height: Get.height * 0.07,
-                  //                           // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  //                           decoration: BoxDecoration(
-                  //                               borderRadius:
-                  //                                   BorderRadius.circular(20),
-                  //                               border: Border.all(
-                  //                                   width: 0.3,
-                  //                                   color: Colors.grey)),
-                  //                           child: Center(
-                  //                               child: Text(
-                  //                             "Cancel",
-                  //                             style: TextStyle(
-                  //                                 fontSize: 20,
-                  //                                 fontWeight: FontWeight.w500),
-                  //                           )),
-                  //                         ),
-                  //                       ),
-                  //                     ),
-                  //                     SizedBox(
-                  //                       width: Get.width * 0.04,
-                  //                     ),
-                  //                     Expanded(
-                  //                       child: InkWell(
-                  //                         onTap: () async {
-                  //                           careerList.addAll(selectedTags);
-                  //                           selectedTags.clear();
-                  //                           set(() {});
-                  //                           Get.back();
-                  //                         },
-                  //                         child: Container(
-                  //                           height: Get.height * 0.07,
-                  //                           // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  //                           decoration: BoxDecoration(
-                  //                             color: buttonColor,
-                  //                             borderRadius:
-                  //                                 BorderRadius.circular(20),
-                  //                           ),
-                  //                           child: Center(
-                  //                             child: Text(
-                  //                               "Add",
-                  //                               style: TextStyle(fontSize: 20),
-                  //                             ),
-                  //                           ),
-                  //                         ),
-                  //                       ),
-                  //                     ),
-                  //                   ],
-                  //                 )
-                  //               ],
-                  //             ),
-                  //           ],
-                  //         );
-                  //       },
-                  //     );
-                  //   },
-                  // );
                 },
                 child: const Icon(
                   Icons.add,
@@ -500,8 +225,8 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   Row(
                     children: [
                       const Text(
-                        "Add careers",
-                        style: const TextStyle(
+                        "Add Topics",
+                        style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
                       const Spacer(),
@@ -516,7 +241,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                               color: Colors.grey.withOpacity(0.3),
                               shape: BoxShape.circle),
                           child: const Center(
-                            child: const Icon(
+                            child: Icon(
                               Icons.close,
                               size: 20,
                             ),
@@ -525,15 +250,15 @@ class _CareerListScreenState extends State<CareerListScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: Get.height * 0.01,
+                  const SizedBox(
+                    height: 16,
                   ),
                   const Divider(),
-                  SizedBox(
-                    height: Get.height * 0.02,
+                  const SizedBox(
+                    height: 18,
                   ),
                   const Text(
-                    "Tags",
+                    "Title",
                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(
@@ -558,7 +283,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
                         enableSuggestions: true,
                         style: const TextStyle(fontSize: 15),
                         decoration: InputDecoration(
-                          hintText: 'Search Careers',
+                          hintText: 'Topics name',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(16),
                           ),
@@ -601,133 +326,9 @@ class _CareerListScreenState extends State<CareerListScreen> {
                     height: Get.height * 0.01,
                   ),
                   const Text(
-                    "My selected tags",
-                    style: const TextStyle(
-                        fontSize: 12, fontWeight: FontWeight.w600),
+                    "Suggestions from the top list:",
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(
-                    height: Get.height * 0.01,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 40,
-                    child: quizController!.selectedTags.value.length == 0
-                        ? const Center(
-                            child: Text("No tag yet"),
-                          )
-                        : ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount:
-                                quizController!.selectedTags.value.length,
-                            itemBuilder: (ctx, i) {
-                              return InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    quizController!.selectedTags.removeAt(i);
-                                  });
-                                  sset(() {});
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey.withOpacity(0.3),
-                                      borderRadius: BorderRadius.circular(15)),
-                                  margin: const EdgeInsets.only(right: 5),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 5),
-                                    child: Row(
-                                      children: [
-                                        Text(quizController!.selectedTags[i]),
-                                        const Icon(
-                                          Icons.clear,
-                                          color: Colors.black,
-                                          size: 15,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                  ),
-                  // TextFieldTags(
-                  //     initialTags: quizController!.selectedTags.value,
-
-                  //     //     textSeparators: <String>[
-                  //     //   //text tag seperators
-                  //     //   //Default = " ", ","
-                  //     // ],
-                  //     // tags: <String>[
-                  //     //   // List of tags
-                  //     //   // Provide a list of initial tags to initialize it
-                  //     // ],
-                  //     textFieldStyler: TextFieldStyler(
-                  //       //These are properties you can tweek for customization
-                  //       textFieldBorder: OutlineInputBorder(
-                  //         borderSide: BorderSide.none,
-                  //         borderRadius: BorderRadius.circular(16),
-                  //       ),
-                  //       hintText: "",
-                  //       hintStyle:
-                  //           TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-
-                  //       // bool textFieldFilled = false,
-                  //       // Icon icon,
-                  //       // String helperText = 'Enter tags',
-                  //       // TextStyle helperStyle,
-                  //       // TextStyle hintStyle,
-                  //       // EdgeInsets contentPadding,
-                  //       // Color textFieldFilledColor,
-                  //       // bool isDense = true,
-                  //       // bool textFieldEnabled = true,
-                  //       // OutlineInputBorder textFieldBorder = const OutlineInputBorder(),
-                  //       // OutlineInputBorder textFieldFocusedBorder,
-                  //       // OutlineInputBorder textFieldDisabledBorder,
-                  //       // OutlineInputBorder textFieldEnabledBorder
-                  //     ),
-                  //     tagsStyler: TagsStyler(
-                  //       //These are properties you can tweek for customization
-                  //       tagTextStyle:
-                  //           TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                  //       tagCancelIcon: Icon(
-                  //         Icons.close,
-                  //         color: Colors.black,
-                  //       ),
-                  //       tagDecoration: BoxDecoration(
-                  //           color: Colors.grey.withOpacity(0.3),
-                  //           borderRadius: BorderRadius.circular(15)),
-                  //       //showHashtag = false,
-                  //       //  EdgeInsets tagPadding = const EdgeInsets.all(4.0),
-                  //       tagPadding:
-                  //           EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  //       // EdgeInsets tagMargin = const EdgeInsets.symmetric(horizontal: 4.0),
-                  //       // BoxDecoration tagDecoration = const BoxDecoration(color: Color.fromARGB(255, 74, 137, 92)),
-                  //       // TextStyle tagTextStyle,
-                  //       // Icon tagCancelIcon = const Icon(Icons.cancel, size: 18.0, color: Colors.green)
-                  //     ),
-                  //     onTag: (tag) {},
-                  //     onDelete: (tag) {},
-                  //     validator: (tag) {
-                  //       if (tag.length > 15) {
-                  //         return "hey that's too long";
-                  //       } else if (tag.isEmpty) {
-                  //         return "enter something";
-                  //       }
-                  //     }
-                  //     //tagsDistanceFromBorderEnd: 0.725,
-                  //     //scrollableTagsMargin: EdgeInsets.only(left: 9),
-                  //     //scrollableTagsPadding: EdgeInsets.only(left: 9),
-                  //     ),
-
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
-
-                  // Text(
-                  //   "Suggestions from the top list:",
-                  //   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
-                  // ),
                 ],
               ),
 

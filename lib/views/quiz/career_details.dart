@@ -34,45 +34,45 @@ class _CareerState extends State<Career> {
               SizedBox(
                 height: Get.height * 0.015,
               ),
-              Text(
+              const Text(
                 "What is a UX designer?",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: Get.height * 0.02,
               ),
-              Text(
+              const Text(
                 "A UX designer optimises apps to improve the ease of use. They do this by exploring different approaches of solve end-users problems, to improve user experience (UX).",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
               ),
               SizedBox(
                 height: Get.height * 0.02,
               ),
-              Text(
+              const Text(
                 "Average Salaries",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: Get.height * 0.01,
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 21),
+              const Padding(
+                padding: EdgeInsets.only(right: 21),
                 child: Text("The average UX Designer earn 115,743 every year."),
               ),
               SizedBox(
                 height: Get.height * 0.03,
               ),
-              Text(
+              const Text(
                 "Skills you need:",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: Get.height * 0.01,
               ),
-              Text(
+              const Text(
                   "If you want to make a best career in UX Design you have to understand how to do the following things."),
               Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 child: Column(
                   children: [
                     Row(
@@ -85,8 +85,8 @@ class _CareerState extends State<Career> {
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(35)),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 25, left: 9),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 25, left: 9),
                           child: Text(
                               " Research. To effectively perform their jobs, UX\n designers must understand what their\n audiences want and how they view the world."),
                         )
@@ -103,8 +103,8 @@ class _CareerState extends State<Career> {
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(35)),
                         ),
-                        SizedBox(width: 9),
-                        Text("Collaboration")
+                        const SizedBox(width: 9),
+                        const Text("Collaboration")
                       ],
                     ),
                     SizedBox(height: Get.height * 0.02),
@@ -118,8 +118,8 @@ class _CareerState extends State<Career> {
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(35)),
                         ),
-                        SizedBox(width: 9),
-                        Text("Wireframing")
+                        const SizedBox(width: 9),
+                        const Text("Wireframing")
                       ],
                     ),
                     SizedBox(height: Get.height * 0.02),
@@ -133,8 +133,8 @@ class _CareerState extends State<Career> {
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(35)),
                         ),
-                        SizedBox(width: 9),
-                        Text("Visual Communication")
+                        const SizedBox(width: 9),
+                        const Text("Visual Communication")
                       ],
                     ),
                     SizedBox(height: Get.height * 0.02),
@@ -148,8 +148,8 @@ class _CareerState extends State<Career> {
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(35)),
                         ),
-                        SizedBox(width: 9),
-                        Text("Prototyping")
+                        const SizedBox(width: 9),
+                        const Text("Prototyping")
                       ],
                     ),
                     SizedBox(height: Get.height * 0.02),
@@ -163,8 +163,8 @@ class _CareerState extends State<Career> {
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(35)),
                         ),
-                        SizedBox(width: 9),
-                        Text("Coding (not required, but useful)")
+                        const SizedBox(width: 9),
+                        const Text("Coding (not required, but useful)")
                       ],
                     ),
                   ],

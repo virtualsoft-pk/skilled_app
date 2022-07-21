@@ -17,7 +17,10 @@ class _NotificationsState extends State<Notifications> {
       length: 2,
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: tabAppBar(title: "Notifications"),
+        appBar: tabAppBar(
+          title: "Notifications",
+          trailing: SizedBox(width: Responsive.isMobile(context) ? 32 : 0),
+        ),
         body: Padding(
           padding: EdgeInsets.symmetric(
               horizontal:
@@ -25,7 +28,7 @@ class _NotificationsState extends State<Notifications> {
           child: Column(
             children: [
               SizedBox(
-                height: Responsive.isTablet(context) ? 4 : Get.height * 0.07,
+                height: Responsive.isTablet(context) ? 4 : 0,
               ),
 
               // Row(
@@ -36,14 +39,17 @@ class _NotificationsState extends State<Notifications> {
 
               Row(
                 children: [
-                  Container(
-                    width: Get.width * 0.3,
+                  SizedBox(
+                    width: Responsive.isTablet(context)
+                        ? Get.width * 0.3
+                        : Get.width * 0.4,
                     child: TabBar(
+                      isScrollable: Responsive.isMobile(context),
                       indicatorWeight: 1,
-                      indicatorColor: Color(0xFF3B577E),
+                      indicatorColor: const Color(0xFF3B577E),
                       labelColor: Colors.black,
                       indicatorSize: TabBarIndicatorSize.label,
-                      tabs: [Tab(text: "Direct"), Tab(text: "Overall")],
+                      tabs: const [Tab(text: "Direct"), Tab(text: "Overall")],
                     ),
                   ),
                   const Spacer(),
@@ -53,7 +59,7 @@ class _NotificationsState extends State<Notifications> {
                   //         : Get.width * 0.2),
                   InkWell(
                     onTap: () {},
-                    child: Text("Mark all as read"),
+                    child: const Text("Mark all as read"),
                   ),
                 ],
               ),
@@ -62,10 +68,10 @@ class _NotificationsState extends State<Notifications> {
               ),
               Row(
                 children: [
-                  SizedBox(width: 16),
-                  Text(
+                  const SizedBox(width: 16),
+                  const Text(
                     "Today",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
