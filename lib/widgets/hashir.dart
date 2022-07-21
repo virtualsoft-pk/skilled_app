@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skilled_app/controller/nav_controller.dart';
+import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
 
 import '../utils/app_colors.dart';
 
@@ -20,9 +20,7 @@ Widget elevatedButton({text, Function? onpress}) {
         fontSize: 16,
         color: Colors.black,
         fontWeight: FontWeight.w700,
-
       ),
-
     ),
   );
 }
@@ -36,18 +34,25 @@ Widget myText({text, style, textAlign}) {
   );
 }
 
-
 Widget _buildChip(String label, Color color) {
-  return Chip(
-    labelPadding: EdgeInsets.all(4),
-    label: Text(
-      label,
-      style: TextStyle(
-        color: Colors.black,
+  return GestureDetector(
+    onTap: () {
+      final NavController controller = Get.find();
+      controller.updateForumIndex(0);
+      Get.offAll(() => BottomNavigation(
+            index: 2,
+            threadForForumTab: label,
+          ));
+    },
+    child: Chip(
+      labelPadding: const EdgeInsets.all(4),
+      label: Text(
+        label,
+        style: TextStyle(color: Colors.grey[900], fontSize: 14),
       ),
+      backgroundColor: color,
+      padding: const EdgeInsets.all(8.0),
     ),
-    backgroundColor: color,
-    padding: EdgeInsets.all(8.0),
   );
 }
 
@@ -64,5 +69,3 @@ chipList() {
     ],
   );
 }
-
-

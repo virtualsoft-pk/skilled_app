@@ -4,6 +4,8 @@ import 'package:skilled_app/controller/nav_controller.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
+import 'package:skilled_app/views/feeds/bottom_navigation/search_result.dart';
+import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:skilled_app/views/quiz/search_screen.dart';
 import 'package:skilled_app/views/responsive.dart';
 
@@ -16,26 +18,47 @@ List<Widget> discoverTabPages = [
   const SearchSuggestionScreen(
     isForDiscoverTab: true,
   ),
+  SearchResult(isFromCompany: false),
 ];
 
-class BottomNavigation extends StatelessWidget {
-  BottomNavigation({Key? key, this.index = 0}) : super(key: key);
-  int? index;
+class BottomNavigation extends StatefulWidget {
+  const BottomNavigation({Key? key, this.index = 0, this.threadForForumTab})
+      : super(key: key);
+  final int? index;
+  final String? threadForForumTab;
+
+  @override
+  State<BottomNavigation> createState() => _BottomNavigationState();
+}
+
+class _BottomNavigationState extends State<BottomNavigation> {
+  @override
+  void initState() {
+    super.initState();
+    // ignore: unused_local_variable
+    final controller = Get.put(NavController());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Responsive.isMobile(context)
         ? _BottomNavMobile(
-            index: index,
+            index: widget.index,
+            threadForForumTab: widget.threadForForumTab,
           )
         : _BottomNavTablet(
-            index: index,
+            index: widget.index,
+            threadForForumTab: widget.threadForForumTab,
           );
   }
 }
 
 class _BottomNavMobile extends StatefulWidget {
-  _BottomNavMobile({Key? key, this.index = 0}) : super(key: key);
+  _BottomNavMobile({Key? key, this.index = 0, this.threadForForumTab})
+      : super(key: key);
   int? index;
+  final String? threadForForumTab;
+
   @override
   State<_BottomNavMobile> createState() => __BottomNavMobileState();
 }
@@ -131,8 +154,11 @@ class __BottomNavMobileState extends State<_BottomNavMobile> {
 }
 
 class _BottomNavTablet extends StatefulWidget {
-  _BottomNavTablet({Key? key, this.index = 0}) : super(key: key);
+  _BottomNavTablet({Key? key, this.index = 0, this.threadForForumTab})
+      : super(key: key);
   int? index;
+  final String? threadForForumTab;
+
   @override
   State<_BottomNavTablet> createState() => __BottomNavTabletState();
 }
@@ -147,9 +173,12 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
     SettingScreen(),
   ];
 
+  late List<Widget> forumTabPages;
+
   void _updateIndex(int value) {
-    final NavController _navController = Get.find();
-    _navController.updateDiscoverIndex(0);
+    final NavController controller = Get.find();
+    controller.updateDiscoverIndex(0);
+    controller.updateForumIndex(0);
     setState(() {
       _currentIndex = value;
     });
@@ -158,6 +187,15 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
   @override
   void initState() {
     super.initState();
+    forumTabPages = [
+      Forum(
+        thread: widget.threadForForumTab,
+      ),
+      SearchOnForum(),
+      const SearchSuggestionScreen(
+        isForDiscoverTab: true,
+      ),
+    ];
     if (widget.index != null) {
       _currentIndex = widget.index!;
       setState(() {});
@@ -170,69 +208,129 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       body: Row(children: [
-        Container(
-            height: double.infinity,
-            width: Get.width * 0.1,
-            color: Colors.white,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _CustomBtmNavItem(
-                    label: 'Home',
-                    isSelected: _currentIndex == 0,
-                    iconPath: _currentIndex == 0
-                        ? 'assets/Polygon 2.png'
-                        : 'assets/Polygon 1.png',
-                    onTap: () {
-                      _updateIndex(0);
-                    }),
-                _CustomBtmNavItem(
-                    label: 'Discover',
-                    isSelected: _currentIndex == 1,
-                    iconPath: _currentIndex == 1
-                        ? 'assets/icons/search-filled.png'
-                        : 'assets/Search.png',
-                    onTap: () {
-                      _updateIndex(1);
-                    }),
-                _CustomBtmNavItem(
-                    label: 'Forum',
-                    isSelected: _currentIndex == 2,
-                    iconPath: _currentIndex == 2
-                        ? 'assets/layersS.png'
-                        : 'assets/layers.png',
-                    onTap: () {
-                      _updateIndex(2);
-                    }),
-                _CustomBtmNavItem(
-                    label: 'Calendar',
-                    isSelected: _currentIndex == 3,
-                    iconPath: _currentIndex == 3
-                        ? 'assets/CalenderS.png'
-                        : 'assets/Calender.png',
-                    onTap: () {
-                      _updateIndex(3);
-                    }),
-                _CustomBtmNavItem(
-                    label: 'Settings',
-                    isSelected: _currentIndex == 4,
-                    iconPath: _currentIndex == 4
-                        ? 'assets/SettingS.png'
-                        : 'assets/Setting.png',
-                    onTap: () {
-                      _updateIndex(4);
-                    }),
-                const SizedBox(
-                  height: 54,
-                ),
-              ],
-            )),
+        SizedBox(
+          height: double.infinity,
+          width: Get.width * 0.1,
+          child: Stack(
+            children: [
+              Container(
+                  height: double.infinity,
+                  width: Get.width * 0.1,
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _CustomBtmNavItem(
+                          label: 'Home',
+                          isSelected: _currentIndex == 0,
+                          iconPath: _currentIndex == 0
+                              ? 'assets/Polygon 2.png'
+                              : 'assets/Polygon 1.png',
+                          onTap: () {
+                            _updateIndex(0);
+                          }),
+                      _CustomBtmNavItem(
+                          label: 'Discover',
+                          isSelected: _currentIndex == 1,
+                          iconPath: _currentIndex == 1
+                              ? 'assets/icons/search-filled.png'
+                              : 'assets/Search.png',
+                          onTap: () {
+                            _updateIndex(1);
+                          }),
+                      _CustomBtmNavItem(
+                          label: 'Forum',
+                          isSelected: _currentIndex == 2,
+                          iconPath: _currentIndex == 2
+                              ? 'assets/layersS.png'
+                              : 'assets/layers.png',
+                          onTap: () {
+                            _updateIndex(2);
+                          }),
+                      _CustomBtmNavItem(
+                          label: 'Calendar',
+                          isSelected: _currentIndex == 3,
+                          iconPath: _currentIndex == 3
+                              ? 'assets/CalenderS.png'
+                              : 'assets/Calender.png',
+                          onTap: () {
+                            _updateIndex(3);
+                          }),
+                      _CustomBtmNavItem(
+                          label: 'Settings',
+                          isSelected: _currentIndex == 4,
+                          iconPath: _currentIndex == 4
+                              ? 'assets/SettingS.png'
+                              : 'assets/Setting.png',
+                          onTap: () {
+                            _updateIndex(4);
+                          }),
+                      const SizedBox(
+                        height: 54,
+                      ),
+                    ],
+                  )),
+              GetBuilder<NavController>(builder: (controller) {
+                return controller.discoverIndex != 2
+                    ? const SizedBox()
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 42),
+                        child: Align(
+                            alignment: Alignment.topCenter,
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.updateDiscoverIndex(0);
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(bottom: 30),
+                                padding: const EdgeInsets.all(8),
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(70),
+                                  color: greyColor,
+                                ),
+                                child: const Icon(Icons.keyboard_arrow_left),
+                              ),
+                            )),
+                      );
+              }),
+              GetBuilder<NavController>(builder: (controller) {
+                return controller.forumIndex == 0
+                    ? const SizedBox()
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 42),
+                        child: Align(
+                            alignment: Alignment.topCenter,
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.updateForumIndex(0);
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.only(bottom: 30),
+                                padding: const EdgeInsets.all(8),
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(70),
+                                  color: greyColor,
+                                ),
+                                child: const Icon(Icons.keyboard_arrow_left),
+                              ),
+                            )),
+                      );
+              }),
+            ],
+          ),
+        ),
         Expanded(
           child: GetBuilder<NavController>(
             init: NavController(),
             builder: (value) {
               if (_currentIndex == 1) {
                 return discoverTabPages[value.discoverIndex];
+              } else if (_currentIndex == 2) {
+                return forumTabPages[value.forumIndex];
               }
               return _screens[_currentIndex];
             },

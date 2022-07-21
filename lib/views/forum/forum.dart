@@ -2,7 +2,9 @@ import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skilled_app/controller/nav_controller.dart';
 import 'package:skilled_app/views/forum/create_post.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:skilled_app/views/forum/thread_detail.dart';
@@ -15,7 +17,7 @@ import '../../widgets/hashir.dart';
 import '../settings/notification.dart';
 
 class Forum extends StatefulWidget {
-  Forum({Key? key, this.thread}) : super(key: key);
+  const Forum({Key? key, this.thread}) : super(key: key);
 
   @override
   _ForumState createState() => _ForumState();
@@ -27,7 +29,7 @@ class _ForumState extends State<Forum> {
   List<Post> post = [
     Post(
         favoriteImage: 'assets/icons/2107845.png',
-        color: Color(0xffFFE2DC),
+        color: const Color(0xffFFE2DC),
         message: 'assets/img_13.png',
         number: '212',
         heart: 'assets/img_12.png',
@@ -43,7 +45,7 @@ class _ForumState extends State<Forum> {
             'We’ve noticed a bunch of talented designers and illustrators jumping onto Skillshare to... Read more'),
     Post(
         favoriteImage: 'assets/icons/2107845.png',
-        color: Color(0xffFDE3CC),
+        color: const Color(0xffFDE3CC),
         message: 'assets/img_13.png',
         number: '212',
         heart: 'assets/img_12.png',
@@ -57,22 +59,6 @@ class _ForumState extends State<Forum> {
         desc: '13 best Skillshare classes for designers and artists?',
         desc2:
             'We’ve noticed a bunch of talented designers and illustrators jumping onto Skillshare to... Read more'),
-    // Post(
-    //     favoriteImage: 'assets/icons/2107845.png',
-    //     color: Color(0xffE4F0EE),
-    //     message: 'assets/img_13.png',
-    //     number: '212',
-    //     heart: 'assets/img_12.png',
-    //     count: '2.1k',
-    //     design3: 'web design',
-    //     dgn2: 'Motion',
-    //     image: 'assets/img_10.png',
-    //     name: 'Hashir shah',
-    //     date: 'Monday at 2:00AM',
-    //     design: 'UI/UIX',
-    //     desc: '13 best Skillshare classes for designers and artists?',
-    //     desc2:
-    //         'We’ve noticed a bunch of talented designers and illustrators jumping onto Skillshare to... Read more'),
   ];
   bool isLike = false;
   bool isLikw1 = false;
@@ -107,12 +93,12 @@ class _ForumState extends State<Forum> {
         child: FloatingActionButton(
           onPressed: () {
             context.navigator.push<void>(
-                SwipeablePageRoute(builder: (_) => CreatePostOnForum()));
+                SwipeablePageRoute(builder: (_) => const CreatePostOnForum()));
             // Navigator.push(context,
             //     MaterialPageRoute(builder: (ctx) => CreatePostOnForum()));
           },
           backgroundColor: primaryColor,
-          child: Icon(
+          child: const Icon(
             Icons.add,
             color: Colors.black,
           ),
@@ -127,15 +113,15 @@ class _ForumState extends State<Forum> {
                 children: [
                   Container(
                     margin: Responsive.isTablet(context)
-                        ? EdgeInsets.only(right: 100)
-                        : EdgeInsets.symmetric(horizontal: 15),
+                        ? const EdgeInsets.only(right: 100)
+                        : const EdgeInsets.symmetric(horizontal: 15),
                     child: Column(
                       children: [
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image(
+                            const Image(
                               image: AssetImage(
                                 'assets/image 29.png',
                               ),
@@ -153,7 +139,7 @@ class _ForumState extends State<Forum> {
                               child: CircleAvatar(
                                 radius: 22.0,
                                 backgroundColor: Colors.grey[200],
-                                child: Image(
+                                child: const Image(
                                     image: AssetImage('assets/img_8.png'),
                                     width: 18),
                               ),
@@ -172,14 +158,20 @@ class _ForumState extends State<Forum> {
                           child: TextFormField(
                             readOnly: true,
                             onTap: () {
-                              context.navigator.push<void>(SwipeablePageRoute(
-                                  builder: (_) => SearchOnForum()));
-                              // Get.to(() => SearchOnForum());
+                              if (Responsive.isTablet(context)) {
+                                final NavController controller = Get.find();
+                                controller.updateForumIndex(1);
+                              } else {
+                                context.navigator.push<void>(SwipeablePageRoute(
+                                    builder: (_) => SearchOnForum()));
+                                // Get.to(() => SearchOnForum());
+                              }
                             },
-                            style: TextStyle(color: Colors.grey),
+                            style: const TextStyle(color: Colors.grey),
                             decoration: InputDecoration(
                               errorBorder: InputBorder.none,
-                              errorStyle: TextStyle(fontSize: 0, height: 0),
+                              errorStyle:
+                                  const TextStyle(fontSize: 0, height: 0),
                               focusedErrorBorder: InputBorder.none,
                               fillColor: Colors.deepOrangeAccent[2],
                               filled: true,
@@ -193,11 +185,11 @@ class _ForumState extends State<Forum> {
                                   borderSide: BorderSide.none,
                                   borderRadius: BorderRadius.circular(12)),
                               hintText: ('Search in forum'),
-                              prefixIcon: Icon(
+                              prefixIcon: const Icon(
                                 Icons.search,
                                 color: dividercolor,
                               ),
-                              hintStyle: TextStyle(
+                              hintStyle: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500),
@@ -218,7 +210,7 @@ class _ForumState extends State<Forum> {
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         if (widget.thread == null)
@@ -226,7 +218,7 @@ class _ForumState extends State<Forum> {
                             itemCount:
                                 isNextScreen == false ? 3 : threads.length,
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (ctx, i) {
                               return Column(
                                 children: [
@@ -252,7 +244,7 @@ class _ForumState extends State<Forum> {
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                             )),
-                                        Icon(
+                                        const Icon(
                                           Icons.arrow_forward_ios,
                                           size: 15,
                                           color: arrow,
@@ -263,7 +255,7 @@ class _ForumState extends State<Forum> {
                                   SizedBox(
                                     height: screenheight * 0.01,
                                   ),
-                                  Divider(
+                                  const Divider(
                                     thickness: 0.3,
                                     color: dividercolor,
                                   )
@@ -303,7 +295,7 @@ class _ForumState extends State<Forum> {
                                     ),
                                   ),
                                 )
-                              : SizedBox(),
+                              : const SizedBox(),
                       ],
                     ),
                   ),
@@ -315,7 +307,8 @@ class _ForumState extends State<Forum> {
                       ? Column(
                           children: [
                             Container(
-                              margin: EdgeInsets.symmetric(horizontal: 15),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               child: Row(
                                 children: [
                                   if (widget.thread == null)
@@ -338,7 +331,7 @@ class _ForumState extends State<Forum> {
                               //margin: EdgeInsets.only(top: 10),
                               child: ListView.builder(
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   scrollDirection: Axis.vertical,
                                   itemCount: post.length,
                                   itemBuilder: (context, index) {
@@ -347,7 +340,8 @@ class _ForumState extends State<Forum> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            margin: EdgeInsets.only(left: 15),
+                                            margin:
+                                                const EdgeInsets.only(left: 15),
                                             child: Row(
                                               children: [
                                                 Container(
@@ -363,7 +357,7 @@ class _ForumState extends State<Forum> {
                                                       image: AssetImage(
                                                           '${post[index].image}')),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   width: 8,
                                                 ),
                                                 Column(
@@ -390,12 +384,13 @@ class _ForumState extends State<Forum> {
                                                                 dividercolor)),
                                                   ],
                                                 ),
-                                                Spacer(),
+                                                const Spacer(),
                                                 IconButton(
                                                   onPressed: () {
                                                     share();
                                                   },
-                                                  icon: Icon(Icons.more_vert,
+                                                  icon: const Icon(
+                                                      Icons.more_vert,
                                                       color: grey500),
                                                 ),
                                                 const SizedBox(
@@ -416,11 +411,11 @@ class _ForumState extends State<Forum> {
                                               ],
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 8,
                                           ),
                                           Container(
-                                            margin: EdgeInsets.symmetric(
+                                            margin: const EdgeInsets.symmetric(
                                               horizontal: 15,
                                             ),
                                             child: Column(
@@ -454,19 +449,20 @@ class _ForumState extends State<Forum> {
                                                         // print('object');
                                                       },
                                                       child: Container(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
                                                                 vertical: 5,
                                                                 horizontal: 10),
-                                                        margin: EdgeInsets.only(
-                                                            left: 5),
+                                                        margin: const EdgeInsets
+                                                            .only(left: 5),
                                                         decoration:
                                                             BoxDecoration(
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(15),
-                                                          color:
-                                                              Color(0xffFFE2DC),
+                                                          color: const Color(
+                                                              0xffFFE2DC),
                                                           // border: Border.all(
                                                           //   color: backcolor,
                                                           // ),
@@ -485,7 +481,7 @@ class _ForumState extends State<Forum> {
                                                         ),
                                                       ),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 8,
                                                     ),
                                                     InkWell(
@@ -504,8 +500,9 @@ class _ForumState extends State<Forum> {
                                                         //     ));
                                                       },
                                                       child: Container(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
                                                                 vertical: 5,
                                                                 horizontal: 10),
                                                         decoration: BoxDecoration(
@@ -513,7 +510,7 @@ class _ForumState extends State<Forum> {
                                                                 BorderRadius
                                                                     .circular(
                                                                         15),
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xffFDE3CC),
                                                             border: Border.all(
                                                                 color:
@@ -523,7 +520,7 @@ class _ForumState extends State<Forum> {
                                                                 '${post[index].dgn2}')),
                                                       ),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 8,
                                                     ),
                                                     InkWell(
@@ -543,19 +540,20 @@ class _ForumState extends State<Forum> {
                                                         //     ));
                                                       },
                                                       child: Container(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
                                                                 vertical: 5,
                                                                 horizontal: 10),
-                                                        margin: EdgeInsets.only(
-                                                            left: 5),
+                                                        margin: const EdgeInsets
+                                                            .only(left: 5),
                                                         decoration:
                                                             BoxDecoration(
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(15),
-                                                          color:
-                                                              Color(0xffE4F0EE),
+                                                          color: const Color(
+                                                              0xffE4F0EE),
                                                           // border: Border.all(
                                                           //     color: backcolor),
                                                         ),
@@ -566,7 +564,7 @@ class _ForumState extends State<Forum> {
                                                     ),
                                                   ],
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 8,
                                                 ),
                                                 myText(
@@ -576,7 +574,7 @@ class _ForumState extends State<Forum> {
                                                       fontWeight:
                                                           FontWeight.w600,
                                                     )),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 4,
                                                 ),
                                                 myText(
@@ -587,7 +585,7 @@ class _ForumState extends State<Forum> {
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     )),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 2,
                                                 ),
                                                 Row(
@@ -602,9 +600,8 @@ class _ForumState extends State<Forum> {
                                                                 },
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                              10),
+                                                                      const EdgeInsets
+                                                                          .all(10),
                                                                   child: Image(
                                                                     image: AssetImage(
                                                                         '${post[index].heart}'),
@@ -624,9 +621,8 @@ class _ForumState extends State<Forum> {
                                                                 },
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                              10),
+                                                                      const EdgeInsets
+                                                                          .all(10),
                                                                   child: Image
                                                                       .asset(
                                                                     'assets/icons/2107845.png',
@@ -647,9 +643,8 @@ class _ForumState extends State<Forum> {
                                                                 },
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                              10),
+                                                                      const EdgeInsets
+                                                                          .all(10),
                                                                   child: Image(
                                                                     image: AssetImage(
                                                                         '${post[index].heart}'),
@@ -668,9 +663,8 @@ class _ForumState extends State<Forum> {
                                                                 },
                                                                 child: Padding(
                                                                   padding:
-                                                                      EdgeInsets
-                                                                          .all(
-                                                                              10),
+                                                                      const EdgeInsets
+                                                                          .all(10),
                                                                   child: Image
                                                                       .asset(
                                                                     'assets/icons/2107845.png',
@@ -684,14 +678,15 @@ class _ForumState extends State<Forum> {
                                                     myText(
                                                         text:
                                                             '${post[index].count}'),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       width: 12,
                                                     ),
                                                     InkWell(
                                                       onTap: () {},
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsets.all(10),
+                                                            const EdgeInsets
+                                                                .all(10),
                                                         child: Image(
                                                           image: AssetImage(
                                                               '${post[index].message}'),
@@ -716,7 +711,7 @@ class _ForumState extends State<Forum> {
                             ),
                           ],
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                   // Stack(
                   //   children:
                   //   Positioned(

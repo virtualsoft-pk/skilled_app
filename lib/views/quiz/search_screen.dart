@@ -69,7 +69,13 @@ class _SearchSuggestionScreenState extends State<SearchSuggestionScreen> {
                             decoration: InputDecoration(
                                 suffixIcon: GestureDetector(
                                     onTap: () {
-                                      Navigator.pop(context);
+                                      if (Responsive.isMobile(context)) {
+                                        Navigator.pop(context);
+                                      } else {
+                                        final NavController controller =
+                                            Get.find();
+                                        controller.updateDiscoverIndex(0);
+                                      }
                                     },
                                     child: const Icon(Icons.clear,
                                         color: Colors.grey)),

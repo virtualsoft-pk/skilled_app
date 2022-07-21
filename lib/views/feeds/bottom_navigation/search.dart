@@ -129,12 +129,16 @@ class Search extends StatelessWidget {
                             .map(
                               (e) => InkWell(
                                 onTap: () {
-                                  context.navigator.push<void>(
-                                    SwipeablePageRoute(
-                                      builder: (_) => BottomNavigation3(),
-                                    ),
-                                  );
-                                  // Get.to(() => BottomNavigation3());
+                                  if (Responsive.isMobile(context)) {
+                                    context.navigator.push<void>(
+                                      SwipeablePageRoute(
+                                        builder: (_) => BottomNavigation3(),
+                                      ),
+                                    );
+                                  } else {
+                                    final NavController controller = Get.find();
+                                    controller.updateDiscoverIndex(2);
+                                  }
                                 },
                                 child: Chip(
                                   backgroundColor: Colors.grey[200],
@@ -152,7 +156,7 @@ class Search extends StatelessWidget {
                                       fontWeight: FontWeight.w500,
                                       color: Responsive.isTablet(context)
                                           ? grey700
-                                          : Color(0xff494F58),
+                                          : const Color(0xff494F58),
                                     ),
                                   ),
                                 ),
@@ -160,7 +164,7 @@ class Search extends StatelessWidget {
                             )
                             .toList(),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       Text(
@@ -171,11 +175,11 @@ class Search extends StatelessWidget {
                           color: textColor,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: Responsive.isTablet(context) ? 12 : 6,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -188,7 +192,7 @@ class Search extends StatelessWidget {
                         itemBuilder: (context, i) {
                           return InkWell(
                             onTap: () {
-                              Get.off(BottomNavigation());
+                              Get.off(const BottomNavigation());
                             },
                             child: Container(
                               alignment: Alignment.center,
@@ -209,7 +213,7 @@ class Search extends StatelessWidget {
                               ),
                               child: Text(
                                 searchModel[i].title!,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
                                   color: backgroundColor,
@@ -219,7 +223,7 @@ class Search extends StatelessWidget {
                           );
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                     ],
