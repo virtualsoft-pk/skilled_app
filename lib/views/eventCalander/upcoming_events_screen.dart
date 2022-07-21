@@ -23,7 +23,6 @@ class _UpCommingEventState extends State<UpCommingEvent> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             ListView.builder(

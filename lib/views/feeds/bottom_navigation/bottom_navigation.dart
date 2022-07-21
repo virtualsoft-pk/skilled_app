@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/controller/nav_controller.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
+import 'package:skilled_app/views/quiz/search_screen.dart';
 import 'package:skilled_app/views/responsive.dart';
 
 import '../../eventCalander/event_page_for_month.dart';
 import '../../forum/forum.dart';
 import '../../settings/settingPage.dart';
+
+List<Widget> discoverTabPages = [
+  Search(),
+  const SearchSuggestionScreen(
+    isForDiscoverTab: true,
+  ),
+];
 
 class BottomNavigation extends StatelessWidget {
   BottomNavigation({Key? key, this.index = 0}) : super(key: key);
@@ -139,6 +148,8 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
   ];
 
   void _updateIndex(int value) {
+    final NavController _navController = Get.find();
+    _navController.updateDiscoverIndex(0);
     setState(() {
       _currentIndex = value;
     });
@@ -157,6 +168,7 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       body: Row(children: [
         Container(
             height: double.infinity,
@@ -215,7 +227,17 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
                 ),
               ],
             )),
-        Expanded(child: _screens[_currentIndex])
+        Expanded(
+          child: GetBuilder<NavController>(
+            init: NavController(),
+            builder: (value) {
+              if (_currentIndex == 1) {
+                return discoverTabPages[value.discoverIndex];
+              }
+              return _screens[_currentIndex];
+            },
+          ),
+        )
       ]),
     );
   }

@@ -1,8 +1,10 @@
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/controller/nav_controller.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
 import 'package:skilled_app/views/forum/bottom_navigation_3.dart';
+import 'package:skilled_app/views/quiz/search_screen.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
@@ -59,6 +61,16 @@ class Search extends StatelessWidget {
                       SizedBox(
                         height: 60,
                         child: TextFormField(
+                          onTap: () {
+                            if (Responsive.isTablet(context)) {
+                              final NavController _controller = Get.find();
+                              _controller.updateDiscoverIndex(1);
+                            } else {
+                              Get.to(() => const SearchSuggestionScreen(
+                                    isForDiscoverTab: true,
+                                  ));
+                            }
+                          },
                           decoration: InputDecoration(
                             fillColor: greyColor,
                             filled: true,

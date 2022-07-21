@@ -21,7 +21,9 @@ class _ChangePasswordState extends State<ChangePassword> {
       appBar: tabAppBar(
           title: "Change Password",
           trailing: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Get.back();
+            },
             child: const Padding(
                 padding: EdgeInsets.only(top: 8, right: 12),
                 child: Text("Cancel")),
@@ -39,8 +41,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               ),
               const Text(
                 "Current password",
-                style:
-                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               SizedBox(
                 height: Get.height * 0.02,
@@ -65,8 +66,7 @@ class _ChangePasswordState extends State<ChangePassword> {
               ),
               const Text(
                 "Confirm New Password",
-                style:
-                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               SizedBox(
                 height: Get.height * 0.01,
@@ -75,7 +75,12 @@ class _ChangePasswordState extends State<ChangePassword> {
               SizedBox(
                 height: Get.height * 0.04,
               ),
-              InkWell(onTap: () {}, child: CustomButton(text: "UPDATE")),
+              CustomButton(
+                text: "UPDATE",
+                funct: () {
+                  Get.back();
+                },
+              ),
               SizedBox(
                 height: Get.height * 0.04,
               ),
@@ -83,7 +88,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 alignment: Alignment.center,
                 child: Text(
                   "Forgot Password?",
-                  style: const TextStyle(color: Colors.blue),
+                  style: TextStyle(color: Colors.blue),
                 ),
               ),
             ],

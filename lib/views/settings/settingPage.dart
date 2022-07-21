@@ -29,9 +29,10 @@ class _SettingScreenState extends State<SettingScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: tabAppBar(
+          leading: false,
           title: "Settings",
-          trailing: const SizedBox(
-            width: 46,
+          trailing: SizedBox(
+            width: Responsive.isTablet(context) ? Get.width * 0.14 : 46,
           )),
       body: Row(
         children: [
@@ -47,8 +48,8 @@ class _SettingScreenState extends State<SettingScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const SizedBox(
-                        height: 6,
+                      SizedBox(
+                        height: Responsive.isTablet(context) ? 32 : 6,
                       ),
                       CircleAvatar(
                         backgroundColor: Colors.grey.withOpacity(0.3),
@@ -68,8 +69,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       ),
                       const Text(
                         "@indiaharris",
-                        style:
-                            const TextStyle(fontSize: 14, color: progressType),
+                        style: TextStyle(fontSize: 14, color: progressType),
                       ),
                       const SizedBox(
                         height: 8,

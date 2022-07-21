@@ -168,10 +168,9 @@ class _EventPageForMonthState extends State<EventPageForMonth>
                 UpCommingEvent(
                   fun: () {
                     // isHideCalander = true;
-                    setState(() {});
                   },
                 ),
-                CompleteEvent(),
+                const CompleteEvent(),
               ],
             ),
           ),

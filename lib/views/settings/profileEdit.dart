@@ -252,7 +252,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                     ),
                     CustomButton(
                       text: "Save changes",
-                      funct: () {},
+                      funct: () {
+                        Get.back();
+                      },
                     ),
                   ],
                 ),

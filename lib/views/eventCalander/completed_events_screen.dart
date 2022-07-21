@@ -17,13 +17,13 @@ class _CompleteEventState extends State<CompleteEvent> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 12),
+              margin: const EdgeInsets.only(
+                  top: 10, left: 16, right: 16, bottom: 12),
               height: 95,
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               width: Get.width,
               decoration: BoxDecoration(
                 color: tilecolor,
@@ -31,7 +31,7 @@ class _CompleteEventState extends State<CompleteEvent> {
               ),
               child: Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     child: Image(
                       image: AssetImage('assets/images/img.png'),
                       fit: BoxFit.cover,
@@ -43,12 +43,12 @@ class _CompleteEventState extends State<CompleteEvent> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('2022 meetup'),
-                      Text(
+                      const Text('2022 meetup'),
+                      const Text(
                         'By Likee',
                         style: TextStyle(color: Colors.grey),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 6,
                       ),
                       Container(
@@ -58,8 +58,8 @@ class _CompleteEventState extends State<CompleteEvent> {
                           color: compltedcolor,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 5),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 5),
                           child: Text(
                             'Completed 8 days ago',
                             style: TextStyle(color: Colors.black, fontSize: 14),
@@ -68,7 +68,7 @@ class _CompleteEventState extends State<CompleteEvent> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   MaterialButton(
                     onPressed: () {
                       setState(
@@ -81,18 +81,19 @@ class _CompleteEventState extends State<CompleteEvent> {
                     height: 36,
                     //color: Colors.transparent,
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: buttoncolor),
+                      side: const BorderSide(width: 1, color: buttoncolor),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Text('Feedback'),
+                    child: const Text('Feedback'),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 12),
+              margin: const EdgeInsets.only(
+                  top: 10, left: 16, right: 16, bottom: 12),
               height: 95,
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               width: Get.width,
               decoration: BoxDecoration(
                 color: tilecolor,
@@ -100,7 +101,7 @@ class _CompleteEventState extends State<CompleteEvent> {
               ),
               child: Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     child: Image(
                       image: AssetImage('assets/images/img_1.png'),
                       fit: BoxFit.cover,
@@ -112,15 +113,15 @@ class _CompleteEventState extends State<CompleteEvent> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Game OF thrones',
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Text(
+                      const Text(
                         'By Netflix',
                         style: TextStyle(color: Colors.grey),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 6,
                       ),
                       Container(
@@ -130,8 +131,8 @@ class _CompleteEventState extends State<CompleteEvent> {
                           color: compltedcolor,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 5),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 5),
                           child: Text(
                             'Completed 5 days ago',
                             style: TextStyle(color: Colors.black, fontSize: 14),
@@ -140,7 +141,7 @@ class _CompleteEventState extends State<CompleteEvent> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   MaterialButton(
                     onPressed: () {
                       setState(
@@ -153,18 +154,19 @@ class _CompleteEventState extends State<CompleteEvent> {
                     height: 36,
                     //color: Colors.transparent,
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: buttoncolor),
+                      side: const BorderSide(width: 1, color: buttoncolor),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Text('Feedback'),
+                    child: const Text('Feedback'),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 12),
+              margin: const EdgeInsets.only(
+                  top: 10, left: 16, right: 16, bottom: 12),
               height: 95,
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               width: Get.width,
               decoration: BoxDecoration(
                 color: tilecolor,
@@ -172,7 +174,7 @@ class _CompleteEventState extends State<CompleteEvent> {
               ),
               child: Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     child: Image(
                       image: AssetImage('assets/images/img_2.png'),
                       fit: BoxFit.cover,
@@ -184,12 +186,12 @@ class _CompleteEventState extends State<CompleteEvent> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Award show'),
-                      Text(
+                      const Text('Award show'),
+                      const Text(
                         'By Evento',
                         style: TextStyle(color: Colors.grey),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 6,
                       ),
                       Container(
@@ -199,9 +201,9 @@ class _CompleteEventState extends State<CompleteEvent> {
                           color: compltedcolor,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: Text(
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 5),
+                          child: const Text(
                             'Completed 8 days ago',
                             style: TextStyle(color: Colors.black, fontSize: 14),
                           ),
@@ -209,7 +211,7 @@ class _CompleteEventState extends State<CompleteEvent> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   MaterialButton(
                     onPressed: () {
                       setState(
@@ -222,10 +224,10 @@ class _CompleteEventState extends State<CompleteEvent> {
                     height: 36,
                     //color: Colors.transparent,
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: buttoncolor),
+                      side: const BorderSide(width: 1, color: buttoncolor),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Text('Feedback'),
+                    child: const Text('Feedback'),
                   ),
                 ],
               ),
@@ -254,14 +256,14 @@ class _CompleteEventState extends State<CompleteEvent> {
                     padding:
                         const EdgeInsets.only(left: 63, right: 61, top: 49),
                     child: Container(
-                      child: Text(
+                      child: const Text(
                         'Rate your experience',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 24, fontWeight: FontWeight.w500),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
@@ -273,20 +275,20 @@ class _CompleteEventState extends State<CompleteEvent> {
                     ),
                     child: Column(
                       children: [
-                        Text(
+                        const Text(
                           'How much did you enjoy this experience?',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w500),
                         ),
-                        Text(
+                        const Text(
                           'Select an appropriate rating below.',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 17.68,
                   ),
                   Container(
@@ -296,17 +298,17 @@ class _CompleteEventState extends State<CompleteEvent> {
                       direction: Axis.horizontal,
                       allowHalfRating: true,
                       itemCount: 5,
-                      itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                      itemBuilder: (context, _) => Icon(
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => const Icon(
                         Icons.star,
-                        color: Color(0xffDC8436),
+                        color: const Color(0xffDC8436),
                       ),
                       onRatingUpdate: (rating) {
                         print(rating);
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 80,
                   ),
                   Padding(
@@ -334,15 +336,15 @@ class _CompleteEventState extends State<CompleteEvent> {
                                       height: 195,
                                       child: Column(children: [
                                         Container(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 15),
                                           child: Column(
                                             children: [
-                                              Divider(),
+                                              const Divider(),
                                               SizedBox(
                                                 height: Get.height * 0.02,
                                               ),
-                                              Text(
+                                              const Text(
                                                 'Your rating has been submitted for the company to view.',
                                                 style: TextStyle(
                                                   color: Color(0xff333943),
@@ -360,7 +362,7 @@ class _CompleteEventState extends State<CompleteEvent> {
                                                 },
                                                 text: 'BACK TO SKILLD',
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 8,
                                               ),
                                             ],
@@ -410,15 +412,15 @@ class _CompleteEventState extends State<CompleteEvent> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Text(
+                        child: const Text(
                           'SUBMIT',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                               color: Colors.black),
                         )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 33,
                   ),
                 ],

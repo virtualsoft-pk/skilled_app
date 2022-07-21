@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:skilled_app/views/responsive.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 import '../utils/app_colors.dart';
 
 AddEventCalender(BuildContext context) {
-  showModalBottomSheet(
+  return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
@@ -22,40 +24,62 @@ AddEventCalender(BuildContext context) {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  ListTile(
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Container(
+                    height: 4,
+                    width: 32,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[400],
+                        borderRadius: BorderRadius.circular(8)),
+                  ),
+                  const ListTile(
                     leading: Text(
                       'Select date',
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(
-                    height: 220,
-                    width: double.infinity,
-                    // color: Colors.purple,
-
-                    // TODO: add calendar
-                    // child: Calendar(
-                    //   startOnMonday: true,
-                    //   weekDays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-                    //   // events: _events,
-                    //   events: {},
-                    //   //  isExpandable: true,
-                    //   // eventDoneColor: Colors.green,
-                    //   //  selectedColor: Colors.pink,
-                    //   //  todayColor: Colors.blue,
-                    //   //  eventColor: Colors.grey,
-                    //   // locale: 'de_DE',
-                    //   // todayButtonText: 'Heute',
-                    //   isExpanded: false,
-                    //   expandableDateFormat: 'EEEE, dd. MMMM yyyy',
-                    //   dayOfWeekStyle: TextStyle(
-                    //       color: Colors.black,
-                    //       fontWeight: FontWeight.w800,
-                    //       fontSize: 11),
-                    // ),
+                  TableCalendar(
+                    calendarBuilders: CalendarBuilders(
+                      headerTitleBuilder: (context, dateTime) {
+                        return Text(
+                          DateFormat.yMMMMd().format(dateTime),
+                          style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        );
+                      },
+                    ),
+                    daysOfWeekHeight: 32,
+                    headerStyle: HeaderStyle(
+                        formatButtonDecoration: const BoxDecoration(
+                          color: Colors.black,
+                        ),
+                        headerMargin: const EdgeInsets.only(top: 4, bottom: 22),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: const Color(0xFFEDEFF4),
+                        ),
+                        formatButtonShowsNext: false,
+                        formatButtonVisible: false),
+                    calendarFormat: CalendarFormat.month,
+                    firstDay: DateTime.utc(2010, 10, 16),
+                    lastDay: DateTime.utc(2030, 3, 14),
+                    focusedDay: DateTime.now(),
+                    availableCalendarFormats: const {
+                      CalendarFormat.month: 'Month',
+                      CalendarFormat.week: 'Week',
+                    },
+                    startingDayOfWeek: StartingDayOfWeek.monday,
+                    weekendDays: const [
+                      DateTime.sunday,
+                    ],
+                    // availableGestures: AvailableGestures.none,
                   ),
-                  Container(
+                  const SizedBox(
                     height: 20,
                     child: ListTile(
                       leading: Text(
@@ -65,8 +89,8 @@ AddEventCalender(BuildContext context) {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: Get.height * 0.05,
+                  const SizedBox(
+                    height: 32,
                   ),
                   TimePickerSpinner(
                     itemWidth: Responsive.isTablet(context)
@@ -74,15 +98,15 @@ AddEventCalender(BuildContext context) {
                         : Get.width * 0.25,
                     is24HourMode: false,
                     normalTextStyle:
-                        TextStyle(fontSize: 24, color: Colors.grey),
+                        const TextStyle(fontSize: 18, color: Colors.grey),
                     highlightedTextStyle:
-                        TextStyle(fontSize: 24, color: Colors.black),
+                        const TextStyle(fontSize: 18, color: Colors.black),
                     spacing: 10,
                     itemHeight: 40,
                     isForce2Digits: true,
                     onTimeChange: (time) {},
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   MaterialButton(
@@ -98,23 +122,28 @@ AddEventCalender(BuildContext context) {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.calendar_today,
                           color: Colors.black45,
                         ),
-                        Container(
-                            margin: EdgeInsets.only(left: 5),
-                            child: Text(
-                              'ADD TO CALENDAR',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black),
-                            ))
+                        GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Container(
+                              margin: const EdgeInsets.only(left: 5),
+                              child: const Text(
+                                'ADD TO CALENDAR',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black),
+                              )),
+                        )
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                 ],

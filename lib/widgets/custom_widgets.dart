@@ -7,7 +7,7 @@ import 'package:skilled_app/widgets/custom_button.dart';
 import '../utils/app_colors.dart';
 import 'add_event_calender.dart';
 
-tabAppBar({title, trailing}) {
+tabAppBar({title, trailing, leading = true}) {
   return PreferredSize(
     preferredSize: const Size.fromHeight(100),
     child: Builder(builder: (context) {
@@ -18,7 +18,12 @@ tabAppBar({title, trailing}) {
             const SizedBox(
               width: 16,
             ),
-            SizedBox(child: customBackButton()),
+            if (leading) SizedBox(child: customBackButton()),
+            if (!leading)
+              const SizedBox(
+                height: 40.0,
+                width: 40.0,
+              ),
             title != null ? const Spacer() : const SizedBox(),
             title != null
                 ? Container(

@@ -39,11 +39,11 @@ class _InPersonState extends State<InPerson> {
             onTap: () {
               share();
             },
-            child: CircleAvatar(
-                backgroundColor: Color(0xffF4F4F5),
+            child: const CircleAvatar(
+                backgroundColor: const Color(0xffF4F4F5),
                 child: Icon(
                   Icons.share,
-                  color: Color(0xff5A5E67),
+                  color: const Color(0xff5A5E67),
                 )),
           ),
         ),
@@ -120,7 +120,7 @@ class _InPersonState extends State<InPerson> {
                             fontWeight: FontWeight.w700,
                             color: grey900)),
                     if (Responsive.isTablet(context))
-                      SizedBox(
+                      const SizedBox(
                           height: 42, width: 200, child: _AddToCalendarButton())
                   ],
                 ),
@@ -162,9 +162,9 @@ class _InPersonState extends State<InPerson> {
                         child: Image.asset("assets/icons/camera.png")),
 
                     SizedBox(width: Get.width * 0.01),
-                    Text(
+                    const Text(
                       "Online event",
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: grey500,
                           fontSize: 12,
                           fontWeight: FontWeight.w500),
@@ -179,8 +179,9 @@ class _InPersonState extends State<InPerson> {
                         direction: Axis.horizontal,
                         allowHalfRating: true,
                         itemCount: 5,
-                        itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                        itemBuilder: (context, _) => Icon(
+                        itemPadding:
+                            const EdgeInsets.symmetric(horizontal: 1.0),
+                        itemBuilder: (context, _) => const Icon(
                           Icons.star,
                           color: Color(0xffDC8436),
                           size: 20,
@@ -197,7 +198,7 @@ class _InPersonState extends State<InPerson> {
                 ),
                 Row(
                   children: [
-                    Text("Details",
+                    const Text("Details",
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -207,16 +208,16 @@ class _InPersonState extends State<InPerson> {
                 SizedBox(
                   height: Get.height * 0.009,
                 ),
-                Text(
+                const Text(
                   "Gain an immersive experience of Engineering alongside top professionals. Learn more by selecting, visit the website.",
-                  style: TextStyle(height: 1.9, color: Colors.grey),
+                  style: const TextStyle(height: 1.9, color: Colors.grey),
                 ),
                 SizedBox(
                   height: Get.height * 0.03,
                 ),
-                Text(
+                const Text(
                   "2 day event, online for ages 12-14 or 15-18.",
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.grey, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -224,7 +225,7 @@ class _InPersonState extends State<InPerson> {
                 ),
                 Row(
                   children: [
-                    Text("Event host", style: TextStyle(fontSize: 16)),
+                    const Text("Event host", style: TextStyle(fontSize: 16)),
                   ],
                 ),
                 SizedBox(
@@ -243,7 +244,7 @@ class _InPersonState extends State<InPerson> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "InvestIn",
                               style: TextStyle(
                                 fontSize: 14,
@@ -253,9 +254,9 @@ class _InPersonState extends State<InPerson> {
                             SizedBox(
                               height: Get.height * 0.001,
                             ),
-                            Text(
+                            const Text(
                               "www.investin.com",
-                              style: TextStyle(color: Colors.grey),
+                              style: const TextStyle(color: Colors.grey),
                             )
                           ],
                         ),
@@ -263,7 +264,8 @@ class _InPersonState extends State<InPerson> {
                     ),
                     Column(
                       children: [
-                        if (Responsive.isMobile(context)) _AddToCalendarButton()
+                        if (Responsive.isMobile(context))
+                          const _AddToCalendarButton()
                       ],
                     ),
                   ],
@@ -312,7 +314,7 @@ class _InPersonState extends State<InPerson> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
             child: Container(
-              margin: EdgeInsets.only(left: 12, right: 12),
+              margin: const EdgeInsets.only(left: 12, right: 12),
               height: Get.height * 0.53,
               width: Get.width * 0.83,
               decoration: BoxDecoration(
@@ -325,20 +327,21 @@ class _InPersonState extends State<InPerson> {
                   Image.asset(
                       "assets/casual-life-3d-white-envelope-with-blue-letter-in-it 2.png"),
                   SizedBox(height: Get.height * 0.03),
-                  Text(
+                  const Text(
                     "Email Sent!",
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 23, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: Get.height * 0.01),
-                  Text("Please check your inbox "),
+                  const Text("Please check your inbox "),
                   SizedBox(height: Get.height * 0.04),
                   Container(
                     width: Get.width * 0.5,
                     height: Get.height * 0.07,
                     decoration: BoxDecoration(
-                        color: Color(0xffFBC799),
+                        color: const Color(0xffFBC799),
                         borderRadius: BorderRadius.circular(15)),
-                    child: Center(
+                    child: const Center(
                         child: Text(
                       "BACK TO RESULTS ",
                       style: TextStyle(
@@ -363,24 +366,25 @@ class _AddToCalendarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 12, top: 9),
+      margin: const EdgeInsets.only(left: 12, top: 9),
       width: Get.width * 0.4,
       height: Get.height * 0.07,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        color: Color(0xffF4F4F5),
+        borderRadius: BorderRadius.circular(8),
+        color: const Color(0xffF4F4F5),
       ),
       child: InkWell(
         onTap: () {
           AddEventCalender(context);
         },
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(width: Get.width * 0.03),
-            Icon(Icons.shopping_bag, color: Colors.grey),
-            Text(
+            Icon(Icons.shopping_bag, color: Colors.grey[400]),
+            const SizedBox(width: 12),
+            const Text(
               "Add to Calendar ",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.w500),
             )
           ],
         ),

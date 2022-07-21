@@ -34,21 +34,21 @@ class _NotificationScreenState extends State<NotificationScreen> {
           children: [
             InkWell(
               onTap: () {},
-              child: buildListTile("Someome mention me",
+              child: notificationTile("Someome mention me",
                   "When someone replies to my\nforum post", firstCheck, (a) {
                 setState(() {
                   firstCheck = a;
                 });
               }),
             ),
-            buildListTile(
+            notificationTile(
                 "Push notification", "Send push notification", secondCheck,
                 (a) {
               setState(() {
                 secondCheck = a;
               });
             }),
-            buildListTile(
+            notificationTile(
                 "Recommendations",
                 "Send me notifications when new videos, courses, are recommended for me",
                 thridCheck, (a) {
@@ -62,7 +62,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     );
   }
 
-  Widget buildListTile(
+  Widget notificationTile(
       String title, String subTitle, bool isChecked, Function onPressed) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
@@ -72,16 +72,19 @@ class _NotificationScreenState extends State<NotificationScreen> {
           children: [
             Text(
               title,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 4,
             ),
             SizedBox(
-              width: Get.width * 0.75,
+              width: Responsive.isTablet(context)
+                  ? Get.width * 0.65
+                  : Get.width * 0.75,
               child: Text(
                 subTitle,
-                style: TextStyle(fontSize: 14, color: notificationTextColor),
+                style:
+                    const TextStyle(fontSize: 14, color: notificationTextColor),
               ),
             ),
           ],

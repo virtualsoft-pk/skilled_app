@@ -141,15 +141,16 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   ? CustomButton(
                       text: "SAVE AND CONTINUE",
                       funct: () {
-                        Get.bottomSheet(buttomSheet(),
-                            elevation: 20.0,
-                            enableDrag: false,
-                            backgroundColor: Colors.white,
-                            shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30.0),
-                              topRight: Radius.circular(30.0),
-                            )));
+                        Get.back();
+                        // Get.bottomSheet(buttomSheet(),
+                        //     elevation: 20.0,
+                        //     enableDrag: false,
+                        //     backgroundColor: Colors.white,
+                        //     shape: const RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.only(
+                        //       topLeft: Radius.circular(30.0),
+                        //       topRight: Radius.circular(30.0),
+                        //     )));
                       },
                     )
                   : Container(),

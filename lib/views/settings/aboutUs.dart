@@ -14,7 +14,11 @@ class _AboustUsState extends State<AboustUs> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: tabAppBar(title: 'About Us'),
+      appBar: tabAppBar(
+          title: 'About Us',
+          trailing: SizedBox(
+            width: Responsive.isTablet(context) ? Get.width * 0.05 : 32,
+          )),
       body: Container(
         margin: EdgeInsets.symmetric(
           horizontal: Responsive.isTablet(context) ? Get.width * 0.08 : 16,
