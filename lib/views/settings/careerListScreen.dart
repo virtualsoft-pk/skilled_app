@@ -445,7 +445,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
           children: [
             Text(
               name,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
             const Spacer(),
             changeView

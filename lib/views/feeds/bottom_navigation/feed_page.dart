@@ -910,7 +910,7 @@ class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -930,7 +930,7 @@ class _Header extends StatelessWidget {
                     // Get.to(() => Notifications());
                   },
                   child: Container(
-                    padding: EdgeInsets.all(9),
+                    padding: const EdgeInsets.all(9),
                     height: 44,
                     width: 44,
                     decoration: BoxDecoration(
@@ -953,7 +953,7 @@ class _Header extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       color: deepOrange,
                     ),
-                    child: Text(
+                    child: const Text(
                       '2',
                       style: TextStyle(
                         fontSize: 8,

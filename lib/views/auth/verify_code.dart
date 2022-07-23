@@ -84,9 +84,9 @@ class _VerifyCodeState extends State<VerifyCode> {
               focusNode: _pinPutFocusNode,
               controller: _pinPutController,
               submittedFieldDecoration: _pinPutDecoration.copyWith(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              selectedFieldDecoration: _pinPutDecoration,
+                  borderRadius: BorderRadius.circular(20.0), color: greyColor),
+              selectedFieldDecoration: _pinPutDecoration.copyWith(
+                  borderRadius: BorderRadius.circular(20.0), color: greyColor),
               followingFieldDecoration: _pinPutDecoration.copyWith(
                 borderRadius: BorderRadius.circular(20.0),
 
@@ -145,10 +145,8 @@ class _VerifyCodeState extends State<VerifyCode> {
           ),
         ),
       ),
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: primaryColor,
     );
-    Scaffold.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
