@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/controller/nav_controller.dart';
 import 'package:skilled_app/views/forum/create_post.dart';
+import 'package:skilled_app/views/forum/post_tile.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
-import 'package:skilled_app/views/forum/thread_detail.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
@@ -33,7 +33,7 @@ class _ForumState extends State<Forum> {
         message: 'assets/img_13.png',
         number: '212',
         heart: 'assets/img_12.png',
-        count: '2.1k',
+        count: 538,
         design3: 'web design',
         dgn2: 'Motion',
         image: 'assets/img_10.png',
@@ -49,7 +49,7 @@ class _ForumState extends State<Forum> {
         message: 'assets/img_13.png',
         number: '212',
         heart: 'assets/img_12.png',
-        count: '2.1k',
+        count: 341,
         design3: 'web design',
         dgn2: 'Motion',
         image: 'assets/img_10.png',
@@ -150,6 +150,7 @@ class _ForumState extends State<Forum> {
                           const SizedBox(
                             height: 32,
                           ),
+                        const SizedBox(height: 12),
                         Container(
                           height: screenheight * 0.07,
                           width: screenwidth * 0.9,
@@ -335,378 +336,9 @@ class _ForumState extends State<Forum> {
                                   scrollDirection: Axis.vertical,
                                   itemCount: post.length,
                                   itemBuilder: (context, index) {
-                                    return Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 15),
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  height: 37,
-                                                  width: 37,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            42),
-                                                    color: Colors.grey,
-                                                  ),
-                                                  child: Image(
-                                                      image: AssetImage(
-                                                          '${post[index].image}')),
-                                                ),
-                                                const SizedBox(
-                                                  width: 8,
-                                                ),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    myText(
-                                                        text:
-                                                            '${post[index].name}',
-                                                        style:
-                                                            GoogleFonts.manrope(
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        )),
-                                                    myText(
-                                                        text:
-                                                            '${post[index].date}',
-                                                        style: GoogleFonts.manrope(
-                                                            fontSize: 12,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color:
-                                                                dividercolor)),
-                                                  ],
-                                                ),
-                                                const Spacer(),
-                                                IconButton(
-                                                  onPressed: () {
-                                                    share();
-                                                  },
-                                                  icon: const Icon(
-                                                      Icons.more_vert,
-                                                      color: grey500),
-                                                ),
-                                                const SizedBox(
-                                                  width: 85,
-                                                ),
-                                                // PopupMenuButton(
-                                                //   itemBuilder: (context) => [
-                                                //     PopupMenuItem(
-                                                //       child: Text("First"),
-                                                //       value: 1,
-                                                //     ),
-                                                //     PopupMenuItem(
-                                                //       child: Text("Second"),
-                                                //       value: 2,
-                                                //     )
-                                                //   ],
-                                                // )
-                                              ],
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 8,
-                                          ),
-                                          Container(
-                                            margin: const EdgeInsets.symmetric(
-                                              horizontal: 15,
-                                            ),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    if (Responsive.isTablet(
-                                                        context))
-                                                      const SizedBox(
-                                                        width: 36,
-                                                      ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        context.navigator.push<
-                                                                void>(
-                                                            SwipeablePageRoute(
-                                                                builder: (_) =>
-                                                                    PopularThread(
-                                                                      title:
-                                                                          'UI/UIX',
-                                                                    )));
-                                                        // Get.to(
-                                                        //   () => PopularThread(
-                                                        //     title: 'UI/UIX',
-                                                        //   ),
-                                                        // );
-                                                        // print('object');
-                                                      },
-                                                      child: Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                vertical: 5,
-                                                                horizontal: 10),
-                                                        margin: const EdgeInsets
-                                                            .only(left: 5),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(15),
-                                                          color: const Color(
-                                                              0xffFFE2DC),
-                                                          // border: Border.all(
-                                                          //   color: backcolor,
-                                                          // ),
-                                                        ),
-                                                        child: Center(
-                                                          child: myText(
-                                                              text:
-                                                                  '${post[index].design}',
-                                                              style: GoogleFonts.manrope(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: Colors
-                                                                      .black)),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 8,
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        context.navigator.push<
-                                                                void>(
-                                                            SwipeablePageRoute(
-                                                                builder: (_) =>
-                                                                    PopularThread(
-                                                                      title:
-                                                                          'Motion',
-                                                                    )));
-                                                        // Get.to(() =>
-                                                        //     PopularThread(
-                                                        //       title: 'Motion',
-                                                        //     ));
-                                                      },
-                                                      child: Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                vertical: 5,
-                                                                horizontal: 10),
-                                                        decoration: BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        15),
-                                                            color: const Color(
-                                                                0xffFDE3CC),
-                                                            border: Border.all(
-                                                                color:
-                                                                    backcolor)),
-                                                        child: Center(
-                                                            child: Text(
-                                                                '${post[index].dgn2}')),
-                                                      ),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 8,
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        context.navigator.push<
-                                                                void>(
-                                                            SwipeablePageRoute(
-                                                                builder: (_) =>
-                                                                    PopularThread(
-                                                                      title:
-                                                                          'Web Design',
-                                                                    )));
-                                                        // Get.to(() =>
-                                                        //     PopularThread(
-                                                        //       title:
-                                                        //           'Web Design',
-                                                        //     ));
-                                                      },
-                                                      child: Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                vertical: 5,
-                                                                horizontal: 10),
-                                                        margin: const EdgeInsets
-                                                            .only(left: 5),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(15),
-                                                          color: const Color(
-                                                              0xffE4F0EE),
-                                                          // border: Border.all(
-                                                          //     color: backcolor),
-                                                        ),
-                                                        child: Center(
-                                                            child: Text(
-                                                                '${post[index].design3}')),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                const SizedBox(
-                                                  height: 8,
-                                                ),
-                                                myText(
-                                                    text: '${post[index].desc}',
-                                                    style: GoogleFonts.manrope(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    )),
-                                                const SizedBox(
-                                                  height: 4,
-                                                ),
-                                                myText(
-                                                    text:
-                                                        '${post[index].desc2}',
-                                                    style: GoogleFonts.manrope(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    )),
-                                                const SizedBox(
-                                                  height: 2,
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    index == 0
-                                                        ? isLike == false
-                                                            ? InkWell(
-                                                                onTap: () {
-                                                                  isLike = true;
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                child: Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .all(10),
-                                                                  child: Image(
-                                                                    image: AssetImage(
-                                                                        '${post[index].heart}'),
-                                                                    width: 20,
-                                                                    height: 18,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            : InkWell(
-                                                                onTap: () {
-                                                                  isLike =
-                                                                      false;
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                child: Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .all(10),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/icons/2107845.png',
-                                                                    width: 20,
-                                                                    height: 18,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                ),
-                                                              )
-                                                        : isLikw1 == false
-                                                            ? InkWell(
-                                                                onTap: () {
-                                                                  isLikw1 =
-                                                                      true;
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                child: Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .all(10),
-                                                                  child: Image(
-                                                                    image: AssetImage(
-                                                                        '${post[index].heart}'),
-                                                                    width: 20,
-                                                                    height: 18,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                ))
-                                                            : InkWell(
-                                                                onTap: () {
-                                                                  isLikw1 =
-                                                                      false;
-                                                                  setState(
-                                                                      () {});
-                                                                },
-                                                                child: Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .all(10),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/icons/2107845.png',
-                                                                    width: 20,
-                                                                    height: 18,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                    myText(
-                                                        text:
-                                                            '${post[index].count}'),
-                                                    const SizedBox(
-                                                      width: 12,
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {},
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(10),
-                                                        child: Image(
-                                                          image: AssetImage(
-                                                              '${post[index].message}'),
-                                                          width: 17.5,
-                                                          height: 15,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    myText(
-                                                        text:
-                                                            '${post[index].number}'),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: screenheight * 0.03,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ]);
+                                    return PostTile(
+                                        post: post[index],
+                                        screenheight: screenheight);
                                   }),
                             ),
                           ],

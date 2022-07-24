@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:skilled_app/widgets/video_bar.dart';
 
 class AboustUs extends StatefulWidget {
   @override
@@ -61,12 +62,13 @@ class _AboustUsState extends State<AboustUs> {
               width: double.infinity,
               height: Responsive.isTablet(context)
                   ? Get.height * 0.45
-                  : Get.height * 0.2,
+                  : Get.height * 0.25,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                      image: AssetImage('assets/unsplash_wD1LRb9OeEo.png'),
-                      fit: BoxFit.cover)),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: const VideoBar(videoPath: 'assets/about.mp4')),
             ),
             SizedBox(
               height: Get.height * 0.04,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/controller/nav_controller.dart';
+import 'package:skilled_app/controller/tagcontroller.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
@@ -68,7 +69,7 @@ class __BottomNavMobileState extends State<_BottomNavMobile> {
   final List _screens = [
     FeedPage(),
     Search(),
-    Forum(),
+    const Forum(),
     const EventPageForMonth(),
 
     // Events(),
@@ -83,6 +84,7 @@ class __BottomNavMobileState extends State<_BottomNavMobile> {
 
   @override
   void initState() {
+    final controller = Get.put(TagController());
     super.initState();
     if (widget.index != null) {
       _currentIndex = widget.index!;

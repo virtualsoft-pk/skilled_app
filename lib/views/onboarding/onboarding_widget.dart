@@ -215,7 +215,7 @@ class _OnBoard extends HookConsumerWidget {
                                 ? Get.height * 0.1
                                 : Get.height * 0.06,
                           ),
-                          height: MediaQuery.of(context).size.height * 0.3,
+                          height: MediaQuery.of(context).size.height * 0.25,
                           // width: 150,
                           // color: Colors.amber,
                           child: Stack(
@@ -257,6 +257,7 @@ class _OnBoard extends HookConsumerWidget {
                               Container(
                                 // margin: EdgeInsets.only(top: Get.height * 0.04),
                                 width: double.infinity,
+                                height: Get.height * 0.25,
                                 padding: index == 0
                                     ? EdgeInsets.symmetric(
                                         horizontal: Get.width * 0.1)

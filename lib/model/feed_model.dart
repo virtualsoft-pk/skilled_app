@@ -1,6 +1,7 @@
 class FeedModel {
   String? profileImage;
   String? name;
+  String? videoPath;
   DateTime? dateTime;
   String? text;
   String? mainImage;
@@ -9,6 +10,7 @@ class FeedModel {
   double? likes;
   int? shares;
   FeedModel({
+    this.videoPath,
     this.dateTime,
     this.likes,
     this.mainImage,
@@ -25,6 +27,7 @@ List<FeedModel> feedModel = [
   FeedModel(
     dateTime: DateTime.now(),
     likes: 14.3,
+    videoPath: 'assets/1.mp4',
     mainImage: 'assets/unsplash_ooZ3a5k7GFQ.png',
     name: 'Skill Share',
     profileImage: 'assets/Ellipse 582.png',
@@ -35,6 +38,7 @@ List<FeedModel> feedModel = [
   ),
   FeedModel(
     dateTime: DateTime.now(),
+    videoPath: 'assets/2.mp4',
     likes: 22.3,
     mainImage: 'assets/unsplash_LETdkk7wHQk.png',
     name: 'Evento',

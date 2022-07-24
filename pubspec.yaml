@@ -55,7 +55,7 @@ dev_dependencies:
   share_plus: null
   swipe: ^0.0.1
   swipeable_page_route: ^0.2.6
-  textfield_tags: ^1.4.2
+  textfield_tags: ^2.0.0+1
   url_launcher: null
   video_player: ^2.4.5
   device_preview: ^0.8.0

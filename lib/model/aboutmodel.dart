@@ -30,7 +30,7 @@ class Post {
   String dgn2;
   String design3;
   String heart;
-  String count;
+  int count;
   String message;
   String number;
   Color color;

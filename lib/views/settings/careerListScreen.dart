@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/controller/quiz_controller.dart';
+import 'package:skilled_app/controller/tagcontroller.dart';
+import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
-import 'package:skilled_app/widgets/flutter_typeahead.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
+import 'package:textfield_tags/textfield_tags.dart';
 
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
@@ -266,61 +268,62 @@ class _CareerListScreenState extends State<CareerListScreen> {
                   ),
                   Container(
                     margin: EdgeInsets.only(bottom: Get.height * 0.01),
-                    height: 55,
-                    child: TypeAheadField(
-                      function: () {
-                        quizController!.selectedTags.add(tagController.text);
-                        tagController.clear();
-                        FocusScope.of(context).unfocus();
-                        setState(() {});
-                        sset(() {});
-                      },
-                      animationStart: 0,
-                      animationDuration: Duration.zero,
-                      textFieldConfiguration: TextFieldConfiguration(
-                        autofocus: false,
-                        controller: tagController,
-                        enableSuggestions: true,
-                        style: const TextStyle(fontSize: 15),
-                        decoration: InputDecoration(
-                          hintText: 'Topics name',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                      ),
-                      suggestionsBoxDecoration:
-                          const SuggestionsBoxDecoration(),
-                      suggestionsCallback: (pattern) {
-                        List<String> matches = <String>[];
-                        matches.addAll(careerList);
+                    //height: 55,
+                    child: const TagField(tagType: TagType.career),
+                    //  TypeAheadField(
+                    //   function: () {
+                    //     quizController!.selectedTags.add(tagController.text);
+                    //     tagController.clear();
+                    //     FocusScope.of(context).unfocus();
+                    //     setState(() {});
+                    //     sset(() {});
+                    //   },
+                    //   animationStart: 0,
+                    //   animationDuration: Duration.zero,
+                    //   textFieldConfiguration: TextFieldConfiguration(
+                    //     autofocus: false,
+                    //     controller: tagController,
+                    //     enableSuggestions: true,
+                    //     style: const TextStyle(fontSize: 15),
+                    //     decoration: InputDecoration(
+                    //       hintText: 'Topics name',
+                    //       border: OutlineInputBorder(
+                    //         borderRadius: BorderRadius.circular(16),
+                    //       ),
+                    //     ),
+                    //   ),
+                    //   suggestionsBoxDecoration:
+                    //       const SuggestionsBoxDecoration(),
+                    //   suggestionsCallback: (pattern) {
+                    //     List<String> matches = <String>[];
+                    //     matches.addAll(careerList);
 
-                        matches.retainWhere(
-                          (s) {
-                            return s.toLowerCase().contains(
-                                  pattern.toLowerCase(),
-                                );
-                          },
-                        );
-                        return matches;
-                      },
-                      itemBuilder: (context, sone) {
-                        return Card(
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(sone.toString()),
-                          ),
-                        );
-                      },
-                      onSuggestionSelected: (String suggestion) {
-                        tagController.text = suggestion;
-                        quizController!.selectedTags.add(suggestion);
-                        tagController.clear();
-                        FocusScope.of(context).unfocus();
-                        setState(() {});
-                        sset(() {});
-                      },
-                    ),
+                    //     matches.retainWhere(
+                    //       (s) {
+                    //         return s.toLowerCase().contains(
+                    //               pattern.toLowerCase(),
+                    //             );
+                    //       },
+                    //     );
+                    //     return matches;
+                    //   },
+                    //   itemBuilder: (context, sone) {
+                    //     return Card(
+                    //       child: Container(
+                    //         padding: const EdgeInsets.all(10),
+                    //         child: Text(sone.toString()),
+                    //       ),
+                    //     );
+                    //   },
+                    //   onSuggestionSelected: (String suggestion) {
+                    //     tagController.text = suggestion;
+                    //     quizController!.selectedTags.add(suggestion);
+                    //     tagController.clear();
+                    //     FocusScope.of(context).unfocus();
+                    //     setState(() {});
+                    //     sset(() {});
+                    //   },
+                    // ),
                   ),
                   SizedBox(
                     height: Get.height * 0.01,
@@ -515,7 +518,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
   }
 
   chipList(StateSetter sset) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -523,10 +526,12 @@ class _CareerListScreenState extends State<CareerListScreen> {
         children: [
           InkWell(
             onTap: () {
-              quizController!.selectedTags.add('UX Design');
-              print(quizController!.selectedTags);
-              setState(() {});
-              sset(() {});
+              if (!quizController!.selectedTags.contains('UX Design')) {
+                quizController!.selectedTags.add('UX Design');
+                print(quizController!.selectedTags);
+                setState(() {});
+                sset(() {});
+              }
             },
             child: _buildChip(
               'UX Design',
@@ -534,10 +539,12 @@ class _CareerListScreenState extends State<CareerListScreen> {
           ),
           InkWell(
             onTap: () {
-              quizController!.selectedTags.add('Product design');
-              print(quizController!.selectedTags);
-              setState(() {});
-              sset(() {});
+              if (!quizController!.selectedTags.contains('Product Design')) {
+                quizController!.selectedTags.add('Product design');
+                print(quizController!.selectedTags);
+                setState(() {});
+                sset(() {});
+              }
             },
             child: _buildChip(
               'Product design',
@@ -545,10 +552,12 @@ class _CareerListScreenState extends State<CareerListScreen> {
           ),
           InkWell(
             onTap: () {
-              quizController!.selectedTags.add('UX/ Design');
-              print(quizController!.selectedTags);
-              setState(() {});
-              sset(() {});
+              if (!quizController!.selectedTags.contains('Mobile')) {
+                quizController!.selectedTags.add('Mobile');
+                print(quizController!.selectedTags);
+                setState(() {});
+                sset(() {});
+              }
             },
             child: _buildChip(
               'UX/ Design',
@@ -557,5 +566,177 @@ class _CareerListScreenState extends State<CareerListScreen> {
         ],
       ),
     );
+  }
+}
+
+enum TagType { post, career, other }
+
+class TagField extends StatefulWidget {
+  const TagField({Key? key, required this.tagType}) : super(key: key);
+  final TagType tagType;
+
+  @override
+  State<TagField> createState() => _TagFieldState();
+}
+
+class _TagFieldState extends State<TagField> {
+  // late double _distanceToField;
+  late final TextfieldTagsController _controller = TextfieldTagsController();
+  late final TagController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = Get.find<TagController>();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // _distanceToField = MediaQuery.of(context).size.width;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Colors.white,
+        border: Border.all(
+          color: Colors.grey,
+          width: 0.7,
+        ),
+      ),
+      child: TextFieldTags(
+        textfieldTagsController: _controller,
+        initialTags: getInitialTags(widget.tagType),
+        textSeparators: const [','],
+        letterCase: LetterCase.normal,
+        validator: (String tag) {
+          if (_controller.getTags != null && _controller.getTags!.length >= 5) {
+            return null;
+          }
+          if (_controller.getTags!.contains(tag)) {
+            return 'you already entered that';
+          }
+          return null;
+        },
+        inputfieldBuilder: (context, tec, fn, error, onChanged, onSubmitted) {
+          return ((context, sc, tags, onTagDelete) {
+            return Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                readOnly: tags.length >= 3,
+                textInputAction: TextInputAction.done,
+                cursorColor: Colors.transparent,
+                controller: tec,
+                focusNode: fn,
+                showCursor: true,
+                decoration: InputDecoration(
+                  isDense: true,
+                  border: const OutlineInputBorder(borderSide: BorderSide.none),
+                  focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+
+                  //hintText: _controller.hasTags ? '' : "Enter tag...",
+                  hintText: '',
+                  errorText: error,
+                  // prefixIconConstraints:
+                  //     BoxConstraints(maxWidth: _distanceToField * 0.74),
+                  prefixIcon: tags.isNotEmpty
+                      ? Wrap(
+                          children: tags.map((String tag) {
+                          return Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8.0),
+                              ),
+                              color: greyColor,
+                            ),
+                            margin: const EdgeInsets.fromLTRB(5, 6, 5, 0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0, vertical: 8.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      child: Text(
+                                        tag,
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      onTap: () {
+                                        //print("$tag selected");
+                                      },
+                                    ),
+                                    const SizedBox(width: 4.0),
+                                    GestureDetector(
+                                      child: Icon(
+                                        Icons.close,
+                                        size: 16,
+                                        color: Colors.grey[800],
+                                      ),
+                                      onTap: () {
+                                        onTagDelete(tag);
+                                      },
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 2,
+                                ),
+                              ],
+                            ),
+                          );
+                        }).toList())
+                      : null,
+                ),
+                onChanged: tags.length < 3 ? onChanged : null,
+                onSubmitted: tags.length < 3
+                    ? (tag) {
+                        onSubmitted;
+                        updateTags(widget.tagType, tag.replaceAll(" ", ""));
+                      }
+                    : null,
+              ),
+            );
+          });
+        },
+      ),
+    );
+  }
+
+  List<String> getInitialTags(TagType tagType) {
+    switch (tagType) {
+      case TagType.post:
+        return controller.postTags;
+      default:
+        return ['UI/UX', 'Motion Design'];
+    }
+  }
+
+  void updateTags(TagType tagType, String tag) {
+    switch (tagType) {
+      case TagType.post:
+        controller.updatePostTags(tag);
+        break;
+      default:
+        break;
+    }
   }
 }

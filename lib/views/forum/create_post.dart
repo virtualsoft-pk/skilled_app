@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skilled_app/controller/tagcontroller.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:skilled_app/widgets/taf_field.dart';
 
 import '../../utils/app_colors.dart';
 import '../../widgets/custom_button.dart';
-import '../../widgets/flutter_typeahead.dart';
 import '../../widgets/hashir.dart';
 
 class CreatePostOnForum extends StatefulWidget {
@@ -136,126 +137,19 @@ class _CreatePostOnForumState extends State<CreatePostOnForum> {
                       ],
                     ),
 
-                    SizedBox(
-                      height: 5,
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.only(bottom: Get.height * 0.01),
-                      height: 55,
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: greycolor),
-                      child: TypeAheadField(
-                        function: () {
-                          if (selectedTags.length == 3) {
-                            tagController.clear();
-                            FocusScope.of(context).unfocus();
-                            return;
-                          }
-
-                          selectedTags.add(tagController.text);
-                          tagController.clear();
-                          FocusScope.of(context).unfocus();
-                          setState(() {});
-                        },
-                        animationStart: 0,
-                        animationDuration: Duration.zero,
-                        textFieldConfiguration: TextFieldConfiguration(
-                          autofocus: false,
-                          controller: tagController,
-                          enableSuggestions: true,
-                          style: TextStyle(fontSize: 15),
-                          decoration: InputDecoration(
-                            hintText: '',
-                            border: InputBorder.none,
-                          ),
-                        ),
-                        suggestionsBoxDecoration: SuggestionsBoxDecoration(),
-                        suggestionsCallback: (pattern) {
-                          List<String> matches = <String>[];
-                          matches.addAll(careerList);
-
-                          matches.retainWhere(
-                            (s) {
-                              return s.toLowerCase().contains(
-                                    pattern.toLowerCase(),
-                                  );
-                            },
-                          );
-                          return matches;
-                        },
-                        itemBuilder: (context, sone) {
-                          return Card(
-                            child: Container(
-                              padding: const EdgeInsets.all(10),
-                              child: Text(sone.toString()),
-                            ),
-                          );
-                        },
-                        onSuggestionSelected: (String suggestion) {
-                          if (selectedTags.length == 3) {
-                            tagController.clear();
-                            FocusScope.of(context).unfocus();
-                            return;
-                          }
-
-                          tagController.text = suggestion;
-                          selectedTags.add(suggestion);
-                          tagController.clear();
-                          FocusScope.of(context).unfocus();
-                          setState(() {});
-                        },
-                      ),
+                    const TagField(
+                      tagType: TagType.post,
                     ),
                     SizedBox(
                       height: Get.height * 0.01,
                     ),
-
-                    Container(
-                      width: double.infinity,
-                      height: 40,
-                      child: selectedTags.length == 0
-                          ? Center(
+                    GetBuilder<TagController>(builder: (controller) {
+                      return controller.postTags.isEmpty
+                          ? const Center(
                               child: Text("No tag yet"),
                             )
-                          : ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: selectedTags.length,
-                              itemBuilder: (ctx, i) {
-                                return InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      selectedTags.removeAt(i);
-                                    });
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.grey.withOpacity(0.3),
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    margin: EdgeInsets.only(right: 5),
-                                    child: Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 5),
-                                      child: Row(
-                                        children: [
-                                          Text(selectedTags[i]),
-                                          Icon(
-                                            Icons.clear,
-                                            color: Colors.black,
-                                            size: 15,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                    ),
-
+                          : Container();
+                    }),
                     SizedBox(
                       height: screenheight * 0.02,
                     ),

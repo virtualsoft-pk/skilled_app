@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/company_profile.dart';
 import 'package:skilled_app/views/responsive.dart';
+import 'package:skilled_app/widgets/video_bar.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../../model/feed_model.dart';
@@ -238,8 +239,10 @@ class _TabBarState extends State<_TabBar> {
             ),
             Expanded(
               child: TabBarView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: <Widget>[
+                  /// Feed
+
                   RefreshIndicator(
                     onRefresh: _refreshData,
                     child: ListView.builder(
@@ -566,6 +569,8 @@ class _TabBarState extends State<_TabBar> {
                       },
                     ),
                   ),
+
+                  /// Video Feed
                   RefreshIndicator(
                     onRefresh: _refreshVideoData,
                     child: PageView.builder(
@@ -574,279 +579,240 @@ class _TabBarState extends State<_TabBar> {
                       itemBuilder: (context, i) {
                         return Stack(
                           children: [
-                            Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  colorFilter: ColorFilter.mode(
-                                    filterColor,
-                                    BlendMode.darken,
-                                  ),
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(
-                                    videoFeedModel[i].bgImage!,
-                                  ),
-                                ),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          Get.to(() => CompanyProfile(
-                                                image: videoFeedModel[i].image!,
-                                              ));
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.only(
-                                                  left: 15,
-                                                  right: 10,
-                                                  bottom: 20),
-                                              width: 40,
-                                              height: 40,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    width: 1,
-                                                    color: Colors.white),
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      videoFeedModel[i].image!),
-                                                ),
+                            VideoBar(videoPath: videoFeedModel[i].videoPath!),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Get.to(() => CompanyProfile(
+                                              image: videoFeedModel[i].image!,
+                                            ));
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: const EdgeInsets.only(
+                                                left: 15,
+                                                right: 10,
+                                                bottom: 20),
+                                            width: 40,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  width: 1,
+                                                  color: Colors.white),
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    videoFeedModel[i].image!),
                                               ),
                                             ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  videoFeedModel[i].title!,
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: backgroundColor,
-                                                  ),
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                videoFeedModel[i].title!,
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: backgroundColor,
                                                 ),
-                                                Text(
-                                                  "Monday at 2.00 AM",
-                                                  style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: backgroundColor,
-                                                  ),
+                                              ),
+                                              const Text(
+                                                "Monday at 2.00 PM",
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: backgroundColor,
                                                 ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                              ),
+                                            ],
+                                          )
+                                        ],
                                       ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            right: 15, bottom: 20),
-                                        child: Column(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                i == 0
-                                                    ? isLike == false
-                                                        ? InkWell(
-                                                            onTap: () {
-                                                              isLike = true;
-                                                              count1++;
-                                                              videoFeedModel[i]
-                                                                      .likes =
-                                                                  videoFeedModel[
-                                                                              i]
-                                                                          .likes! +
-                                                                      1;
-                                                              setState(() {});
-                                                            },
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(8),
-                                                              child:
-                                                                  Image.asset(
-                                                                'assets/heart.png',
-                                                                color:
-                                                                    backgroundColor,
-                                                                height: 25,
-                                                                width: 25,
-                                                                fit: BoxFit
-                                                                    .contain,
-                                                              ),
-                                                            ),
-                                                          )
-                                                        : InkWell(
-                                                            onTap: () {
-                                                              isLike = false;
-                                                              count1--;
-                                                              videoFeedModel[i]
-                                                                      .likes =
-                                                                  videoFeedModel[
-                                                                              i]
-                                                                          .likes! -
-                                                                      1;
-                                                              setState(() {});
-                                                            },
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(8),
-                                                              child:
-                                                                  Image.asset(
-                                                                'assets/icons/2107845.png',
-                                                                height: 25,
-                                                                width: 25,
-                                                                fit: BoxFit
-                                                                    .contain,
-                                                              ),
-                                                            ),
-                                                          )
-                                                    : isLikw1 == false
-                                                        ? InkWell(
-                                                            onTap: () {
-                                                              isLikw1 = true;
-                                                              count2++;
-                                                              videoFeedModel[i]
-                                                                      .likes =
-                                                                  videoFeedModel[
-                                                                              i]
-                                                                          .likes! +
-                                                                      1;
-                                                              setState(() {});
-                                                            },
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(8),
-                                                              child:
-                                                                  Image.asset(
-                                                                'assets/heart.png',
-                                                                height: 25,
-                                                                width: 25,
-                                                                color:
-                                                                    backgroundColor,
-                                                                fit: BoxFit
-                                                                    .contain,
-                                                              ),
-                                                            ),
-                                                          )
-                                                        : InkWell(
-                                                            onTap: () {
-                                                              isLikw1 = false;
-                                                              count2--;
-                                                              videoFeedModel[i]
-                                                                      .likes =
-                                                                  videoFeedModel[
-                                                                              i]
-                                                                          .likes! -
-                                                                      1;
-                                                              setState(() {});
-                                                            },
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(8),
-                                                              child:
-                                                                  Image.asset(
-                                                                'assets/icons/2107845.png',
-                                                                height: 25,
-                                                                width: 25,
-                                                                fit: BoxFit
-                                                                    .contain,
-                                                              ),
-                                                            ),
-                                                          ),
+                                    ),
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                          right: 15, bottom: 20),
+                                      child: Column(
+                                        children: [
+                                          // Column(
+                                          //   children: [
+                                          //     i == 0
+                                          //         ? isLike == false
+                                          //             ? InkWell(
+                                          //                 onTap: () {
+                                          //                   isLike = true;
+                                          //                   count1++;
+                                          //                   videoFeedModel[i]
+                                          //                           .likes =
+                                          //                       videoFeedModel[
+                                          //                                   i]
+                                          //                               .likes! +
+                                          //                           1;
+                                          //                   setState(() {});
+                                          //                 },
+                                          //                 child: Padding(
+                                          //                   padding:
+                                          //                       EdgeInsets.all(
+                                          //                           8),
+                                          //                   child: Image.asset(
+                                          //                     'assets/heart.png',
+                                          //                     color:
+                                          //                         backgroundColor,
+                                          //                     height: 25,
+                                          //                     width: 25,
+                                          //                     fit: BoxFit
+                                          //                         .contain,
+                                          //                   ),
+                                          //                 ),
+                                          //               )
+                                          //             : InkWell(
+                                          //                 onTap: () {
+                                          //                   isLike = false;
+                                          //                   count1--;
+                                          //                   videoFeedModel[i]
+                                          //                           .likes =
+                                          //                       videoFeedModel[
+                                          //                                   i]
+                                          //                               .likes! -
+                                          //                           1;
+                                          //                   setState(() {});
+                                          //                 },
+                                          //                 child: Padding(
+                                          //                   padding:
+                                          //                       EdgeInsets.all(
+                                          //                           8),
+                                          //                   child: Image.asset(
+                                          //                     'assets/icons/2107845.png',
+                                          //                     height: 25,
+                                          //                     width: 25,
+                                          //                     fit: BoxFit
+                                          //                         .contain,
+                                          //                   ),
+                                          //                 ),
+                                          //               )
+                                          //         : isLikw1 == false
+                                          //             ? InkWell(
+                                          //                 onTap: () {
+                                          //                   setState(() {});
+                                          //                 },
+                                          //                 child: Padding(
+                                          //                   padding:
+                                          //                       EdgeInsets.all(
+                                          //                           8),
+                                          //                   child: Image.asset(
+                                          //                     'assets/heart.png',
+                                          //                     height: 25,
+                                          //                     width: 25,
+                                          //                     color:
+                                          //                         backgroundColor,
+                                          //                     fit: BoxFit
+                                          //                         .contain,
+                                          //                   ),
+                                          //                 ),
+                                          //               )
+                                          //             : InkWell(
+                                          //                 onTap: () {
+                                          //                   setState(() {});
+                                          //                 },
+                                          //                 child: Padding(
+                                          //                   padding:
+                                          //                       EdgeInsets.all(
+                                          //                           8),
+                                          //                   child: Image.asset(
+                                          //                     'assets/icons/2107845.png',
+                                          //                     height: 25,
+                                          //                     width: 25,
+                                          //                     fit: BoxFit
+                                          //                         .contain,
+                                          //                   ),
+                                          //                 ),
+                                          //               ),
 
-                                                // Image.asset(
-                                                //   'assets/heart.png',
-                                                //   width: 25,
-                                                //   height: 25,
-                                                //   color: backgroundColor,
-                                                // ),
-                                                SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(
-                                                  '${videoFeedModel[i].likes.toString()}k',
-                                                  style: TextStyle(
-                                                    color: shareColor,
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w400,
+                                          //     // Image.asset(
+                                          //     //   'assets/heart.png',
+                                          //     //   width: 25,
+                                          //     //   height: 25,
+                                          //     //   color: backgroundColor,
+                                          //     // ),
+                                          //     SizedBox(
+                                          //       height: 5,
+                                          //     ),
+                                          //     Text(
+                                          //       videoFeedModel[i]
+                                          //           .likes
+                                          //           .toString(),
+                                          //       style: TextStyle(
+                                          //         color: shareColor,
+                                          //         fontSize: 14,
+                                          //         fontWeight: FontWeight.w400,
+                                          //       ),
+                                          //     )
+                                          //   ],
+                                          // ),
+                                          SizedBox(
+                                            height: Get.height * 0.02,
+                                          ),
+                                          Column(
+                                            children: [
+                                              InkWell(
+                                                onTap: () {
+                                                  print("Called");
+                                                  share();
+                                                  //Share.share('assets/share-2.png');
+                                                },
+                                                child: Padding(
+                                                  padding: EdgeInsets.all(8),
+                                                  child: Image.asset(
+                                                    'assets/share-2.png',
+                                                    color: Colors.white,
+                                                    height: 25,
                                                   ),
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: Get.height * 0.02,
-                                            ),
-                                            Column(
-                                              children: [
-                                                InkWell(
-                                                  onTap: () {
-                                                    print("Called");
-                                                    share();
-                                                    //Share.share('assets/share-2.png');
-                                                  },
-                                                  child: Padding(
-                                                    padding: EdgeInsets.all(8),
-                                                    child: Image.asset(
-                                                      'assets/share-2.png',
-                                                      color: Colors.white,
-                                                      height: 25,
-                                                    ),
-                                                  ),
                                                 ),
-                                                SizedBox(
-                                                  height: 5,
+                                              ),
+                                              SizedBox(
+                                                height: 5,
+                                              ),
+                                              Text(
+                                                videoFeedModel[i]
+                                                    .shares
+                                                    .toString(),
+                                                style: TextStyle(
+                                                  color: shareColor,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w400,
                                                 ),
-                                                Text(
-                                                  videoFeedModel[i]
-                                                      .shares
-                                                      .toString(),
-                                                  style: TextStyle(
-                                                    color: shareColor,
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: Get.height * 0.02,
-                                            ),
-                                            // Image.asset(
-                                            //   'assets/more-horizontal.png',
-                                            //   width: 25,
-                                            //   height: 25,
-                                            // )
-                                          ],
-                                        ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: Get.height * 0.02,
+                                          ),
+                                          // Image.asset(
+                                          //   'assets/more-horizontal.png',
+                                          //   width: 25,
+                                          //   height: 25,
+                                          // )
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Center(
-                              child: CircleAvatar(
-                                  radius: 36,
-                                  backgroundColor: Colors.white,
-                                  child: Icon(Icons.play_arrow,
-                                      color: Colors.black)),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ],
                         );
@@ -864,39 +830,43 @@ class _TabBarState extends State<_TabBar> {
 
   List<VideoFeedModle> videoFeedModel = [
     VideoFeedModle(
+      videoPath: "assets/1.mp4",
       dateTime: DateTime.now(),
       image: 'assets/Ellipse 582.png',
-      likes: 22.1,
+      likes: 325,
       shares: 11,
       title: 'Skill Share',
       bgImage: 'assets/unsplash_t6pUyIvRWSY.png',
       pause: 'assets/pause.png',
     ),
     VideoFeedModle(
+      videoPath: 'assets/2.mp4',
       dateTime: DateTime.now(),
       image: 'assets/Ellipse 582.png',
-      likes: 22.1,
+      likes: 523,
       shares: 11,
       title: 'Skill Share',
       bgImage: 'assets/images/onboard5.png',
       pause: 'assets/pause.png',
     ),
     VideoFeedModle(
+      videoPath: "assets/1.mp4",
       dateTime: DateTime.now(),
       image: 'assets/Ellipse 582.png',
-      likes: 22.1,
+      likes: 532,
       shares: 11,
       title: 'Skill Share',
       bgImage: 'assets/images/skilldlogo.jpg',
       pause: 'assets/pause.png',
     ),
     VideoFeedModle(
+      videoPath: "assets/2.mp4",
       dateTime: DateTime.now(),
       image: 'assets/Ellipse 582.png',
-      likes: 22.1,
+      likes: 523,
       shares: 11,
       title: 'Skill Share',
-      bgImage: 'assets/unsplash_t6pUyIvRWSY.png',
+      bgImage: 'assets/unsplash_t6pUxyIvRWSY.png',
       pause: 'assets/pause.png',
     )
   ];

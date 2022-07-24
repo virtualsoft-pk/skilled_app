@@ -5,6 +5,7 @@ import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/quiz/all_careers.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_button.dart';
+import 'package:skilled_app/widgets/video_bar.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 import '../../utils/app_const.dart';
@@ -92,33 +93,37 @@ class _VideoBar extends StatelessWidget {
         children: [
           const SizedBox(height: 2),
           SizedBox(
-            height: Responsive.isTablet(context)
-                ? Get.height * 0.5
-                : Get.height * 0.20,
-            width: double.infinity,
-            child: Stack(
-              children: [
-                SizedBox.expand(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      "assets/images/image2.png",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                    height: Get.height * 0.07,
-                    decoration: const BoxDecoration(
-                        color: Colors.white, shape: BoxShape.circle),
-                    child: const Center(child: Icon(Icons.play_arrow)),
-                  ),
-                ),
-              ],
-            ),
-          ),
+              height: Responsive.isTablet(context)
+                  ? Get.height * 0.5
+                  : Get.height * 0.20,
+              width: double.infinity,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: const VideoBar(videoPath: 'assets/about.mp4'),
+              )
+              // Stack(
+              //   children: [
+              //     SizedBox.expand(
+              //       child: ClipRRect(
+              //         borderRadius: BorderRadius.circular(10),
+              //         child: Image.asset(
+              //           "assets/images/image2.png",
+              //           fit: BoxFit.cover,
+              //         ),
+              //       ),
+              //     ),
+              //     Align(
+              //       alignment: Alignment.center,
+              //       child: Container(
+              //         height: Get.height * 0.07,
+              //         decoration: const BoxDecoration(
+              //             color: Colors.white, shape: BoxShape.circle),
+              //         child: const Center(child: Icon(Icons.play_arrow)),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              ),
           const SizedBox(
             height: 20,
           ),

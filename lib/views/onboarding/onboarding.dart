@@ -89,7 +89,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   pageController: _pageController,
                   titleStyles: const TextStyle(
                     color: textColor,
-                    fontSize: 28.0,
+                    fontSize: 38.0,
                     fontWeight: FontWeight.w600,
                   ),
                   skipButton: const Text(""),
@@ -153,10 +153,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 },
                 child: const Text(
                   "Continue as a guest",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: grey900),
+                  style: TextStyle(fontSize: 16, color: grey900),
                 ),
               ),
               const SizedBox(

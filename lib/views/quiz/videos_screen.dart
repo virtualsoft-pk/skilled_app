@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:skilled_app/views/quiz/quiz_start.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
+import 'package:skilled_app/widgets/video_bar.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 class VideoScreen extends StatefulWidget {
@@ -66,24 +67,34 @@ class _VideoScreenState extends State<VideoScreen> {
             SizedBox(
               width: double.infinity,
               height: Get.height * 0.38,
-              child: Stack(
-                children: [
-                  Image(
-                    image: const AssetImage('assets/userdemo.png'),
-                    fit: BoxFit.fill,
-                    width: Get.width,
+              child: Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(8)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: const VideoBar(
+                    videoPath: 'assets/about.mp4',
                   ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      height: Get.height * 0.07,
-                      decoration: const BoxDecoration(
-                          color: Colors.white, shape: BoxShape.circle),
-                      child: const Center(child: Icon(Icons.play_arrow)),
-                    ),
-                  ),
-                ],
+                ),
               ),
+              //  Stack(
+              //   children: [
+              //     Image(
+              //       image: const AssetImage('assets/userdemo.png'),
+              //       fit: BoxFit.fill,
+              //       width: Get.width,
+              //     ),
+              //     Align(
+              //       alignment: Alignment.centerLeft,
+              //       child: Container(
+              //         height: Get.height * 0.07,
+              //         decoration: const BoxDecoration(
+              //             color: Colors.white, shape: BoxShape.circle),
+              //         child: const Center(child: Icon(Icons.play_arrow)),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ),
             const SizedBox(
               height: 16,

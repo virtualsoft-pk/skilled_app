@@ -133,7 +133,7 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                   const Text(
-                    'Password should be 8-16 charactar',
+                    'Password should be 8-16 character',
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,

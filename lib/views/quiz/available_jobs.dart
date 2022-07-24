@@ -105,7 +105,7 @@ class _JobsState extends State<Jobs> {
                 height: Get.height * 0.03,
               ),
               _SeeMoreJobsButton(),
-              SizedBox(height: Get.height * 0.02),
+              SizedBox(height: 22),
               SizedBox(
                   width: Responsive.isTablet(context)
                       ? Get.width * 0.7
@@ -125,6 +125,9 @@ class _JobsState extends State<Jobs> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 16,
+              ),
               Align(
                 alignment: Alignment.center,
                 child: GestureDetector(
@@ -141,7 +144,7 @@ class _JobsState extends State<Jobs> {
                 ),
               ),
               SizedBox(
-                height: 15,
+                height: 32,
               ),
             ],
           ),
@@ -209,39 +212,43 @@ class _JobTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-                color: Color(0xffF4F4F5),
-                borderRadius: BorderRadius.circular(20)),
-            child: Container(
-                margin: EdgeInsets.all(10),
-                child: Image.asset("assets/Group@2x.png"))),
-        SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Lead UX Designer",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            // SizedBox(height: Get.height * 0.01),
-            Text(
-              "Snapdocs",
-              style: TextStyle(fontSize: 16),
-            ),
-            // SizedBox(height: Get.height * 0.01),
-            Text(
-              "United States",
-              style:
-                  TextStyle(fontSize: 17, color: Colors.grey.withOpacity(0.9)),
-            ),
-          ],
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration(
+                  color: Color(0xffF4F4F5),
+                  borderRadius: BorderRadius.circular(20)),
+              child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: Image.asset("assets/Group@2x.png"))),
+          SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Lead UX Designer",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+              ),
+              // SizedBox(height: Get.height * 0.01),
+              Text(
+                "Snapdocs",
+                style: TextStyle(fontSize: 15),
+              ),
+              // SizedBox(height: Get.height * 0.01),
+              Text(
+                "United States",
+                style: TextStyle(
+                    fontSize: 15, color: Colors.grey.withOpacity(0.9)),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
