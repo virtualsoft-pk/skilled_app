@@ -649,121 +649,33 @@ class _TabBarState extends State<_TabBar> {
                                           right: 15, bottom: 20),
                                       child: Column(
                                         children: [
-                                          // Column(
-                                          //   children: [
-                                          //     i == 0
-                                          //         ? isLike == false
-                                          //             ? InkWell(
-                                          //                 onTap: () {
-                                          //                   isLike = true;
-                                          //                   count1++;
-                                          //                   videoFeedModel[i]
-                                          //                           .likes =
-                                          //                       videoFeedModel[
-                                          //                                   i]
-                                          //                               .likes! +
-                                          //                           1;
-                                          //                   setState(() {});
-                                          //                 },
-                                          //                 child: Padding(
-                                          //                   padding:
-                                          //                       EdgeInsets.all(
-                                          //                           8),
-                                          //                   child: Image.asset(
-                                          //                     'assets/heart.png',
-                                          //                     color:
-                                          //                         backgroundColor,
-                                          //                     height: 25,
-                                          //                     width: 25,
-                                          //                     fit: BoxFit
-                                          //                         .contain,
-                                          //                   ),
-                                          //                 ),
-                                          //               )
-                                          //             : InkWell(
-                                          //                 onTap: () {
-                                          //                   isLike = false;
-                                          //                   count1--;
-                                          //                   videoFeedModel[i]
-                                          //                           .likes =
-                                          //                       videoFeedModel[
-                                          //                                   i]
-                                          //                               .likes! -
-                                          //                           1;
-                                          //                   setState(() {});
-                                          //                 },
-                                          //                 child: Padding(
-                                          //                   padding:
-                                          //                       EdgeInsets.all(
-                                          //                           8),
-                                          //                   child: Image.asset(
-                                          //                     'assets/icons/2107845.png',
-                                          //                     height: 25,
-                                          //                     width: 25,
-                                          //                     fit: BoxFit
-                                          //                         .contain,
-                                          //                   ),
-                                          //                 ),
-                                          //               )
-                                          //         : isLikw1 == false
-                                          //             ? InkWell(
-                                          //                 onTap: () {
-                                          //                   setState(() {});
-                                          //                 },
-                                          //                 child: Padding(
-                                          //                   padding:
-                                          //                       EdgeInsets.all(
-                                          //                           8),
-                                          //                   child: Image.asset(
-                                          //                     'assets/heart.png',
-                                          //                     height: 25,
-                                          //                     width: 25,
-                                          //                     color:
-                                          //                         backgroundColor,
-                                          //                     fit: BoxFit
-                                          //                         .contain,
-                                          //                   ),
-                                          //                 ),
-                                          //               )
-                                          //             : InkWell(
-                                          //                 onTap: () {
-                                          //                   setState(() {});
-                                          //                 },
-                                          //                 child: Padding(
-                                          //                   padding:
-                                          //                       EdgeInsets.all(
-                                          //                           8),
-                                          //                   child: Image.asset(
-                                          //                     'assets/icons/2107845.png',
-                                          //                     height: 25,
-                                          //                     width: 25,
-                                          //                     fit: BoxFit
-                                          //                         .contain,
-                                          //                   ),
-                                          //                 ),
-                                          //               ),
-
-                                          //     // Image.asset(
-                                          //     //   'assets/heart.png',
-                                          //     //   width: 25,
-                                          //     //   height: 25,
-                                          //     //   color: backgroundColor,
-                                          //     // ),
-                                          //     SizedBox(
-                                          //       height: 5,
-                                          //     ),
-                                          //     Text(
-                                          //       videoFeedModel[i]
-                                          //           .likes
-                                          //           .toString(),
-                                          //       style: TextStyle(
-                                          //         color: shareColor,
-                                          //         fontSize: 14,
-                                          //         fontWeight: FontWeight.w400,
-                                          //       ),
-                                          //     )
-                                          //   ],
-                                          // ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                isLike = !isLike;
+                                              });
+                                            },
+                                            child: Icon(
+                                              isLike
+                                                  ? Icons.favorite
+                                                  : Icons.favorite_border,
+                                              color: isLike
+                                                  ? Colors.red
+                                                  : Colors.white,
+                                              size: 24,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 4,
+                                          ),
+                                          Text(
+                                            videoFeedModel[i].likes.toString(),
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
                                           SizedBox(
                                             height: Get.height * 0.02,
                                           ),

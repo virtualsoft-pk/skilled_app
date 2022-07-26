@@ -1,7 +1,9 @@
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:skilled_app/controller/nav_controller.dart';
 import 'package:skilled_app/views/forum/bottom_navigation_for_comment.dart';
 import 'package:skilled_app/views/forum/thread_detail.dart';
 import 'package:skilled_app/views/responsive.dart';
@@ -243,20 +245,25 @@ class PostTileState extends State<PostTile> {
                 ),
                 InkWell(
                   onTap: () {
-                    context.navigator.push<void>(
-                      SwipeablePageRoute(
-                        builder: (_) => BottomForComment(
-                          date: widget.post.date,
-                          desc1: widget.post.desc,
-                          desc2: widget.post.desc2,
-                          image: widget.post.image,
-                          motion: widget.post.dgn2,
-                          name: widget.post.name,
-                          ui: widget.post.design,
-                          web: widget.post.design3,
+                    if (Responsive.isTablet(context)) {
+                      final NavController controller = Get.find();
+                      controller.updateForumIndex(3);
+                    } else {
+                      context.navigator.push<void>(
+                        SwipeablePageRoute(
+                          builder: (_) => BottomForComment(
+                            date: widget.post.date,
+                            desc1: widget.post.desc,
+                            desc2: widget.post.desc2,
+                            image: widget.post.image,
+                            motion: widget.post.dgn2,
+                            name: widget.post.name,
+                            ui: widget.post.design,
+                            web: widget.post.design3,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    }
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(10),

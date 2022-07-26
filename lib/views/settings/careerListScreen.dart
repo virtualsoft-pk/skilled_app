@@ -52,11 +52,11 @@ class _CareerListScreenState extends State<CareerListScreen> {
                 changeView = !changeView;
               });
             },
-            child: const Padding(
-              padding: EdgeInsets.only(right: 20, top: 20),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20, top: 20),
               child: Text(
-                "Edit",
-                style: TextStyle(color: Colors.black),
+                changeView ? "Cancel" : "Edit",
+                style: const TextStyle(color: Colors.black),
               ),
             ),
           ),
@@ -141,7 +141,7 @@ class _CareerListScreenState extends State<CareerListScreen> {
               ),
               changeView
                   ? CustomButton(
-                      text: "SAVE AND CONTINUE",
+                      text: "SAVE AND CONTINUE  ",
                       funct: () {
                         Get.back();
                         // Get.bottomSheet(buttomSheet(),

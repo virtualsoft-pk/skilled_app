@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skilled_app/views/auth/forgot_password.dart';
 import 'package:skilled_app/views/responsive.dart';
 import 'package:skilled_app/widgets/custom_text_field.dart';
 import 'package:skilled_app/widgets/custom_widgets.dart';
@@ -84,11 +85,16 @@ class _ChangePasswordState extends State<ChangePassword> {
               SizedBox(
                 height: Get.height * 0.04,
               ),
-              const Align(
+              Align(
                 alignment: Alignment.center,
-                child: Text(
-                  "Forgot Password?",
-                  style: TextStyle(color: Colors.blue),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(() => const ForgotPassword());
+                  },
+                  child: const Text(
+                    "Forgot Password?",
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
               ),
             ],

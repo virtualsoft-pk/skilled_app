@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skilled_app/controller/nav_controller.dart';
 import 'package:skilled_app/controller/tagcontroller.dart';
+import 'package:skilled_app/model/aboutmodel.dart';
 import 'package:skilled_app/utils/app_colors.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/feed_page.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search.dart';
 import 'package:skilled_app/views/feeds/bottom_navigation/search_result.dart';
+import 'package:skilled_app/views/forum/comment_replies.dart';
+import 'package:skilled_app/views/forum/comment_section.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
 import 'package:skilled_app/views/quiz/search_screen.dart';
 import 'package:skilled_app/views/responsive.dart';
@@ -13,6 +16,23 @@ import 'package:skilled_app/views/responsive.dart';
 import '../../eventCalander/event_page_for_month.dart';
 import '../../forum/forum.dart';
 import '../../settings/settingPage.dart';
+
+final post = Post(
+    favoriteImage: 'assets/icons/2107845.png',
+    color: const Color(0xffFFE2DC),
+    message: 'assets/img_13.png',
+    number: '212',
+    heart: 'assets/img_12.png',
+    count: 538,
+    design3: 'web design',
+    dgn2: 'Motion',
+    image: 'assets/img_10.png',
+    name: 'Hashir shah',
+    date: 'Monday at 2:00AM',
+    design: 'UI/UIX',
+    desc: '13 best Skillshare classes for designers and artists?',
+    desc2:
+        'We’ve noticed a bunch of talented designers and illustrators jumping onto Skillshare to... Read more');
 
 List<Widget> discoverTabPages = [
   Search(),
@@ -38,6 +58,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     super.initState();
     // ignore: unused_local_variable
     final controller = Get.put(NavController());
+    final tcontroller = Get.put(TagController());
   }
 
   @override
@@ -196,6 +217,22 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
       SearchOnForum(),
       const SearchSuggestionScreen(
         isForDiscoverTab: true,
+      ),
+      CommentSection(
+        date: post.date,
+        desc1: post.desc,
+        desc2: post.desc2,
+        image: post.image,
+        motion: post.dgn2,
+        name: post.name,
+        ui: post.design,
+        web: post.design3,
+      ),
+      CommentReplies(
+        date: post.date,
+        image: post.image,
+        name: post.name,
+        comment: "This is a sample comment. Don't take it serious :)",
       ),
     ];
     if (widget.index != null) {

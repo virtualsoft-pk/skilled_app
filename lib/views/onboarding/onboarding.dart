@@ -165,7 +165,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             top: Responsive.isTablet(context)
                 ? Get.height * 0.05
                 : Get.height * 0.07,
-            right: 16,
+            right: Responsive.isTablet(context) ? 42 : 16,
             child: InkWell(
               onTap: () {
                 Get.to(() => SignIn());

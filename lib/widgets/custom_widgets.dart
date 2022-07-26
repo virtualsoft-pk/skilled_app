@@ -15,8 +15,8 @@ tabAppBar({title, trailing, leading = true}) {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-              width: 16,
+            SizedBox(
+              width: Responsive.isTablet(context) ? 32 : 16,
             ),
             if (leading) SizedBox(child: customBackButton()),
             if (!leading)
