@@ -107,6 +107,11 @@ class ResetPassword extends StatelessWidget {
               text: 'RESET PASSWORD',
               funct: () {
                 Get.to(() => const SignIn());
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                      "Password reset successfully!\nPlease login with your new password."),
+                  backgroundColor: primaryColor,
+                ));
               },
             ),
             if (Responsive.isTablet(context))

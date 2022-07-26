@@ -314,11 +314,21 @@ class _TabBarState extends State<_TabBar> {
                                   ),
                                   Spacer(),
 
-                                  IconButton(
-                                    onPressed: () {
-                                      share();
-                                    },
-                                    icon: Icon(Icons.more_vert, color: grey500),
+                                  PopupMenuButton(
+                                    icon: const Icon(
+                                      Icons.more_vert,
+                                      color: Colors.grey,
+                                    ),
+                                    itemBuilder: (context) => const [
+                                      PopupMenuItem(
+                                        value: 1,
+                                        child: Text("First"),
+                                      ),
+                                      PopupMenuItem(
+                                        value: 2,
+                                        child: Text("Second"),
+                                      )
+                                    ],
                                   ),
 
                                   // PopupMenuButton(
