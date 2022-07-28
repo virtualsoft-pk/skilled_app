@@ -335,7 +335,8 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
                       );
               }),
               GetBuilder<NavController>(builder: (controller) {
-                return controller.forumIndex == 0
+                return controller.forumIndex == 0 &&
+                        widget.threadForForumTab == null
                     ? const SizedBox()
                     : Padding(
                         padding: const EdgeInsets.only(top: 42),
@@ -344,6 +345,8 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
                             child: GestureDetector(
                               onTap: () {
                                 controller.updateForumIndex(0);
+                                Get.offAll(
+                                    () => const BottomNavigation(index: 2));
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(bottom: 30),

@@ -5,6 +5,7 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skilled_app/controller/nav_controller.dart';
+import 'package:skilled_app/views/feeds/bottom_navigation/bottom_navigation.dart';
 import 'package:skilled_app/views/forum/create_post.dart';
 import 'package:skilled_app/views/forum/post_tile.dart';
 import 'package:skilled_app/views/forum/quiz_07.dart';
@@ -208,7 +209,29 @@ class _ForumState extends State<Forum> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
                               ),
-                            )
+                            ),
+                            const SizedBox(width: 46),
+                            if (widget.thread != null)
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 32,
+                                  width: 110,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(24),
+                                      border: Border.all(
+                                        color: Colors.black,
+                                      )),
+                                  child: Center(
+                                      child: Text(
+                                    "Follow",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  )),
+                                ),
+                              ),
                           ],
                         ),
                         const SizedBox(
@@ -230,10 +253,14 @@ class _ForumState extends State<Forum> {
                                     onTap: () {
                                       setState(() {
                                         isNextScreen = false;
-                                        // Get.to(() => Forum(
-                                        //       thread: threads[i],
-                                        //     ));
                                       });
+                                      final NavController controller =
+                                          Get.find();
+                                      controller.updateForumIndex(0);
+                                      Get.offAll(() => BottomNavigation(
+                                            index: 2,
+                                            threadForForumTab: threads[i],
+                                          ));
                                     },
                                     child: Row(
                                       mainAxisAlignment:
