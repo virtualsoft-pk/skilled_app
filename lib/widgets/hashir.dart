@@ -39,10 +39,13 @@ Widget _buildChip(String label, Color color) {
     onTap: () {
       final NavController controller = Get.find();
       controller.updateForumIndex(0);
-      Get.offAll(() => BottomNavigation(
-            index: 2,
-            threadForForumTab: label,
-          ));
+      Get.offAll(
+        () => BottomNavigation(
+          index: 2,
+          threadForForumTab: label,
+        ),
+        transition: null,
+      );
     },
     child: Chip(
       labelPadding: const EdgeInsets.all(4),

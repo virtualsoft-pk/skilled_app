@@ -346,7 +346,11 @@ class __BottomNavTabletState extends State<_BottomNavTablet> {
                               onTap: () {
                                 controller.updateForumIndex(0);
                                 Get.offAll(
-                                    () => const BottomNavigation(index: 2));
+                                  () => const BottomNavigation(index: 2),
+                                  duration: const Duration(milliseconds: 0),
+                                  curve: Curves.ease,
+                                  transition: null,
+                                );
                               },
                               child: Container(
                                 margin: const EdgeInsets.only(bottom: 30),

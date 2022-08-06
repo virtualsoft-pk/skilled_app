@@ -129,7 +129,7 @@ class _CreatePostOnForumState extends State<CreatePostOnForum> {
                           width: 2,
                         ),
                         myText(
-                            text: ' (Up to 3 tags)',
+                            text: ' (Up to 3 tags, Seprate tags with comma (,))',
                             style: GoogleFonts.manrope(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,

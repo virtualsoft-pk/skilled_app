@@ -78,6 +78,8 @@ class _ForumState extends State<Forum> {
     'Product Design'
   ];
   bool isNextScreen = false;
+
+  bool following = false;
   bool isNextScreen1 = false;
   @override
   Widget build(BuildContext context) {
@@ -213,7 +215,11 @@ class _ForumState extends State<Forum> {
                             const SizedBox(width: 46),
                             if (widget.thread != null)
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  setState(() {
+                                    following = !following;
+                                  });
+                                },
                                 child: Container(
                                   height: 32,
                                   width: 110,
@@ -224,8 +230,8 @@ class _ForumState extends State<Forum> {
                                       )),
                                   child: Center(
                                       child: Text(
-                                    "Follow",
-                                    style: TextStyle(
+                                    following ? "Fllowing" : "Follow",
+                                    style: const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.w500,
                                     ),
